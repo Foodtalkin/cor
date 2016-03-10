@@ -1,0 +1,12 @@
+{"result":[
+		{
+			"publication": "publication",
+			"name" : "name1",
+			"location" : "Delhi",
+			"email" : "email@gmail.com",
+			"phone": "8998967900",
+			"category": "test",
+			"designation": "designation",
+			"website" : "http://batcave.foodtalkindia.com/"
+		}
+]}

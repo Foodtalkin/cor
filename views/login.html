@@ -1,0 +1,26 @@
+<div class="center-block w-xxl w-auto-xs p-v-md">
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center">
+        
+        <span class="m-l inline">Batcave 3.0</span>
+      </div>
+    </div>
+
+    <div class="p-lg panel md-whiteframe-z1 text-color m">
+      <div class="m-b text-sm">
+        Sign in with your Materil Account
+      </div>
+      <form name="form"  ng-submit="vm.login()">
+        <div class="md-form-group float-label">
+          <input type="email" class="md-input" name="username" id="username" ng-model="username" required>
+          <label>Email</label>
+        </div>
+        <div class="md-form-group float-label">
+          <input type="password" class="md-input" name="password" id="password" ng-model="password" required>
+          <label>Password</label>
+        </div>      
+
+        <button md-ink-ripple type="submit" class="md-btn md-raised pink btn-block p-h-md" ng-click="doLogin();">Sign in</button>
+      </form>
+    </div>
+  </div>

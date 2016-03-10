@@ -1,0 +1,12 @@
+{"result":[
+		{
+			"orgnaization": "dry ice",
+			"name" : "name1",
+			"location" : "Delhi",
+			"address": "address",
+			"email" : "email@gmail.com",
+			"phone": "8998967900",
+			"category": "test",
+			"capacity": "100"
+		}
+]}
