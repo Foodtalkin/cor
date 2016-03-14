@@ -16,7 +16,7 @@ foreach($ga->getResults() as $result)
     array_push($data, $result->getVisits());
 }
 
-$ga->requestReportData(99025528,array('date'),array('pageviews','visits'),array('date'),null,date('Y-m-d',strtotime('1 week ago')),date('Y-m-d'),1,7);
+$ga->requestReportData(118455960,array('date'),array('pageviews','visits'),array('date'),null,date('Y-m-d',strtotime('1 week ago')),date('Y-m-d'),1,7);
 
 foreach($ga->getResults() as $result)
 {
