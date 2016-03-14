@@ -43,4 +43,30 @@ span.upload input {
     overflow: hidden !important;
 }
 
-
+.totuser{
+background-color: #3c3c3c!important;
+color: #fff !important;
+}
+.googleana{
+background-color: #ea4335 !important;
+color: #fff !important;
+}
+.mailchimpd{
+background-color: #febe12 !important;
+color: #fff !important;
+}
+.twitterd{
+background-color: #55acee !important;
+color: #fff !important;
+}
+.instad{
+background-color: #3f729b !important;
+color: #fff !important;
+}
+.facebookd{
+background-color: #3b5998 !important;	
+color: #fff !important;
+}
+canvas{
+	color: #fff !important;
+}

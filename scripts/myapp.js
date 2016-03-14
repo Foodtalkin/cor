@@ -157,7 +157,7 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
   dashAnalytics.getGAData(function(response){
     $scope.ga = {};
     $scope.ga.labels = response.date;
-    $scope.ga.series = ['Food Talk India', 'Food Talk Plus'];
+    $scope.ga.series = ['Food Talk India', 'Food Talk in'];
     $scope.ga.data = [];
     $scope.ga.data[0] = response.fti;
     $scope.ga.data[1] = response.ftp;
@@ -171,7 +171,7 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
     $scope.fbfti.series = ['Food Talk India'];
     $scope.fbfti.data = [];
     $scope.fbfti.data[0] = response.result[0].dashboard_count;
-    $scope.fbfti.data[1] = [241200,241200,241200,241200,241200,241200,241200];
+    $scope.fbfti.data[1] = [245000,245000,245000,245000,245000,245000,245000];
 
     $scope.fbftp = {};
     $scope.fbftp.labels = response.result[1].dashboard_date;
@@ -185,21 +185,21 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
     $scope.insta.series = ['Instagram'];
     $scope.insta.data = [];
     $scope.insta.data[0] = response.result[2].dashboard_count;
-    $scope.insta.data[1] = [114800,114800,114800,114800,114800,114800,114800];
+    $scope.insta.data[1] = [170000,170000,170000,170000,170000,170000,170000];
 
     $scope.twit = {};
     $scope.twit.labels = response.result[3].dashboard_date;
     $scope.twit.series = ['Twitter'];
     $scope.twit.data = [];
     $scope.twit.data[0] = response.result[3].dashboard_count;
-    $scope.twit.data[1] = [64000,64000,64000,64000,64000,64000,64000];
+    $scope.twit.data[1] = [64020,64020,64020,64020,64020,64020,64020];
 
     $scope.mailc = {};
     $scope.mailc.labels = response.result[4].dashboard_date;
     $scope.mailc.series = ['MailChimp'];
     $scope.mailc.data = [];
     $scope.mailc.data[0] = response.result[4].dashboard_count;
-    $scope.mailc.data[1] = [3100,3100,3100,3100,3100,3100,3100];
+    $scope.mailc.data[1] = [4200,4200,4200,4200,4200,4200,4200];
   });
 
 
