@@ -67,6 +67,6 @@ color: #fff !important;
 background-color: #3b5998 !important;	
 color: #fff !important;
 }
-canvas{
+.chart, .chart-line, #line{
 	color: #fff !important;
 }

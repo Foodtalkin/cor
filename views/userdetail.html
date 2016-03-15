@@ -117,7 +117,7 @@
             <a class="btn btn-sm btn-addon btn-info m-sm" href="#users"><i class="fa  fa-chevron-left"></i>Back</a>
           </div>
 <div class="row row-sm">
-  <div class="col-sm-4">
+  <div class="col-sm-6">
     <div class="panel panel-card">
       <div class="r-t pos-rlt" md-ink-ripple style="background:url(http://graph.facebook.com/{{ userEvents.data.result.facebook_id }}/picture?width=480&height=480) center center; background-size:cover">
         <div class="p-lg bg-white-overlay text-center r-t">
@@ -175,9 +175,68 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
-    <div class="panel panel-card">
-      <form>
+  <div class="col-sm-6">
+    <div class="panel panel-card clearfix">
+      <div class="panel-heading">App Details</div>
+      <div class="p-h b-b b-light panel-content">
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.user_name}}</span> Username
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.followers_count}}</span> Followers Count
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.post_count}}</span> Post Count
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.last_post}}</span> Last Post
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.following_count}}</span> Following Count
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.last_follow}}</span> Last Follow
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.checkin_count}}</span> Checkin Count
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.last_checkin}}</span> Last Checkin
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.comment_count}}</span> Comment Count
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.last_comment}}</span> Last Comment
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.like_count}}</span> Like Count
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.last_like}}</span> Last Like
+        </a>
+
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.bookmark_count}}</span> Bookmark Count
+        </a>
+        
+        <a class="list-group-item">
+          <span class="pull-right">{{userEvents.data.result.app.last_bookmark}}</span> last Bookmark
+        </a>
+      </div>
+      
+      <!-- <form>
         <textarea class="form-control no-border" rows="3" placeholder="Write something..."></textarea>
       </form>
       <div class="lt p">
@@ -186,41 +245,44 @@
           <li><a href><i class="fa fa-camera"></i></a></li>
           <li><a href><i class="fa fa-video-camera"></i></a></li>
         </ul>
-      </div>
+      </div> -->
     </div>
+    
+  </div>
+  <div class="col-sm-12">
     <div class="panel panel-card clearfix">
-      <div class="p-h b-b b-light">
+      <!-- <div class="p-h b-b b-light">
         <ul class="nav nav-lines nav-md b-info">
           <li class="active"><a data-toggle="tab" data-target="#stream">Stream</a></li>
         </ul>
+      </div> -->
+      <div class="table-responsive">
+        <table class="table table-bordered bg-white">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Type</th>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Response</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="events in userEvents.data.result.events">
+              <td>{{$index +1 }}</td>
+              <td>{{events.type}}</td>
+              <td>{{events.name}}</td>
+              <td>{{events.start_date}}</td>
+              <td ng-repeat="answer in events.pivot.response">
+                <div>{{ answer }}</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="p-h-lg m-b-lg tab-content">
-        <div class="tab-pane animated fadeIn active" role="tabpanel" id="stream">      
-          <div class="streamline b-l p-v m-l-xs">
-            <div ng-repeat="events in userEvents.data.result.events">
-              <a class="pull-left w-32 m-l-n m-t-xs m-r">
-                <img src="images/a2.jpg" class="img-responsive rounded" alt="...">
-              </a>
-              <div class="clear">
-                <div class="m-b-xs">
-                  <a href>{{events.name}} ({{events.type}})</a>
-                  <span class="text-muted block text-xs">
-                    {{events.start_date}}
-                  </span>
-                </div>
-                <div class="m-b">
-                  <div ng-repeat="answer in events.pivot.response">
-                    <div>{{ answer }}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            
-
-          </div>
-      </div>
-      </div>
+      
     </div>
   </div>
 </div>
