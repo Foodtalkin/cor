@@ -256,7 +256,13 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
       $scope.users = response;
     })
   }
+  $scope.searchuser = function(searchkey){
+    userFactory.getsearchresult(searchkey, function(response){
+      $scope.users = response;
+    })
+  }
 }]);
+
 //User Details
 app.controller('userdetailCtrl', ['$scope', '$routeParams','userFactory','$rootScope', function($scope, $routeParams, userFactory, $rootScope){
   $scope.username = $rootScope.username;
@@ -892,7 +898,11 @@ app.factory('userFactory', ['$http','urlFactory', function($http, urlFactory){
       callback(response);
     });
   }
-
+  userFactory.getsearchresult = function(key, callback){
+    $http.get("http://api.foodtalkindia.com/api/search/user/"+key).then(function(response){
+      callback(response);
+    });
+  }
   return userFactory;
 }]);
 

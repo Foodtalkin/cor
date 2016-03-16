@@ -137,7 +137,7 @@
                     </div>
                     <div class="form-group" id="search">
                         <!-- <label >Search</label> -->
-                        <input type="text" ng-model="search" class="form-control" placeholder="Search" >
+                        <input type="text" ng-model="searchkey" class="form-control" placeholder="Search" ><button md-ink-ripple class="btn btn-fw btn-primary" ng-click="searchuser(searchkey)">Primary</button>
                     </div>
                 </form>
                 <table class="table table-hover b-t b-b bordert">
@@ -152,7 +152,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="name in filtered = (users.data.result.data | filter:search) " >
+                    <tr ng-repeat="name in users.data.result.data " >
                       
                       <td>{{ $index +1 }}</td>
                       <td>{{ name.name }}</td>
