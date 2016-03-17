@@ -280,22 +280,25 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
     userFactory.getUsersPage(url, function(response){
       $scope.users = response;
       $scope.usercsv = [];
+      $scope.selectall(true);
     });
-    $scope.selectall(true);
+    
   }
   $scope.searchuser = function(searchkey){
     userFactory.getsearchresult(searchkey, function(response){
       $scope.users = response;
       $scope.usercsv = [];
+      $scope.selectall(true);
     });
-    $scope.selectall(true);
+    
   }
   $scope.searchtags = function(key){
-    userFactory.searchtags(key, function(response){
+    userFactory.getsearchtags(key, function(response){
       $scope.users = response;
       $scope.usercsv = [];
-    });
     $scope.selectall(true);
+    });
+    
   }
 }]);
 
@@ -939,7 +942,7 @@ app.factory('userFactory', ['$http','urlFactory', function($http, urlFactory){
       callback(response);
     });
   }
-  userFactory.searchtags = function(key, callback){
+  userFactory.getsearchtags = function(key, callback){
     $http.get("http://api.foodtalkindia.com/api/search/user/tags/"+key).then(function(response){
       callback(response);
     });
