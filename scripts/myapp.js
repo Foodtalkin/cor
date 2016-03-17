@@ -248,6 +248,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'Users';
+  $scope.usercsv = [];
   $scope.sync = function(bool, item){
     if(bool){
       // add item
