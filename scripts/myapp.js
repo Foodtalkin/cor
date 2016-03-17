@@ -266,35 +266,47 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
 
   $scope.selectall = function(val){
     $scope.bool = val;
-    angular.forEach($scope.users.data.result.data, function(name){
+    angular.forEach($scope.users, function(name){
       $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address});
     });
   }
 
   userFactory.getAllUsers(function(response){
-    $scope.users = response;
+    $scope.users = response.data.result.data;
+    $scope.current_page = response.data.result.current_page;
+    $scope.total = response.data.result.total;
     $scope.usercsv = [];
     $scope.selectall(true);
   });
   $scope.getpage = function(url){
     userFactory.getUsersPage(url, function(response){
-      $scope.users = response;
+      $scope.users = response.data.result.data;
+      $scope.current_page = response.data.result.current_page;
+    $scope.total = response.data.result.total;
       $scope.usercsv = [];
       $scope.selectall(true);
     });
     
   }
+  
+  //Search for users using the API
   $scope.searchuser = function(searchkey){
     userFactory.getsearchresult(searchkey, function(response){
-      $scope.users = response;
+      $scope.users = response.data.result.data;
       $scope.usercsv = [];
+      $scope.current_page = response.data.result.current_page;
+    $scope.total = response.data.result.total;
       $scope.selectall(true);
     });
     
   }
+  $scope.selectedtags = "";
+  
+  //Search for the users by the tags they are attached to
   $scope.searchtags = function(key){
     userFactory.getsearchtags(key, function(response){
-      $scope.users = response;
+      //console.log(response.data.result);
+      $scope.users = response.data.result;
       $scope.usercsv = [];
     $scope.selectall(true);
     });

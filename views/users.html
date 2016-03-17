@@ -116,6 +116,7 @@
       
             <h3>{{message}}</h3>
             <div class="panel panel-card col-xs-12 col-sm-12 col-md-12">
+            <a class="btn btn-sm btn-addon btn-info m-sm" href="#contest"><i class="fa  fa-chevron-left"></i>users</a>
             <a class="btn btn-sm btn-addon btn-success m-sm pull-right" ng-csv="usercsv" filename="users.csv" field-separator="," decimal-separator="."><i class="fa fa-check"></i>csv</a>
           </div>
             <!-- <div>{{users.data.result.data}}</div> -->
@@ -151,8 +152,8 @@
 
                 <form class="form-inline">
                     <div class="res">
-                      <p>Showing {{filtered.length}} Results of Page {{users.data.result.current_page}}</p>
-                      <p>Total Users {{users.data.result.total}}</p>
+                      <p>Showing {{filtered.length}} Results of Page {{current_page}}</p>
+                      <p>Total Users {{total}}</p>
                     </div>
                     <div class="form-group" id="search">
                         <!-- <label >Search</label> -->
@@ -171,7 +172,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="name in users.data.result.data " >
+                    <tr ng-repeat="name in users " >
                       
                       <td>{{ $index +1 }}</td>
                       <td>{{ name.name }}</td>
