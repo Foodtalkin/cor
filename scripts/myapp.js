@@ -248,7 +248,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'Users';
-  $scope.usercsv = [];
+  
   $scope.sync = function(bool, item){
     if(bool){
       // add item
@@ -267,29 +267,33 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
   $scope.selectall = function(val){
     $scope.bool = val;
     angular.forEach($scope.users.data.result.data, function(name){
-      $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
+      $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address});
     });
   }
 
   userFactory.getAllUsers(function(response){
     $scope.users = response;
+    $scope.usercsv = [];
     $scope.selectall(true);
   });
   $scope.getpage = function(url){
     userFactory.getUsersPage(url, function(response){
       $scope.users = response;
+      $scope.usercsv = [];
     });
     $scope.selectall(true);
   }
   $scope.searchuser = function(searchkey){
     userFactory.getsearchresult(searchkey, function(response){
       $scope.users = response;
+      $scope.usercsv = [];
     });
     $scope.selectall(true);
   }
   $scope.searchtags = function(key){
     userFactory.searchtags(key, function(response){
       $scope.users = response;
+      $scope.usercsv = [];
     });
     $scope.selectall(true);
   }
