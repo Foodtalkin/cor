@@ -262,35 +262,35 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
     }
     //console.log($scope.usercsv);
   };
+
+  $scope.selectall = function(val){
+    $scope.bool = val;
+    angular.forEach($scope.users.data.result.data, function(name){
+      $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
+    });
+  }
+
   userFactory.getAllUsers(function(response){
     $scope.users = response;
-    angular.forEach($scope.users.data.result.data, function(name){
-      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
-    });
+    $scope.selectall(true);
   });
   $scope.getpage = function(url){
     userFactory.getUsersPage(url, function(response){
       $scope.users = response;
     });
-    angular.forEach($scope.users.data.result.data, function(name){
-      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
-    });
+    $scope.selectall(true);
   }
   $scope.searchuser = function(searchkey){
     userFactory.getsearchresult(searchkey, function(response){
       $scope.users = response;
     });
-    angular.forEach($scope.users.data.result.data, function(name){
-      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
-    });
+    $scope.selectall(true);
   }
   $scope.searchtags = function(key){
     userFactory.searchtags(key, function(response){
       $scope.users = response;
     });
-    angular.forEach($scope.users.data.result.data, function(name){
-      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
-    });
+    $scope.selectall(true);
   }
 }]);
 
