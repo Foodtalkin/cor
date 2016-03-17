@@ -248,18 +248,49 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'Users';
+  $scope.sync = function(bool, item){
+    if(bool){
+      // add item
+      $scope.usercsv.push(item);
+    } else {
+      // remove item
+      for(var i=0 ; i < $scope.usercsv.length; i++) {
+        if($scope.usercsv[i].id == item.id){
+          $scope.usercsv.splice(i,1);
+        }
+      }      
+    }
+    //console.log($scope.usercsv);
+  };
   userFactory.getAllUsers(function(response){
     $scope.users = response;
+    angular.forEach($scope.users.data.result.data, function(name){
+      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
+    });
   });
   $scope.getpage = function(url){
     userFactory.getUsersPage(url, function(response){
       $scope.users = response;
-    })
+    });
+    angular.forEach($scope.users.data.result.data, function(name){
+      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
+    });
   }
   $scope.searchuser = function(searchkey){
     userFactory.getsearchresult(searchkey, function(response){
       $scope.users = response;
-    })
+    });
+    angular.forEach($scope.users.data.result.data, function(name){
+      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
+    });
+  }
+  $scope.searchtags = function(key){
+    userFactory.searchtags(key, function(response){
+      $scope.users = response;
+    });
+    angular.forEach($scope.users.data.result.data, function(name){
+      $scope.sync(1,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.metadata});
+    });
   }
 }]);
 
@@ -900,6 +931,11 @@ app.factory('userFactory', ['$http','urlFactory', function($http, urlFactory){
   }
   userFactory.getsearchresult = function(key, callback){
     $http.get("http://api.foodtalkindia.com/api/search/user/"+key).then(function(response){
+      callback(response);
+    });
+  }
+  userFactory.searchtags = function(key, callback){
+    $http.get("http://api.foodtalkindia.com/api/search/user/tags/"+key).then(function(response){
       callback(response);
     });
   }
