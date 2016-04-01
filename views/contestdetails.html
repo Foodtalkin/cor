@@ -46,6 +46,12 @@
                         <span class="font-normal">Contest</span>
                       </a>
                     </li>
+                    <!-- <li>
+                      <a md-ink-ripple href="#contacts">
+                        <i class="icon mdi-action-extension i-20"></i>
+                        <span class="font-normal">Contacts</span>
+                      </a>
+                    </li> -->
                     <li>
                       <a md-ink-ripple>
                         <span class="pull-right text-muted">
@@ -72,7 +78,7 @@
                     
                     <li class="b-b b m-v-sm"></li>
                     <li>
-                      <a md-ink-ripple href="#login">
+                      <a md-ink-ripple ng-click="logout();">
                         <i class="icon mdi-action-exit-to-app i-20"></i>
                         <span>Logout</span>
                       </a>
@@ -278,7 +284,57 @@
               </div>
             </div>
           </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
 
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center facebookd font-size-big">
+                  <div><i class="fa fa-facebook-official"> facebook </i></div>
+                  <div>{{srcFb}}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center instad font-size-big">
+                  <div><i class="fa fa-instagram"> Instagram </i></div>
+                  <div>{{srcIns}}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center twitterd font-size-big">
+                  <div><i class="fa fa-twitter"> Twitter </i></div>
+                  <div>{{srcTw}}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center bg-success font-size-big">
+                  <div><i class="fa fa-newspaper-o"> Ad </i></div>
+                  <div>{{srcAd}}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center bg-danger font-size-big">
+                  <div><i class="fa fa-users"> Community </i></div>
+                  <div>{{srcComm}}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center bg-accent font-size-big">
+                  <div><i class="fa fa-cutlery"> Website </i></div>
+                  <div>{{srcWeb}}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center bg-dark font-size-big">
+                  <div><i class="fa fa-mobile"> App </i></div>
+                  <div>{{srcAPP}}</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p-md text-center mailchimpd font-size-big">
+                  <div><i class="fa fa-envelope"> Mailer </i></div>
+                  <div>{{srcMail}}</div>
+                </div>
+              </div>
+          </div>
           <div class="panel panel-card col-xs-12 col-sm-12 col-md-12">
             <div class="table-responsive">
 
@@ -291,6 +347,7 @@
                         <input type="text" ng-model="search" class="form-control" placeholder="Search" >
                     </div>
                 </form>
+
                 <table class="table table-hover b-t b-b bordert">
                   <thead>
                     <tr >

@@ -29,7 +29,7 @@
                       </a>
                     </li>
                     <li>
-                      <a md-ink-ripple href="#users" >
+                      <a md-ink-ripple href="#users">
                         <i class="icon mdi-social-people i-20"></i>
                         <span class="font-normal">Users</span>
                       </a>
@@ -47,7 +47,7 @@
                       </a>
                     </li>
                     <!-- <li>
-                      <a md-ink-ripple href="#contacts">
+                      <a md-ink-ripple href="#contacts" class="active-menu">
                         <i class="icon mdi-action-extension i-20"></i>
                         <span class="font-normal">Contacts</span>
                       </a>
@@ -75,12 +75,7 @@
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <a md-ink-ripple href="#all_data" class="active-menus">
-                        <i class="icon mdi-action-extension i-20"></i>
-                        <span class="font-normal">all data</span>
-                      </a>
-                    </li>
+                    
                     <li class="b-b b m-v-sm"></li>
                     <li>
                       <a md-ink-ripple ng-click="logout();">
@@ -123,81 +118,90 @@
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
-            
-
-            <h3>{{message}}</h3>
-            <!-- <div>{{users.data.result.data}}</div> -->
-            
-
-            <div class="panel panel-default">
-              
+          <div class="panel panel-default ">
               <div class="panel-heading">
-                Entries
+                Add New Bloggers
               </div>
-              <div class="table-responsive">
-
-                <form class="form-inline">
-                    <div class="res">
-                      <p>Showing {{filtered.length}} Results</p>
+              <form class="form-horizontal p-lg">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Company</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="Company">
                     </div>
-                    <div class="form-group" id="search">
-                        <!-- <label >Search</label> -->
-                        <input type="text" ng-model="search" class="form-control" placeholder="Search" >
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="vname">
                     </div>
-                </form>
-                <table class="table table-hover b-t b-b bordert">
-                  <thead>
-                    <tr >
-                      <th>#</th>
-                      <th>event_name</th>
-                      <th>user_name</th>
-                      <th>email</th>
-                      <th>contact</th>
-                      <th>dob</th>
-                      <th>gender</th>
-                      <th>insta</th>
-                      <th>profession</th>
-                      <th>Veg/Non-Veg</th>
-                      <th>Points</th>
-                      <th>source</th>
-                      <th>response</th>
-                      <th>Meta1</th>
-                      <th>Meta2</th>
-                      <th>Meta3</th>
-                      <th>Amount</th>
-                      <th>time_stamp</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="name in filtered = (entries.data | filter:search) " >
-                      
-                      <td>{{ $index +1 }}</td>
-                      <td>{{name.event_name}}</td>
-                      <td><a href="https://www.facebook.com//{{name.user_id}}" target="_blank">{{name.user_name}}</a></td>
-                      <td>{{name.email}}</td>
-                      <td>{{name.contact}}</td>
-                      <td>{{name.dob | ageFilter}}</td>
-                      <td>{{name.gender}}</td>
-                      <td>{{name.insta}}</td>
-                      <td>{{name.profession}}</td>
-                      <td>{{name.food_type}}</td>
-                      <td>{{name.points}}</td>
-                      <td>{{name.source}}</td>
-                      <td>{{name.response}}</td>
-                      <td>{{name.meta1}}</td>
-                      <td>{{name.meta2}}</td>
-                      <td>{{name.meta3}}</td>
-                      <td>{{name.amount}}</td>
-                      <td>{{name.time_stamp}}</td>
-                      
-                    </tr>
-                  </tbody>
-                  
-                </table>
-              </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">email</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="email">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">phone</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="phone">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="city">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="address">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">website</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="website">
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">tags</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="tags">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">about</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="about">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <button md-ink-ripple class="btn btn-fw btn-success pull-right" ng-click="createblogger()">Submit</button>
+                  </div>
+                </div>
+              </form>
             </div>
-
-
 
           </div>
         </div>

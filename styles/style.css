@@ -70,3 +70,6 @@ color: #fff !important;
 .chart, .chart-line, #line{
 	color: #fff !important;
 }
+.font-size-big{
+	font-size: 25px;
+}

@@ -106,6 +106,35 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
       }).
+  when('/contacts', {
+        templateUrl: 'views/contacts.html',
+        controller: 'contactsCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
+  when('/creatcontacts', {
+        templateUrl: 'views/creatcontacts.html',
+        controller: 'creatcontactsCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
+  when('/editcontacts/:id', {
+        templateUrl: 'views/editcontacts.html',
+        controller: 'editcontactsCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
+  when('/contacts/:id', {
+        templateUrl: 'views/showcontacts.html',
+        controller: 'showcontactsCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
+
 	otherwise({
         redirectTo: '/login'
       });
@@ -136,6 +165,7 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
 app.controller('bodyCtrl', ['$scope','$rootScope','$location', function($scope, $rootScope, $location){
   $scope.message = "This is master body controller";
 }]);
+
 
 //Dashboard
 app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$rootScope','dashAnalytics','userFactory',  function($scope, authFactory, $location, $http, $rootScope, dashAnalytics, userFactory){
@@ -215,7 +245,16 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
    $scope.email =$rootScope.useremail;
   //LOGOUT - This Will Go everywhere see if you can add it to the rootscope
   $scope.logout = function(){
-    authFactory.logout().then($location.path('/login'));
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
   }
 
   $scope.doPing = function(){
@@ -224,9 +263,7 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
     });
   }
   $scope.message = 'This is dashboard';
-  $scope.logout = function(){
-
-  }
+  
 }]);
 
 //Login
@@ -312,6 +349,20 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope', function($scop
     });
     
   }
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 
 //User Details
@@ -323,6 +374,19 @@ app.controller('userdetailCtrl', ['$scope', '$routeParams','userFactory','$rootS
   userFactory.getUserEvents($scope.userid, function(response){
     $scope.userEvents = response;
   });
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
 
 }]);
 //Events
@@ -350,6 +414,19 @@ app.controller('eventsCtrl', ['$scope','eventFactory','$rootScope','$location', 
     })
   }
 
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 //Event Details
 app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$rootScope', function($scope, $routeParams, eventFactory, $rootScope){
@@ -362,6 +439,44 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
   eventFactory.getEventDetails($scope.eventid, function(response){
     $scope.eventsDetails = response.data.result;
     $scope.allData =response;
+
+
+    //source entry count start
+    $scope.srcWeb = 0;
+    $scope.srcAd = 0;
+    $scope.srcFb = 0;
+    $scope.srcIns = 0;
+    $scope.srcTw = 0;
+    $scope.srcComm = 0;
+    $scope.srcAPP = 0;
+    $scope.srcMail = 0;
+    angular.forEach($scope.eventsDetails.participants, function(src){
+    //console.log(src.participants.pivot.source);
+      
+      var src = src.pivot.source;
+      src = src.replace('"','');
+      src = src.replace('"','');
+
+      if ((src == "ad") || (src == "AD") || (src == "Ad")) {
+        $scope.srcAd = $scope.srcAd + 1;
+      }else if ((src == "website") || (src == "web") || (src == "store")) {
+        $scope.srcWeb = $scope.srcWeb + 1;
+      }else if (src == "instagram") {
+        $scope.srcIns = $scope.srcIns + 1;
+      }else if (src == "APP") {
+        $scope.srcAPP = $scope.srcAPP + 1;
+      }else if (src == "community") {
+        $scope.srcComm = $scope.srcComm + 1;
+      }else if (src == "facebook") {
+        $scope.srcFb = $scope.srcFb + 1;
+      }else if (src == "twitter") {
+        $scope.srcTw = $scope.srcTw + 1;
+      }else if (src == "mailer") {
+        $scope.srcMail = $scope.srcMail + 1;
+      }
+      
+    });
+    //source entry count end
     //console.log($scope.eventsDetails);
     $scope.totalparticipants = response.data.result.participants.length;
     $scope.activity = $scope.eventsDetails.active;
@@ -369,7 +484,6 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
     //console.log($scope.activity);
   });
   //creating csv code
-  
   $scope.isChecked = function(id){
       var match = false;
       for(var i=0 ; i < $scope.usercsv.length; i++) {
@@ -396,7 +510,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
   $scope.selectall = function(val){
     $scope.bool = val;
     angular.forEach($scope.eventsDetails.participants, function(name){
-      $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:angular.toJson(name.pivot.response)});
+      $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.city,g:angular.toJson(name.pivot.response),h:angular.toJson(name.metadata),i:name.dob});
     })
   }
   
@@ -504,6 +618,20 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
       }
     })
   };
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 
 //Bloggers
@@ -540,6 +668,20 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
       };
     });
   }
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 //Influencers
 app.controller('influencerCtrl', ['$scope','$rootScope','influencerFactory','$location', function($scope, $rootScope, influencerFactory, $location){
@@ -576,6 +718,20 @@ app.controller('influencerCtrl', ['$scope','$rootScope','influencerFactory','$lo
       };
     });
   }
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 //Media
 app.controller('mediaCtrl', ['$scope','$rootScope','mediaFactory','$location', function($scope, $rootScope, mediaFactory, $location){
@@ -611,6 +767,20 @@ app.controller('mediaCtrl', ['$scope','$rootScope','mediaFactory','$location', f
       };
     });
   }
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 //Vendors 
 app.controller('vendorsCtrl', ['$scope','$rootScope','vendorFactory','$location', function($scope, $rootScope, vendorFactory, $location){
@@ -647,6 +817,20 @@ app.controller('vendorsCtrl', ['$scope','$rootScope','vendorFactory','$location'
       };
     });
   }
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 //Contest
 app.controller('contestCtrl', ['$scope','contestFactory','$rootScope','$location', function($scope, contestFactory, $rootScope,$location){
@@ -672,6 +856,20 @@ app.controller('contestCtrl', ['$scope','contestFactory','$rootScope','$location
       }
     })
   }
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 //Contest Details
 app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory','$rootScope', function($scope, $routeParams, contestFactory, $rootScope){
@@ -682,6 +880,42 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
   contestFactory.getcontestDetails($scope.contestid, function(response){
     $scope.contestDetails = response.data.result;
     $scope.allData =response;
+    //source entry count start
+    $scope.srcWeb = 0;
+    $scope.srcAd = 0;
+    $scope.srcFb = 0;
+    $scope.srcIns = 0;
+    $scope.srcTw = 0;
+    $scope.srcComm = 0;
+    $scope.srcAPP = 0;
+    $scope.srcMail = 0;
+    angular.forEach($scope.contestDetails.participants, function(src){
+    //console.log(src.participants.pivot.source);
+      //console.log(value.pivot.source);
+      var src = src.pivot.source;
+      src = src.replace('"','');
+      src = src.replace('"','');
+
+      if ((src == "ad") || (src == "AD") || (src == "Ad")) {
+        $scope.srcAd = $scope.srcAd + 1;
+      }else if ((src == "website") || (src == "web") || (src == "store")) {
+        $scope.srcWeb = $scope.srcWeb + 1;
+      }else if (src == "instagram") {
+        $scope.srcIns = $scope.srcIns + 1;
+      }else if (src == "APP") {
+        $scope.srcAPP = $scope.srcAPP + 1;
+      }else if (src == "community") {
+        $scope.srcComm = $scope.srcComm + 1;
+      }else if (src == "facebook") {
+        $scope.srcFb = $scope.srcFb + 1;
+      }else if (src == "twitter") {
+        $scope.srcTw = $scope.srcTw + 1;
+      }else if (src == "mailer") {
+        $scope.srcMail = $scope.srcMail + 1;
+      }
+      
+    });
+    //source entry count end
     //console.log($scope.eventsDetails);
     $scope.totalparticipants = response.data.result.participants.length;
     $scope.activity = $scope.contestDetails.active;
@@ -821,6 +1055,20 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
       }
     })
   };
+
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 
 
@@ -832,8 +1080,83 @@ app.controller('allDataCtrl', ['$scope','dataFactory','$rootScope', function($sc
    dataFactory.getAllData(function(response){
       $scope.entries = response;
    });
+
+   $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
 }]);
 
+app.controller('contactsCtrl', ['$scope', function(){
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
+}]);
+
+app.controller('creatcontactsCtrl', ['$scope', function(){
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
+}]);
+app.controller('editcontactsCtrl', ['', function(){
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
+}]);
+app.controller('showcontactsCtrl', ['', function(){
+  $scope.logout = function(){
+    authFactory.logout(function(response) {
+     
+      if(response){
+         $location.path('/login');
+      }else{
+        //Display generic error
+        console.log("Le wild login error");
+      }
+
+    });
+  }
+
+}]);
 
 
 
@@ -852,7 +1175,7 @@ app.controller('allDataCtrl', ['$scope','dataFactory','$rootScope', function($sc
 
 //Factories & Services
 //Authentication Factory
-app.factory('authFactory', ['$http','$cookies','urlFactory', function($http, $cookies, urlFactory){
+app.factory('authFactory', ['$http','$cookies','urlFactory','$location', function($http, $cookies, urlFactory, $location){
   var service = {};
   var user = {};
   service.doLogin = function(email, password, callback){
@@ -895,12 +1218,13 @@ app.factory('authFactory', ['$http','$cookies','urlFactory', function($http, $co
     else callback(false);
   }
 
-  service.logout = function(){
+  service.logout = function(callback){
     user = {};
     $cookies.remove("batuser");
     $cookies.remove("batemail");
     $cookies.remove("APPSESSID");
-    return $q.when(user);
+    $location.path('/login');
+    return true;
   }
   return service;
 }]);
