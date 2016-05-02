@@ -17,10 +17,11 @@
   <link rel="stylesheet" href="styles/mdchips.css" type="text/css" />
   
 </head>
-<body ng-app="myApp" ng-controller="bodyCtrl" ng-cloak>
+<body ng-app="myApp" ng-cloak>
   <div class="app"  ng-view>
   <!-- Body Content -->
   </div>
+  <script src="scripts/url.php"></script>
   <script src="libs/angular/angular/angular.js"></script>
   <script src="libs/angular/ngroute/ngroute.js"></script>
   <script src="libs/angular/angular-animate/angular-animate.js"></script>
@@ -53,6 +54,31 @@
   <script src="scripts/jquery.iframe-transport.js"></script>
   <script src="scripts/jquery.fileupload.js"></script>
   <script src="scripts/mdchips.js"></script>
-  
+  <script src="scripts/filters.js"></script>
+
+  <!-- factories include -->
+  <script src="scripts/factories/urlsFact.js"></script>
+  <script src="scripts/factories/eventFact.js"></script>
+  <script src="scripts/factories/contestFact.js"></script>
+  <script src="scripts/factories/userFact.js"></script>
+  <script src="scripts/factories/authFact.js"></script>
+  <script src="scripts/factories/dashFact.js"></script>
+  <script src="scripts/factories/sessFact.js"></script>
+
+
+  <!-- controlles include -->
+  <script src="scripts/controllers/dashboardCtrl.js"></script>
+  <script src="scripts/controllers/loginCtrl.js"></script>
+  <script src="scripts/controllers/usersCtrl.js"></script>
+  <script src="scripts/controllers/userdetailCtrl.js"></script>
+  <script src="scripts/controllers/eventsCtrl.js"></script>
+  <script src="scripts/controllers/eventdetailCtrl.js"></script>
+  <script src="scripts/controllers/contestCtrl.js"></script>
+  <script src="scripts/controllers/contestdetailsCtrl.js"></script>
+  <script src="scripts/controllers/contactsCtrl.js"></script>
+  <script src="scripts/controllers/creatcontactsCtrl.js"></script>
+  <script src="scripts/controllers/editcontactsCtrl.js"></script>
+  <script src="scripts/controllers/showcontactsCtrl.js"></script>
+  <script>console.log(url1);</script>
 </body>
 </html>

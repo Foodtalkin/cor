@@ -1,0 +1,21 @@
+app.factory('urlFactory', [ function(){
+  var url = {};
+  var baseurl = "http://api.foodtalk.in/";
+  url.dashboard = baseurl+"api/dashboard/batcave";
+  url.login= baseurl+"login";
+  url.logout = baseurl+"logout";
+  url.users = baseurl+"user";
+  url.contest = baseurl+"api/contest";
+  url.events = baseurl+"api/event";
+  url.vendors = baseurl+"api/vendor";
+  url.influencer = baseurl+"api/influencer";
+  url.bloggers = baseurl+"api/bloggers";
+  url.media = baseurl+"api/media";
+  url.vendorscat = baseurl+"api/vendor/category";
+  url.influencercat = baseurl+"api/influencer/category";
+  url.bloggerscat = baseurl+"api/bloggers/category";
+  url.mediacat = baseurl+"api/media/category";
+  url.searchuser = baseurl+"api/search/user";
+  url.searchuserTag = baseurl+"api/search/user/tags";
+  return url;
+}]);
