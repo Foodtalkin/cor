@@ -124,7 +124,7 @@
             <div class="panel panel-card col-xs-12 col-sm-12 col-md-12">
             <a class="btn btn-sm btn-addon btn-info m-sm" href="#contest"><i class="fa  fa-chevron-left"></i>users</a>
             <a class="btn btn-sm btn-addon btn-success m-sm pull-right" ng-csv="usercsv" filename="users.csv" field-separator="," decimal-separator="."><i class="fa fa-check"></i>csv</a>
-          </div>
+            </div>
             <!-- <div>{{users.data.result.data}}</div> -->
             <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p">
               <div class="col-md-12 col-sm-12">
@@ -145,9 +145,8 @@
             </div>
             
             
-            <div class="panel panel-default">
+            <div class="panel panel-card  col-xs-12 col-sm-12 col-md-12">
               <div class="panel-heading">
-                Users
                 <span class="right">
                    <button class="btn btn-default waves-effect" ng-click="getpage(users.data.result.prev_page_url)"><i class="fa fa-angle-double-left"></i> Prev</button>
                     <button class="btn btn-default waves-effect" ng-click="getpage(users.data.result.next_page_url)">Next <i class="fa fa-angle-double-right"></i></button>

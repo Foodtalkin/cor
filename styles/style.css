@@ -73,3 +73,6 @@ color: #fff !important;
 .font-size-big{
 	font-size: 25px;
 }
+.right{
+	float: right;
+}
