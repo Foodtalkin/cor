@@ -47,13 +47,13 @@
                       </a>
                     </li>
                     <!-- <li>
-                      <a md-ink-ripple href="#contacts" class="active-menu">
+                      <a md-ink-ripple href="#contacts">
                         <i class="icon mdi-action-extension i-20"></i>
                         <span class="font-normal">Contacts</span>
                       </a>
                     </li> -->
                     <li>
-                      <a md-ink-ripple href="#contactfrm">
+                      <a md-ink-ripple href="#contactfrm"  class="active-menu">
                         <i class="icon mdi-action-extension i-20"></i>
                         <span class="font-normal">Contact form</span>
                       </a>
@@ -84,7 +84,7 @@
                     
                     <li class="b-b b m-v-sm"></li>
                     <li>
-                      <a md-ink-ripple href="" ng-click="logout();">
+                      <a md-ink-ripple ng-click="logout();">
                         <i class="icon mdi-action-exit-to-app i-20"></i>
                         <span>Logout</span>
                       </a>
@@ -124,14 +124,21 @@
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
-          
+            
+
+
+
           <div class="panel panel-default">
-              
+             
               <div class="panel-heading">
-                Contacts List
+              Contact form
+                <span class="right">
+                   <button class="btn btn-default waves-effect" ng-click="getpage(contactdata.data.result.prev_page_url)"><i class="fa fa-angle-double-left"></i> Prev</button>
+                    <button class="btn btn-default waves-effect" ng-click="getpage(contactdata.data.result.next_page_url)">Next <i class="fa fa-angle-double-right"></i></button>
+                </span>
               </div>
               <div class="table-responsive">
-
+                
                 <form class="form-inline">
                     <div class="res">
                       <p>Showing {{filtered.length}} Results</p>
@@ -145,31 +152,36 @@
                   <thead>
                     <tr >
                       <th>#</th>
-                      <th>Company</th>
-                      <th>Name</th>
-                      <th>Email</th>
+                      <th>status</th>
+                      <th>Purpose</th>
+                      <th>name/company</th>
                       <th>Phone</th>
+                      <th>email</th>
+                      <th>message</th>
+                      <th>website</th>
+                      <th>city</th>
+                      <th>creation date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="" ng-click="">
+                    <tr ng-repeat="contact in filtered = (contactdata.data.result.data | filter:search) " ng-click="">
                       
                       <td>{{ $index +1 }}</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      
+                      <td><a class="btn btn-sm btn-addon {{activity  ==true ? 'btn-success' : 'btn-danger'}} m-sm pull-right" ng-click='toggelactive(activity ,contact.id);' ng-init="activity = contact.status">{{activity ==true ? 'done' : 'due'}}</a></td>
+                      <td>{{ contact.purpose }}</td>
+                      <td>{{ contact.name }}</td>
+                      <td>{{ contact.phone }}</td>
+                      <td>{{ contact.email }}</td>
+                      <td>{{ contact.message }}</td>
+                      <td>{{ contact.web }}</td>
+                      <td>{{ contact.location }}</td>
+                      <td>{{ contact.created_at }}</td>
                     </tr>
                   </tbody>
                   
                 </table>
               </div>
             </div>
-
-
-
-
 
           </div>
         </div>

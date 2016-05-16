@@ -127,6 +127,13 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
       }).
+  when('/contactfrm',{
+        templateUrl: 'views/contactfrm.html',
+        controller: 'contactfrmCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
 
 	otherwise({
         redirectTo: '/login'
