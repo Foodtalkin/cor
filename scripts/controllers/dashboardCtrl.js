@@ -14,7 +14,7 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
     $scope.ga.labels = response.date;
     $scope.ga.series = ['Food Talk India', 'Food Talk in'];
     $scope.ga.data = [];
-    $scope.ga.data[0] = response.fti;
+    $scope.ga.data[0] = [0,0,0,0,0,0,0,0];
     $scope.ga.data[1] = response.ftp;
     //console.log($scope.ga);
   });
