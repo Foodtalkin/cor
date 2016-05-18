@@ -389,7 +389,7 @@
                       <th>Phone</th>
                       <th>Veg-NonVeg</th>
                       <th>Instagram</th>
-                      <th>Address</th>
+                      <th>City</th>
                       <th>Response</th>
                       <th>Source</th>
                       <th>Actions</th>
@@ -404,7 +404,7 @@
                       <td>{{ name.contact}}</td>
                       <td>{{ name.metadata.VegNonVeg}}</td>
                       <td><a href="https://www.instagram.com/{{ name.instagram_handle | instahandle }}" target="_Blank">{{ name.instagram_handle | instahandle }}</a></td>
-                      <td>{{ name.address }}</td>
+                      <td>{{ name.city }}</td>
                       <td>{{ name.pivot.response }}</td>
                       <td>{{name.pivot.source}}</td>
                       <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#user/{{name.id}}">View Profile</a>
