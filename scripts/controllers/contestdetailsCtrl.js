@@ -7,6 +7,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
   contestFactory.getcontestDetails($scope.contestid, function(response){
     $scope.contestDetails = response.data.result;
     $scope.allData =response;
+    $scope.usercsv = [];
     //source entry count start
     $scope.srcWeb = 0;
     $scope.srcAd = 0;
@@ -18,8 +19,11 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     $scope.srcMail = 0;
     angular.forEach($scope.contestDetails.participants, function(src){
       var src = src.pivot.source;
-      src = src.replace('"','');
-      src = src.replace('"','');
+      if(src != null){
+        src = src.replace('"','');
+        src = src.replace('"','');
+      }
+        
 
       if ((src == "ad") || (src == "AD") || (src == "Ad")) {
         $scope.srcAd = $scope.srcAd + 1;
@@ -43,7 +47,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     //source entry count end
     $scope.totalparticipants = response.data.result.participants.length;
     $scope.activity = $scope.contestDetails.active;
-    $scope.usercsv = [];
+    
   });
 //csv creation
   $scope.isChecked = function(id){
