@@ -21,13 +21,13 @@ app.controller('contactfrmCtrl', ['$scope','$rootScope','$location','authFactory
    	console.log(act);
     $scope.activity = !$scope.activity;
     console.log($scope.activity);
-    // $scope.avtiveEvent(id);
+    $scope.changeStauts(id);
   };
-  $scope.avtiveEvent = function(id){
+  $scope.changeStauts = function(id){
       //console.log('calling factory');
-      contestFactory.activeEvent(id, $scope.activity, function(response){
+      contactformFactory.changeStauts(id, $scope.activity, function(response){
         if(response){
-            //window.location.reload();
+            window.location.reload();
             console.log("done");
 
         }else{

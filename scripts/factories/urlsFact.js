@@ -18,5 +18,6 @@ app.factory('urlFactory', [ function(){
   url.searchuser = baseurl+"api/search/user";
   url.searchuserTag = baseurl+"api/search/user/tags";
   url.contactform = baseurl+"api/contact";
+  url.contactformput = baseurl+"contact";
   return url;
 }]);
