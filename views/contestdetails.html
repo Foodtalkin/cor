@@ -373,7 +373,7 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="name in filtered = (contestDetails.participants | filter:search) " >
-                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:(name.pivot.response | tojson)})" ng-model="bool" ng-checked="isChecked(name.id)"></td> 
+                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.city,f:(name.pivot.response | tojson)})" ng-model="bool" ng-checked="isChecked(name.id)"></td> 
                       <td>{{ $index +1 }}</td>
                       <td><a href="https://www.facebook.com/{{name.facebook_id}}" target="_Blank">{{ name.name }}</a></td>
                       <td>{{ name.email}}</td>

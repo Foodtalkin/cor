@@ -76,7 +76,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
   $scope.selectall = function(val){
     $scope.bool = val;
     angular.forEach($scope.contestDetails.participants, function(name){
-      $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:angular.toJson(name.pivot.response)});
+      $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.city,f:angular.toJson(name.pivot.response)});
     })
   }
 //csv end 
