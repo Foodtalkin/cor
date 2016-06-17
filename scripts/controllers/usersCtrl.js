@@ -31,10 +31,27 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
   //get user details and create csv
   userFactory.getAllUsers(function(response){
     $scope.users = response.data.result.data;
+    $scope.userdata = response;
     $scope.current_page = response.data.result.current_page;
     $scope.total = response.data.result.total;
     $scope.usercsv = [];
     $scope.selectall(true);
+
+    $scope.fromDelhi = 0;
+    $scope.fromMumbai = 0;
+    $scope.fromBangalore = 0;
+    $scope.fromPune = 0;
+    $scope.fromHyderabad = 0;
+    $scope.fromother = 0;
+
+    angular.forEach( $scope.users, function(element) {
+      var city = element.city;
+
+      if((city == "Delhi NCR")){
+        console.log(city);
+      }
+    });
+
   });
   //call next or prev page and create csv
   $scope.getpage = function(url){
