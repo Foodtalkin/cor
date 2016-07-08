@@ -20,7 +20,8 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
   });
 
   dashAnalytics.getAllDashboard(function(response){
-
+    console.log('dashboard data');
+    console.log(response);
     //facebook
     $scope.analysis = response;
     $scope.fbfti = {};

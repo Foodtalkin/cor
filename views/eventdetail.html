@@ -54,7 +54,7 @@
                     </li> -->
                     <li>
                       <a md-ink-ripple href="#contactfrm">
-                        <i class="icon mdi-action-extension i-20"></i>
+                        <i class="icon fa-phone fa i-20"></i>
                         <span class="font-normal">Contact form</span>
                       </a>
                     </li>
@@ -111,7 +111,7 @@
       <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
       <!-- / -->
       <!-- Page title - Bind to $state's title -->
-      <div class="navbar-item pull-left h4"></div>
+      <div class="navbar-item pull-left h4">Event Detials ( {{eventsDetails.name}} )</div>
      
       <div class="pull-right" ui-view="navbar@"></div>
       <!-- / -->
@@ -120,7 +120,7 @@
       <!-- / -->
     </div>
     <!-- Content -->
-
+      <a class="btn btn-lg btn-icon btn-rounded btn-danger csv" ng-csv="usercsv" filename="eventdata.csv" field-separator="," decimal-separator="." title="download csv"><i class="fa fa-download"></i></a>
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
@@ -128,7 +128,7 @@
             <a class="btn btn-sm btn-addon btn-info m-sm" href="#events"><i class="fa  fa-chevron-left"></i>Back</a>
             <a class="btn btn-sm btn-addon btn-primary m-sm pull-right" ng-click="toggelForm()"><i class="fa fa-edit"></i>Edit</a>
             <a class="btn btn-sm btn-addon {{activity==true ? 'btn-danger' : 'btn-dark'}} m-sm pull-right" ng-click='toggelactive(); '><i class="fa {{activity==true ? 'fa-close' : 'fa-rocket'}}"></i>{{activity==true ? 'close' : 'active'}}</a>
-            <a class="btn btn-sm btn-addon btn-success m-sm pull-right" ng-csv="usercsv" filename="eventdata.csv" field-separator="," decimal-separator="."><i class="fa fa-check"></i>csv</a>
+            
           </div>
           <!-- event edit -->
           <div class="panel panel-success" ng-class="{'hide': formisActive}">

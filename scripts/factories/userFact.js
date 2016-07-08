@@ -35,5 +35,36 @@ app.factory('userFactory', ['$http','urlFactory', function($http, urlFactory){
 
     });
   }
+
+  // delhi data
+  userFactory.getDelUsers = function(callback){
+    $http.get(urlFactory.cityusers+"/1").then(function(response){
+      callback(response);
+    });
+  }
+  // mumbai data
+  userFactory.getMumUsers = function(callback){
+    $http.get(urlFactory.cityusers+"/2").then(function(response){
+      callback(response);
+    });
+  }
+  // pune data
+  userFactory.getPuneUsers = function(callback){
+    $http.get(urlFactory.cityusers+"/3").then(function(response){
+      callback(response);
+    });
+  }
+  // bangalore data
+  userFactory.getBnglUsers = function(callback){
+    $http.get(urlFactory.cityusers+"/4").then(function(response){
+      callback(response);
+    });
+  }
+  // other data
+  userFactory.getOthUsers = function(callback){
+    $http.get(urlFactory.cityusers).then(function(response){
+      callback(response);
+    });
+  }
   return userFactory;
 }]);

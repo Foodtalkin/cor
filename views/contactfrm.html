@@ -54,7 +54,7 @@
                     </li> -->
                     <li>
                       <a md-ink-ripple href="#contactfrm"  class="active-menu">
-                        <i class="icon mdi-action-extension i-20"></i>
+                        <i class="icon fa-phone fa i-20"></i>
                         <span class="font-normal">Contact form</span>
                       </a>
                     </li>
@@ -111,7 +111,7 @@
       <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
       <!-- / -->
       <!-- Page title - Bind to $state's title -->
-      <div class="navbar-item pull-left h4"></div>
+      <div class="navbar-item pull-left h4">Web Contact Form Entries</div>
      
       <div class="pull-right" ui-view="navbar@"></div>
       <!-- / -->
@@ -132,10 +132,10 @@
              
               <div class="panel-heading">
               Contact form
-                <span class="right">
-                   <button class="btn btn-default waves-effect" ng-click="getpage(contactdata.data.result.prev_page_url)"><i class="fa fa-angle-double-left"></i> Prev</button>
-                    <button class="btn btn-default waves-effect" ng-click="getpage(contactdata.data.result.next_page_url)">Next <i class="fa fa-angle-double-right"></i></button>
-                </span>
+              </div>
+              <div class=" p-md">
+                <button class="btn btn-default waves-effect" ng-click="getpage(contactdata.data.result.prev_page_url)"><i class="fa fa-angle-double-left"></i> Prev</button>
+                <button class="btn btn-default waves-effect right" ng-click="getpage(contactdata.data.result.next_page_url)">Next <i class="fa fa-angle-double-right"></i></button>
               </div>
               <div class="table-responsive">
                 
@@ -145,10 +145,10 @@
                     </div>
                     <div class="form-group" id="search">
                         <!-- <label >Search</label> -->
-                        <input type="text" ng-model="search" class="form-control" placeholder="Search" >
+                        <input type="text" ng-model="search" class="form-control m-b-sm" placeholder="Search" >
                     </div>
                 </form>
-                <table class="table table-hover b-t b-b bordert">
+                <table class="table table-hover b-t b-b bordert m-t-sm">
                   <thead>
                     <tr >
                       <th>#</th>
