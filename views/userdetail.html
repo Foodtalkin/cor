@@ -130,7 +130,7 @@
           </div>
           
             <div class="row row-sm">
-              <div class="col-sm-6">
+              <div class="col-sm-5">
                 <div class="panel panel-card">
                   <div class="r-t pos-rlt" md-ink-ripple style="background:url(http://graph.facebook.com/{{ userEvents.data.result.facebook_id }}/picture?width=480&height=480) center center; background-size:cover">
                     <div class="p-lg bg-white-overlay text-center r-t">
@@ -188,80 +188,77 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6">
-                <div class="panel panel-card clearfix">
-                  <div class="panel-heading">App Details</div>
-                  <div class="p-h b-b b-light panel-content">
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.user_name}}</span> Username
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.followers_count}}</span> Followers Count
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.post_count}}</span> Post Count
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.last_post}}</span> Last Post
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.following_count}}</span> Following Count
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.last_follow}}</span> Last Follow
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.checkin_count}}</span> Checkin Count
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.last_checkin}}</span> Last Checkin
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.comment_count}}</span> Comment Count
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.last_comment}}</span> Last Comment
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.like_count}}</span> Like Count
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.last_like}}</span> Last Like
-                    </a>
-
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.bookmark_count}}</span> Bookmark Count
-                    </a>
-                    
-                    <a class="list-group-item">
-                      <span class="pull-right">{{userEvents.data.result.app.last_bookmark}}</span> last Bookmark
-                    </a>
+              <div class="col-sm-7">
+                <div class="col-sm-12">
+                  <div class="panel panel-card clearfix">
+                    <div class="panel-heading"><h3>App Details</h3></div>
+                      <div class="col-sm-6 no-padding-h">
+                        <div class="p-h b-b b-light panel-content no-padding-h">
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.user_name}}</span> Username
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.post_count}}</span> Post Count
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.following_count}}</span> Following Count
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.checkin_count}}</span> Checkin Count
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.comment_count}}</span> Comment Count
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.like_count}}</span> Like Count
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.bookmark_count}}</span> Bookmark Count
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 no-padding-h">
+                        <div class="p-h b-b b-light panel-content no-padding-h">
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.followers_count}}</span> Followers Count
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.last_post}}</span> Last Post
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.last_follow}}</span> Last Follow
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.last_checkin}}</span> Last Checkin
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.last_comment}}</span> Last Comment
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.last_like}}</span> Last Like
+                          </a>
+                          <a class="list-group-item">
+                            <span class="pull-right">{{userEvents.data.result.app.last_bookmark}}</span> last Bookmark
+                          </a>
+                        </div>
+                      </div>
                   </div>
-                  
-                  <!-- <form>
-                    <textarea class="form-control no-border" rows="3" placeholder="Write something..."></textarea>
-                  </form>
-                  <div class="lt p">
-                    <button class="btn btn-info pull-right btn-sm p-h font-bold">Post</button>
-                    <ul class="nav nav-pills nav-sm">
-                      <li><a href><i class="fa fa-camera"></i></a></li>
-                      <li><a href><i class="fa fa-video-camera"></i></a></li>
-                    </ul>
-                  </div> -->
+                </div>
+                <div class="col-sm-12">
+                  <div class="panel panel-card clearfix p">
+                    <div class="panel-heading"><h5>Notes</h5></div>
+                    <form>
+                      <textarea class="form-control no-border" rows="7" placeholder="Write something..." ng-model="userEvents.data.result.notes"></textarea>
+                    </form>
+                    <div class="lt p">
+                      <button class="btn btn-info pull-right btn-sm p-h font-bold" ng-click="userNotes()">Post</button>
+                      
+                    </div>
+                  </div>
                 </div>
                 
               </div>
+              <div class="col-sm-12"></div>
               <div class="col-sm-12">
                 <div class="panel panel-card clearfix">
                   <!-- <div class="p-h b-b b-light">

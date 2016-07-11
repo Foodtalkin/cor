@@ -22,6 +22,28 @@ app.factory('userFactory', ['$http','urlFactory', function($http, urlFactory){
     });
   }
 
+  //create a user's notes
+  userFactory.userNotes = function(id, notes, callback){
+    $http.put(urlFactory.users+"/"+id).then(function(response){
+      callback(response);
+    });
+    $http({
+      method: 'PUT',
+      url: urlFactory.users+'/'+id,
+      data : {notes:notes}
+    }).then(function (response) {
+        if(response.data.message === "Success"){
+            callback(true);
+            console.log(response);
+        }else{
+          //Create an error Box and display the 
+          console.log(response);
+          callback(false);
+
+        }
+      });
+}
+
   //search user table
   userFactory.getsearchresult = function(key, callback){
     $http.get(urlFactory.searchuser+"/"+key).then(function(response){

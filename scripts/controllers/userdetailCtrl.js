@@ -20,7 +20,17 @@ app.controller('userdetailCtrl', ['$scope', '$routeParams','userFactory','$rootS
     })
   });
 
-
+//edit Event
+  $scope.userNotes = function(){
+    //console.log('calling factory');
+    userFactory.userNotes($scope.userEvents.data.result.id,$scope.userEvents.data.result.notes, function(response){
+      if(response){
+          window.location.reload();
+      }else{
+          console.log("Le wild error");
+      }
+    })
+  };
 
   //logout
   $scope.logout = function(){
