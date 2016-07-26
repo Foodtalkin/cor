@@ -1,7 +1,7 @@
 var app = angular.module('myApp',['ngRoute', 'ngCookies', 'ngAnimate', 'chart.js', 'cloudinary', 'ngFileUpload', 'photoAlbumServices','ngCsv','ngSanitize', 'mdChips']);
 
 app.run(function($rootScope){
-
+  
 });
 
 app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvider) {
@@ -11,6 +11,7 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
   $httpProvider.defaults.headers.patch = {};
   $httpProvider.defaults.headers.get = {};
   delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  
 
   $httpProvider.interceptors.push('sessionInjector');
 
@@ -22,6 +23,13 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
       }).
+  when('/appdashboard',{
+        templateUrl: 'views/appdashboard.html',
+        controller: 'appdashboardCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+  }).
   when('/login', {
         templateUrl: 'views/login.html',
         controller: 'loginCtrl',

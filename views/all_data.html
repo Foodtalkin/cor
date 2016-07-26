@@ -23,10 +23,21 @@
                 <nav ui-nav>
                   <ul class="nav">
                     <li>
-                      <a md-ink-ripple href="#dashboard">
+                      <a md-ink-ripple>
+                        <span class="pull-right text-muted">
+                          <i class="fa fa-caret-down"></i>
+                        </span>
                         <i class="icon mdi-action-settings-input-svideo i-20"></i>
                         <span class="font-normal">Dashboard</span>
                       </a>
+                      <ul class="nav nav-sub">
+                        <li>
+                          <a md-ink-ripple href="#dashboard">Web Analytics</a>
+                        </li>
+                        <li>
+                          <a md-ink-ripple href="#appdashboard">App Analytics</a>
+                        </li>
+                      </ul>
                     </li>
                     <li>
                       <a md-ink-ripple href="#users" >
