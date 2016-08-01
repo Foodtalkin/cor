@@ -143,7 +143,7 @@
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>App Users</h3></span>
-                    <small class="block text-muted"><h4>Total 2220</h4></small>
+                    <small class="block text-muted"><h4>Total {{totuser}}</h4></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="pie" class="chart chart-pie"
@@ -156,7 +156,7 @@
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Post Count</h3></span>
-                    <small class="block text-muted"><h4>Total 5888</h4></small>
+                    <small class="block text-muted"><h4>Total {{postcount}}</h4></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="pie" class="chart chart-pie"
@@ -168,11 +168,11 @@
             </div>
             <div class="row">
               
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Onboarding</h3></span>
-                    <small class="block text-muted"><h5>Onboarding Average <strong>58</strong> users/day</h5></small>
+                    <small class="block text-muted"><h5>Onboarding Average <strong>{{avgonbord}}</strong> users/day</h5></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="line" class="chart chart-line" chart-data="onbord"
@@ -182,15 +182,15 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Active Users</h3></span>
-                    <small class="block text-muted"><h5>Average <strong>165</strong> users/day</h5></small>
+                    <small class="block text-muted"><h5>Average <strong>{{avgactive}}</strong> users/day</h5></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="line" class="chart chart-line" chart-data="active"
-                    chart-labels="labels" chart-series="series" chart-options="options"
+                    chart-labels="labels" chart-series="actseries" chart-options="options"
                     chart-click="onClick" chart-colors="colors">
                     </canvas>
                   </div>
@@ -201,7 +201,7 @@
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Post</h3></span>
-                    <small class="block text-muted"><h5>Average <strong>77</strong> posts/day</h5></small>
+                    <small class="block text-muted"><h5>Average <strong>{{avgpost}}</strong> posts/day</h5></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="line" class="chart chart-line" chart-data="post"
@@ -211,11 +211,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Comments</h3></span>
-                    <small class="block text-muted"><h5>Average <strong>57</strong> comments/day</h5></small>
+                    <small class="block text-muted"><h5>Average <strong>{{avgcomment}}</strong> comments/day</h5></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="line" class="chart chart-line" chart-data="comments"
@@ -225,11 +225,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Like</h3></span>
-                    <small class="block text-muted"><h5>Average <strong>466</strong> likes/day</h5></small>
+                    <small class="block text-muted"><h5>Average <strong>{{avglike}}</strong> likes/day</h5></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="line" class="chart chart-line" chart-data="like"
@@ -239,11 +239,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Mentions</h3></span>
-                    <small class="block text-muted"><h5>Average <strong>33</strong> mentions/day</h5></small>
+                    <small class="block text-muted"><h5>Average <strong>{{avgmention}}</strong> mentions/day</h5></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="line" class="chart chart-line" chart-data="mention"
@@ -253,11 +253,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="panel no-border">
                   <div class="panel-heading">
                     <span class="font-bold"><h3>Bookmark</h3></span>
-                    <small class="block text-muted"><h5>Average <strong>19</strong> bookmarks/day</h5></small>
+                    <small class="block text-muted"><h5>Average <strong>{{avgbookmark}}</strong> bookmarks/day</h5></small>
                   </div>
                   <div class="panel-body">
                     <canvas id="line" class="chart chart-line" chart-data="bookmark"
