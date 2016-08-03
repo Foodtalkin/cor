@@ -96,7 +96,7 @@ $scope.username = $rootScope.username;
                 $scope.actweb.push(value.cnt);
               }
         });
-        for(var i = 0; i<=7; i++){
+        for(var i = 0; i<=6; i++){
           var temp = parseInt($scope.actand[i])+parseInt($scope.actios[i])+parseInt($scope.actweb[i]);
           $scope.acttot.push(temp);
         }
@@ -132,8 +132,8 @@ $scope.username = $rootScope.username;
   }
 
   function avg (obj) {
-     var tot = parseInt(obj[0])+parseInt(obj[1])+parseInt(obj[2])+parseInt(obj[3])+parseInt(obj[4])+parseInt(obj[5])+parseInt(obj[6])+parseInt(obj[7]);
-     var avg = tot/8;
+     var tot = parseInt(obj[0])+parseInt(obj[1])+parseInt(obj[2])+parseInt(obj[3])+parseInt(obj[4])+parseInt(obj[5])+parseInt(obj[6]);
+     var avg = tot/7;
      return avg;
   }
 
