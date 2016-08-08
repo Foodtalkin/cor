@@ -2,7 +2,10 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
     $scope.username = $rootScope.username;
     $scope.email =$rootScope.useremail;
 	   $scope.message = 'Users';
-  
+  $scope.togglename = false;
+  $scope.toggleemail = false;
+  $scope.togglephone = false;
+  $scope.togglecity = false;
   //add or remove row in csv
 
   $scope.sync = function(bool, item){

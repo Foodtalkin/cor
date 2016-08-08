@@ -94,3 +94,7 @@ color: #fff !important;
 	height: 60px !important;
 	line-height: 60px !important;
 }
+.toggle{
+	display: block;
+	margin-top: 20px;
+}

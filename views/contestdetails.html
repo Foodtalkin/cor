@@ -354,6 +354,16 @@
               </div>
           </div>
           <div class="panel panel-card col-xs-12 col-sm-12 col-md-12">
+            <div class="toggle">
+              <button class="btn btn-sm btn-default" ng-click="togglename = !(togglename)">toggle name</button>
+              <button class="btn btn-sm btn-default" ng-click="toggleemail = !(toggleemail)">toggle email</button>
+              <button class="btn btn-sm btn-default" ng-click="togglephone = !(togglephone)">toggle phone</button>
+              <button class="btn btn-sm btn-default" ng-click="toggleveg = !(toggleveg)">toggle veg n-veg</button>
+              <button class="btn btn-sm btn-default" ng-click="toggleinstagram = !(toggleinstagram)">toggle instagram</button>
+              <button class="btn btn-sm btn-default" ng-click="togglecity = !(togglecity)">toggle city</button>
+              <button class="btn btn-sm btn-default" ng-click="togglereponse = !(togglereponse)">toggle reponse</button>
+              <button class="btn btn-sm btn-default" ng-click="togglesource = !(togglesource)">toggle source</button>
+            </div>
             <div class="table-responsive">
 
                 <form class="form-inline">
@@ -365,21 +375,21 @@
                         <input type="text" ng-model="search" class="form-control" placeholder="Search" >
                     </div>
                 </form>
-
+                
                 <table class="table table-hover b-t b-b bordert">
                   <thead>
                     <tr >
                       <th><input type="checkbox" ng-change="selectall(boo)" ng-model="boo"></th>
                       <th>#</th>
-                      <th >Name
+                      <th  ng-hide="togglename">Name
                       </th>
-                      <th> Email</th>
-                      <th>Phone</th>
-                      <th>Veg-NonVeg</th>
-                      <th>Instagram</th>
-                      <th>City</th>
-                      <th>Response</th>
-                      <th>Source</th>
+                      <th ng-hide="toggleemail"> Email</th>
+                      <th ng-hide="togglephone">Phone</th>
+                      <th ng-hide="toggleveg">Veg-NonVeg</th>
+                      <th ng-hide="toggleinstagram">Instagram</th>
+                      <th ng-hide="togglecity">City</th>
+                      <th ng-hide="togglereponse">Response</th>
+                      <th ng-hide="togglesource">Source</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -387,14 +397,14 @@
                     <tr ng-repeat="name in filtered = (contestDetails.participants | filter:search) " >
                       <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.city,f:(name.pivot.response | tojson),g:name.address})" ng-model="bool" ng-checked="isChecked(name.id)"></td> 
                       <td>{{ $index +1 }}</td>
-                      <td><a href="https://www.facebook.com/{{name.facebook_id}}" target="_Blank">{{ name.name }}</a></td>
-                      <td>{{ name.email}}</td>
-                      <td>{{ name.contact}}</td>
-                      <td>{{ name.metadata.VegNonVeg}}</td>
-                      <td><a href="https://www.instagram.com/{{ name.instagram_handle | instahandle }}" target="_Blank">{{ name.instagram_handle | instahandle }}</a></td>
-                      <td>{{ name.city }}</td>
-                      <td>{{ name.pivot.response }}</td>
-                      <td>{{name.pivot.source}}</td>
+                      <td ng-hide="togglename"><a href="https://www.facebook.com/{{name.facebook_id}}" target="_Blank">{{ name.name }}</a></td>
+                      <td ng-hide="toggleemail">{{ name.email}}</td>
+                      <td ng-hide="togglephone">{{ name.contact}}</td>
+                      <td ng-hide="toggleveg">{{ name.metadata.VegNonVeg}}</td>
+                      <td ng-hide="toggleinstagram"><a href="https://www.instagram.com/{{ name.instagram_handle | instahandle }}" target="_Blank">{{ name.instagram_handle | instahandle }}</a></td>
+                      <td ng-hide="togglecity">{{ name.city }}</td>
+                      <td ng-hide="togglereponse">{{ name.pivot.response }}</td>
+                      <td ng-hide="togglesource">{{name.pivot.source}}</td>
                       <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#user/{{name.id}}">View Profile</a>
                       </td>
                     </tr>
