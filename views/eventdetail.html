@@ -379,14 +379,14 @@
           </div>
           <div class="panel panel-card col-xs-12 col-sm-12 col-md-12">
             <div class="toggle">
-              <button class="btn btn-sm btn-default" ng-click="togglename = !(togglename)">toggle name</button>
-              <button class="btn btn-sm btn-default" ng-click="toggleemail = !(toggleemail)">toggle email</button>
-              <button class="btn btn-sm btn-default" ng-click="togglephone = !(togglephone)">toggle phone</button>
-              <button class="btn btn-sm btn-default" ng-click="toggleveg = !(toggleveg)">toggle veg n-veg</button>
-              <button class="btn btn-sm btn-default" ng-click="toggleinstagram = !(toggleinstagram)">toggle instagram</button>
-              <button class="btn btn-sm btn-default" ng-click="togglecity = !(togglecity)">toggle city</button>
-              <button class="btn btn-sm btn-default" ng-click="togglereponse = !(togglereponse)">toggle reponse</button>
-              <button class="btn btn-sm btn-default" ng-click="togglesource = !(togglesource)">toggle source</button>
+              <button class="btn btn-sm btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">toggle name</button>
+              <button class="btn btn-sm btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">toggle email</button>
+              <button class="btn btn-sm btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">toggle phone</button>
+              <button class="btn btn-sm btn-default {{toggleveg==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleveg = !(toggleveg)">toggle veg n-veg</button>
+              <button class="btn btn-sm btn-default {{toggleinstagram==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleinstagram = !(toggleinstagram)">toggle instagram</button>
+              <button class="btn btn-sm btn-default {{togglecity==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglecity = !(togglecity)">toggle city</button>
+              <button class="btn btn-sm btn-default {{togglereponse==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglereponse = !(togglereponse)">toggle reponse</button>
+              <button class="btn btn-sm btn-default {{togglesource==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglesource = !(togglesource)">toggle source</button>
             </div>
             <div class="table-responsive">
 
