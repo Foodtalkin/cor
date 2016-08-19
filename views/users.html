@@ -233,6 +233,7 @@
                       <th>#</th>
                       <th ng-hide="togglename">Name
                       </th>
+                      <th>Points</th>
                       <th ng-hide="toggleemail"> Email</th>
                       <th ng-hide="togglephone">Phone</th>
                       <th ng-hide="togglecity">City</th>
@@ -244,6 +245,7 @@
                       
                       <td>{{ $index +1 }}</td>
                       <td ng-hide="togglename">{{ name.name }}</td>
+                      <td>{{ name.avilablePoints}}</td>
                       <td ng-hide="toggleemail">{{ name.email }}</td>
                       <td ng-hide="togglephone">{{ name.contact }}</td>
                       <td ng-hide="togglecity">{{ name.city }}</td>
