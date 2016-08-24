@@ -1,5 +1,5 @@
 app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$rootScope','dashAnalytics','userFactory',  function($scope, authFactory, $location, $http, $rootScope, dashAnalytics, userFactory){
-  
+  // $scope.loader = true;
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
   };
@@ -54,6 +54,7 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
     $scope.mailc.data = [];
     $scope.mailc.data[0] = response.result[4].dashboard_count;
     $scope.mailc.data[1] = [4200,4200,4200,4200,4200,4200,4200,4200];
+    $scope.loader = true;
   });
 
 

@@ -1,6 +1,7 @@
 app.controller('appdashboardCtrl', ['$scope', '$rootScope','authFactory','dashAnalytics', function($scope, $rootScope, authFactory,dashAnalytics){
 $scope.username = $rootScope.username;
     $scope.email =$rootScope.useremail;
+    $scope.loader = true;
     $scope.data = {};
     $scope.overalluser = [];
 	  $scope.androidcnt = 0;
@@ -121,6 +122,8 @@ $scope.username = $rootScope.username;
     $scope.avglike = avg (creatingdatasingle ($scope.weaklydata.likes));
     $scope.avgmention = avg (creatingdatasingle ($scope.weaklydata.userMentioned));
     $scope.avgbookmark = avg (creatingdatasingle ($scope.weaklydata.bookmarks));
+
+    $scope.loader = false;
   });
   
   function creatingdatasingle (obj) {

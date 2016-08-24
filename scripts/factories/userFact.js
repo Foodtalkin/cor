@@ -8,6 +8,19 @@ app.factory('userFactory', ['$http','urlFactory', function($http, urlFactory){
     });
   }
 
+  //list of on app users
+  userFactory.getonappusers = function(callback){
+    $http.get(urlFactory.onappusers).then(function(response){
+      callback(response);
+    });
+  }
+
+  //list of non app users
+  userFactory.getnonappusers = function(callback){
+    $http.get(urlFactory.nonappusers).then(function(response){
+      callback(response);
+    });
+  }
   //user next page or prev page
   userFactory.getUsersPage = function(url,callback){
     $http.get(url).then(function(response){

@@ -2,7 +2,7 @@ app.controller('userdetailCtrl', ['$scope', '$routeParams','userFactory','$rootS
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'User Details';
-  
+  $scope.loader = true;
 
   //user details
 	$scope.userid = $routeParams.userid;
@@ -18,10 +18,12 @@ app.controller('userdetailCtrl', ['$scope', '$routeParams','userFactory','$rootS
         $scope.contestCount = $scope.contestCount +1;
       }
     })
+    $scope.loader = false;
   });
 
 //edit Event
   $scope.userNotes = function(){
+    
     //console.log('calling factory');
     userFactory.userNotes($scope.userEvents.data.result.id,$scope.userEvents.data.result.notes, function(response){
       if(response){

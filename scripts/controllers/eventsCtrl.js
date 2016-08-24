@@ -1,11 +1,13 @@
 app.controller('eventsCtrl', ['$scope','eventFactory','$rootScope','$location','authFactory', function($scope, eventFactory, $rootScope, $location,authFactory){
   $scope.username = $rootScope.username;
   $scope.email =$rootScope.useremail;
+  $scope.loader = true;
 	$scope.message = 'Events';
   //event List
   eventFactory.getAllEvents(function(response){
     $scope.events = response;
     //console.log($scope.events);
+    $scope.loader = false;
   });
   //Hide un hide create event form
   $scope.isActive = true;
@@ -16,6 +18,7 @@ app.controller('eventsCtrl', ['$scope','eventFactory','$rootScope','$location','
 
   //create new event
   $scope.createEvent = function(){
+    $scope.loader = true;
     console.log('calling factory');
     eventFactory.createNewEvent($scope.ename, $scope.s_date, $scope.loc, $scope.cost, $scope.timings, $scope.venue, $scope.coverurl, $scope.Paymenturl,$scope.desc, function(response){
       if(response){
@@ -23,6 +26,7 @@ app.controller('eventsCtrl', ['$scope','eventFactory','$rootScope','$location','
       }else{
           console.log("Le wild error");
       }
+      $scope.loader = false;
     })
   }
 

@@ -20,5 +20,7 @@ app.factory('urlFactory', [ function(){
   url.contactform = baseurl+"api/contact";
   url.contactformput = baseurl+"contact";
   url.cityusers = baseurl+"user/city";
+  url.onappusers = baseurl+"user/onapp";
+  url.nonappusers = baseurl+"user/nonapp";
   return url;
 }]);

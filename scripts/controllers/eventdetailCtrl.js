@@ -2,6 +2,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
   //logged in user Details
   $scope.username = $rootScope.username;
   $scope.email =$rootScope.useremail;
+  $scope.loader = true;
 	$scope.message = 'Event detail';
   $scope.eventid= $routeParams.eventid;
   $scope.togglename = false;
@@ -30,9 +31,11 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
 
     angular.forEach($scope.eventsDetails.participants, function(src){     
       var src = src.pivot.source;
-      src = src.replace('"','');//removing ""
-      src = src.replace('"','');
-
+      if(src){
+        src = src.replace('"','');//removing ""
+        src = src.replace('"','');
+      }
+      
       if ((src == "ad") || (src == "AD") || (src == "Ad")) {
         $scope.srcAd = $scope.srcAd + 1;
       }else if ((src == "website") || (src == "web") || (src == "store")) {
@@ -58,7 +61,71 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
     $scope.activity = $scope.eventsDetails.active;
     $scope.usercsv = [];
     //console.log($scope.activity);
+    $scope.loader = false;
   });
+  // all user
+  $scope.getallusersdata = function () {
+    $scope.loader = true;
+     var temp = [];
+     eventFactory.getEventDetails($scope.eventid, function(response){
+      $scope.eventsDetails = response.data.result;
+      $scope.allData =response;
+       $scope.totalparticipants = $scope.eventsDetails.participants.length;
+       $scope.loader = false;
+     })   
+  }
+  // on app user
+  $scope.getonappusersdata = function () {
+    $scope.loader = true;
+     var temp = [];
+     eventFactory.getEventDetails($scope.eventid, function(response){
+      $scope.eventsDetails = response.data.result;
+      $scope.allData =response;
+        angular.forEach( $scope.allData.data.result.participants, function(element, index) {
+         if(element.score){
+          if(element.score.isAppUser == '1'){
+            // appuser
+            temp.push(element);
+          }else{
+          // non app user
+          }
+         }else{
+          // non app user
+         }
+       });
+       $scope.eventsDetails.participants = temp;
+       $scope.totalparticipants = $scope.eventsDetails.participants.length;
+       $scope.loader = false;
+     })
+       
+  }
+  // non app
+  $scope.getnonappusersdata = function () {
+    $scope.loader = true;
+     var temp = [];
+     eventFactory.getEventDetails($scope.eventid, function(response){
+      $scope.eventsDetails = response.data.result;
+      $scope.allData =response;
+        angular.forEach( $scope.allData.data.result.participants, function(element, index) {
+         if(element.score){
+          if(element.score.isAppUser == '1'){
+            // appuser
+            // console.log(element);
+            
+          }else{
+          // non app user
+          temp.push(element);
+          }
+         }else{
+          // non app user
+          temp.push(element);
+         }
+       });
+       $scope.eventsDetails.participants = temp;
+       $scope.totalparticipants = $scope.eventsDetails.participants.length;
+       $scope.loader = false;
+     })   
+  }
   //creating csv code
     $scope.isChecked = function(id){
         var match = false;
@@ -117,6 +184,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
     }
   //edit Event
   $scope.editEvent = function(){
+    $scope.loader = true;
     //console.log('calling factory');
     eventFactory.editEvent($scope.eventsDetails.id, $scope.eventsDetails.name, $scope.eventsDetails.start_date, $scope.eventsDetails.location, $scope.eventsDetails.cost, $scope.eventsDetails.timings, $scope.eventsDetails.venue, $scope.eventsDetails.cover_url, $scope.eventsDetails.payment_url,$scope.eventsDetails.description, function(response){
       if(response){
@@ -124,6 +192,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
       }else{
           console.log("Le wild error");
       }
+      $scope.loader = false;
     })
   };
 
@@ -179,7 +248,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
     $scope.savetag = [];
     //add tags
   $scope.savetags = function(){
-
+    $scope.loader = true;
   //creating array for tags 
     angular.forEach($scope.selectedtags, function(selectedtags){
       $scope.savetag.push(selectedtags.title);
@@ -192,6 +261,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
       }else{
           console.log("Le wild error");
       }
+      $scope.loader = false;
     })
   };
 

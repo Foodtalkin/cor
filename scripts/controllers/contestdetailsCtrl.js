@@ -1,6 +1,7 @@
 app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory','$rootScope','authFactory', function($scope, $routeParams, contestFactory, $rootScope, authFactory){
   $scope.username = $rootScope.username;
   $scope.email =$rootScope.useremail;
+  $scope.loader = true;
 	$scope.message = 'contest detail';
   $scope.togglename = false;
   $scope.toggleemail = false;
@@ -55,8 +56,71 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     //source entry count end
     $scope.totalparticipants = response.data.result.participants.length;
     $scope.activity = $scope.contestDetails.active;
-    
+    $scope.loader = false;
   });
+  // all user
+  $scope.getallusersdata = function () {
+    $scope.loader = true;
+     var temp = [];
+     contestFactory.getcontestDetails($scope.contestid, function(response){
+      $scope.contestDetails = response.data.result;
+      $scope.allData =response;
+       $scope.totalparticipants = $scope.contestDetails.participants.length;
+       $scope.loader = false;
+     })   
+  }
+  // on app user
+  $scope.getonappusersdata = function () {
+      $scope.loader = true;
+     var temp = [];
+     contestFactory.getcontestDetails($scope.contestid, function(response){
+      $scope.contestDetails = response.data.result;
+      $scope.allData =response;
+        angular.forEach( $scope.allData.data.result.participants, function(element, index) {
+         if(element.score){
+          if(element.score.isAppUser == '1'){
+            // appuser
+            temp.push(element);
+          }else{
+          // non app user
+          }
+         }else{
+          // non app user
+         }
+       });
+       $scope.contestDetails.participants = temp;
+       $scope.totalparticipants = $scope.contestDetails.participants.length;
+       $scope.loader = false;
+     })
+       
+  }
+  // non app
+  $scope.getnonappusersdata = function () {
+      $scope.loader = true;
+     var temp = [];
+     contestFactory.getcontestDetails($scope.contestid, function(response){
+      $scope.contestDetails = response.data.result;
+      $scope.allData =response;
+        angular.forEach( $scope.allData.data.result.participants, function(element, index) {
+         if(element.score){
+          if(element.score.isAppUser == '1'){
+            // appuser
+            // console.log(element);
+            
+          }else{
+          // non app user
+          temp.push(element);
+          }
+         }else{
+          // non app user
+          temp.push(element);
+         }
+       });
+       $scope.contestDetails.participants = temp;
+       $scope.totalparticipants = $scope.contestDetails.participants.length;
+       $scope.loader = false;
+     })   
+  }
 //csv creation
   $scope.isChecked = function(id){
       var match = false;
@@ -115,6 +179,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     }
   //edit Event
   $scope.editContest = function(){
+    $scope.loader = true;
     //console.log('calling factory');
     contestFactory.editContest($scope.contestDetails.id, $scope.contestDetails.name, $scope.contestDetails.start_date, $scope.contestDetails.end_date, $scope.contestDetails.location, $scope.contestDetails.timings, $scope.contestDetails.venue, $scope.contestDetails.cover_url, $scope.contestDetails.description, function(response){
       if(response){
@@ -122,6 +187,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
       }else{
           console.log("Le wild error");
       }
+      $scope.loader = false;
     })
   };
 
@@ -177,7 +243,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     $scope.savetag = [];
     //add tags
   $scope.savetags = function(){
-
+    $scope.loader = true;
     
     angular.forEach($scope.selectedtags, function(selectedtags){
       $scope.savetag.push(selectedtags.title);
@@ -190,6 +256,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
       }else{
           console.log("Le wild error");
       }
+      $scope.loader = false;
     })
   };
 
