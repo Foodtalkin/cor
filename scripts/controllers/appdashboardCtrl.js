@@ -35,7 +35,7 @@ $scope.username = $rootScope.username;
     $scope.postcount = $scope.data.overall.posts[0].cnt;
     $scope.internalpost = $scope.data.overall.internalposts[0].cnt;
     $scope.weaklydata = $scope.data.weakly;
-    console.log($scope.weaklydata);
+    // console.log($scope.weaklydata);
 
     // user count per plateform
     angular.forEach($scope.overalluser, function(value, key) {
@@ -67,6 +67,7 @@ $scope.username = $rootScope.username;
            $scope.onbordtot.push(value.cnt);
         });
         // onbordin via platform
+        // console.log($scope.weaklydata.onbordingUserWithPlatform);
         angular.forEach($scope.weaklydata.onbordingUserWithPlatform,function (value, key) {
            /* body... */ 
               if(value.platform == "android"){
@@ -105,7 +106,7 @@ $scope.username = $rootScope.username;
         $scope.active.push($scope.actand);
         $scope.active.push($scope.actios);
         $scope.active.push($scope.actweb);
-
+        // console.log($scope.active);
         
 
 

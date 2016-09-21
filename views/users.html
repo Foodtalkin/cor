@@ -201,7 +201,11 @@
                 <div class="p-md">
                     <button class="btn btn-info waves-effect left" ng-click="getpage(userdata.data.result.prev_page_url)"><i class="fa fa-angle-double-left"></i> Prev</button>
 
-                    <select name="" id="" class="p-sm w-lg selct-city-user" ng-model="city" ng-change="getdatabycity(city)" >
+                    
+                    <button class="btn btn-info waves-effect right" ng-click="getpage(userdata.data.result.next_page_url)">Next <i class="fa fa-angle-double-right"></i></button>
+                </div>
+                <div class="">
+                  <select name="" id="" class="p-sm w-lg selct-city-user" ng-model="city" ng-change="getdatabycity(city)" >
                     <option value="">Change City</option>
                       <option value="0">All</option>
                       <option value="1">Delhi</option>
@@ -211,13 +215,12 @@
                       <option value="5">Other</option>
                      
                     </select>
-                    <button class="btn btn-info waves-effect right" ng-click="getpage(userdata.data.result.next_page_url)">Next <i class="fa fa-angle-double-right"></i></button>
                 </div>
                 <div class="toggle">
-                  <button class="btn btn-sm btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">name</button>
-                  <button class="btn btn-sm btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">email</button>
-                  <button class="btn btn-sm btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">phone</button>
-                  <button class="btn btn-sm btn-default {{togglecity==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglecity = !(togglecity)">city</button>
+                  <button class="btn btn-sm m-xs btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">name</button>
+                  <button class="btn btn-sm m-xs btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">email</button>
+                  <button class="btn btn-sm m-xs btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">phone</button>
+                  <button class="btn btn-sm m-xs btn-default {{togglecity==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglecity = !(togglecity)">city</button>
                 </div>
                 <div class="btn-group btn-group-justified m-b p-md">
                   <a href class="btn btn-rounded btn-stroke btn-primary" ng-click="getnonappusersdata()">Not On APP</a>
@@ -226,15 +229,28 @@
                 </div>
               <div class="table-responsive">
 
-                <form class="form-inline m-t-sm">
+                <form class="form-inline m-t-sm hidden-xs hidden-sm">
                     <div class="res">
                       <p>Showing {{filtered.length}} Results of Page {{current_page}}</p>
                       <p>Total Users {{total}}</p>
                     </div>
                     <div class="form-group" id="search">
                         <!-- <label >Search</label> -->
-                        <input type="text" ng-model="searchkey" class="form-control m-r-lg" placeholder="Search" ><button md-ink-ripple class="btn btn-fw btn-primary" ng-click="searchuser(searchkey)">Search</button>
+                        <input type="text" ng-model="searchkey" class="form-control m-r-lg" placeholder="Search" >
+                        <button md-ink-ripple class="btn btn-fw btn-primary" ng-click="searchuser(searchkey)">Search</button>
                     </div>
+                </form>
+                <form class="m-t-sm hidden-md hidden-lg">
+                  <div class="col-sm-12">
+                    <p>Showing {{filtered.length}} Results of Page {{current_page}}</p>
+                    <p>Total Users {{total}}</p>
+                  </div>
+                  <div class="col-sm-12 m-t">
+                    <input type="text" ng-model="searchkey" class="form-control m-r-lg" placeholder="Search" >
+                  </div>
+                  <div class="col-sm-12 m-t">
+                    <button md-ink-ripple class="btn btn-fw btn-primary" ng-click="searchuser(searchkey)">Search</button>
+                  </div>
                 </form>
                 <table class="table table-hover b-t b-b bordert">
                   <thead>

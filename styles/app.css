@@ -1074,7 +1074,7 @@ a.list-group-item.hover {
 }
 
 .modal-backdrop {
-  background-color: #475069;
+  /*background-color: #475069;*/
 }
 
 .modal-backdrop.in {

@@ -1098,7 +1098,7 @@ if (typeof jQuery === 'undefined') {
       var doAnimate = $.support.transition && animate
 
       this.$backdrop = $(document.createElement('div'))
-        .addClass('modal-backdrop ' + animate)
+        .addClass('modal-backdrop23 ' + animate)
         .appendTo(this.$body)
 
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {

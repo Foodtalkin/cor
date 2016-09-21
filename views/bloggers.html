@@ -137,11 +137,11 @@
         <div class="box-cell">
           <div class="box-inner padding">
             <h3>{{message}}</h3>
-            <div class="panel panel-default ">
-              <div class="panel-heading">
+            <div class="panel panel-default " style="cursor:pointer;">
+              <div class="panel-heading" ng-click="toggelFormcat()">
                 Add New Blogger Category
               </div>
-              <form class="form-horizontal p-lg">
+              <form class="form-horizontal p-lg" ng-hide="isActivecat">
                 
                 <div class="col-md-6 col-sm-12">
                   <div class="form-group">
@@ -167,12 +167,12 @@
                 </div>
               </form>
             </div>
-
-            <div class="panel panel-default ">
-              <div class="panel-heading">
+            <!-- create category form ends -->
+            <div class="panel panel-default " style="cursor:pointer;">
+              <div class="panel-heading " ng-click="toggelForm()"> 
                 Add New Bloggers
               </div>
-              <form class="form-horizontal p-lg">
+              <form class="form-horizontal p-lg" ng-hide="isActive">
                 <div class="col-md-6 col-sm-12">
                   <div class="form-group">
                     <label class="col-sm-2 control-label">blog</label>
@@ -246,13 +246,18 @@
                 </div>
               </form>
             </div>
+
+          <!-- add new form ends-->
+
           <div class="panel panel-default">
               
               <div class="panel-heading">
-                Influencer List
+                Bloggers List
               </div>
               <div class="table-responsive">
-
+                <div>
+                  
+                </div>
                 <form class="form-inline">
                     <div class="res">
                       <p>Showing {{filtered.length}} Results</p>
@@ -266,9 +271,10 @@
                   <thead>
                     <tr >
                       <th>#</th>
-                      <th >blog
-                      </th>
-                      <th> Name</th>
+                      <th></th>
+                      <th></th>
+                      <th>blog</th>
+                      <th>Name</th>
                       <th>Location</th>
                       <th>Email</th>
                       <th>Phone</th>
@@ -281,6 +287,12 @@
                     <tr ng-repeat="blogger in filtered = (bloggers | filter:search) " ng-click="">
                       
                       <td>{{ $index +1 }}</td>
+                      <td class="no-padding">
+                        <button class="md-btn red m-b-sm m-t-sm btn-icon waves-effect" ng-click="opendeletemodel(blogger.id)"><i class="mdi-content-clear i-24"></i></button>
+                      </td>
+                      <td class="no-padding">
+                        <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodel(blogger.id)"><i class="mdi-content-create i-24"></i></button>
+                      </td>
                       <td>{{ blogger.blog }}</td>
                       <td>{{ blogger.name }}</td>
                       <td>{{ blogger.loaction }}</td>
@@ -297,9 +309,112 @@
               </div>
             </div>
 
+            <!-- table ends -->
+            <div class="model" ng-hide="deletemodel">
+              <div class="modelcontainer">
+                <form class="form-horizontal p-lg">
+                  <div class="col-md-12">
+                    <h3>Please enter the word <strong>DELETE</strong> to confirm delete this blogger. you won't be able to recover it later</h3>
+                    <h4 ng-show="errormsg" style="color:red;">keyword was wrong try again</h4>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" ng-model="deletekey">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  <div class="col-sm-12">
+                    <button md-ink-ripple class="btn btn-fw btn-danger pull-right m-r" ng-click="hidedeletemodel()">Cancel</button>
+                    <button md-ink-ripple class="btn btn-fw btn-success pull-right m-r" ng-click="deleteblogger()">Delete</button>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+            <div class="model" ng-hide="modelactive">
+              <div class="modelcontainer">
+                <div class="panel-heading "> 
+                  Edit Blogger
+                </div>
+                <form class="form-horizontal p-lg">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">blog</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="bloggerdata.blog">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="bloggerdata.name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Location</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="bloggerdata.loaction">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">email</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="bloggerdata.email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">phone</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="bloggerdata.phone">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">category</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" ng-model="bloggerdata.category.name">
+                          <option ng-repeat="cat in cat" value="{{cat.id}}">{{cat.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">designation</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="bloggerdata.designation">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">website</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="bloggerdata.website">
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <button md-ink-ripple class="btn btn-fw btn-danger pull-right m-r" ng-click="hidemodel()">Cancel</button>
+                      <button md-ink-ripple class="btn btn-fw btn-success pull-right m-r" ng-click="editdetail()">Save</button>
 
-
-
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
 
           </div>
         </div>
@@ -307,3 +422,5 @@
     </div>
   </div>
   <!-- / content -->
+
+          
