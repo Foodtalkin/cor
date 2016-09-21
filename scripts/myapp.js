@@ -160,7 +160,7 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
 
 
 //Bloggers
-app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$location', function($scope, $rootScope, bloggerFactory, $location){
+app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$location','authFactory', function($scope, $rootScope, bloggerFactory, $location,authFactory){
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'Bloggers';
@@ -249,19 +249,11 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
   $scope.logout = function(){
     authFactory.logout(function(response) {
      
-      if(response){
-         $location.path('/login');
-      }else{
-        //Display generic error
-        console.log("Le wild login error");
-      }
-
     });
   }
-
 }]);
 //Influencers
-app.controller('influencerCtrl', ['$scope','$rootScope','influencerFactory','$location', function($scope, $rootScope, influencerFactory, $location){
+app.controller('influencerCtrl', ['$scope','$rootScope','influencerFactory','$location','authFactory', function($scope, $rootScope, influencerFactory, $location,authFactory){
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'Influencer';
@@ -350,19 +342,12 @@ app.controller('influencerCtrl', ['$scope','$rootScope','influencerFactory','$lo
   $scope.logout = function(){
     authFactory.logout(function(response) {
      
-      if(response){
-         $location.path('/login');
-      }else{
-        //Display generic error
-        console.log("Le wild login error");
-      }
-
     });
   }
 
 }]);
 //Media
-app.controller('mediaCtrl', ['$scope','$rootScope','mediaFactory','$location', function($scope, $rootScope, mediaFactory, $location){
+app.controller('mediaCtrl', ['$scope','$rootScope','mediaFactory','$location','authFactory', function($scope, $rootScope, mediaFactory, $location,authFactory){
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'Media';
@@ -451,19 +436,12 @@ app.controller('mediaCtrl', ['$scope','$rootScope','mediaFactory','$location', f
   $scope.logout = function(){
     authFactory.logout(function(response) {
      
-      if(response){
-         $location.path('/login');
-      }else{
-        //Display generic error
-        console.log("Le wild login error");
-      }
-
     });
   }
 
 }]);
 //Vendors 
-app.controller('vendorsCtrl', ['$scope','$rootScope','vendorFactory','$location', function($scope, $rootScope, vendorFactory, $location){
+app.controller('vendorsCtrl', ['$scope','$rootScope','vendorFactory','$location','authFactory', function($scope, $rootScope, vendorFactory, $location,authFactory){
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
 	$scope.message = 'Vendor';
@@ -553,13 +531,6 @@ app.controller('vendorsCtrl', ['$scope','$rootScope','vendorFactory','$location'
   $scope.logout = function(){
     authFactory.logout(function(response) {
      
-      if(response){
-         $location.path('/login');
-      }else{
-        //Display generic error
-        console.log("Le wild login error");
-      }
-
     });
   }
 
