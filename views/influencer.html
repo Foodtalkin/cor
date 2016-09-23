@@ -237,6 +237,14 @@
               <div class="panel-heading">
                 Influencer List
               </div>
+              <div class="toggle">
+                <button class="btn btn-sm m-xs btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">name</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">email</button>
+                <button class="btn btn-sm m-xs btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">phone</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleLocation==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleLocation = !(toggleLocation)">Location</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleCategory==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleCategory = !(toggleCategory)">Category</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleAddress==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleAddress = !(toggleAddress)">Address</button>
+              </div>
               <div class="table-responsive">
 
                 <form class="form-inline">
@@ -255,12 +263,12 @@
                       <th>#</th>
                       <th></th>
                       <th></th>
-                      <th> Name</th>
-                      <th>Location</th>
-                      <th>Address</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th>Category</th>
+                      <th ng-hide="togglename"> Name</th>
+                      <th ng-hide="toggleLocation">Location</th>
+                      <th ng-hide="toggleAddress">Address</th>
+                      <th ng-hide="toggleemail">Email</th>
+                      <th ng-hide="togglephone">Phone</th>
+                      <th ng-hide="toggleCategory">Category</th>
                       
                     </tr>
                   </thead>
@@ -274,12 +282,12 @@
                       <td class="no-padding">
                         <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodel(influencer.id)"><i class="mdi-content-create i-24"></i></button>
                       </td>
-                      <td>{{ influencer.name }}</td>
-                      <td>{{ influencer.loaction }}</td>
-                      <td>{{ influencer.address }}</td>
-                      <td>{{ influencer.email }}</td>
-                      <td>{{ influencer.phone }}</td>
-                      <td>{{ influencer.category.name }}</td>
+                      <td ng-hide="togglename">{{ influencer.name }}</td>
+                      <td ng-hide="toggleLocation">{{ influencer.loaction }}</td>
+                      <td ng-hide="toggleAddress">{{ influencer.address }}</td>
+                      <td ng-hide="toggleemail">{{ influencer.email }}</td>
+                      <td ng-hide="togglephone">{{ influencer.phone }}</td>
+                      <td ng-hide="toggleCategory">{{ influencer.category.name }}</td>
                       
                     </tr>
                   </tbody>

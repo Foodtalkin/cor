@@ -151,6 +151,17 @@
                 <button class="btn btn-default waves-effect" ng-click="getpage(contactdata.data.result.prev_page_url)"><i class="fa fa-angle-double-left"></i> Prev</button>
                 <button class="btn btn-default waves-effect right" ng-click="getpage(contactdata.data.result.next_page_url)">Next <i class="fa fa-angle-double-right"></i></button>
               </div>
+              <div class="toggle">
+                <button class="btn btn-sm m-xs btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">name</button>
+                <button class="btn btn-sm m-xs btn-default {{togglepurpose==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglepurpose = !(togglepurpose)">purpose</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">email</button>
+                <button class="btn btn-sm m-xs btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">phone</button>
+                
+                <button class="btn btn-sm m-xs btn-default {{togglemessage==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglemessage = !(togglemessage)">message</button>
+                <button class="btn btn-sm m-xs btn-default {{togglecity==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglecity = !(togglecity)">city</button>
+                <button class="btn btn-sm m-xs btn-default {{togglewebsite==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglewebsite = !(togglewebsite)">Website</button>
+                <button class="btn btn-sm m-xs btn-default {{toggledate==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggledate = !(toggledate)">date</button>
+              </div>
               <div class="table-responsive">
                 
                 <form class="form-inline">
@@ -167,14 +178,14 @@
                     <tr >
                       <th>#</th>
                       <th>status</th>
-                      <th>Purpose</th>
-                      <th>name/company</th>
-                      <th>Phone</th>
-                      <th>email</th>
-                      <th>message</th>
-                      <th>website</th>
-                      <th>city</th>
-                      <th>creation date</th>
+                      <th ng-hide="togglepurpose">Purpose</th>
+                      <th ng-hide="togglename">name/company</th>
+                      <th ng-hide="togglephone">Phone</th>
+                      <th ng-hide="toggleemail">email</th>
+                      <th ng-hide="togglemessage">message</th>
+                      <th ng-hide="togglewebsite">website</th>
+                      <th ng-hide="togglecity">city</th>
+                      <th ng-hide="toggledate">creation date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -182,14 +193,14 @@
                       
                       <td>{{ $index +1 }}</td>
                       <td><a class="btn btn-sm btn-addon {{activity  ==true ? 'btn-success' : 'btn-danger'}} m-sm pull-right" ng-click='toggelactive(activity ,contact.id)' ng-init="activity = contact.status">{{activity ==true ? 'done' : 'due'}}</a></td>
-                      <td>{{ contact.purpose }}</td>
-                      <td>{{ contact.name }}</td>
-                      <td>{{ contact.phone }}</td>
-                      <td>{{ contact.email }}</td>
-                      <td>{{ contact.message }}</td>
-                      <td>{{ contact.web }}</td>
-                      <td>{{ contact.location }}</td>
-                      <td>{{ contact.created_at }}</td>
+                      <td ng-hide="togglepurpose">{{ contact.purpose }}</td>
+                      <td ng-hide="togglename">{{ contact.name }}</td>
+                      <td ng-hide="togglephone">{{ contact.phone }}</td>
+                      <td ng-hide="toggleemail">{{ contact.email }}</td>
+                      <td ng-hide="togglemessage">{{ contact.message }}</td>
+                      <td ng-hide="togglewebsite">{{ contact.web }}</td>
+                      <td ng-hide="togglecity">{{ contact.location }}</td>
+                      <td ng-hide="toggledate">{{ contact.created_at }}</td>
                     </tr>
                   </tbody>
                   

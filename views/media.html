@@ -250,6 +250,16 @@
               <div class="panel-heading">
                 Media List
               </div>
+              <div class="toggle">
+                <button class="btn btn-sm m-xs btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">name</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleblog==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleblog = !(toggleblog)">Publication</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">email</button>
+                <button class="btn btn-sm m-xs btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">phone</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleLocation==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleLocation = !(toggleLocation)">Location</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleCategory==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleCategory = !(toggleCategory)">Category</button>
+                <button class="btn btn-sm m-xs btn-default {{toggledesignation==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggledesignation = !(toggledesignation)">designation</button>
+                <button class="btn btn-sm m-xs btn-default {{togglewebsite==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglewebsite = !(togglewebsite)">website</button>
+              </div>
               <div class="table-responsive">
 
                 <form class="form-inline">
@@ -268,14 +278,14 @@
                       <th>#</th>
                       <th></th>
                       <th></th>
-                      <th>publication</th>
-                      <th> Name</th>
-                      <th>Location</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th>Category</th>
-                      <th>designation</th>
-                      <th>website</th>
+                      <th ng-hide="toggleblog">publication</th>
+                      <th ng-hide="togglename"> Name</th>
+                      <th ng-hide="toggleLocation">Location</th>
+                      <th ng-hide="toggleemail">Email</th>
+                      <th ng-hide="togglephone">Phone</th>
+                      <th ng-hide="toggleCategory">Category</th>
+                      <th ng-hide="toggledesignation">designation</th>
+                      <th ng-hide="togglewebsite">website</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -288,14 +298,14 @@
                       <td class="no-padding">
                         <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodel(media.id)"><i class="mdi-content-create i-24"></i></button>
                       </td>
-                      <td>{{ media.orgnaization }}</td>
-                      <td>{{ media.name }}</td>
-                      <td>{{ media.loaction }}</td>
-                      <td>{{ media.email }}</td>
-                      <td>{{ media.phone }}</td>
-                      <td>{{ media.category.name }}</td>
-                      <td>{{ media.designation }}</td>
-                      <th>{{ media.website }}</th>
+                      <td ng-hide="toggleblog">{{ media.orgnaization }}</td>
+                      <td ng-hide="togglename">{{ media.name }}</td>
+                      <td ng-hide="toggleLocation">{{ media.loaction }}</td>
+                      <td ng-hide="toggleemail">{{ media.email }}</td>
+                      <td ng-hide="togglephone">{{ media.phone }}</td>
+                      <td ng-hide="toggleCategory">{{ media.category.name }}</td>
+                      <td ng-hide="toggledesignation">{{ media.designation }}</td>
+                      <th ng-hide="togglewebsite"><a href="http://{{ media.website }}" target="_blank">{{ media.website }}</a> </th>
                       
                     </tr>
                   </tbody>

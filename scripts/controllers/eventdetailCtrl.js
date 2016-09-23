@@ -5,14 +5,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
   $scope.loader = true;
 	$scope.message = 'Event detail';
   $scope.eventid= $routeParams.eventid;
-  $scope.togglename = false;
-  $scope.toggleemail = false;
-  $scope.togglephone = false;
-  $scope.toggleveg = false;
-  $scope.toggleinstagram = false;
-  $scope.togglecity = false;
-  $scope.togglereponse = false;
-  $scope.togglesource = false;
+  
   //event data
   eventFactory.getEventDetails($scope.eventid, function(response){
     $scope.eventsDetails = response.data.result;

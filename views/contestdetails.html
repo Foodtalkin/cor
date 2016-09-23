@@ -364,12 +364,14 @@
             </div>
             <div class="toggle">
               <button class="btn btn-sm m-xs btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">name</button>
+              <button class="btn btn-sm m-xs btn-default {{togglepoint==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglepoint = !(togglepoint)">Points</button>
               <button class="btn btn-sm m-xs btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">email</button>
               <button class="btn btn-sm m-xs btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">phone</button>
+              <button class="btn btn-sm m-xs btn-default {{toggleage==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleage = !(toggleage)">Age</button>
               <button class="btn btn-sm m-xs btn-default {{toggleveg==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleveg = !(toggleveg)">veg n-veg</button>
               <button class="btn btn-sm m-xs btn-default {{toggleinstagram==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleinstagram = !(toggleinstagram)">instagram</button>
               <button class="btn btn-sm m-xs btn-default {{togglecity==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglecity = !(togglecity)">city</button>
-              <button class="btn btn-sm m-xs btn-default {{togglereponse==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglereponse = !(togglereponse)">reponse</button>
+              <button class="btn btn-sm m-xs btn-default {{togglereponse==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglereponse = !(togglereponse)">response</button>
               <button class="btn btn-sm m-xs btn-default {{togglesource==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglesource = !(togglesource)">source</button>
             </div>
             <div class="table-responsive">
@@ -392,11 +394,11 @@
                       <th>App</th>
                       <th  ng-hide="togglename">Name
                       </th>
-                      <th>Points</th>
+                      <th ng-hide="togglepoint">Points</th>
                       <th ng-hide="toggleemail"> Email</th>
                       <th ng-hide="togglephone">Phone</th>
                       <th ng-hide="toggleveg">Veg-NonVeg</th>
-                      <th>Age</th>
+                      <th ng-hide="toggleage">Age</th>
                       <th ng-hide="toggleinstagram">Instagram</th>
                       <th ng-hide="togglecity">City</th>
                       <th ng-hide="togglereponse">Response</th>
@@ -412,11 +414,11 @@
                       <td><button class="btn btn-sm " ng-class="name.score ? (name.score.isAppUser == 
                       '1' ? 'btn-success' : 'btn-danger') : 'btn-danger'"></button></td>
                       <td ng-hide="togglename"><a href="https://www.facebook.com/{{name.facebook_id}}" target="_Blank">{{ name.name }}</a></td>
-                      <td>{{ name.score.totalPoints}}</td>
+                      <td ng-hide="togglepoint">{{ name.score.totalPoints}}</td>
                       <td ng-hide="toggleemail">{{ name.email}}</td>
                       <td ng-hide="togglephone">{{ name.contact}}</td>
                       <td ng-hide="toggleveg">{{ name.metadata.VegNonVeg}}</td>
-                      <td>{{ name.metadata.Age}}</td>
+                      <td ng-hide="toggleage">{{ name.metadata.Age}}</td>
                       <td ng-hide="toggleinstagram"><a href="https://www.instagram.com/{{ name.instagram_handle | instahandle }}" target="_Blank">{{ name.instagram_handle | instahandle }}</a></td>
                       <td ng-hide="togglecity">{{ name.city }}</td>
                       <td ng-hide="togglereponse">{{ name.pivot.response }}</td>

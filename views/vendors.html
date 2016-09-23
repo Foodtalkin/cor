@@ -251,6 +251,16 @@
               <div class="panel-heading">
                 Vendors List
               </div>
+              <div class="toggle">
+                <button class="btn btn-sm m-xs btn-default {{togglename==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglename = !(togglename)">name</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleblog==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleblog = !(toggleblog)">Organization</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleemail==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleemail = !(toggleemail)">email</button>
+                <button class="btn btn-sm m-xs btn-default {{togglephone==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglephone = !(togglephone)">phone</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleLocation==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleLocation = !(toggleLocation)">Location</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleCategory==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleCategory = !(toggleCategory)">Category</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleAddress==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleAddress = !(toggleAddress)">Address</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleCapacity==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleCapacity = !(toggleCapacity)">Capacity</button>
+              </div>
               <div class="table-responsive">
 
                 <form class="form-inline">
@@ -269,14 +279,14 @@
                       <th>#</th>
                       <th></th>
                       <th></th>
-                      <th >Organization</th>
-                      <th> Name</th>
-                      <th>Location</th>
-                      <th>Address</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th>Category</th>
-                      <th>Capacity</th>
+                      <th  ng-hide="toggleblog">Organization</th>
+                      <th ng-hide="togglename"> Name</th>
+                      <th ng-hide="toggleLocation">Location</th>
+                      <th ng-hide="toggleAddress">Address</th>
+                      <th ng-hide="toggleemail">Email</th>
+                      <th ng-hide="togglephone">Phone</th>
+                      <th ng-hide="toggleCategory">Category</th>
+                      <th ng-hide="toggleCapacity">Capacity</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -289,14 +299,14 @@
                       <td class="no-padding">
                         <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodel(vendor.id)"><i class="mdi-content-create i-24"></i></button>
                       </td>
-                      <td>{{ vendor.orgnaization }}</td>
-                      <td>{{ vendor.name }}</td>
-                      <td>{{ vendor.loaction }}</td>
-                      <td>{{ vendor.address }}</td>
-                      <td>{{ vendor.email }}</td>
-                      <td>{{ vendor.phone }}</td>
-                      <td>{{ vendor.category.name }}</td>
-                      <td>{{ vendor.capicity }}</td>
+                      <td ng-hide="toggleblog">{{ vendor.orgnaization }}</td>
+                      <td ng-hide="togglename">{{ vendor.name }}</td>
+                      <td ng-hide="toggleLocation">{{ vendor.loaction }}</td>
+                      <td ng-hide="toggleAddress">{{ vendor.address }}</td>
+                      <td ng-hide="toggleemail">{{ vendor.email }}</td>
+                      <td ng-hide="togglephone">{{ vendor.phone }}</td>
+                      <td ng-hide="toggleCategory">{{ vendor.category.name }}</td>
+                      <td ng-hide="toggleCapacity">{{ vendor.capicity }}</td>
                       
                     </tr>
                   </tbody>

@@ -3,14 +3,8 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
   $scope.email =$rootScope.useremail;
   $scope.loader = true;
 	$scope.message = 'contest detail';
-  $scope.togglename = false;
-  $scope.toggleemail = false;
-  $scope.togglephone = false;
-  $scope.toggleveg = false;
-  $scope.toggleinstagram = false;
-  $scope.togglecity = false;
-  $scope.togglereponse = false;
-  $scope.togglesource = false;
+  
+
   //contest Details
   $scope.contestid= $routeParams.contestid;
   contestFactory.getcontestDetails($scope.contestid, function(response){
