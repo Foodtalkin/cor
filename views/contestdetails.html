@@ -402,6 +402,7 @@
                       <th ng-hide="togglereponse">Response</th>
                       <th ng-hide="togglesource">Source</th>
                       <th>Actions</th>
+                      <td></td>
                     </tr>
                   </thead>
                   <tbody>
@@ -420,14 +421,28 @@
                       <td ng-hide="togglecity">{{ name.city }}</td>
                       <td ng-hide="togglereponse">{{ name.pivot.response }}</td>
                       <td ng-hide="togglesource">{{name.pivot.source}}</td>
+                      <td><button md-ink-ripple class="btn btn-sm btn-fw btn-success" ng-click="openenotesmodl(name.id);">Add Notes</button></td>
                       <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#user/{{name.id}}">View Profile</a>
+                      
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
           </div> 
-
+            <div class="model" ng-hide="openenotes">
+              <div class="modelcontainer p-lg">
+                <div class="panel-heading"><h5>Notes</h5></div>
+                    <form>
+                      <textarea class="form-control" rows="7" placeholder="Write something..." ng-model="usernotes.notes"></textarea>
+                      <div class="lt p">
+                        <button md-ink-ripple class="btn btn-fw btn-danger pull-right m-r" ng-click="hidenotesemodel()">Cancel</button>
+                        <button class="btn btn-fw btn-info pull-right m-r" ng-click="userNotes()">Save Notes</button>
+                      </div>
+                    </form>
+                    
+              </div>
+            </div>
           </div>
         </div>
       </div>

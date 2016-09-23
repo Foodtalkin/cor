@@ -130,7 +130,7 @@
       <!-- / -->
     </div>
     <!-- Content -->
-
+      <a class="btn btn-lg btn-icon btn-rounded btn-danger csv" ng-csv="usercsv" filename="vendors.csv" field-separator="," decimal-separator="." title="download csv"><i class="fa fa-download "></i></a>
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
@@ -265,6 +265,7 @@
                 <table class="table table-hover b-t b-b bordert">
                   <thead>
                     <tr >
+                      <th><input type="checkbox" ng-change="selectall(boo)" ng-model="boo"></th>
                       <th>#</th>
                       <th></th>
                       <th></th>
@@ -280,7 +281,7 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="vendor in filtered = (vendors | filter:search) " ng-click="">
-                      
+                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:vendor.orgnaization,b:vendor.name,c:vendor.loaction,d:vendor.address,e:vendor.email,f:vendor.phone,g:vendor.capicity})" ng-model="bool" ng-checked="isChecked(vendor.id)"></td>
                       <td>{{ $index +1 }}</td>
                       <td class="no-padding">
                         <button class="md-btn red m-b-sm m-t-sm btn-icon waves-effect" ng-click="opendeletemodel(vendor.id)"><i class="mdi-content-clear i-24"></i></button>

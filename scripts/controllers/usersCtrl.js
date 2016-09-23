@@ -40,7 +40,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
     $scope.current_page = response.data.result.current_page;
     $scope.total = response.data.result.total;
     $scope.usercsv = [];
-    $scope.selectall(true);
+    // $scope.selectall(true);
     $scope.loader = false;
   });
 
@@ -54,7 +54,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = response.data.result.current_page;
       $scope.total = response.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     });
   }
@@ -68,7 +68,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = response.data.result.current_page;
       $scope.total = response.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     });
   }
@@ -82,7 +82,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = response.data.result.current_page;
       $scope.total = response.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     });
   }
@@ -121,7 +121,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = $scope.AlluserData.data.result.current_page;
       $scope.total = $scope.AlluserData.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     }else if (city == "1") {
       $scope.users = $scope.DelhiuserData.data.result.data;
@@ -129,7 +129,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = $scope.DelhiuserData.data.result.current_page;
       $scope.total = $scope.DelhiuserData.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     }else if (city == "2") {
       $scope.users = $scope.MumbaiuserData.data.result.data;
@@ -137,7 +137,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = $scope.MumbaiuserData.data.result.current_page;
       $scope.total = $scope.MumbaiuserData.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     }else if (city == "3") {
       $scope.users = $scope.PuneuserData.data.result.data;
@@ -145,7 +145,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = $scope.PuneuserData.data.result.current_page;
       $scope.total = $scope.PuneuserData.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     }else if (city == "4") {
       $scope.users = $scope.bangaloreuserData.data.result.data;
@@ -153,7 +153,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = $scope.bangaloreuserData.data.result.current_page;
       $scope.total = $scope.bangaloreuserData.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     }else if (city == "5") {
       $scope.users = $scope.OtheruserData.data.result.data;
@@ -161,7 +161,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
       $scope.current_page = $scope.OtheruserData.data.result.current_page;
       $scope.total = $scope.OtheruserData.data.result.total;
       $scope.usercsv = [];
-      $scope.selectall(true);
+      // $scope.selectall(true);
       $scope.loader = false;
     }else{
       $scope.users = null;

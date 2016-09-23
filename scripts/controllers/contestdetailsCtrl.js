@@ -1,4 +1,4 @@
-app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory','$rootScope','authFactory', function($scope, $routeParams, contestFactory, $rootScope, authFactory){
+app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory','$rootScope','authFactory','userFactory', function($scope, $routeParams, contestFactory, $rootScope, authFactory, userFactory){
   $scope.username = $rootScope.username;
   $scope.email =$rootScope.useremail;
   $scope.loader = true;
@@ -17,6 +17,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     $scope.contestDetails = response.data.result;
     $scope.allData =response;
     $scope.usercsv = [];
+    
     //source entry count start
     $scope.srcWeb = 0;
     $scope.srcAd = 0;
@@ -191,7 +192,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     })
   };
 
-
+  
   //testing chips
   $scope.itemsCollection = [{
       title: 'Wine',
@@ -260,6 +261,33 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
     })
   };
 
+  $scope.openenotes = true;
+  $scope.openenotesmodl = function(id){
+    $scope.loader = true;
+    $scope.openenotes = false;
+    
+    userFactory.getUserEvents(id, function(response){
+    $scope.usernotes = response.data.result;
+
+    $scope.loader = false;
+  });
+  }
+
+  $scope.hidenotesemodel = function(){
+    $scope.openenotes = true;
+    $scope.usernotes = {};
+  }
+  $scope.userNotes = function(){
+    
+    //console.log('calling factory');
+    userFactory.userNotes($scope.usernotes.id,$scope.usernotes.notes, function(response){
+      if(response){
+          window.location.reload();
+      }else{
+          console.log("Le wild error");
+      }
+    })
+  };
   $scope.logout = function(){
     authFactory.logout(function(response) {
      

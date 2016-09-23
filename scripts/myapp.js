@@ -169,10 +169,36 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
     angular.forEach(response.data.result, function(element){
       $scope.bloggers.push(element);
     });
+    $scope.usercsv = [];
   });
+
+  $scope.sync = function(bool, item){
+    if(bool){
+      // add item
+      $scope.usercsv.push(item);
+    } else {
+      // remove item
+      for(var i=0 ; i < $scope.usercsv.length; i++) {
+        if($scope.usercsv[i].id == item.id){
+          $scope.usercsv.splice(i,1);
+        }
+      }      
+    }
+    //console.log($scope.usercsv);
+  };
+
+  //put all data in csv
+  $scope.selectall = function(val){
+    $scope.bool = val;
+    angular.forEach($scope.bloggers, function(blogger){
+      $scope.sync(val,{a:blogger.blog,b:blogger.name,c:blogger.loaction,d:blogger.email,e:blogger.phone,f:blogger.designation,g:blogger.website});
+    });
+  }
+
   bloggerFactory.getCat(function(response){
     $scope.cat = response.data.result;
   });
+  // Hide show form start
   $scope.isActivecat = true;
   $scope.toggelFormcat = function(){
     //console.log('function');
@@ -183,6 +209,7 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
     //console.log('function');
     $scope.isActive = !$scope.isActive;
   };
+  // end
   $scope.createCat = function(){
     bloggerFactory.createCategory($scope.catname, $scope.catdesc, function(response){
     if (response) {
@@ -262,7 +289,31 @@ app.controller('influencerCtrl', ['$scope','$rootScope','influencerFactory','$lo
     angular.forEach(response.data.result, function(element){
       $scope.influencer.push(element);
     });
+    $scope.usercsv = [];
   });
+
+  $scope.sync = function(bool, item){
+    if(bool){
+      // add item
+      $scope.usercsv.push(item);
+    } else {
+      // remove item
+      for(var i=0 ; i < $scope.usercsv.length; i++) {
+        if($scope.usercsv[i].id == item.id){
+          $scope.usercsv.splice(i,1);
+        }
+      }      
+    }
+    //console.log($scope.usercsv);
+  };
+
+  //put all data in csv
+  $scope.selectall = function(val){
+    $scope.bool = val;
+    angular.forEach($scope.influencer, function(influencer){
+      $scope.sync(val,{a:influencer.name,b:influencer.loaction,c:influencer.address,d:influencer.email,e:influencer.phone});
+    });
+  }
 
   influencerFactory.getCat(function(response){
     $scope.cat = response.data.result;
@@ -356,7 +407,32 @@ app.controller('mediaCtrl', ['$scope','$rootScope','mediaFactory','$location','a
     angular.forEach(response.data.result, function(element){
       $scope.medias.push(element);
     });
+    $scope.usercsv = [];
   });
+
+  $scope.sync = function(bool, item){
+    if(bool){
+      // add item
+      $scope.usercsv.push(item);
+    } else {
+      // remove item
+      for(var i=0 ; i < $scope.usercsv.length; i++) {
+        if($scope.usercsv[i].id == item.id){
+          $scope.usercsv.splice(i,1);
+        }
+      }      
+    }
+    //console.log($scope.usercsv);
+  };
+
+  //put all data in csv
+  $scope.selectall = function(val){
+    $scope.bool = val;
+    angular.forEach($scope.medias, function(media){
+      $scope.sync(val,{a:media.orgnaization,b:media.name,c:media.loaction,d:media.email,e:media.phone,f:media.designation,g:media.website});
+    });
+  }
+
   mediaFactory.getCat(function(response){
     $scope.cat = response.data.result;
   });
@@ -450,7 +526,31 @@ app.controller('vendorsCtrl', ['$scope','$rootScope','vendorFactory','$location'
     angular.forEach(response.data.result, function(element){
       $scope.vendors.push(element);
     });
+    $scope.usercsv = [];
   });
+
+  $scope.sync = function(bool, item){
+    if(bool){
+      // add item
+      $scope.usercsv.push(item);
+    } else {
+      // remove item
+      for(var i=0 ; i < $scope.usercsv.length; i++) {
+        if($scope.usercsv[i].id == item.id){
+          $scope.usercsv.splice(i,1);
+        }
+      }      
+    }
+    //console.log($scope.usercsv);
+  };
+
+  //put all data in csv
+  $scope.selectall = function(val){
+    $scope.bool = val;
+    angular.forEach($scope.vendors, function(vendor){
+      $scope.sync(val,{a:vendor.orgnaization,b:vendor.name,c:vendor.loaction,d:vendor.address,e:vendor.email,f:vendor.phone,g:vendor.capicity});
+    });
+  }
 
   vendorFactory.getCat(function(response){
     $scope.cat = response.data.result;
