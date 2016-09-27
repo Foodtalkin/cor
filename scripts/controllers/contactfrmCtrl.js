@@ -1,4 +1,4 @@
-app.controller('contactfrmCtrl', ['$scope','$rootScope','$location','authFactory','contactformFactory', function($scope, $rootScope,$location,authFactory, contactformFactory){
+app.controller('contactfrmCtrl', ['$scope','$rootScope','$location','authFactory','contactformFactory','mailFact', function($scope, $rootScope,$location,authFactory, contactformFactory,mailFact){
   $scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
    $scope.loader = true;
@@ -17,7 +17,36 @@ app.controller('contactfrmCtrl', ['$scope','$rootScope','$location','authFactory
 	    });
 	    
 	  }
+    $scope.openmodel = true;
+    $scope.mail = {
+      subject: '',
+      message: '',
+      emailto: ''
+    };
+    $scope.openmodelfun = function(email){
+      $scope.openmodel = false;
+      $scope.mail.emailto = email;
+    }
+    $scope.hidemodel = function() {
+      $scope.openmodel = true;
+      $scope.mail = {
+        subject: '',
+        message: '',
+        emailto: ''
+      };
+    }
 
+    $scope.sendmail = function() {
+      mailFact.sendmail($scope.mail.emailto, $scope.mail.subject, $scope.mail.message, function(response){
+        console.log(response);
+        $scope.openmodel = true;
+        $scope.mail = {
+          subject: '',
+          message: '',
+          emailto: ''
+        };
+      })
+    }
 	 $scope.activity = false;
    //change status
    

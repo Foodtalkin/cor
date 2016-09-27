@@ -120,19 +120,20 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
      })   
   }
   //creating csv code
-    $scope.isChecked = function(id){
-        var match = false;
-        for(var i=0 ; i < $scope.usercsv.length; i++) {
-          if($scope.usercsv[i].id == id){
-            match = true;
-          }
-        }
-        return match;
-    };
+    // $scope.isChecked = function(id){
+    //     var match = false;
+    //     for(var i=0 ; i < $scope.usercsv.length; i++) {
+    //       if($scope.usercsv[i].id == id){
+    //         match = true;
+    //       }
+    //     }
+    //     return match;
+    // };
     $scope.sync = function(bool, item){
       if(bool){
         // add item
         $scope.usercsv.push(item);
+        
       } else {
         // remove item
         for(var i=0 ; i < $scope.usercsv.length; i++) {
@@ -141,7 +142,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
           }
         }      
       }
-      //console.log($scope.usercsv);
+      // console.log($scope.usercsv);
     };
     $scope.selectall = function(val){
       $scope.bool = val;

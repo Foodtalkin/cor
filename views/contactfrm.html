@@ -178,6 +178,7 @@
                     <tr >
                       <th>#</th>
                       <th>status</th>
+                      <th></th>
                       <th ng-hide="togglepurpose">Purpose</th>
                       <th ng-hide="togglename">name/company</th>
                       <th ng-hide="togglephone">Phone</th>
@@ -193,6 +194,9 @@
                       
                       <td>{{ $index +1 }}</td>
                       <td><a class="btn btn-sm btn-addon {{activity  ==true ? 'btn-success' : 'btn-danger'}} m-sm pull-right" ng-click='toggelactive(activity ,contact.id)' ng-init="activity = contact.status">{{activity ==true ? 'done' : 'due'}}</a></td>
+                      <td>
+                        <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodelfun(contact.email)"><i class="glyphicon-envelope i-24" style="font-style: normal;"></i></button>
+                      </td>
                       <td ng-hide="togglepurpose">{{ contact.purpose }}</td>
                       <td ng-hide="togglename">{{ contact.name }}</td>
                       <td ng-hide="togglephone">{{ contact.phone }}</td>
@@ -207,7 +211,40 @@
                 </table>
               </div>
             </div>
+            
 
+            <div class="model" ng-hide="openmodel">
+              <div class="modelcontainer">
+                <form class="form-horizontal p-lg">
+                  <div class="col-md-12">
+                    <h3>Mail To {{mail.emailto}}</h3>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <label for="">Subject</label>
+                        <input type="text" class="form-control" ng-model="mail.subject">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <!-- <input type="text" class="form-control" ng-model="mail.message"> -->
+                        <label for="">Message</label>
+                        <trix-editor angular-trix ng-model="mail.message" class="trix-content" style="background-color: #fff; height: 120px;"></trix-editor>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  <div class="col-sm-12">
+                    <button md-ink-ripple class="btn btn-fw btn-danger pull-right m-r" ng-click="hidemodel()">Cancel</button>
+                    <button md-ink-ripple class="btn btn-fw btn-success pull-right m-r" ng-click="sendmail()">Mail</button>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>

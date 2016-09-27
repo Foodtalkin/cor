@@ -1,4 +1,4 @@
-var app = angular.module('myApp',['ngRoute', 'ngCookies', 'ngAnimate', 'chart.js', 'cloudinary', 'ngFileUpload', 'photoAlbumServices','ngCsv','ngSanitize', 'mdChips']);
+var app = angular.module('myApp',['ngRoute', 'ngCookies', 'ngAnimate', 'chart.js', 'cloudinary', 'ngFileUpload', 'photoAlbumServices','ngCsv','ngSanitize', 'mdChips', 'angularTrix']);
 
 app.run(function($rootScope){
   
