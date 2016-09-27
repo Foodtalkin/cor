@@ -5,5 +5,5 @@
 	$headers = 'From: richa@foodtalkindia.com' . "\r\n" .
 			    'Reply-To: richa@foodtalkindia.com' . "\r\n" ;
 	$sender = mail($to, $subject, $message, $headers);
-	return $sender;
+	echo $sender;
 ?>
