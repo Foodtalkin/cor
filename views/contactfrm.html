@@ -195,7 +195,7 @@
                       <td>{{ $index +1 }}</td>
                       <td><a class="btn btn-sm btn-addon {{activity  ==true ? 'btn-success' : 'btn-danger'}} m-sm pull-right" ng-click='toggelactive(activity ,contact.id)' ng-init="activity = contact.status">{{activity ==true ? 'done' : 'due'}}</a></td>
                       <td>
-                        <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodelfun(contact.email)"><i class="glyphicon-envelope i-24" style="font-style: normal;"></i></button>
+                        <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodelfun(contact.email)"><i class="fa fa-envelope" style="font-style: normal;"></i></button>
                       </td>
                       <td ng-hide="togglepurpose">{{ contact.purpose }}</td>
                       <td ng-hide="togglename">{{ contact.name }}</td>

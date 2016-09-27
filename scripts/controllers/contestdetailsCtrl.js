@@ -1,4 +1,4 @@
-app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory','$rootScope','authFactory','userFactory', function($scope, $routeParams, contestFactory, $rootScope, authFactory, userFactory){
+app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory','$rootScope','authFactory','userFactory', 'mailFact', function($scope, $routeParams, contestFactory, $rootScope, authFactory, userFactory, mailFact){
   $scope.username = $rootScope.username;
   $scope.email =$rootScope.useremail;
   $scope.loader = true;
@@ -282,6 +282,51 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
       }
     })
   };
+
+
+  $scope.openmodel = true;
+    $scope.mail = {
+      subject: '',
+      message: '',
+      emailto: ''
+    };
+    $scope.openmodelfun = function(){
+      $scope.openmodel = false;
+      
+      angular.forEach($scope.usercsv,function(index, el) {
+        // console.log(el);
+        if(el != 0){
+          $scope.mail.emailto += ",";
+        }
+
+        
+        $scope.mail.emailto += index.b;
+        // console.log($scope.mail.emailto);
+      });
+      
+    }
+    $scope.hidemodel = function() {
+      $scope.openmodel = true;
+      $scope.mail = {
+        subject: '',
+        message: '',
+        emailto: ''
+      };
+    }
+
+    $scope.sendmailsaprate = function() {
+      mailFact.sendmailsaprate($scope.mail.emailto, $scope.mail.subject, $scope.mail.message, function(response){
+        console.log(response);
+        $scope.openmodel = true;
+        $scope.mail = {
+          subject: '',
+          message: '',
+          emailto: ''
+        };
+      })
+    }
+
+
   $scope.logout = function(){
     authFactory.logout(function(response) {
      

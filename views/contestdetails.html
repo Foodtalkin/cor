@@ -136,6 +136,10 @@
     <!-- Content -->
       
       <a class="btn btn-lg btn-icon btn-rounded btn-danger csv" ng-csv="usercsv" filename="contestdata.csv" field-separator="," decimal-separator="." title="download csv"><i class="fa fa-download"></i></a>
+      <!-- mail button -->
+      <button class="md-btn md-fab m-b pink waves-effect mail" title="download csv" ng-click="openmodelfun()"><i class="fa fa-envelope "></i></button>
+
+
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
@@ -443,6 +447,47 @@
                       </div>
                     </form>
                     
+              </div>
+            </div>
+
+            <div class="model" ng-hide="openmodel">
+              <div class="modelcontainer">
+                <form class="form-horizontal p-lg">
+                  <div class="col-md-12">
+                    <h3>Mail To {{mail.emailto}}</h3>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <label for="">To</label>
+                        <input type="text" class="form-control" ng-model="mail.emailto">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <label for="">Subject</label>
+                        <input type="text" class="form-control" ng-model="mail.subject">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <!-- <input type="text" class="form-control" ng-model="mail.message"> -->
+                        <label for="">Message</label>
+                        <trix-editor angular-trix ng-model="mail.message" class="trix-content" style="background-color: #fff; height: 120px;"></trix-editor>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  <div class="col-sm-12">
+                    <button md-ink-ripple class="btn btn-fw btn-danger pull-right m-r" ng-click="hidemodel()">Cancel</button>
+                    <button md-ink-ripple class="btn btn-fw btn-success pull-right m-r" ng-click="sendmailsaprate()">Mail</button>
+                  </div>
+                </div>
+                </form>
               </div>
             </div>
           </div>
