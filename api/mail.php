@@ -1,5 +1,5 @@
 <?php
-	$post_date = file_get_contents(“php://input”);
+	$post_date = file_get_contents("php://input");
 	$data = json_decode($post_date);
 
 	$to = $data->email;
