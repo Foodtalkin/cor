@@ -3,7 +3,7 @@ app.factory('mailFact', ['$http', function($http){
 
 	mailFact.sendmail = function(email,subject,message,callback){
 		$http({
-			method: 'GET',
+			method: 'POST',
 	      	url: 'api/mail.php',
 	      	data : {email:email, subject:subject, message:message}
 		}).then(function(response){
