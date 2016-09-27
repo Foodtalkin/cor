@@ -296,7 +296,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
       angular.forEach($scope.usercsv,function(index, el) {
         // console.log(el);
         if(el != 0){
-          $scope.mail.emailto += ", ";
+          $scope.mail.emailto += ",";
         }
         $scope.mail.emailto += index.b;
         // console.log($scope.mail.emailto);
