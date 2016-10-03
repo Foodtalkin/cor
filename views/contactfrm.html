@@ -193,7 +193,7 @@
                     <tr ng-repeat="contact in filtered = (contactdata.data.result.data | filter:search) " ng-click="">
                       
                       <td>{{ $index +1 }}</td>
-                      <td><a class="btn btn-sm btn-addon {{activity  ==true ? 'btn-success' : 'btn-danger'}} m-sm pull-right" ng-click='toggelactive(activity ,contact.id)' ng-init="activity = contact.status">{{activity ==true ? 'done' : 'due'}}</a></td>
+                      <td><a class="btn btn-sm btn-addon {{contact.status  ==true ? 'btn-success' : 'btn-danger'}} m-sm pull-right" ng-click='toggelactive(contact.status ,contact.id)' >{{contact.status ==true ? 'done' : 'due'}}</a></td>
                       <td>
                         <button class="md-btn indigo m-b-sm m-t-sm btn-icon waves-effect" ng-click="openmodelfun(contact.email)"><i class="fa fa-envelope" style="font-style: normal;"></i></button>
                       </td>

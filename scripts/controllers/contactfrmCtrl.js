@@ -47,18 +47,23 @@ app.controller('contactfrmCtrl', ['$scope','$rootScope','$location','authFactory
         };
       })
     }
-	 $scope.activity = false;
+	 // $scope.activity = false;
    //change status
    
    $scope.toggelactive = function(act,id){
-   	console.log(act);
-    $scope.activity = !$scope.activity;
-    console.log($scope.activity);
+   	// console.log(act);
+    if(act == 0){
+      $scope.activity = 1;
+    }else{
+      $scope.activity = 0;
+    }
+    
+    // console.log($scope.activity);
     $scope.changeStauts(id);
   };
   $scope.changeStauts = function(id){
-      //console.log('calling factory');
-      $scope.loader = true;
+      console.log('$scope.activity');
+      // $scope.loader = true;
       contactformFactory.changeStauts(id, $scope.activity, function(response){
         if(response){
             window.location.reload();
@@ -66,7 +71,7 @@ app.controller('contactfrmCtrl', ['$scope','$rootScope','$location','authFactory
         }else{
             console.log("Le wild error");
         }
-        $scope.loader = false;
+        // $scope.loader = false;
       })
     }
   $scope.logout = function(){
