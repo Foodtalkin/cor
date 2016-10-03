@@ -142,6 +142,7 @@ app.controller('contestdetailsCtrl', ['$scope', '$routeParams','contestFactory',
   };
   $scope.selectall = function(val){
     $scope.bool = val;
+    $scope.checkall = val;
     angular.forEach($scope.contestDetails.participants, function(name){
       $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.city,f:angular.toJson(name.pivot.response),g:name.address});
     })

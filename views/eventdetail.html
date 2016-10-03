@@ -428,7 +428,7 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="name in filtered = (eventsDetails.participants | filter:search) " >
-                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.city,g:(name.pivot.response | tojson),h:(name.metadata | tojson),i:name.dob})" ng-model="bool" ng-checked="isChecked(name.id)"></td> 
+                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.city,g:(name.pivot.response | tojson),h:(name.metadata | tojson),i:name.dob})" ng-model="bool" ng-checked="checkall"></td> 
                       <td>{{ $index +1 }}</td>
                       <td><button class="btn btn-sm " ng-class="name.score ? (name.score.isAppUser == 
                       '1' ? 'btn-success' : 'btn-danger') : 'btn-danger'"></button></td>
