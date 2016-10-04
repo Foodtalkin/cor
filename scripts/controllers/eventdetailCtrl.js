@@ -146,6 +146,7 @@ app.controller('eventdetailCtrl', ['$scope','$routeParams','eventFactory','$root
     };
     $scope.selectall = function(val){
       $scope.bool = val;
+      $scope.checkall = val;
       angular.forEach($scope.eventsDetails.participants, function(name){
         $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address,f:name.city,g:angular.toJson(name.pivot.response),h:angular.toJson(name.metadata),i:name.dob});
       })
