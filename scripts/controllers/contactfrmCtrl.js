@@ -37,7 +37,36 @@ app.controller('contactfrmCtrl', ['$scope','$rootScope','$location','authFactory
     }
 
     $scope.sendmail = function() {
-      mailFact.sendmail($scope.mail.emailto, $scope.mail.subject, $scope.mail.message, function(response){
+      var toarr = [];
+      var emailarray = $scope.mail.emailto.split(",");
+      angular.forEach(emailarray, function(index, el){
+        
+        var topush = {
+          "email": index
+        }
+        toarr.push(topush);
+      });
+      
+
+      var tosend = {
+          "personalizations": [
+            {
+              "to": toarr,
+              "subject": $scope.mail.subject
+            }
+          ],
+          "from": {
+            "email": "info@foodtalkindia.com"
+          },
+          "content": [
+            {
+              "type": "text/html",
+              "value": $scope.mail.message
+            }
+          ]
+        }
+      console.log(tosend);
+      mailFact.sendmail(tosend, function(response){
         console.log(response);
         $scope.openmodel = true;
         $scope.mail = {
