@@ -4,9 +4,8 @@ app.factory('mailFact', ['$http', function($http){
 	mailFact.sendmail = function(data,callback){
 		$http({
 			method: 'POST',
-	      	url: 'api/sendgridapi.php',
-	      	data : {mail:data},
-	      	headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+	      	url: 'api/mail.php',
+	      	data : {email:email, subject:subject, message:message}
 		}).then(function(response){
 			callback(response);
 		})
