@@ -8,8 +8,8 @@ app.factory('mailFact', ['$http', function($http){
 	      	data : data,
 	      	headers: {'Authorization': 'Bearer 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',
 				      'Content-Type': 'application/json' , 
-				    'Access-Control-Allow-Origin': '*',
-				    'Access-Control-Allow-Methods': 'POST',
+				    'Access-Control-Allow-Origin': 'http://batcave.foodtalk.in',
+				    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
 				    'Access-Control-Allow-Headers':'X-Requested-With'}
 		}).then(function(response){
 			callback(response);
