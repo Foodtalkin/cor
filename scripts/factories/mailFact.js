@@ -1,16 +1,11 @@
 app.factory('mailFact', ['$http', function($http){
 	var mailFact = {};
 
-	mailFact.sendmail = function(data,callback){
+	mailFact.sendmail = function(email,subject,message,callback){
 		$http({
 			method: 'POST',
-	      	url: 'https://api.sendgrid.com/v3/mail/send',
-	      	data : data,
-	      	headers: {'Authorization': 'Bearer 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',
-				      'Content-Type': 'application/json' , 
-				    'Access-Control-Allow-Origin': 'http://batcave.foodtalk.in',
-				    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-				    'Access-Control-Allow-Headers':'X-Requested-With'}
+	      	url: 'api/mail.php',
+	      	data : {email:email, subject:subject, message:message}
 		}).then(function(response){
 			callback(response);
 		})
