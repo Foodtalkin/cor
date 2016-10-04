@@ -1,7 +1,7 @@
 app.factory('mailFact', ['$http', function($http){
 	var mailFact = {};
 
-	mailFact.sendmail = function(data,callback){
+	mailFact.sendmail = function(email,subject,message,callback){
 		$http({
 			method: 'POST',
 	      	url: 'api/mail.php',
