@@ -190,6 +190,7 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
   //put all data in csv
   $scope.selectall = function(val){
     $scope.bool = val;
+    $scope.checkall = val;
     angular.forEach($scope.bloggers, function(blogger){
       $scope.sync(val,{a:blogger.blog,b:blogger.name,c:blogger.loaction,d:blogger.email,e:blogger.phone,f:blogger.designation,g:blogger.website});
     });
@@ -310,6 +311,7 @@ app.controller('influencerCtrl', ['$scope','$rootScope','influencerFactory','$lo
   //put all data in csv
   $scope.selectall = function(val){
     $scope.bool = val;
+    $scope.checkall = val;
     angular.forEach($scope.influencer, function(influencer){
       $scope.sync(val,{a:influencer.name,b:influencer.loaction,c:influencer.address,d:influencer.email,e:influencer.phone});
     });
@@ -428,6 +430,7 @@ app.controller('mediaCtrl', ['$scope','$rootScope','mediaFactory','$location','a
   //put all data in csv
   $scope.selectall = function(val){
     $scope.bool = val;
+    $scope.checkall = val;
     angular.forEach($scope.medias, function(media){
       $scope.sync(val,{a:media.orgnaization,b:media.name,c:media.loaction,d:media.email,e:media.phone,f:media.designation,g:media.website});
     });
@@ -547,6 +550,7 @@ app.controller('vendorsCtrl', ['$scope','$rootScope','vendorFactory','$location'
   //put all data in csv
   $scope.selectall = function(val){
     $scope.bool = val;
+    $scope.checkall = val;
     angular.forEach($scope.vendors, function(vendor){
       $scope.sync(val,{a:vendor.orgnaization,b:vendor.name,c:vendor.loaction,d:vendor.address,e:vendor.email,f:vendor.phone,g:vendor.capicity});
     });

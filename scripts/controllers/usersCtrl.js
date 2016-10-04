@@ -27,6 +27,7 @@ app.controller('usersCtrl', ['$scope','userFactory','$rootScope','authFactory', 
   //put all data in csv
   $scope.selectall = function(val){
     $scope.bool = val;
+    $scope.checkall = val;
     angular.forEach($scope.users, function(name){
       $scope.sync(val,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.address});
     });

@@ -274,7 +274,7 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="influencer in filtered = (influencer | filter:search) " ng-click="">
-                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:influencer.name,b:influencer.loaction,c:influencer.address,d:influencer.email,e:influencer.phone})" ng-model="bool" ng-checked="isChecked(influencer.id)"></td>
+                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:influencer.name,b:influencer.loaction,c:influencer.address,d:influencer.email,e:influencer.phone})" ng-model="bool" ng-checked="checkall"></td>
                       <td>{{ $index +1 }}</td>
                       <td class="no-padding">
                         <button class="md-btn red m-b-sm m-t-sm btn-icon waves-effect" ng-click="opendeletemodel(influencer.id)"><i class="mdi-content-clear i-24"></i></button>

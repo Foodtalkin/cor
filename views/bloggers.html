@@ -296,7 +296,7 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="blogger in filtered = (bloggers | filter:search) " ng-click="">
-                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:blogger.blog,b:blogger.name,c:blogger.loaction,d:blogger.email,e:blogger.phone,f:blogger.designation,g:blogger.website})" ng-model="bool" ng-checked="isChecked(blogger.id)"></td>
+                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:blogger.blog,b:blogger.name,c:blogger.loaction,d:blogger.email,e:blogger.phone,f:blogger.designation,g:blogger.website})" ng-model="bool" ng-checked="checkall"></td>
                       <td>{{ $index +1 }}</td>
                       <td class="no-padding">
                         <button class="md-btn red m-b-sm m-t-sm btn-icon waves-effect" ng-click="opendeletemodel(blogger.id)"><i class="mdi-content-clear i-24"></i></button>
