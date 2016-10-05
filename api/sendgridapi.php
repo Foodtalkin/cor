@@ -1,4 +1,5 @@
 <?php
+  header('Access-Control-Allow-Origin: *');  
   $post_date = file_get_contents("php://input");
   $data = json_decode($post_date);
 
@@ -32,3 +33,4 @@ if ($err) {
 } else {
   echo $response;
 }
+?>
