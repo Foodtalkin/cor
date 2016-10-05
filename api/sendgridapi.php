@@ -1,4 +1,5 @@
 <?php
+  ini_set('display_errors', 1);
   $post_date = file_get_contents("php://input");
   $data = json_decode($post_date);
 
