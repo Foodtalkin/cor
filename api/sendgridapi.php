@@ -8,6 +8,7 @@ $curl = curl_init();
 
 curl_setopt_array($curl, array(
   CURLOPT_URL => "https://api.sendgrid.com/v3/mail/send",
+  CURLOPT_POST => true,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => $mbody,
   CURLOPT_HTTPHEADER => array(
