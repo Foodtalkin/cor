@@ -1,6 +1,6 @@
 app.factory('urlFactory', [ function(){
   var url = {};
-  var baseurl = "http://api.foodtalk.in/";
+  var baseurl = "http://stg-api.foodtalk.in/";
   url.dashboard = baseurl+"api/dashboard/batcave";
   url.login= baseurl+"login";
   url.logout = baseurl+"logout";
