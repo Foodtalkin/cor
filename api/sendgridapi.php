@@ -6,18 +6,27 @@
   $mbody = $data->mail;
   
 $curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.sendgrid.com/v3/mail/send",
-  CURLOPT_POST => true,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => $mbody,
-  CURLOPT_HTTPHEADER => array(
+curl_setopt($curl, CURLOPT_URL, "https://api.sendgrid.com/v3/mail/send");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $mbody);
+curl_setopt($curl, CURLOPT_HEADER, array(
     "authorization: Bearer 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",
     "cache-control: no-cache",
     "content-type: application/json"
-  ),
-));
+  ));
+
+
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "https://api.sendgrid.com/v3/mail/send",
+//   CURLOPT_POST => true,
+//   CURLOPT_CUSTOMREQUEST => "POST",
+//   CURLOPT_POSTFIELDS => $mbody,
+//   CURLOPT_HTTPHEADER => array(
+//     "authorization: Bearer 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",
+//     "cache-control: no-cache",
+//     "content-type: application/json"
+//   ),
+// ));
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
