@@ -239,6 +239,38 @@
                     </div>
                   </div>
                 </div> 
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">facebook</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="facebook">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Facebook Page</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="facebook_page">
+                    </div>
+                  </div>
+                </div>  
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">instagram</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="instagram">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">twitter</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" ng-model="twitter">
+                    </div>
+                  </div>
+                </div>  
                 <div class="form-group">
                   <div class="col-sm-12">
                     <button md-ink-ripple class="btn btn-fw btn-success pull-right" ng-click="createblogger()">Submit</button>
@@ -263,6 +295,11 @@
                 <button class="btn btn-sm m-xs btn-default {{toggleCategory==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleCategory = !(toggleCategory)">Category</button>
                 <button class="btn btn-sm m-xs btn-default {{toggledesignation==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggledesignation = !(toggledesignation)">designation</button>
                 <button class="btn btn-sm m-xs btn-default {{togglewebsite==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglewebsite = !(togglewebsite)">website</button>
+
+                <button class="btn btn-sm m-xs btn-default {{togglefacebook==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglefacebook = !(togglefacebook)">facebook</button>
+                <button class="btn btn-sm m-xs btn-default {{togglefacebookpage==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglefacebookpage = !(togglefacebookpage)">facebook page</button>
+                <button class="btn btn-sm m-xs btn-default {{toggleinstagram==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleinstagram = !(toggleinstagram)">Instagram</button>
+                <button class="btn btn-sm m-xs btn-default {{toggletwitter==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggletwitter = !(toggletwitter)">twitter</button>
               </div>
               <div class="table-responsive">
                 <div>
@@ -292,6 +329,10 @@
                       <th ng-hide="toggleCategory">Category</th>
                       <th ng-hide="toggledesignation">designation</th>
                       <th ng-hide="togglewebsite">website</th>
+                      <th ng-hide="togglefacebook">facebook</th>
+                      <th ng-hide="togglefacebookpage">facebookpage</th>
+                      <th ng-hide="toggleinstagram">instagram</th>
+                      <th ng-hide="toggletwitter">twitter</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -312,6 +353,10 @@
                       <td ng-hide="toggleCategory">{{ blogger.category.name }}</td>
                       <td ng-hide="toggledesignation">{{ blogger.designation }}</td>
                       <td ng-hide="togglewebsite"> <a href="https://{{ blogger.website }}" target="_blank">{{ blogger.website }}</a></td>
+                      <td ng-hide="togglefacebook">{{ blogger.facebook }}</td>
+                      <td ng-hide="togglefacebookpage">{{ blogger.facebook_page }}</td>
+                      <td ng-hide="toggleinstagram">{{ blogger.instagram }}</td>
+                      <td ng-hide="toggletwitter">{{ blogger.twitter }}</td>
                       
                     </tr>
                   </tbody>
@@ -390,6 +435,39 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">facebook</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" ng-model="bloggerdata.facebook">
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">instagram</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" ng-model="bloggerdata.instagram">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">twitter</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" ng-model="bloggerdata.twitter">
+                    </div>
+                  </div>
+                </div>  
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">FB Page</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" ng-model="bloggerdata.facebook_page">
+                    </div>
+                  </div>
+                </div>  
                   <!-- <div class="col-md-6 col-sm-12">
                     <div class="form-group">
                       <label class="col-sm-3 control-label">category</label>

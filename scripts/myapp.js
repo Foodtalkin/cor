@@ -170,6 +170,7 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
       $scope.bloggers.push(element);
     });
     $scope.usercsv = [];
+    
   });
 
   $scope.sync = function(bool, item){
@@ -222,7 +223,7 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
   }
 
   $scope.createblogger = function(){
-    bloggerFactory.createNewBloggers($scope.blog, $scope.vname, $scope.location1, $scope.email, $scope.phone, $scope.category, $scope.designation, $scope.website, function(response){
+    bloggerFactory.createNewBloggers($scope.blog, $scope.vname, $scope.location1, $scope.email, $scope.phone, $scope.category, $scope.designation, $scope.website, $scope.facebook, $scope.facebook_page, $scope.instagram, $scope.twitter, function(response){
       if (response) {
         window.location.reload();
       } else{
@@ -245,7 +246,7 @@ app.controller('bloggersCtrl', ['$scope','$rootScope','bloggerFactory','$locatio
   }
 
   $scope.editdetail = function(){
-    bloggerFactory.editBlogger($scope.bloggerdata.id, $scope.bloggerdata.blog, $scope.bloggerdata.name, $scope.bloggerdata.loaction, $scope.bloggerdata.email, $scope.bloggerdata.phone,  $scope.bloggerdata.designation, $scope.bloggerdata.website, function(response){
+    bloggerFactory.editBlogger($scope.bloggerdata.id, $scope.bloggerdata.blog, $scope.bloggerdata.name, $scope.bloggerdata.loaction, $scope.bloggerdata.email, $scope.bloggerdata.phone,  $scope.bloggerdata.designation, $scope.bloggerdata.website, $scope.bloggerdata.facebook, $scope.bloggerdata.facebook_page, $scope.bloggerdata.instagram, $scope.bloggerdata.twitter, function(response){
       window.location.reload();
     });
   }
@@ -779,11 +780,11 @@ app.factory('bloggerFactory', ['$http','urlFactory', function($http, urlFactory)
     });
   }
 
-  bloggerFactory.createNewBloggers = function(blog, vname, location, email, phone, category, designation, website, callback){
+  bloggerFactory.createNewBloggers = function(blog, vname, location, email, phone, category, designation, website, facebook, facebook_page, instagram, twitter, callback){
     $http({
           method: 'POST',
           url: urlFactory.bloggers,
-          data : {blog:blog, name:vname, loaction:location, email:email, phone:phone, vendors_category_id:category, designation:designation, website:website}
+          data : {blog:blog, name:vname, loaction:location, email:email, phone:phone, vendors_category_id:category, designation:designation, website:website, facebook:facebook, facebook_page:facebook_page, instagram:instagram, twitter:twitter}
         }).then(function (response) {
             if(response.data.message === "Success"){
                 callback(true);
@@ -797,11 +798,11 @@ app.factory('bloggerFactory', ['$http','urlFactory', function($http, urlFactory)
           });
   }
 
-  bloggerFactory.editBlogger = function(id,blog, vname, location, email, phone, designation, website, callback){
+  bloggerFactory.editBlogger = function(id,blog, vname, location, email, phone, designation, website, facebook, facebook_page, instagram, twitter, callback){
     $http({
           method: 'PUT',
           url: urlFactory.bloggers+"/"+id,
-          data : {blog:blog, name:vname, loaction:location, email:email, phone:phone, designation:designation, website:website}
+          data : {blog:blog, name:vname, loaction:location, email:email, phone:phone, designation:designation, website:website, facebook:facebook, facebook_page:facebook_page, instagram:instagram, twitter:twitter}
         }).then(function (response) {
             if(response.data.message === "Success"){
                 callback(true);
