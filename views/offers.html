@@ -225,6 +225,16 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <div class="col-md-12">
+                            <label for="">Card button Name</label>
+                          </div>
+                          <div class="col-md-12">
+                            <input type="text" class="form-control" ng-model="store.cardbtn">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="col-md-12">
                             <label for="">Form button Name</label>
                           </div>
                           <div class="col-md-12">
@@ -232,7 +242,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="">Dates to run the offer</label>
@@ -259,7 +269,46 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="">Offer Creative</label>
+                            <label for="">Offer card Creative</label>
+                          </div>
+                          <div class="col-md-12">
+                            <div id="direct_upload" 
+                              ngf-drop="uploadFiles($files)"
+                              ngf-drag-over-class="dragOverClass($event)"
+                              ng-model="files"
+                              ng-multiple="true">
+                              <div class="col-md-6">
+                                <form>  
+                                  <div class="form_line">
+                                      <!-- <label>Image:</label> -->
+                                      <div class="form_controls">
+                                          <div class="upload_button_holder">
+                                              <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" multiple title="upload" resetOnClick="true" >Upload</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="file" ng-repeat="file in files">
+                                  <p>{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
+                                  <div class="status">{{file.status}}</div>
+                                  
+                                  <div class="progress-bar">
+                                    <div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label for="">Offer Details page Creative</label>
                           </div>
                           <div class="col-md-12">
                             <div id="direct_upload" 
