@@ -1,4 +1,6 @@
-var app = angular.module('myApp',['ngRoute', 'ngCookies', 'ngAnimate', 'chart.js', 'cloudinary', 'ngFileUpload', 'photoAlbumServices','ngCsv','ngSanitize', 'mdChips', 'angularTrix']);
+var app = angular.module('myApp',['ngRoute', 'ngCookies', 'ngAnimate',
+ 'chart.js', 'cloudinary', 'ngFileUpload', 'photoAlbumServices','ngCsv','ngSanitize',
+  'mdChips', 'angularTrix','photoAlbumAnimations','photoAlbumServices']);
 
 app.run(function($rootScope){
   
@@ -142,7 +144,13 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
       }).
-
+  when('/offers',{
+        templateUrl: 'views/offers.html',
+        controller: 'offersCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
 	otherwise({
         redirectTo: '/login'
       });

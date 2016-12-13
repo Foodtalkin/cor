@@ -17,10 +17,11 @@
   <link rel="stylesheet" href="styles/mdchips.css" type="text/css" />
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.css">
-
+  
+  <link rel="stylesheet" href="styles/xmas.css" type="text/css" />
   
 </head>
-<body ng-app="myApp" ng-cloak>
+<body ng-app="myApp" ng-cloak class="snow">
   <div class="app"  ng-view>
   <!-- Body Content -->
   </div>
@@ -35,10 +36,10 @@
   <script src="libs/jquery/waves/dist/waves.js"></script>
   <script src="libs/angular/ng-csv.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
-  <script src="libs/cloud/angular.cloudinary.js"></script>
+  <!-- <script src="libs/cloud/angular.cloudinary.js"></script>
   <script src="libs/cloud/jquery.cloudinary.js"></script>
   <script src="libs/cloud/ng-file-upload-shim.js"></script>
-  <script src="libs/cloud/ng-file-upload.js"></script>
+  <script src="libs/cloud/ng-file-upload.js"></script> -->
   <script src="scripts/myapp.js"></script>
   <script src="scripts/ui-load.js"></script>
   <script src="scripts/ui-jp.config.js"></script>
@@ -89,6 +90,21 @@
   <script src="scripts/controllers/showcontactsCtrl.js"></script>
   <script src="scripts/controllers/contactfrmCtrl.js"></script>
   <script src="scripts/controllers/appdashboardCtrl.js"></script>
+  <script src="scripts/controllers/offersCtrl.js"></script>
+
+
+
+
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/cloudinary-core/cloudinary-core.js"></script>
+  <!-- angular file upload -->
+  <script src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
+  <!-- cloudinary angular plugin -->
+  <script src="bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
+  <!-- angular file upload -->
+  <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/controllers.js"></script>
   <script>console.log(url1);</script>
 </body>
 </html>

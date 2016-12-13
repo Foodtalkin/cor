@@ -1,0 +1,13 @@
+.xmasbglogin{
+	background-image: url(../images/giphy.gif);
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	width: 100vw;
+	height: 100vh;
+	background-size: 15%;
+
+}
+.snow{
+	background-image: url(../images/snow.gif)
+}
+
