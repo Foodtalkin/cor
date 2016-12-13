@@ -29,6 +29,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
             data.context = {custom: {photo: $scope.title}};
             file.result = data;
             $scope.store.cover = file.result.url;
+            // console.log($scope.store.cover);
             $rootScope.photos.push(data);
           }).error(function (data, status, headers, config) {
             file.result = data;
@@ -37,6 +38,11 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       });
     };
     //});
+
+
+    
+
+    
 
     /* Modify the look and fill of the dropzone when files are being dragged over it */
     $scope.dragOverClass = function($event) {
