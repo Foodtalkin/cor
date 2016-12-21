@@ -60,12 +60,12 @@
                         <span class="font-normal">Contest</span>
                       </a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a md-ink-ripple href="#offers" class="active-menu">
                         <i class="icon fa fa-tags i-20"></i>
                         <span class="font-normal">offers</span>
                       </a>
-                    </li>
+                    </li> -->
                     <li>
                       <a md-ink-ripple href="#news">
                         <i class="fa fa-newspaper-o icon " aria-hidden="true"></i>
@@ -150,13 +150,19 @@
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
-
             <div class="panel">
-              <div class="panel-heading" ng-click="(formshow) = !(formshow)">
-                <i class="fa fa-plus"></i>
-                &nbsp; <strong>Create new Offer</strong>
+              <div class="panel-body">
+                <a class="btn btn-sm btn-addon btn-info m-sm" href="#offers"><i class="fa  fa-chevron-left"></i>Back</a>
+                <a class="btn btn-sm btn-addon btn-primary m-sm pull-right" ng-click="(formshow) = !(formshow)"><i class="fa fa-edit"></i>Edit</a>
+                <a class="btn btn-sm btn-addon btn-success m-sm pull-right" ng-click="(tagsshow) = !(tagsshow)"><i class="fa fa-edit"></i>add tags</a>
+                <a class="btn btn-sm btn-addon {{activity==true ? 'btn-danger' : 'btn-dark'}} m-sm pull-right" ng-click='toggelactive(); '><i class="fa {{activity==true ? 'fa-close' : 'fa-rocket'}}"></i>{{activity==true ? 'close' : 'active'}}</a>
               </div>
-              <div ng-show="formshow" style="padding: 30px;">
+            </div>
+            <div class="panel" ng-show="formshow">
+              <div class="panel-heading">
+                <strong>Edit Offer</strong>
+              </div>
+              <div style="padding: 30px;">
                 <form action="" class="form-horizontal" >
                   <!-- type -->
                   <div class="row">
@@ -314,7 +320,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="">Offer Details Page Creative <span><strong>(image size : 750 X 278)</strong></span></label>
+                            <label for="">Offer Details Page Creative span><strong>(image size : 750 X 278)</strong></span></label>
                           </div>
                           <div class="col-md-12">
                             <div id="direct_upload" 
@@ -481,13 +487,30 @@
                     </div>
                   </div>
                 </form>
-              </div>
-                
+              </div>   
             </div>
-
+            <div class="panel panel-card col-xs-12 col-sm-12 col-md-12 p" ng-show="tagsshow">
+              <div class="col-md-12 col-sm-12">
+                <h5>Add Tags to Contest</h5>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <!-- <md-chips collection='itemsCollection' ng-model='selectedtags' md-title='title' md-thumbnail='thumbnailUrl' md-subtitle='subtitle' disabled='false' unique='true' style=""/> -->
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-sm-12">
+              <button class="btn btn-sm btn-addon btn-info m-sm pull-right" ng-click="savetags()">Add Tag</button>
+              
+              </div>
+              <div class="col-sm-12">
+                {{selectedtags.title}}
+              </div>
+            </div>
+            <div class="panel">
+              graph
+            </div>
             <div class="panel">
               <div class="panel-heading">
-                <strong>Offer List</strong>
+                <h4>Pizza Express buy 1 get 1 <span class="right">Valid till : 30/12/2016</span></h4>
               </div>
               <div class="row">
                 <div class="col-md-12">
@@ -503,23 +526,21 @@
                     <table class="table table-hover b-t b-b bordert">
                       <thead>
                         <tr >
-                          <th></th>
+                          <!-- <th></th> -->
                           <th>#</th>
-                          <th>Offer ID</th>
                           <th >Name</th>
-                          <th>offer redeemed</th>
+                          <th>redeem via</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <!-- <tr ng-repeat="contest in filtered = (contest.data.result.data | filter:search) " ng-click=""> -->
                         <tr>
-                          <td><span class="online  sttt"></span></td>
+                          <!-- <td><span class="online  sttt"></span></td> -->
                           <td><!-- {{ $index +1 }} -->1</td>
-                          <td><!-- {{ contest.id }} -->123</td>
-                          <td><!-- {{ contest.name }} -->offer name</td>
-                          <td><!-- {{ contest.start_date }} -->23</td>
-                          <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#offers/1">Details</a></td>
+                          <td><!-- {{ contest.name }} -->user name</td>
+                          <td><!-- {{ contest.start_date }} -->points</td>
+                          <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#user/1200">Details</a></td>
                         </tr>
                       </tbody>
                       

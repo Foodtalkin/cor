@@ -151,6 +151,20 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
       }).
+  when('/offers/1',{
+        templateUrl: 'views/offeropen.html',
+        controller: 'offersCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
+  when('/news',{
+        templateUrl: 'views/news.html',
+        controller: 'newsCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+      }).
 	otherwise({
         redirectTo: '/login'
       });

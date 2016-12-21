@@ -66,6 +66,12 @@
                         <span class="font-normal">offers</span>
                       </a>
                     </li> -->
+                    <li>
+                      <a md-ink-ripple href="#news">
+                        <i class="fa fa-newspaper-o icon " aria-hidden="true"></i>
+                        <span class="font-normal">News</span>
+                      </a>
+                    </li>
                     <!-- <li>
                       <a md-ink-ripple href="#contacts">
                         <i class="icon mdi-action-extension i-20"></i>
@@ -277,7 +283,7 @@
                     <tr ng-repeat="name in filtered = (users  | filter:searchkey) " >
                       <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:name.name,b:name.email,c:name.contact,d:name.instagram_handle,e:name.city,f:name.address})" ng-model="bool" ng-checked="checkall"></td> 
                       <td>{{ $index +1 }}</td>
-                      <td><button class="btn btn-sm " ng-class="name.score ? (name.score.isAppUser == 
+                      <td><button class="btn btn-sm" ng-class="name.score ? (name.score.isAppUser == 
                       '1' ? 'btn-success' : 'btn-danger') : 'btn-danger'"></button></td>
                       <td ng-hide="togglename">{{ name.name }}</td>
                       <td>{{ name.score.totalPoints}}</td>
