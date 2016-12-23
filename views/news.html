@@ -385,8 +385,8 @@
                           <td>{{ newsl.title }}</td>
                           <td>{{ newsl.source }}</td>
                           <td>{{ newsl.sourceUrl }}</td>
-                          <td><a class="btn {{newsl.isDisabled ==true ? 'btn-danger' : 'btn-dark'}} btn-sm" ng-click='activeNews(newsl.id,newsl.isDisabled);'>{{newsl.isDisabled == '0' ? 'Hide News' : 'Make Live'}}</a>
-                          <a class="btn btn-primary btn-sm" ng-click="openeditnews(newsl);">Edit</a>
+                          <td><a class="btn {{newsl.isDisabled ==true ? 'btn-danger' : 'btn-dark'}} btn-sm" style="margin: 5px;" ng-click='activeNews(newsl.id,newsl.isDisabled);'>{{newsl.isDisabled == '0' ? 'Hide News' : 'Make Live'}}</a>
+                          <a class="btn btn-primary btn-sm" style="margin: 5px;" ng-click="openeditnews(newsl);">Edit</a>
                           </td>
                         </tr>
                       </tbody>
