@@ -38,7 +38,7 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
     }
 
     $scope.editnews = function(){
-      newsFactory.editNews($scope.newstoedit.id, $scope.newstoedit.title, $scope.newstoedit.text, $scope.newstoedit.source, $scope.newstoedit.sourceUrl, function(response){
+      newsFactory.editNews($scope.newstoedit.id, $scope.newstoedit.title, $scope.newstoedit.description, $scope.newstoedit.source, $scope.newstoedit.sourceUrl, function(response){
         if(response){
           window.location.reload();
         }else{
