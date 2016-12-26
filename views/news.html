@@ -166,7 +166,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="">News Title <span><strong>limit 60 char.</strong></span></label>
+                            <label for="">News Title <span><strong>limit 60 char.</strong> ({{60-news.title.length}})</span></label>
                           </div>
                           <div class="col-md-12">
                             <input type="text" class="form-control" ng-model="news.title" maxlength="60">
@@ -187,7 +187,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="">Source <span><strong>limit 40 char</strong></span></label>
+                            <label for="">Source <span><strong>limit 40 char</strong> ({{40-news.source.length}})</span></label>
                           </div>
                           <div class="col-md-12">
                             <input type="text" class="form-control" maxlength="40" ng-model="news.source">
@@ -207,7 +207,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="">Text <span><strong>limit 300 char.</strong></span></label>
+                            <label for="">Text <span><strong>limit 300 char.</strong> ({{300-news.text.length}})</span></label>
                           </div>
                           <div class="col-md-12">
                             <!-- <trix-editor angular-trix ng-model="store.shortdesc" class="trix-content" style="background-color: #fff; height: 80px;"></trix-editor> -->
@@ -288,7 +288,7 @@
                           <div class="col-md-12">
                             <div class="form-group">
                               <div class="col-md-12">
-                                <label for="">News Title <span><strong>limit 60 char.</strong></span></label>
+                                <label for="">News Title <span><strong>limit 60 char.</strong> ({{60-newstoedit.title.length}})</span></label>
                               </div>
                               <div class="col-md-12">
                                 <input type="text" class="form-control" maxlength="60" ng-model="newstoedit.title">
@@ -309,7 +309,7 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <div class="col-md-12">
-                                <label for="">Source <span><strong>limit 40 char</strong></span></label>
+                                <label for="">Source <span><strong>limit 40 char</strong></span> ({{40-newstoedit.source.length}})</label>
                               </div>
                               <div class="col-md-12">
                                 <input type="text" class="form-control" maxlength="40" ng-model="newstoedit.source">
@@ -329,7 +329,7 @@
                           <div class="col-md-12">
                             <div class="form-group">
                               <div class="col-md-12">
-                                <label for="">Text <span><strong>limit 300 char.</strong></span></label>
+                                <label for="">Text <span><strong>limit 300 char.</strong></span> ({{300-newstoedit.description.length}})</label>
                               </div>
                               <div class="col-md-12">
                                 <!-- <trix-editor angular-trix ng-model="store.shortdesc" class="trix-content" style="background-color: #fff; height: 80px;"></trix-editor> -->
