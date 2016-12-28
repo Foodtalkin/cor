@@ -389,6 +389,7 @@
               <button class="btn btn-sm m-xs btn-default {{togglecity==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglecity = !(togglecity)">city</button>
               <button class="btn btn-sm m-xs btn-default {{togglereponse==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglereponse = !(togglereponse)">response</button>
               <button class="btn btn-sm m-xs btn-default {{togglesource==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglesource = !(togglesource)">source</button>
+              <button class="btn btn-sm m-xs btn-default {{togglegender==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglegender = !(togglegender)">gender</button>
             </div>
             <div class="table-responsive">
 
@@ -410,6 +411,7 @@
                       <th>App</th>
                       <th  ng-hide="togglename">Name
                       </th>
+                      <th ng-hide="togglegender">gender</th>
                       <th ng-hide="togglepoint">Points</th>
                       <th ng-hide="toggleemail"> Email</th>
                       <th ng-hide="togglephone">Phone</th>
@@ -430,6 +432,7 @@
                       <td><button class="btn btn-sm " ng-class="name.score ? (name.score.isAppUser == 
                       '1' ? 'btn-success' : 'btn-danger') : 'btn-danger'"></button></td>
                       <td ng-hide="togglename"><a href="https://www.facebook.com/{{name.facebook_id}}" target="_Blank">{{ name.name }}</a></td>
+                      <td ng-hide="togglegender">{{ name.gender}}</td>
                       <td ng-hide="togglepoint">{{ name.score.totalPoints}}</td>
                       <td ng-hide="toggleemail">{{ name.email}}</td>
                       <td ng-hide="togglephone">{{ name.contact}}</td>
