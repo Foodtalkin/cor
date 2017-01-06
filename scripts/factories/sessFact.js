@@ -11,6 +11,14 @@ app.factory('sessionInjector', ['$cookies', function($cookies) {
 
             }else if(config.url == 'http://52.74.136.146/index.php/service/news/upsert'){
 
+            }else if(config.url == 'http://52.74.136.146/index.php/service/storeOffer/add'){
+
+            }else if(config.url == 'http://52.74.136.146/index.php/service/storeOffer/get'){
+
+            }else if(config.url == 'http://52.74.136.146/index.php/service/storeOffer/addCoupon'){
+
+            }else if(config.url == 'http://52.74.136.146/index.php/service/storeOffer/list'){
+
             }else{
                 if (session) {
                     config.headers['APPSESSID'] = session;

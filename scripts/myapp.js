@@ -151,9 +151,9 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
       }).
-  when('/offers/1',{
+  when('/offers/:offerid',{
         templateUrl: 'views/offeropen.html',
-        controller: 'offersCtrl',
+        controller: 'offersopenCtrl',
         resolve: {
                     factory: checkRouting
                 }

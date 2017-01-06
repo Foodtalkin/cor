@@ -55,6 +55,7 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
       $scope.files = files;
       if (!$scope.files) return;
       angular.forEach(files, function(file){
+
         if (file && !file.$error) {
           file.upload = $upload.upload({
             url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",

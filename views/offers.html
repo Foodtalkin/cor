@@ -72,12 +72,12 @@
                         <span class="font-normal">News</span>
                       </a>
                     </li>
-                    <!-- <li>
+                    <li>
                       <a md-ink-ripple href="#contacts">
                         <i class="icon mdi-action-extension i-20"></i>
                         <span class="font-normal">Contacts</span>
                       </a>
-                    </li> -->
+                    </li>
                     <li>
                       <a md-ink-ripple href="#contactfrm">
                         <i class="icon fa-phone fa i-20"></i>
@@ -182,8 +182,8 @@
                           </div>
                           <div class="col-md-12">
                             <select name="" id="" class="form-control" ng-model="store.subtype">
-                              <option value="single">Single Code</option>
-                              <option value="unique">Unique Code</option>
+                              <option value="SINGLE_CODE">Single Code</option>
+                              <option value="UNIQUE_CODE">Unique Code</option>
                             </select>
                           </div>
                         </div>
@@ -202,7 +202,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="">Name</label>
+                            <label for="">Title</label>
                           </div>
                           <div class="col-md-12">
                             <input type="text" class="form-control" ng-model="store.name">
@@ -256,11 +256,11 @@
                           </div>
                           <div class="col-md-6">
                             <label for=""><small>Start Date</small></label>
-                            <input type="date" class="form-control" ng-model="store.sdate">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="store.sdate">
                           </div>
                           <div class="col-md-6">
                             <label for=""><small>End Date</small></label>
-                            <input type="date" class="form-control" ng-model="store.edate">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="store.edate">
                           </div>
                         </div>
                       </div>
@@ -356,7 +356,7 @@
                           </div>
                           <div class="col-md-12">
                             <!-- <trix-editor angular-trix ng-model="store.shortdesc" class="trix-content" style="background-color: #fff; height: 80px;"></trix-editor> -->
-                            <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="60"></textarea>
+                            <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="60" ng-model="store.shortdesc"></textarea>
                           </div>
                         </div>
                       </div>
@@ -367,7 +367,7 @@
                           </div>
                           <div class="col-md-12">
                             <!-- <trix-editor angular-trix ng-model="store.longdesc" class="trix-content" style="background-color: #fff; height: 120px;"></trix-editor> -->
-                            <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="140"></textarea>
+                            <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="140" ng-model="store.longdesc"></textarea>
                           </div>
                         </div>
                       </div>
@@ -385,7 +385,7 @@
                             <label for="">Valid Till </label>
                           </div>
                           <div class="col-md-12" style="margin-bottom: 15px;">
-                            <input type="date" class="form-control" ng-model="store.validtill">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="store.validtill">
                           </div>
                         </div>
                       </div>
@@ -433,10 +433,10 @@
                           </div>
                           <div class="col-md-12" style="margin-bottom: 15px;">
                             <select name="" id="" class="form-control" ng-model="store.methodofpayment">
-                              <option value="both">Both points and Online</option>
-                              <option value="points">Via Points</option>
-                              <option value="online">Via Online Payment</option>
-                              <option value="free">Free</option>
+                              <option value="BOTH">Both points and Online</option>
+                              <option value="POINT">Via Points</option>
+                              <option value="ONLINE">Via Online Payment</option>
+                              <option value="FREE">Free</option>
                             </select>
                           </div>
                         </div>
@@ -472,11 +472,25 @@
                         </div>
                       </div>
                   </div>
-
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Thankyou page</h4>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div class="col-md-12">
+                          <label for="">ThankYou message</label>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom: 15px;">
+                          <input type="text" class="form-control" ng-model="store.thankyoutext">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-12">
-                        <button md-ink-ripple class="btn btn-fw btn-success" style="margin-top:20px;">Submit</button>
+                        <button md-ink-ripple class="btn btn-fw btn-success" style="margin-top:20px;" ng-click="createOffer()">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -488,6 +502,19 @@
             <div class="panel">
               <div class="panel-heading">
                 <strong>Offer List</strong>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                    <button class="btn btn-sm btn-default waves-effect left" ng-click="getofferpage(curruntpage-1)" ng-show="prevshow"><i class="fa fa-2x fa-angle-double-left" ></i></button>
+                  </div>
+                  <div class="col-md-4 text-center">
+                    <h5>Page {{curruntpage}}</h5>
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-sm btn-default waves-effect right" ng-click="getofferpage(curruntpage+1)"><i class="fa fa-2x fa-angle-double-right"></i></button>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
@@ -512,14 +539,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <!-- <tr ng-repeat="contest in filtered = (contest.data.result.data | filter:search) " ng-click=""> -->
-                        <tr>
-                          <td><span class="online  sttt"></span></td>
-                          <td><!-- {{ $index +1 }} -->1</td>
-                          <td><!-- {{ contest.id }} -->123</td>
-                          <td><!-- {{ contest.name }} -->offer name</td>
-                          <td><!-- {{ contest.start_date }} -->23</td>
-                          <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#offers/1">Details</a></td>
+                        <tr ng-repeat="offer in filtered = (offers | filter:search) " ng-click="">
+                          <td><span class=" {{offer.isDisabled == '0' ? 'online' : 'offline'}} sttt"></span></td>
+                          <td>{{ $index +1 }}</td>
+                          <td>{{ offer.id }}</td>
+                          <td>{{ offer.title }}</td>
+                          <td>{{ offer.totalQuantity - offer.availableQuantity}}</td>
+                          <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#offers/{{ offer.id }}">Details</a></td>
                         </tr>
                       </tbody>
                       

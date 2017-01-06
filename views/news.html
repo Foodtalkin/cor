@@ -60,12 +60,12 @@
                         <span class="font-normal">Contest</span>
                       </a>
                     </li>
-                    <!-- <li>
+                    <li>
                       <a md-ink-ripple href="#offers">
                         <i class="icon fa fa-tags i-20"></i>
                         <span class="font-normal">offers</span>
                       </a>
-                    </li> -->
+                    </li>
                     <li>
                       <a md-ink-ripple href="#news" class="active-menu">
                         <i class="fa fa-newspaper-o icon " aria-hidden="true"></i>
@@ -157,7 +157,7 @@
                 &nbsp; <strong>Create new News</strong>
               </div>
               <div ng-show="formshow" style="padding: 30px;">
-                <form action="" class="form-horizontal" >
+                <form action="" class="form-horizontal" name="newsform">
                   
                   <!-- basic -->
                   <div class="row">
@@ -225,14 +225,17 @@
                               ngf-drop="uploadFiles($files)"
                               ngf-drag-over-class="dragOverClass($event)"
                               ng-model="files"
-                              ng-multiple="fasle">
+                              ng-multiple="fasle"
+                             >
                               <div class="col-md-6">
                                 <form>  
                                   <div class="form_line">
                                       <!-- <label>Image:</label> -->
                                       <div class="form_controls">
                                           <div class="upload_button_holder">
-                                              <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" >Upload</div>
+                                              <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true"  
+                                              ngf-dimensions="$width == 450 && $height == 450">Upload</div>
+                                              
                                           </div>
                                       </div>
                                   </div>
