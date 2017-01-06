@@ -3,7 +3,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 
 	offerFactory.createsinglecodeOffer = function(title,coverImage,cardImage,
 		cardActionButtonText,actionButtonText,description,
-		shortDescription,costType,costOnline,costPoints,
+		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
 		startDate,endDate,validTill,totalQuantity,
 		couponCode,subType,redemptionUrl,cityText,isDisabled,callback){
@@ -19,7 +19,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					description:description,
 					shortDescription:shortDescription,
 					costType:costType,
-					costOnline:costOnline,
+					/*costOnline:costOnline,*/
 					costPoints:costPoints,
 					termConditionsLink:termConditionsLink,
 					thankYouText:thankYouText,
@@ -47,7 +47,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 
 	offerFactory.createuniquecodeOffer = function(title,coverImage,cardImage,
 		cardActionButtonText,actionButtonText,description,
-		shortDescription,costType,costOnline,costPoints,
+		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
 		startDate,endDate,validTill,totalQuantity,
 		subType,redemptionUrl,cityText,isDisabled){
@@ -65,7 +65,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					description:description,
 					shortDescription:shortDescription,
 					costType:costType,
-					costOnline:costOnline,
+					// costOnline:costOnline,
 					costPoints:costPoints,
 					termConditionsLink:termConditionsLink,
 					thankYouText:thankYouText,
