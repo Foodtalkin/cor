@@ -15,6 +15,10 @@ app.controller('offersopenCtrl', ['$scope','$rootScope','$location','authFactory
       });
     
     $scope.editoffer = function(){
+      if(!$scope.offerdetails.title && !$scope.offerdetails.cardActionButtonText && !$scope.offerdetails.actionButtonText && !$scope.offerdetails.description && !$scope.offerdetails.shortDescription && !$scope.offerdetails.termConditionsLink && !$scope.offerdetails.thankYouText && !$scope.offerdetails.startDate && !$scope.offerdetails.endDate && !$scope.offerdetails.cityText){
+        alert('all fields are required, please check your form and try again');
+        return;
+      }
       offerFactory.updateOffer($scope.offerdetails.id,$scope.offerdetails.title,
     $scope.offerdetails.cardActionButtonText,$scope.offerdetails.actionButtonText,
     $scope.offerdetails.description,$scope.offerdetails.shortDescription,
@@ -29,11 +33,14 @@ app.controller('offersopenCtrl', ['$scope','$rootScope','$location','authFactory
     }
 
     $scope.toggelactive = function(activity){
+      console.log($scope.offerdetails.isDisabled);
       if(activity == '0'){
         activity = '1';
       }else{
         activity = '0';
       }
+      //activity = !activity;
+      console.log(activity);
       $scope.avtiveoffer(activity);
     };
     
