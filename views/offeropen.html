@@ -200,7 +200,7 @@
                               <label for="" class="grey-text">Title *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.title" name="title" placeholder="40% off at Instapizza">
+                              <input type="text" class="form-control" ng-model="offerdetails.title" placeholder="40% off at Instapizza">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Name of the offer, will be used as heading.</small>
@@ -274,7 +274,7 @@
                               <label for="" class="grey-text">Card button Title *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.cardActionButtonText" name="cardbutton">
+                              <input type="text" class="form-control" ng-model="offerdetails.cardActionButtonText" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">text on the button on card (will show on web only)</small>
@@ -287,7 +287,7 @@
                               <label for="" class="grey-text">City *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.cityText" name="city">
+                              <input type="text" class="form-control" ng-model="offerdetails.cityText" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">City text for display purpose only, it will be displayed as you type it here.</small>
@@ -300,7 +300,7 @@
                               <label for="" class="grey-text">Start Date *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="offerdetails.startDate" name="startdate">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="offerdetails.startDate" ui-mask="9999-99-99" model-view-value="true">
                             </div>
                             
                             <div class="col-md-12">
@@ -314,7 +314,7 @@
                               <label for="" class="grey-text">End Date *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="offerdetails.endDate" name="enddate">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="offerdetails.endDate" ui-mask="9999-99-99" model-view-value="true">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Offer card will show on store between these dates</small>
@@ -328,7 +328,7 @@
                             </div>
                             <div class="col-md-12">
                               <!-- <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px;" ng-maxlength="60" ng-model="store.shortdesc"></trix-editor> -->
-                              <textarea name="" id="" cols="30" rows="2" class="form-control" maxlength="60" ng-model="offerdetails.shortDescription" name="deal"></textarea>
+                              <textarea id="" cols="30" rows="2" class="form-control" maxlength="60" ng-model="offerdetails.shortDescription" ></textarea>
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Short description to be displayed on the card.</small>
@@ -401,7 +401,7 @@
                               <label for="" class="grey-text">call to action button *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.actionButtonText" name="formbutton">
+                              <input type="text" class="form-control" ng-model="offerdetails.actionButtonText" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">text on the call to action button.</small>
@@ -414,7 +414,7 @@
                               <label for="" class="grey-text">ThankYou message *</label>
                             </div>
                             <div class="col-md-12" style="margin-bottom: 15px;">
-                              <input type="text" class="form-control" ng-model="offerdetails.thankYouText" name="thanksyoutext">
+                              <input type="text" class="form-control" ng-model="offerdetails.thankYouText" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">this text will be displayed if the offer is successfully redeemed.</small>
@@ -441,7 +441,7 @@
 
                       <div class="row">
                         <div class="col-md-12">
-                          <button md-ink-ripple class="btn btn-fw btn-success right" type="submit"  ng-click="editoffer();">Submit</button>
+                          <button md-ink-ripple class="btn btn-fw btn-success right" ng-click="editoffer();" type="button">Submit</button>
                         </div>
                       </div>
                     </div>

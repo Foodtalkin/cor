@@ -1,6 +1,6 @@
 var app = angular.module('myApp',['ngRoute', 'ngCookies', 'ngAnimate',
  'chart.js', 'cloudinary', 'ngFileUpload', 'photoAlbumServices','ngCsv','ngSanitize',
-  'mdChips', 'angularTrix','photoAlbumAnimations','photoAlbumServices']);
+  'mdChips', 'angularTrix','photoAlbumAnimations','photoAlbumServices','ui.mask']);
 
 app.run(function($rootScope){
   

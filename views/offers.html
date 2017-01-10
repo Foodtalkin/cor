@@ -156,8 +156,8 @@
                 <i class="fa fa-plus"></i>
                 &nbsp; <strong>Create new Offer</strong>
               </div>
-              <div ng-show="formshow" style="padding: 30px;" novalidate>
-                <form action="" class="form-horizontal" name="offerform">
+              <div ng-show="formshow" style="padding: 30px;">
+                <form action="" class="form-horizontal">
                   <div class="row">
                     <div class="col-md-12">
                       <!-- Title -->
@@ -169,7 +169,7 @@
                               <label for="" class="grey-text">Title *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.name" name="title" placeholder="40% off at Instapizza">
+                              <input type="text" class="form-control" ng-model="store.name" placeholder="40% off at Instapizza">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Name of the offer, will be used as heading.</small>
@@ -243,7 +243,7 @@
                               <label for="" class="grey-text">Card button Title *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.cardbtn" name="cardbutton">
+                              <input type="text" class="form-control" ng-model="store.cardbtn">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">text on the button on card (will show on web only)</small>
@@ -256,7 +256,7 @@
                               <label for="" class="grey-text">City *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.city" name="city">
+                              <input type="text" class="form-control" ng-model="store.city" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">City text for display purpose only, it will be displayed as you type it here.</small>
@@ -270,7 +270,7 @@
                               <label for="" class="grey-text">Start Date *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="store.sdate" name="startdate">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.sdate" ui-mask="9999-99-99" model-view-value="true">
                             </div>
                             
                             <div class="col-md-12">
@@ -284,7 +284,7 @@
                               <label for="" class="grey-text">End Date *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="store.edate" name="enddate">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.edate" ui-mask="9999-99-99" model-view-value="true">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Offer card will show on store between these dates</small>
@@ -298,7 +298,7 @@
                             </div>
                             <div class="col-md-12">
                               <!-- <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px;" ng-maxlength="60" ng-model="store.shortdesc"></trix-editor> -->
-                              <textarea name="" id="" cols="30" rows="2" class="form-control" maxlength="60" ng-model="store.shortdesc" name="deal"></textarea>
+                              <textarea id="" cols="30" rows="2" class="form-control" maxlength="60" ng-model="store.shortdesc" ></textarea>
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Short description to be displayed on the card.</small>
@@ -371,7 +371,7 @@
                               <label for="" class="grey-text">call to action button *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.formbtn" name="formbutton">
+                              <input type="text" class="form-control" ng-model="store.formbtn" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">text on the call to action button.</small>
@@ -384,7 +384,7 @@
                               <label for="" class="grey-text">ThankYou message *</label>
                             </div>
                             <div class="col-md-12" style="margin-bottom: 15px;">
-                              <input type="text" class="form-control" ng-model="store.thankyoutext" name="thanksyoutext">
+                              <input type="text" class="form-control" ng-model="store.thankyoutext" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">this text will be displayed if the offer is successfully redeemed.</small>
@@ -419,7 +419,7 @@
                               <label for="" class="grey-text">Type</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.type" disabled="true" value="offer" name="type" ng-required="true">
+                              <input type="text" class="form-control" ng-model="store.type" disabled="true" value="offer" ng-required="true">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark"></small>
@@ -432,7 +432,7 @@
                               <label for="" class="grey-text">Sub Type *</label>
                             </div>
                             <div class="col-md-12">
-                              <select name="" id="" class="form-control" ng-model="store.subtype" name="subtype">
+                              <select id="" class="form-control" ng-model="store.subtype" >
                                 <option value="SINGLE_CODE">Single Code</option>
                                 <option value="UNIQUE_CODE">Unique Code</option>
                               </select>
@@ -448,7 +448,7 @@
                               <label for="" class="grey-text">Method Of payment *</label>
                             </div>
                             <div class="col-md-12" >
-                              <select name="" id="" class="form-control" ng-model="store.methodofpayment" name="paymethod">
+                              <select id="" class="form-control" ng-model="store.methodofpayment" >
                                 <!-- <option value="BOTH">Both points and Online</option> -->
                                 <option value="POINT">Via Points</option>
                                 <!-- <option value="ONLINE">Via Online Payment</option> -->
@@ -468,7 +468,7 @@
                               <label for="" class="grey-text">Points</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="number" class="form-control" ng-model="store.pointcost" name="pointcost">
+                              <input type="number" class="form-control" ng-model="store.pointcost" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Number of points required to reedeem offer</small>
@@ -481,7 +481,7 @@
                               <label for="" class="grey-text">Total number of coupons *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="number" class="form-control" ng-model="store.couponno" name="couponcount">
+                              <input type="number" class="form-control" ng-model="store.couponno" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Total Number of Coupons available, use 9999 for unlimited.</small>
@@ -494,7 +494,7 @@
                               <label for="" class="grey-text">Coupon codes *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.couponcode" name="couponcode">
+                              <input type="text" class="form-control" ng-model="store.couponcode" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">saprate by "," for multiple codes</small>
@@ -507,7 +507,8 @@
                               <label for="" class="grey-text">Valid Till *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="store.validtill" name="valid">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.validtill" 
+                              ui-mask="9999-99-99" model-view-value="true">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Expiry date of the coupon codes, It has nothing to do with listing on the store.</small>
@@ -520,7 +521,7 @@
                               <label for="" class="grey-text">url to Redeem offer *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="url" class="form-control" ng-model="store.redirecturl" name="reedeem">
+                              <input type="url" class="form-control" ng-model="store.redirecturl" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Url where user can reedeem this offer</small>
@@ -533,7 +534,7 @@
                               <label for="" class="grey-text">Terms &amp; conditions url *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.terms" name="terms">
+                              <input type="text" class="form-control" ng-model="store.terms" >
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">terms and condition url</small>
@@ -544,7 +545,7 @@
                       <!-- config offer end -->
                       <div class="row">
                         <div class="col-md-12">
-                          <button md-ink-ripple class="btn btn-fw btn-success right" type="submit"  ng-click="createOffer()">Submit</button>
+                          <button md-ink-ripple class="btn btn-fw btn-success right" type="button" ng-click="createOffer()">Submit</button>
                         </div>
                       </div>
                     </div>
