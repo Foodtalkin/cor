@@ -2926,6 +2926,10 @@ a.list-group-item.hover {
   background-color: #9e9e9e;
 }
 
+.grey-text {
+  color: #9e9e9e;
+}
+
 .grey-50 {
   background-color: #fafafa;
 }
@@ -2960,6 +2964,9 @@ a.list-group-item.hover {
 
 .grey-800 {
   background-color: #424242;
+}
+.text-grey-dark {
+  color: #3c3c3c;
 }
 
 .grey-900 {

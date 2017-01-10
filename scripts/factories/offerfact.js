@@ -92,7 +92,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 		cardActionButtonText,actionButtonText,description,
 		shortDescription,
 		termConditionsLink,thankYouText,
-		startDate,endDate,cityText,callback){
+		startDate,endDate,cityText,cardImage,coverImage,callback){
 		$http({
 			method: 'POST',
 			url: 'http://52.74.136.146/index.php/service/storeOffer/add',
@@ -107,7 +107,9 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					thankYouText:thankYouText,
 					startDate:startDate,
 					endDate:endDate,
-					cityText:cityText	}
+					cityText:cityText,
+					cardImage:cardImage,
+					coverImage:coverImage}
 		}).then(function (response) {
             if(response.statusText === "OK"){
                 callback(true);

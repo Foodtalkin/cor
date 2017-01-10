@@ -164,13 +164,12 @@
               </div>
               <div style="padding: 30px;">
                 <form action="" class="form-horizontal" >
-                  <!-- type -->
                   <div class="row">
                     <div class="col-md-12">
-                      <h4>Product Type</h4>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="col-md-6">
+                      <!-- Title -->
+                      <div class="row">
+                        <h4 class="grey-text">Creating a new offer</h4>
+                        <div class="col-md-6">
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="">Type</label>
@@ -195,143 +194,259 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                  <!-- basic -->
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h4>
-                        Basic Information
-                      </h4>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">Title</label>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="offerdetails.title">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">City</label>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="offerdetails.cityText">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">Terms &amp; conditions url</label>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="offerdetails.termConditionsLink">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">Card button Name</label>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="offerdetails.cardActionButtonText">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">Form button Name</label>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="offerdetails.actionButtonText">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">Dates to run the offer</label>
-                          </div>
-                          <div class="col-md-6">
-                            <label for=""><small>Start Date</small></label>
-                            <input type="text" class="form-control" ng-model="offerdetails.startDate">
-                          </div>
-                          <div class="col-md-6">
-                            <label for=""><small>End Date</small></label>
-                            <input type="text" class="form-control" ng-model="offerdetails.endDate">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- body copy -->
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h4>Body Copy</h4>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">Deal <span><strong>limit 60 char.</strong></span></label>
-                          </div>
-                          <div class="col-md-12">
-                            <!-- <trix-editor angular-trix ng-model="offerdetails.shortdesc" class="trix-content" style="background-color: #fff; height: 80px;"></trix-editor> -->
-                            <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="60" ng-model="offerdetails.shortDescription"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label for="">long Description <span><strong>limit 140 char.</strong></span></label>
-                          </div>
-                          <div class="col-md-12">
-                            <!-- <trix-editor angular-trix ng-model="offerdetails.longdesc" class="trix-content" style="background-color: #fff; height: 120px;"></trix-editor> -->
-                            <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="140" ng-model="offerdetails.description"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- custom -->
-                  
-
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h4>Thankyou page</h4>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
                         <div class="col-md-12">
-                          <label for="">ThankYou message</label>
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">Title *</label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" ng-model="offerdetails.title" name="title" placeholder="40% off at Instapizza">
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Name of the offer, will be used as heading.</small>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-md-12" style="margin-bottom: 15px;">
-                          <input type="text" class="form-control" ng-model="offerdetails.thankYouText">
+                      </div>
+                      <!-- end title -->
+                      <hr>
+                      
+                      
+                      <!-- card design start -->
+                      <div class="row">
+                        <h4 class="grey-text">Design the Card </h4>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">Card Image</label>
+                            </div>
+                            <div class="col-md-12">
+                              <div id="direct_upload" 
+                                ngf-drop="uploadFiles2($files)"
+                                ngf-drag-over-class="dragOverClass($event)"
+                                ng-model="files2"
+                                ng-multiple="false">
+                                <div class="col-md-12">
+                                  <form>  
+                                    <div class="form_line">
+                                        <!-- <label>Image:</label> -->
+                                        <div class="form_controls">
+                                            <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
+                                                <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles2($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 480 && $height == 300" >Upload</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="col-md-12" style="padding: 10px">
+                                  <div class="file" ng-repeat="file in files2">
+                                    <div class="col-md-6">
+                                      <p class="grey-text">{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
+                                      <div class="status">{{file.status}}</div>
+                                      
+                                      <div class="progress-bar">
+                                        <div class="progress grey-text" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+                                      </div>
+                                      <p>{{store2.cardcover}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form_line">
+                                          <div class="form_controls">
+                                              <div class="preview">
+                                                  <img ngf-src="file.result.url || file" style="width: 80%;">
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div> 
+
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Offer Card Creative (image size : 480 X 300)</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">Card button Title *</label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" ng-model="offerdetails.cardActionButtonText" name="cardbutton">
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">text on the button on card (will show on web only)</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">City *</label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" ng-model="offerdetails.cityText" name="city">
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">City text for display purpose only, it will be displayed as you type it here.</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">Start Date *</label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="offerdetails.startDate" name="startdate">
+                            </div>
+                            
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Offer card will show on store between these dates</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">End Date *</label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ng-model="offerdetails.endDate" name="enddate">
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Offer card will show on store between these dates</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">Card Description *<span><strong>limit 60 char.</strong></span></label>
+                            </div>
+                            <div class="col-md-12">
+                              <!-- <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px;" ng-maxlength="60" ng-model="store.shortdesc"></trix-editor> -->
+                              <textarea name="" id="" cols="30" rows="2" class="form-control" maxlength="60" ng-model="offerdetails.shortDescription" name="deal"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Short description to be displayed on the card.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- card design end -->
+
+                      <hr>
+                      
+                      <!-- body design start -->
+                      <div class="row">
+                        <h4 class="grey-text">Design the Body </h4>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">Cover Image</label>
+                            </div>
+                            <div class="col-md-12">
+                              <div id="direct_upload" 
+                                ngf-drop="uploadFiles($files)"
+                                ngf-drag-over-class="dragOverClass($event)"
+                                ng-model="files"
+                                ng-multiple="fasle">
+                                <div class="col-md-12">
+                                  <form>  
+                                    <div class="form_line">
+                                        <!-- <label>Image:</label> -->
+                                        <div class="form_controls">
+                                            <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
+                                                <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 750 && $height == 278">Upload</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="col-md-12" style="padding: 10px">
+                                  <div class="file" ng-repeat="file in files">
+                                    <div class="col-md-6">
+                                      <p class="grey-text">{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
+                                      <div class="status">{{file.status}}</div>
+                                      
+                                      <div class="progress-bar">
+                                        <div class="progress grey-text" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+                                      </div>
+                                      <p>{{store2.cover}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form_line">
+                                          <div class="form_controls">
+                                              <div class="preview">
+                                                  <img ngf-src="file.result.url || file" style="width: 80%;">
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div> 
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Offer Details Page Creative (image size : 750 X 278)</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">call to action button *</label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" ng-model="offerdetails.actionButtonText" name="formbutton">
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">text on the call to action button.</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">ThankYou message *</label>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom: 15px;">
+                              <input type="text" class="form-control" ng-model="offerdetails.thankYouText" name="thanksyoutext">
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">this text will be displayed if the offer is successfully redeemed.</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">long Description *<span><strong>limit 140 char.</strong></span></label>
+                            </div>
+                            <div class="col-md-12">
+                              <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px;" ng-maxlength="140" ng-model="offerdetails.description"></trix-editor>
+                              <!-- <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="140" ng-model="store.longdesc" name="description"></textarea> -->
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">detailed discription of offer</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- body design end -->
+
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <button md-ink-ripple class="btn btn-fw btn-success right" type="submit"  ng-click="editoffer();">Submit</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="col-md-12">
-                        <button md-ink-ripple class="btn btn-fw btn-success" style="margin-top:20px;" ng-click="editoffer();">Submit</button>
-                      </div>
-                    </div>
-                  </div>
                 </form>
               </div>   
             </div>
