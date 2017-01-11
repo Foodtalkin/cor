@@ -69,6 +69,31 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     };
     //});
 
+    $scope.checkLive = function(sdate, edate, active){
+      var date = new Date();
+      var month = date.getMonth()+1;
+      if(month <= 9){
+        month = "0"+month;
+      }
+      var today = [date.getFullYear().toString(),month,date.getDate().toString()];
+      var startdate = sdate.split(" ");
+      startdate = startdate[0].split("-");
+      var enddate = edate.split(" ");
+      enddate = enddate[0].split("-");
+      if(today[0] >= startdate[0] && today[0] <= enddate[0]){
+        if(today[1] >= startdate[1] && today[1] <= enddate[1]){
+          if(today[2] >= startdate[2] && today[2] < enddate[2]){
+            if(active == '0'){
+              return true;
+            }else{
+              return false;
+            }
+          }
+        }
+      }
+    }
+
+    
 
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     //$scope.$watch('files', function() {

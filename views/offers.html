@@ -596,7 +596,7 @@
                       </thead>
                       <tbody>
                         <tr ng-repeat="offer in filtered = (offers | filter:search) " ng-click="">
-                          <td><span class=" {{offer.isDisabled == '0' ? 'online' : 'offline'}} sttt"></span></td>
+                          <td><span class=" {{ checkLive(offer.startDate,offer.endDate, offer.isDisabled) ? 'online' : 'offline'}} sttt"></span></td>
                           <td>{{ $index +1 }}</td>
                           <td>{{ offer.id }}</td>
                           <td>{{ offer.title }}</td>
