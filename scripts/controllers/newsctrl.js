@@ -61,6 +61,10 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
     }
 
     $scope.editnews = function(){
+      if($scope.newstoedit.title == "" || $scope.newstoedit.description == "" || $scope.newstoedit.startDate == ""){
+        alert("fields can't be empty");
+        return;
+      }
       newsFactory.editNews($scope.newstoedit.id, $scope.newstoedit.title, $scope.newstoedit.description, $scope.newstoedit.source, $scope.newstoedit.sourceUrl, $scope.newstoedit.startDate, function(response){
         if(response){
           window.location.reload();
@@ -107,6 +111,10 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
 
     $scope.createNews= function(){
       //console.log($scope.news.cover);
+      if(!$scope.news.title || !$scope.news.cover || !$scope.news.text || !$scope.news.sdate){
+        alert("fields can't be empty");
+        return;
+      }
       newsFactory.createNews($scope.news.title, $scope.news.cover, $scope.news.text, $scope.news.source, $scope.news.sourceUrl, $scope.news.sdate, function(response){
         if(response){
           window.location.reload();

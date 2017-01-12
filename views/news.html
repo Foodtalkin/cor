@@ -157,11 +157,10 @@
                 &nbsp; <strong>Create new News</strong>
               </div>
               <div ng-show="formshow" style="padding: 30px;">
-                <form action="" class="form-horizontal" name="newsform">
+                <form action="" class="form-horizontal">
                   
                   <!-- basic -->
                   <div class="row">
-                    
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
@@ -173,7 +172,6 @@
                           </div>
                         </div>
                       </div>
-
                       <div class="col-md-6">
                         <div class="form-group">
                           <div class="col-md-12">
@@ -225,8 +223,7 @@
                               ngf-drop="uploadFiles($files)"
                               ngf-drag-over-class="dragOverClass($event)"
                               ng-model="files"
-                              ng-multiple="fasle"
-                             >
+                              ng-multiple="fasle">
                               <div class="col-md-12">
                                 <form>  
                                   <div class="form_line">
@@ -235,7 +232,6 @@
                                           <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
                                               <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 375 && $height == 325" 
                                               >Upload</div>
-                                               <!-- -->
                                           </div>
                                       </div>
                                   </div>
@@ -265,21 +261,14 @@
                               </div> 
                             </div>
                           </div>
-                          
                         </div>
                       </div>
-                      
-                      
                     </div>
-                  </div>
-
-                  
-                  
-
+                  </div>                 
                   <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-12">
-                        <button md-ink-ripple class="btn btn-fw btn-success right" style="margin-top:20px;" ng-click="createNews()">Submit</button>
+                        <button md-ink-ripple class="btn btn-fw btn-success right" style="margin-top:20px;" type="button" ng-click="createNews()">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -295,10 +284,8 @@
                   </div>
                   <div style="padding: 30px;">
                     <form action="" class="form-horizontal" >
-                      
                       <!-- basic -->
                       <div class="row">
-                        
                         <div class="col-md-12">
                           <div class="col-md-6">
                             <div class="form-group">
@@ -310,7 +297,6 @@
                               </div>
                             </div>
                           </div>
-
                           <div class="col-md-6">
                         <div class="form-group">
                           <div class="col-md-12">
@@ -352,13 +338,12 @@
                               </div>
                             </div>
                           </div>
-
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12">
                           <div class="col-md-12">
-                            <button md-ink-ripple class="btn btn-fw btn-success right" style="margin-top:20px;" ng-click="editnews()">Submit</button>
+                            <button md-ink-ripple class="btn btn-fw btn-success right" style="margin-top:20px;" type="button" ng-click="editnews()">Submit</button>
                           </div>
                         </div>
                       </div>
