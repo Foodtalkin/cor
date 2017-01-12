@@ -13,11 +13,11 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 
     offerFactory.getallOffer($scope.curruntpage,function(response){
         $scope.offers = response.data.storeOffers;
-        console.log(response.data.storeOffers);
+        //console.log(response.data.storeOffers);
       });
 
     $scope.getofferpage = function(page){
-      console.log(page);
+      //console.log(page);
       
       offerFactory.getallOffer(page,function(response){
         var temp = response.data.storeOffers;
@@ -59,7 +59,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
             data.context = {custom: {photo: $scope.title}};
             file.result = data;
             $scope.store.cover = file.result.url;
-            console.log($scope.store.cover);
+            //console.log($scope.store.cover);
             $rootScope.photos.push(data);
           }).error(function (data, status, headers, config) {
             file.result = data;
@@ -196,7 +196,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           }
         });
       }else{
-        console.log($scope.store);
+        //console.log($scope.store);
         var codestring = $scope.store.couponcode.split(" ");
             codestring = codestring.join("");
         $scope.codes = codestring.split(",");
@@ -222,7 +222,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           '1'
           // $scope.store.paymenturl
           ).then(function (response) {
-              console.log(response.storeOfferId);
+              //console.log(response.storeOfferId);
              $scope.storeOfferId = response.storeOfferId;
              $scope.couponcode();
           }, function (err) {

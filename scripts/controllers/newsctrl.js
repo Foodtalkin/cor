@@ -4,13 +4,36 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
    // $scope.loader = true;
    $scope.news = {};
    $scope.newslist = {};
+   $scope.curruntpage = 1;
+   if($scope.curruntpage == 1){
+    $scope.prevshow = false;
+   }else{
+    $scope.prevshow = true;
+   }
 
-   newsFactory.getallnews(function(response){
+   newsFactory.getallnews($scope.curruntpage,function(response){
       
       $scope.newslist = response.data.news;
-      console.log($scope.newslist);
+      //console.log($scope.newslist);
     });
 
+   $scope.getnewspage = function(page){
+      newsFactory.getallnews(page,function(response){
+        var temp = response.data.news;
+          //console.log(temp.length);
+        if(temp.length !== 0){
+          $scope.newslist = response.data.news;
+          $scope.curruntpage = page;
+          if($scope.curruntpage == 1){
+            $scope.prevshow = false;
+           }else{
+            $scope.prevshow = true;
+           }
+        }else{
+          alert('no data to show :(');
+        }
+      });
+    }
   
   $scope.activeNews = function(id, active){
       
@@ -19,11 +42,11 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
       }else if(active == '1'){
         active = '0';
       }
-      console.log(active);
+      //console.log(active);
       newsFactory.activeNews(id, active, function(response){
         if(response){
             window.location.reload();
-            console.log("done");
+            //console.log("done");
 
         }else{
             console.log("Le wild error");
@@ -38,7 +61,7 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
     }
 
     $scope.editnews = function(){
-      newsFactory.editNews($scope.newstoedit.id, $scope.newstoedit.title, $scope.newstoedit.description, $scope.newstoedit.source, $scope.newstoedit.sourceUrl, function(response){
+      newsFactory.editNews($scope.newstoedit.id, $scope.newstoedit.title, $scope.newstoedit.description, $scope.newstoedit.source, $scope.newstoedit.sourceUrl, $scope.newstoedit.startDate, function(response){
         if(response){
           window.location.reload();
         }else{
@@ -83,8 +106,8 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
     //});
 
     $scope.createNews= function(){
-      console.log($scope.news.cover);
-      newsFactory.createNews($scope.news.title, $scope.news.cover, $scope.news.text, $scope.news.source, $scope.news.sourceUrl, function(response){
+      //console.log($scope.news.cover);
+      newsFactory.createNews($scope.news.title, $scope.news.cover, $scope.news.text, $scope.news.source, $scope.news.sourceUrl, $scope.news.sdate, function(response){
         if(response){
           window.location.reload();
         }else{

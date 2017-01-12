@@ -123,6 +123,7 @@ app.controller('offersopenCtrl', ['$scope','$rootScope','$location','authFactory
       $scope.store2.cardcover,$scope.store2.cover,function(response){
         if(response){
           window.location.reload();
+          console.log(response);
         }else{
           console.log("Le wild error");
         }

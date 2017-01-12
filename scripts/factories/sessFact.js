@@ -7,7 +7,7 @@ app.factory('sessionInjector', ['$cookies', function($cookies) {
                 // console.log('');
             }else if(config.url == 'https://api.cloudinary.com/v1_1/digital-food-talk-pvt-ltd/upload'){
                 //https://api.cloudinary.com/v1_1/digital-food-talk-pvt-ltd/upload
-            }else if(config.url == 'http://52.74.136.146/index.php/service/news/list?sessionId=GUEST&status=all'){
+            }else if(config.url == 'http://52.74.136.146/index.php/service/news/list'){
 
             }else if(config.url == 'http://52.74.136.146/index.php/service/news/upsert'){
 
