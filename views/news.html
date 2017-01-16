@@ -168,7 +168,7 @@
                             <label for="" class="grey-text">News Title <span><strong>limit 60 char.</strong> ({{60-news.title.length}})</span></label>
                           </div>
                           <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="news.title" maxlength="60">
+                            <input type="text" class="form-control" ng-model="news.title" maxlength="60" placeholder="New restaurant opening">
                           </div>
                         </div>
                       </div>
@@ -176,7 +176,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="">Start Date </label>
-                          </div>
+                          </div> oening
                           <div class="col-md-12">
                             <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="news.sdate" ui-mask="9999-99-99" model-view-value="true">
                           </div>
@@ -188,7 +188,7 @@
                             <label for="" class="grey-text">Source <span><strong>limit 40 char</strong> ({{40-news.source.length}})</span></label>
                           </div>
                           <div class="col-md-12">
-                            <input type="text" class="form-control" maxlength="40" ng-model="news.source">
+                            <input type="text" class="form-control" maxlength="40" ng-model="news.source" placeholder="Source food Talk">
                           </div>
                         </div>
                       </div>
@@ -198,7 +198,7 @@
                             <label for="" class="grey-text">Source Url</label>
                           </div>
                           <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="news.sourceUrl">
+                            <input type="text" class="form-control" ng-model="news.sourceUrl" placeholder="http://foodtalk.in">
                           </div>
                         </div>
                       </div>
@@ -209,7 +209,7 @@
                           </div>
                           <div class="col-md-12">
                             <!-- <trix-editor angular-trix ng-model="store.shortdesc" class="trix-content" style="background-color: #fff; height: 80px;"></trix-editor> -->
-                            <textarea name="" id="" cols="30" rows="2" class="form-control" maxlength="300" ng-model="news.text"></textarea>
+                            <textarea name="" id="" cols="30" rows="2" class="form-control" maxlength="300" ng-model="news.text" ng-keypress="removeenter(news.text);"></textarea>
                           </div>
                         </div>
                       </div>
@@ -386,6 +386,7 @@
                           <th></th>
                           <th>News ID</th>
                           <th >Title</th>
+                          <th>Start Date</th>
                           <th>source</th>
                           <th>source url</th>
                           <th>Action</th>
@@ -396,6 +397,7 @@
                           <td><span class="sttt {{newsl.isDisabled == '0'? 'online' : 'offline'}}"></span></td>
                           <td>{{ newsl.id }}</td>
                           <td>{{ newsl.title }}</td>
+                          <td>{{ newsl.startDate }}</td>
                           <td>{{ newsl.source }}</td>
                           <td>{{ newsl.sourceUrl }}</td>
                           <td><a class="btn {{newsl.isDisabled ==true ? 'btn-danger' : 'btn-dark'}} btn-sm" style="margin: 5px;" ng-click='activeNews(newsl.id,newsl.isDisabled);'>{{newsl.isDisabled == '0' ? 'Hide News' : 'Make Live'}}</a>

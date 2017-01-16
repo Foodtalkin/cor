@@ -197,10 +197,10 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">Title *</label>
+                              <label for="" class="grey-text">Title * <strong>({{60-offerdetails.title.length}})</strong></label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.title" placeholder="40% off at Instapizza">
+                              <input type="text" class="form-control" ng-model="offerdetails.title" placeholder="40% off at Instapizza" maxlength="60">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Name of the offer, will be used as heading.</small>
@@ -268,32 +268,20 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">Card button Title *</label>
+                              <label for="" class="grey-text">Card button Title * <strong>({{16-offerdetails.cardActionButtonText.length}})</strong></label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.cardActionButtonText" >
+                              <input type="text" class="form-control" ng-model="offerdetails.cardActionButtonText" maxlength="16">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">text on the button on card (will show on web only)</small>
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <div class="col-md-12">
-                              <label for="" class="grey-text">City *</label>
-                            </div>
-                            <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.cityText" >
-                            </div>
-                            <div class="col-md-12">
-                              <small class="text-grey-dark">City text for display purpose only, it will be displayed as you type it here.</small>
-                            </div>
-                          </div>
-                        </div>
+                        
                         <div class="col-md-6">
                           <div class="form-group">
                             <div class="col-md-12">
@@ -324,7 +312,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">Card Description *<span><strong>limit 60 char.</strong></span></label>
+                              <label for="" class="grey-text">Card Description *<span><strong>limit 60 char.  ({{60-offerdetails.shortDescription.length}})</strong></span></label>
                             </div>
                             <div class="col-md-12">
                               <!-- <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px;" ng-maxlength="60" ng-model="store.shortdesc"></trix-editor> -->
@@ -395,13 +383,26 @@
                             </div>
                           </div>
                         </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">City * <strong>({{16-offerdetails.cityText.length}})</strong></label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" ng-model="offerdetails.cityText" maxlength="16">
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">City text for display purpose only, it will be displayed as you type it here.</small>
+                            </div>
+                          </div>
+                        </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">call to action button *</label>
+                              <label for="" class="grey-text">call to action button * <strong>({{16-offerdetails.actionButtonText.length}})</strong></label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="offerdetails.actionButtonText" >
+                              <input type="text" class="form-control" ng-model="offerdetails.actionButtonText" maxlength="16">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">text on the call to action button.</small>
@@ -411,10 +412,10 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">ThankYou message *</label>
+                              <label for="" class="grey-text">ThankYou message * <strong>({{60-offerdetails.thankYouText.length}})</strong></label>
                             </div>
-                            <div class="col-md-12" style="margin-bottom: 15px;">
-                              <input type="text" class="form-control" ng-model="offerdetails.thankYouText" >
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" ng-model="offerdetails.thankYouText" maxlength="60">
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">this text will be displayed if the offer is successfully redeemed.</small>
@@ -424,7 +425,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">long Description *<span><strong>limit 140 char.</strong></span></label>
+                              <label for="" class="grey-text">long Description *<span><strong>({{offerdetails.description.length}})</strong></span></label>
                             </div>
                             <div class="col-md-12">
                               <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px; overflow:auto" ng-maxlength="140" ng-model="offerdetails.description"></trix-editor>

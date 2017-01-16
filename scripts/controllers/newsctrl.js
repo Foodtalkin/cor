@@ -35,6 +35,18 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
       });
     }
   
+  $scope.removeenter = function(text){
+    // console.log(text);
+    if(text){
+      var isChrome = window.chrome;
+      if(isChrome){
+      $scope.news.text = text.replace(/(\r\n|\n|\r)/g," ");
+      }
+      else{
+      $scope.news.text = text;
+      }
+    }
+  }
   $scope.activeNews = function(id, active){
       
       if(active == '0'){
