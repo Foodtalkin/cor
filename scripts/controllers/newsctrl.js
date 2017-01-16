@@ -123,6 +123,19 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
 
     $scope.createNews= function(){
       //console.log($scope.news.cover);
+      
+      if($scope.news.source != ""){
+        if($scope.news.sourceUrl){
+          alert("there can't be any source without source url. either fill them both or leave both empty");
+          return;
+        }
+      }
+      if($scope.news.sourceUrl != ""){
+        if($scope.news.source){
+          alert("there can't be any sourceUrl without source. either fill them both or leave both empty");
+          return;
+        }
+      }
       if(!$scope.news.title || !$scope.news.cover || !$scope.news.text || !$scope.news.sdate){
         alert("fields can't be empty");
         return;
