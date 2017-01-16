@@ -425,11 +425,11 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">long Description *<span><strong>({{offerdetails.description.length}})</strong></span></label>
+                              <label for="" class="grey-text">long Description *<span><strong>limit 300 char. ({{offerdetails.description.length}})</strong></span></label>
                             </div>
                             <div class="col-md-12">
-                              <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px; overflow:auto" ng-maxlength="140" ng-model="offerdetails.description"></trix-editor>
-                              <!-- <textarea name="" id="" cols="30" rows="3" class="form-control" maxlength="140" ng-model="store.longdesc" name="description"></textarea> -->
+                              <!-- <trix-editor angular-trix class="trix-content" style="background-color: #fff; height: 80px; overflow:auto" ng-maxlength="140" ng-model="offerdetails.description"></trix-editor> -->
+                              <textarea name="" id="" cols="30" rows="3" class="form-control" ng-model="offerdetails.description"></textarea>
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">detailed discription of offer</small>
