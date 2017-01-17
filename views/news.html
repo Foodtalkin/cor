@@ -165,10 +165,10 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="" class="grey-text">News Title <span><strong>limit 60 char.</strong> ({{60-news.title.length}})</span></label>
+                            <label for="" class="grey-text">News Title <span><strong>limit 45 char.</strong> ({{45-news.title.length}})</span></label>
                           </div>
                           <div class="col-md-12">
-                            <input type="text" class="form-control" ng-model="news.title" maxlength="60" placeholder="New restaurant opening">
+                            <input type="text" class="form-control" ng-model="news.title" maxlength="45" placeholder="New restaurant opening">
                           </div>
                         </div>
                       </div>
@@ -205,11 +205,11 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="" class="grey-text">Text <span><strong>limit 300 char.</strong> ({{300-news.text.length}})</span></label>
+                            <label for="" class="grey-text">Text <span><strong>limit 250 char.</strong> ({{250-news.text.length}})</span></label>
                           </div>
                           <div class="col-md-12">
                             <!-- <trix-editor angular-trix ng-model="store.shortdesc" class="trix-content" style="background-color: #fff; height: 80px;"></trix-editor> -->
-                            <textarea name="" id="" cols="30" rows="2" class="form-control" maxlength="300" ng-model="news.text" ng-keypress="removeenter(news.text);"></textarea>
+                            <textarea name="" id="" cols="30" rows="2" class="form-control" maxlength="250" ng-model="news.text" ng-keypress="removeenter(news.text);"></textarea>
                           </div>
                         </div>
                       </div>
