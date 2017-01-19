@@ -4,6 +4,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
    // $scope.loader = true;
    $scope.store = {};
    $scope.store.type = "offer";
+   $scope.store.methodofpayment = "";
+   $scope.store.subtype = "";
    $scope.curruntpage = 1;
    if($scope.curruntpage == 1){
     $scope.prevshow = false;
@@ -148,11 +150,22 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 
 
     $scope.createOffer = function(){
+      if($scope.store.methodofpayment == ""){
+        alert('Method of payment cannot be empty');
+        return;
+      }
+      
+      if($scope.store.subtype == ""){
+        alert('Offer Sub Type cannot be empty');
+        return;
+      }
 
-      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.methodofpayment || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill || !$scope.store.couponcode || !$scope.store.subtype || !$scope.store.redirecturl || !$scope.store.city){
+      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill || !$scope.store.couponcode || !$scope.store.redirecturl || !$scope.store.city){
         alert('all fields are required, please check your form and try again');
         return;
       }
+
+
 
       if(!$scope.store.cardcover || !$scope.store.cover){
         if(!$scope.store.cardcover){
