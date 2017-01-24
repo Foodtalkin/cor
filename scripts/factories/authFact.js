@@ -14,9 +14,12 @@ app.factory('authFactory', ['$http','$cookies','urlFactory','$location', functio
                 $cookies.put("batuser", response.data.result.name);
                 $cookies.put("batemail", response.data.result.email);
                 $cookies.put("APPSESSID", response.data.result.APPSESSID);
+                console.log(response);
                 callback(true);
+
             }else{
               //Create an error Box and display the error
+              console.log(response);
               callback(response);
             }
           });

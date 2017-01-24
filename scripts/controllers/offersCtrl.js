@@ -7,6 +7,10 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
    $scope.store.methodofpayment = "";
    $scope.store.subtype = "";
    $scope.curruntpage = 1;
+   $scope.reedeem = {};
+   $scope.reedeem.title = "Url / phone number";
+  $scope.reedeem.type = "text";
+  $scope.reedeem.Helptext = "Url /phone number where user can reedeem this offer";
    if($scope.curruntpage == 1){
     $scope.prevshow = false;
    }else{
@@ -147,9 +151,37 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       return hasFile ? "dragover" : "dragover-err";
     };
 
-
+    $scope.reedeemchange = function(){
+      if($scope.store.methodofreedeem == "LINK"){
+        $scope.reedeem.title = "Url";
+        $scope.reedeem.type = "url";
+        $scope.reedeem.Helptext = "Url where user can reedeem this offer";
+      }else if($scope.store.methodofreedeem == "PHONE"){
+        $scope.reedeem.title = "Phone Number";
+        $scope.reedeem.type = "tel";
+        $scope.reedeem.Helptext = "Phone number to order from where user can reedeem this offer";
+      }
+    }
 
     $scope.createOffer = function(){
+      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill || !$scope.store.couponcode || !$scope.store.city || !$scope.store.reedeemdata){
+        alert('all fields are required, please check your form and try again');
+        return;
+      }
+      if($scope.store.methodofreedeem == "LINK"){
+        $scope.store.redirecturl = $scope.store.reedeemdata;
+        $scope.store.redirectphone = "";
+        console.log($scope.store.reedeemdata);
+      }else if($scope.store.methodofreedeem == "PHONE"){
+        $scope.store.redirecturl = "";
+          $scope.store.redirectphone = $scope.store.reedeemdata;
+          console.log($scope.store.reedeemdata);
+      }else{
+        console.log($scope.store.reedeemdata);
+        alert('Method of Reedeeming cannot be empty');
+        return;
+      }
+
       if($scope.store.methodofpayment == ""){
         alert('Method of payment cannot be empty');
         return;
@@ -160,10 +192,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
         return;
       }
 
-      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill || !$scope.store.couponcode || !$scope.store.redirecturl || !$scope.store.city){
-        alert('all fields are required, please check your form and try again');
-        return;
-      }
+      
 
 
 
@@ -198,6 +227,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           $scope.store.subtype,
           $scope.store.redirecturl,
           $scope.store.city,
+          $scope.store.redirectphone,
           '1',
           // $scope.store.paymenturl, 
           function(response){
@@ -232,6 +262,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           $scope.store.subtype,
           $scope.store.redirecturl,
           $scope.store.city,
+          $scope.store.redirectphone,
           '1'
           // $scope.store.paymenturl
           ).then(function (response) {

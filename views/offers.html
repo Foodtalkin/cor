@@ -521,19 +521,6 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <div class="col-md-12">
-                              <label for="" class="grey-text">url to Redeem offer *</label>
-                            </div>
-                            <div class="col-md-12">
-                              <input type="url" class="form-control" ng-model="store.redirecturl" >
-                            </div>
-                            <div class="col-md-12">
-                              <small class="text-grey-dark">Url where user can reedeem this offer</small>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <div class="col-md-12">
                               <label for="" class="grey-text">Terms &amp; conditions url *</label>
                             </div>
                             <div class="col-md-12">
@@ -544,6 +531,64 @@
                             </div>
                           </div>
                         </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="">Reedmption Method</label>
+                            </div>
+                            <div class="col-md-12">
+                              <select class="form-control" ng-model="store.methodofreedeem" ng-change="reedeemchange();">
+                                <option value="">---</option>
+                                <option value="LINK">LINK</option>
+                                <option value="PHONE">PHONE</option>
+                              </select>
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Method to reedeem offer </small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">{{reedeem.title}} to Redeem offer </label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="{{reedeem.type}}" class="form-control" ng-model="store.reedeemdata" >
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">{{reedeem.Helptext}}</small>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">url to Redeem offer </label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="url" class="form-control" ng-model="store.redirecturl" >
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Url where user can reedeem this offer</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="" class="grey-text">Phone Number to Redeem offer </label>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="tel" class="form-control" ng-model="store.redirectphone" >
+                            </div>
+                            <div class="col-md-12">
+                              <small class="text-grey-dark">Phone number to order from where user can reedeem this offer</small>
+                            </div>
+                          </div>
+                        </div> -->
+                        
                       </div>
                       <!-- config offer end -->
                       <div class="row">

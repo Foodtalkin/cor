@@ -6,7 +6,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
 		startDate,endDate,validTill,totalQuantity,
-		couponCode,subType,redemptionUrl,cityText,isDisabled,callback){
+		couponCode,subType,redemptionUrl,cityText,redemptionPhone,isDisabled,callback){
 		$http({
 			method: 'POST',
 			url: 'http://52.74.136.146/index.php/service/storeOffer/add',
@@ -31,6 +31,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					subType:subType,
 					redemptionUrl:redemptionUrl,
 					cityText:cityText,
+					redemptionPhone:redemptionPhone,
 					isDisabled:isDisabled}
 		}).then(function (response) {
             if(response.statusText === "OK"){
@@ -50,7 +51,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
 		startDate,endDate,validTill,totalQuantity,
-		subType,redemptionUrl,cityText,isDisabled){
+		subType,redemptionUrl,cityText,redemptionPhone,isDisabled){
 
 		var defer = $q.defer();
 		$http({
@@ -76,6 +77,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					subType:subType,
 					redemptionUrl:redemptionUrl,
 					cityText:cityText,
+					redemptionPhone:redemptionPhone,
 					isDisabled:isDisabled}
 		}).success(function (response) {
          	offerFactory = response;
