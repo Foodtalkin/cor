@@ -258,7 +258,8 @@
                               <label for="" class="grey-text">Start Date *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.sdate" ui-mask="9999-99-99" model-view-value="true">
+                              <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.sdate" ui-mask="9999-99-99" model-view-value="true"> -->
+                              <input type="text" ng-model="store.sdate" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
                             </div>
                             
                             <div class="col-md-12">
@@ -272,7 +273,7 @@
                               <label for="" class="grey-text">End Date *</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.edate" ui-mask="9999-99-99" model-view-value="true">
+                              <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.edate" datepicker>
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Offer card will show on store between these dates</small>
@@ -511,7 +512,7 @@
                             </div>
                             <div class="col-md-12">
                               <input type="text" class="form-control" placeholder="yyyy-mm-dd" ng-model="store.validtill" 
-                              ui-mask="9999-99-99" model-view-value="true">
+                              datepicker/>
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark">Expiry date of the coupon codes, It has nothing to do with listing on the store.</small>

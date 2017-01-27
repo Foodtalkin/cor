@@ -4,6 +4,7 @@ app.factory('eventFactory', ['$http','urlFactory', function($http, urlFactory){
   //get all events
   eventFactory.getAllEvents = function(callback){
     $http.get(urlFactory.events).then(function(response){
+      console.log(response);
       callback(response);
     });
   }
