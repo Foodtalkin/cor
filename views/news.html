@@ -371,15 +371,18 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="table-responsive">
-                    <form class="form-inline">
-                        <!-- <div class="res">
+                  <form class="form-inline">
+                        <div class="res">
                           <p>Showing {{filtered.length}} Results</p>
-                        </div> -->
-                        <!-- <div class="form-group" id="search">
+                        </div>
+                        <div class="form-group" id="search">
                             <input type="text" ng-model="search" class="form-control" placeholder="Search" >
-                        </div> -->
+                        </div>
                     </form>
+                </div>
+                <div class="col-md-12">
+                  <div class="table-responsive">
+                    
                     <table class="table table-hover b-t b-b bordert">
                       <thead>
                         <tr >
@@ -393,7 +396,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="newsl in newslist " ng-click="">
+                        <tr ng-repeat="newsl in filtered = (newslist | filter:search) " ng-click="">
                           <td><span class="sttt {{newsl.isDisabled == '0'? 'online' : 'offline'}}"></span></td>
                           <td>{{ newsl.id }}</td>
                           <td>{{ newsl.title }}</td>

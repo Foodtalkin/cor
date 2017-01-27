@@ -239,9 +239,8 @@
                   <a href class="btn btn-rounded btn-stroke btn-primary" ng-click="getallusersdata()">All</a>
                   <a href class="btn btn-rounded btn-stroke btn-primary" ng-click="getonappusersdata()">On APP</a>
                 </div>
-              <div class="table-responsive">
-
-                <form class="form-inline m-t-sm hidden-xs hidden-sm">
+                <div class="col-md-12">
+                  <form class="form-inline m-t-sm hidden-xs hidden-sm">
                     <div class="res">
                       <p>Showing {{filtered.length}} Results of Page {{current_page}}</p>
                       <p>Total Users {{total}}</p>
@@ -251,19 +250,10 @@
                         <input type="text" ng-model="searchkey" class="form-control m-r-lg" placeholder="Search" >
                         <button md-ink-ripple class="btn btn-fw btn-primary" ng-click="searchuser(searchkey)">Search</button>
                     </div>
-                </form>
-                <form class="m-t-sm hidden-md hidden-lg">
-                  <div class="col-sm-12">
-                    <p>Showing {{filtered.length}} Results of Page {{current_page}}</p>
-                    <p>Total Users {{total}}</p>
-                  </div>
-                  <div class="col-sm-12 m-t">
-                    <input type="text" ng-model="searchkey" class="form-control m-r-lg" placeholder="Search" >
-                  </div>
-                  <div class="col-sm-12 m-t">
-                    <button md-ink-ripple class="btn btn-fw btn-primary" ng-click="searchuser(searchkey)">Search</button>
-                  </div>
-                </form>
+                  </form>
+                </div>
+              <div class="table-responsive">
+
                 <table class="table table-hover b-t b-b bordert">
                   <thead>
                     <tr >

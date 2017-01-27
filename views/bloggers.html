@@ -313,10 +313,7 @@
                 <button class="btn btn-sm m-xs btn-default {{toggleinstagram==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggleinstagram = !(toggleinstagram)">Instagram</button>
                 <button class="btn btn-sm m-xs btn-default {{toggletwitter==true ? 'btn-danger' : 'btn-success'}}" ng-click="toggletwitter = !(toggletwitter)">twitter</button>
               </div>
-              <div class="table-responsive">
-                <div>
-                  
-                </div>
+              <div class="col-md-12">
                 <form class="form-inline">
                     <div class="res">
                       <p>Showing {{filtered.length}} Results</p>
@@ -326,6 +323,12 @@
                         <input type="text" ng-model="search" class="form-control" placeholder="Search" >
                     </div>
                 </form>
+              </div>
+              <div class="table-responsive">
+                <div>
+                  
+                </div>
+                
                 <table class="table table-hover b-t b-b bordert">
                   <thead>
                     <tr >

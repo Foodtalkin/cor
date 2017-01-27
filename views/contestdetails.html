@@ -391,9 +391,8 @@
               <button class="btn btn-sm m-xs btn-default {{togglesource==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglesource = !(togglesource)">source</button>
               <button class="btn btn-sm m-xs btn-default {{togglegender==true ? 'btn-danger' : 'btn-success'}}" ng-click="togglegender = !(togglegender)">gender</button>
             </div>
-            <div class="table-responsive">
-
-                <form class="form-inline">
+            <div class="col-md-12">
+              <form class="form-inline">
                     <div class="res">
                       <p>Showing {{filtered.length}} Results</p>
                     </div>
@@ -402,6 +401,10 @@
                         <input type="text" ng-model="search" class="form-control" placeholder="Search" >
                     </div>
                 </form>
+            </div>
+            <div class="table-responsive">
+
+                
                 
                 <table class="table table-hover b-t b-b bordert">
                   <thead>
