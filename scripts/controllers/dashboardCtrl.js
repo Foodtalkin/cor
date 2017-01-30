@@ -16,7 +16,7 @@ app.controller('dashboardCtrl', ['$scope','authFactory', '$location', '$http','$
     $scope.ga.data = [];
     $scope.ga.data[0] = [0,0,0,0,0,0,0,0];
     $scope.ga.data[1] = response.ftp;
-    //console.log($scope.ga);
+    console.log($scope.ga);
   });
 
   dashAnalytics.getAllDashboard(function(response){
