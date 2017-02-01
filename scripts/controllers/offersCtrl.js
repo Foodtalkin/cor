@@ -1,6 +1,7 @@
 app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$routeParams', 'Upload', 'cloudinary','offerFactory', function($scope, $rootScope,$location,authFactory,$routeParams, $upload, cloudinary, offerFactory){
 	$scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
+   //$scope.onlineOfflene = 'offline';
    // $scope.loader = true;
    $scope.store = {};
    $scope.store.type = "offer";
@@ -78,137 +79,17 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     $scope.checkLive = function(sdate, edate, active){
 
       var date = new Date();
-      var month = date.getMonth()+1;
-      if(month <= 9){
-        month = "0"+month;
-      }
-      var today = [date.getFullYear().toString(),month,date.getDate().toString()];
-      //console.log(today);
-      var startdate = sdate.split(" ");
-      startdate = startdate[0].split("-");
-      //console.log(startdate);
-      var enddate = edate.split(" ");
-      enddate = enddate[0].split("-");
-      //console.log(enddate);
-
-      if(today[0] == startdate[0]){
-        if(today[0] == enddate[0]){
-          // same year
-          if(today[1] > startdate[1]){
-            // start month is smaller the today month
-            if(today[1] < enddate[1]){
-              // end month is bigger then today month
-              if(active == '0'){
-                return true;
-              }else{
-                return false;
-              }
-            }else if(today[1] == enddate[1]){
-              // today month and end month are same
-              if(today[2] <= enddate[2]){
-                if(active == '0'){
-                  return true;
-                }else{
-                  return false;
-                }
-              }else{
-                return false;
-              }
-            }else{
-              // today month is bigger then end month
-              return false;
-            }
-          }else if(today[1] == startdate[1]){
-            // start and today month are same
-            if(today[2] >= startdate[2]){
-              if(active == '0'){
-                return true;
-              }else{
-                return false;
-              }
-            }else{
-              return false;
-            }
+      var start = new Date(sdate);
+      var end = new Date(edate);
+      if(start <= date && date <= end){
+        if(active == '0'){
+            return 'online';
           }else{
-            // strat month is smaller then today
-            return false;
+            return 'offline';
           }
-        }else if(today[0] < enddate[0]){
-          // start year same end year is big
-          if(today[1] > startdate[1]){
-          // month is bigger then start date
-            if(active == '0'){
-              return true;
-            }else{
-              return false;
-            }
-          }else if(today[1] == startdate[1]){
-            //same month
-            if(today[2] >= startdate[2]){
-              if(active == '0'){
-                return true;
-              }else{
-                return false;
-              }
-            }else{
-              return false;
-            }
-          }else{
-            // month is smaller then start date month
-            return false;
-          }
-        }else{
-          // start year same end year small
-          return false;
-        }
-      }else if(today[0] > startdate[0]){
-        if(today[0] == enddate[0]){
-          // start year small end year same year
-          if(today[1] < enddate[0]){
-            // today month is smaller then enddate month
-            if(active == '0'){
-              return true;
-            }else{
-              return false;
-            }
-          }else if(today[1] == enddate[1]){
-            // today month is equal to the end date month
-            if(today[2] <= enddate[2]){
-              if(active == '0'){
-                return true;
-              }else{
-                return false;
-              }
-            }else{
-              return false;
-            }
-          }
-        }else if(today[0] < enddate[0]){
-          // start year small end year is big
-          if(active == '0'){
-            return true;
-          }else{
-            return false;
-          }
-        }else{
-          // start year small end year small
-          return false;
-        }
       }else{
-        return false;
+        return 'offline';
       }
-      // if(today[0] >= startdate[0] && today[0] <= enddate[0]){
-      //   if(today[1] >= startdate[1] && today[1] <= enddate[1]){
-      //     if(today[2] >= startdate[2] && today[2] < enddate[2]){
-      //       if(active == '0'){
-      //         return true;
-      //       }else{
-      //         return false;
-      //       }
-      //     }
-      //   }
-      // }
-
       
     }
 

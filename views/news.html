@@ -370,7 +370,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-12">
+                <!-- <div class="col-md-12" style="padding: 5px 40px;">
                   <form class="form-inline">
                         <div class="res">
                           <p>Showing {{filtered.length}} Results</p>
@@ -379,7 +379,7 @@
                             <input type="text" ng-model="search" class="form-control" placeholder="Search" >
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <div class="col-md-12">
                   <div class="table-responsive">
                     
@@ -396,7 +396,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="newsl in filtered = (newslist | filter:search) " ng-click="">
+                        <tr ng-repeat="newsl in newslist" >
                           <td><span class="sttt {{newsl.isDisabled == '0'? 'online' : 'offline'}}"></span></td>
                           <td>{{ newsl.id }}</td>
                           <td>{{ newsl.title }}</td>

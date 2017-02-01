@@ -622,7 +622,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="padding: 5px 40px;">
                   <form class="form-inline">
                         <div class="res">
                           <p>Showing {{filtered.length}} Results</p>
@@ -647,8 +647,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="offer in filtered = (offers | filter:search) " ng-click="">
-                          <td><span class=" {{ checkLive(offer.startDate, offer.endDate, offer.isDisabled) ? 'online' : 'offline'}} sttt"></span></td>
+                        <tr ng-repeat="offer in filtered = (offers | filter:search) track by offer.id" >
+                          <td><span class="sttt" ng-class="checkLive(offer.startDate, offer.endDate, offer.isDisabled);" ></span></td>
                           <td>{{ $index +1 }}</td>
                           <td>{{ offer.id }}</td>
                           <td>{{ offer.title }}</td>
