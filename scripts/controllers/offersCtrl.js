@@ -19,7 +19,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 
     offerFactory.getallOffer($scope.curruntpage,function(response){
         $scope.offers = response.data.storeOffers;
-        //console.log(response.data.storeOffers);
+        console.log(response.data.storeOffers);
       });
 
     $scope.getofferpage = function(page){
@@ -103,7 +103,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
               }else{
                 return false;
               }
-            }else if(today[1] == endate[1]){
+            }else if(today[1] == enddate[1]){
               // today month and end month are same
               if(today[2] <= enddate[2]){
                 if(active == '0'){
@@ -391,7 +391,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     $scope.couponcode = function(){
       offerFactory.adduniquecode($scope.storeOfferId,$scope.codes,function(response){
           if(response){
-            window.location.reload();
+            console.log(response);
+            //window.location.reload();
           }else{
 
             console.log("Le wild error");
