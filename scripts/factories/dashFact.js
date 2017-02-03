@@ -5,6 +5,7 @@ app.factory('dashAnalytics', ['$http','urlFactory', function($http, urlFactory){
   info.getGAData = function(callback){
     $http.get("api/gapi/index.php").then(function(response)
     {
+      console.log(response);
       callback(response.data);
     })
   };

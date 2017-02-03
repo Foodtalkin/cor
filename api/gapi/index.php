@@ -32,23 +32,22 @@ foreach($ga->getResults() as $result)
 $len = count($data);
 
 $data1 = array_slice($data, 0, $len / 2);
-$data2 = array_slice($data, $len / 2);
+
 
 $dates = array();
 $fti = array();
 print_r($data1);
 print_r($data2);
 // $ftp = array();
-// $j=0;
-// for ($i=0; $i < 14 ; $i= $i+2) { 
-// 	$dates[$j] = $data1[$i];
-// 	$fti[$j] = $data1[$i+1];
-// 	$ftp[$j] = $data2[$i+1];
-// 	$j++;
-// }
+$j=0;
+for ($i=0; $i < 14 ; $i= $i+2) { 
+	$dates[$j] = $data1[$i];
+	$fti[$j] = $data1[$i+1];
+	$j++;
+}
 
 
-// echo json_encode(array('date' => $dates, 'fti' => $fti, 'ftp' => $ftp));
+echo json_encode(array('date' => $dates, 'fti' => $fti));
 
   //echo json_encode($data);
 ?>

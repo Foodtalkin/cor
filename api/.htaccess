@@ -1,4 +1,4 @@
-SetEnvIf Referer http://www.foodtalkindia.com/cor internal 
+SetEnvIf Referer http://batcave.foodtalk.in internal 
 # 
 <Files *> 
 order Deny,Allow 
