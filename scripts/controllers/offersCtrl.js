@@ -272,8 +272,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     $scope.couponcode = function(){
       offerFactory.adduniquecode($scope.storeOfferId,$scope.codes,function(response){
           if(response){
-            console.log(response);
-            //window.location.reload();
+            //console.log(response);
+            window.location.reload();
           }else{
 
             console.log("Le wild error");
