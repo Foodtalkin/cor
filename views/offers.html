@@ -421,7 +421,11 @@
                               <label for="" class="grey-text">Type</label>
                             </div>
                             <div class="col-md-12">
-                              <input type="text" class="form-control" ng-model="store.type" disabled="true" value="offer" ng-required="true">
+                              <select id="" class="form-control" ng-model="store.type" ng-change="typechange()">
+                                <option value="" selected>Select type</option>
+                                <option value="">Offer</option>
+                                <option value="DINE-IN">Dine- In</option>
+                              </select>
                             </div>
                             <div class="col-md-12">
                               <small class="text-grey-dark"></small>
@@ -436,7 +440,7 @@
                             <div class="col-md-12">
                               <select id="" class="form-control" ng-model="store.subtype" >
                                 <option value="" selected>Select sub type</option>
-                                <option value="SINGLE_CODE">Single Code</option>
+                                <option value="SINGLE_CODE" ng-hide="hidesingle">Single Code</option>
                                 <option value="UNIQUE_CODE">Unique Code</option>
                               </select>
                             </div>
@@ -641,6 +645,7 @@
                           <th></th>
                           <th>#</th>
                           <th>Offer ID</th>
+                          <th>Type</th>
                           <th >Name</th>
                           <th>offer redeemed</th>
                           <th>Action</th>
@@ -651,6 +656,7 @@
                           <td><span class="sttt" ng-class="checkLive(offer.startDate, offer.endDate, offer.isDisabled);" ></span></td>
                           <td>{{ $index +1 }}</td>
                           <td>{{ offer.id }}</td>
+                          <td>{{ offer.type }}</td>
                           <td>{{ offer.title }}</td>
                           <td>{{ offer.totalQuantity - offer.availableQuantity}}</td>
                           <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#offers/{{ offer.id }}">Details</a></td>

@@ -4,7 +4,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
    //$scope.onlineOfflene = 'offline';
    // $scope.loader = true;
    $scope.store = {};
-   $scope.store.type = "offer";
+   $scope.hidesingle = false;
+   
    $scope.store.methodofpayment = "";
    $scope.store.subtype = "";
    $scope.curruntpage = 1;
@@ -157,6 +158,14 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       }
     }
 
+    $scope.typechange = function(){
+      if($scope.store.type == "DINE-IN"){
+        $scope.hidesingle = true;
+      }else{
+        $scope.hidesingle = false;
+      }
+    }
+
     $scope.createOffer = function(){
       if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill || !$scope.store.couponcode || !$scope.store.city || !$scope.store.reedeemdata){
         alert('all fields are required, please check your form and try again');
@@ -201,7 +210,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       }
       
       if($scope.store.subtype == "SINGLE_CODE"){
-        offerFactory.createsinglecodeOffer($scope.store.name,
+        offerFactory.createsinglecodeOffer($scope.store.type,$scope.store.name,
           $scope.store.cover,
           $scope.store.cardcover,
           $scope.store.cardbtn,
@@ -237,7 +246,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
         var codestring = $scope.store.couponcode.split(" ");
             codestring = codestring.join("");
         $scope.codes = codestring.split(",");
-        offerFactory.createuniquecodeOffer($scope.store.name,
+        offerFactory.createuniquecodeOffer($scope.store.type,$scope.store.name,
           $scope.store.cover,
           $scope.store.cardcover,
           $scope.store.cardbtn,

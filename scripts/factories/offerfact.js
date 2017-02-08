@@ -1,7 +1,7 @@
 app.factory('offerFactory', ['$http','$q', function($http,$q){
 	var offerFactory = {};
 
-	offerFactory.createsinglecodeOffer = function(title,coverImage,cardImage,
+	offerFactory.createsinglecodeOffer = function(type,title,coverImage,cardImage,
 		cardActionButtonText,actionButtonText,description,
 		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
@@ -11,6 +11,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 			method: 'POST',
 			url: 'http://52.74.136.146/index.php/service/storeOffer/add',
 			data: {sessionId:"GUEST",
+					type:type,
 					title:title,
 					coverImage:coverImage,
 			 		cardImage:cardImage,
@@ -46,7 +47,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
           });
 	}
 
-	offerFactory.createuniquecodeOffer = function(title,coverImage,cardImage,
+	offerFactory.createuniquecodeOffer = function(type,title,coverImage,cardImage,
 		cardActionButtonText,actionButtonText,description,
 		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
@@ -58,6 +59,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 			method: 'POST',
 			url: 'http://52.74.136.146/index.php/service/storeOffer/add',
 			data: { sessionId:"GUEST",
+					type:type,
 					title:title,
 					coverImage:coverImage,
 			 		cardImage:cardImage,
