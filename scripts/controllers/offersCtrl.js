@@ -167,7 +167,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     }
 
     $scope.createOffer = function(){
-      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill || !$scope.store.couponcode || !$scope.store.city || !$scope.store.reedeemdata){
+      console.log();
+      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill ||  !$scope.store.city || !$scope.store.reedeemdata){
         alert('all fields are required, please check your form and try again');
         return;
       }
@@ -242,10 +243,17 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           }
         });
       }else{
-        //console.log($scope.store);
-        var codestring = $scope.store.couponcode.split(" ");
+        if($scope.store.autogen == true){
+          $scope.store.autogen = "1";
+        }else{
+          $scope.store.autogen = "0";
+        }
+        
+        if($scope.store.couponcode){
+          var codestring = $scope.store.couponcode.split(" ");
             codestring = codestring.join("");
-        $scope.codes = codestring.split(",");
+            $scope.codes = codestring.split(",");
+        }
         offerFactory.createuniquecodeOffer($scope.store.type,$scope.store.name,
           $scope.store.cover,
           $scope.store.cardcover,
@@ -266,12 +274,18 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           $scope.store.redirecturl,
           $scope.store.city,
           $scope.store.redirectphone,
-          '1'
+          '1',
+          $scope.store.autogen
           // $scope.store.paymenturl
           ).then(function (response) {
               //console.log(response.storeOfferId);
              $scope.storeOfferId = response.storeOfferId;
-             $scope.couponcode();
+             if($scope.store.autogen == "1"){
+               window.location.reload();
+             }else{
+                $scope.couponcode();
+             }
+             
           }, function (err) {
              console.log(err);
           })

@@ -52,7 +52,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
 		startDate,endDate,validTill,totalQuantity,
-		subType,redemptionUrl,cityText,redemptionPhone,isDisabled){
+		subType,redemptionUrl,cityText,redemptionPhone,isDisabled,autogen){
 
 		var defer = $q.defer();
 		$http({
@@ -80,7 +80,8 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					redemptionUrl:redemptionUrl,
 					cityText:cityText,
 					redemptionPhone:redemptionPhone,
-					isDisabled:isDisabled}
+					isDisabled:isDisabled,
+					autoGenerateCode:autogen}
 		}).success(function (response) {
          	offerFactory = response;
          	defer.resolve(response);
