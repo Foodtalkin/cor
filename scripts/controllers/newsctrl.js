@@ -11,6 +11,43 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
     $scope.prevshow = true;
    }
 
+
+   // crop
+   $scope.fileChanged = function(e) {     
+    
+      var files = e.target.files;
+    
+        var fileReader = new FileReader();
+      fileReader.readAsDataURL(files[0]);   
+      
+      fileReader.onload = function(e) {
+        $scope.imgSrc = this.result;
+        $scope.$apply();
+      };
+      
+    }   
+
+    $scope.cropWidth = "375";
+    $scope.cropheight = "325";
+     
+    $scope.clear = function() {
+       $scope.imageCropStep = 1;
+       delete $scope.imgSrc;
+       delete $scope.result;
+       delete $scope.resultBlob;
+    };
+
+    $scope.uploadC = function(){
+
+      var blob = new Blob([$scope.result], {type: 'image/png'});
+      var file = new File([$scope.resultBlob], 'imageFileName.png');
+      var files = [file];
+
+      $scope.uploadFiles(files);
+    }
+
+    // crop code
+
    newsFactory.getallnews($scope.curruntpage,function(response){
       
       $scope.newslist = response.data.news;
@@ -87,12 +124,16 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
     }
 
 
+
    var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     //$scope.$watch('files', function() {
     $scope.uploadFiles = function(files){
+      //console.log(files);
       $scope.files = files;
-      if (!$scope.files) return;
+      if (!$scope.files){
+        return;
+      }
       angular.forEach(files, function(file){
 
         if (file && !file.$error) {
@@ -112,6 +153,7 @@ app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$ro
             data.context = {custom: {photo: $scope.title}};
             file.result = data;
             $scope.news.cover = file.result.url;
+            //console.log($scope.news.cover);
             $rootScope.photos.push(data);
           }).error(function (data, status, headers, config) {
             file.result = data;

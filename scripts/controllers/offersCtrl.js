@@ -47,6 +47,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     //$scope.$watch('files', function() {
     $scope.uploadFiles = function(files){
+      console.log(files);
       $scope.files = files;
       if (!$scope.files) return;
       angular.forEach(files, function(file){
