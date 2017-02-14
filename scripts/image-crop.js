@@ -821,7 +821,7 @@
           var targetX = 0, targetY = 0;
           var zoom = 1;
           var maxZoomGestureLength = 0;
-          var maxZoomedInLevel = 0, maxZoomedOutLevel = 2;
+          var maxZoomedInLevel = 0, maxZoomedOutLevel = 3;
           var minXPos = 0, maxXPos = (padding/2), minYPos = 0, maxYPos = (padding/2); // for dragging bounds		  
 		      var maxSize = scope.maxSize ? Number(scope.maxSize) : null; //max size of the image in px
 		  
@@ -874,7 +874,7 @@
           var targetX = 0, targetY = 0;
           var zoom = 1;
           var maxZoomGestureLength = 0;
-          var maxZoomedInLevel = 0, maxZoomedOutLevel = 2;
+          var maxZoomedInLevel = 0, maxZoomedOutLevel = 3;
           var minXPos = 0, maxXPos = (padding/2), minYPos = 0, maxYPos = (padding/2); // for dragging bounds      
           var maxSize = scope.maxSize ? Number(scope.maxSize) : null; //max size of the image in px
       

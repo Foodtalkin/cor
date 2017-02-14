@@ -306,48 +306,47 @@
                           <label for="" class="grey-text">Upload Image</label>
                           <p style="color:red;">please uplaod a larger image size</p>
                         </div>
-                                <div ng-show="imageCropStep == 1" style="">
-                                  <div class="col-md-4">
-                                    <input type="text" ng-model="cropWidth" placeholder="width" disabled="disabled">  
-                                  </div>
-                                  <div class="col-md-4">
-                                    <input type="text" ng-model="cropheight" placeholder="height" disabled="disabled">
-                                  </div>
-                                  <div class="col-md-4">
-                                    <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
-                                  </div>
-                                </div> 
-
-                                
-
-                                <div ng-show="imageCropStep == 2">                                   
-                                   <image-crop heightc="cropheight" widthc="cropWidth" data-shape="square"
-                                   data-step="imageCropStep" src="imgSrc" data-result="result" data-result-blob="resultBlob" crop="initCrop" padding="250"
-                                   max-size="1024"></image-crop>      
-                                </div> 
-                                <div ng-show="imageCropStep == 2">
-                                  <div class="col-md-6" style="margin-top: 15px">
-                                    <button ng-click="clear()" class="btn btn-fw btn-danger right">Cancel</button>
-                                  </div>
-                                  <div class="col-md-6" style="margin-top: 15px">
-                                    <button ng-click="initCrop = true" type="button" class="btn btn-fw btn-primary">Crop</button>   
-                                  </div>                                   
-                                </div> 
-                                <div ng-show="imageCropStep == 3">
-                                  <div class="col-md-12" style="text-align: center;">
-                                    <img ng-src="{{result}}"></img>
-                                  </div>
-                                  <div class="col-md-12" style="text-align: center; margin-top: 10px;">
-                                    <p>{{ news.cover }}</p>
-                                  </div>
-                                  <div class="col-md-6" style="margin-top: 15px">
-                                    <button ng-click="clear()" class="btn btn-fw btn-danger right">Clear</button>  
-                                  </div>   
-                                  <div class="col-md-6" style="margin-top: 15px">
-                                    <button ng-click="uploadC();" class="btn btn-fw btn-primary" type="button">upload</button>   
-                                  </div>   
-                                </div>  
-                              </div>
+                        <div class="col-md-12">
+                          <div ng-show="imageCropStep == 1" style="">
+                            <div class="col-md-4">
+                              <input type="text" ng-model="cropWidth" placeholder="width" disabled="disabled">  
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" ng-model="cropheight" placeholder="height" disabled="disabled">
+                            </div>
+                            <div class="col-md-4">
+                              <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                            </div>
+                          </div> 
+                          <div ng-show="imageCropStep == 2">                                   
+                             <image-crop heightc="cropheight" widthc="cropWidth" data-shape="square"
+                             data-step="imageCropStep" src="imgSrc" data-result="result" data-result-blob="resultBlob" crop="initCrop" padding="100"
+                             ></image-crop>      
+                          </div> 
+                          <div ng-show="imageCropStep == 2">
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Cancel</button>
+                            </div>
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="initCrop = true" type="button" class="btn btn-fw btn-primary">Crop</button>   
+                            </div>                                   
+                          </div> 
+                          <div ng-show="imageCropStep == 3">
+                            <div class="col-md-12" style="text-align: center;">
+                              <img ng-src="{{result}}"></img>
+                            </div>
+                            <div class="col-md-12" style="text-align: center; margin-top: 10px;">
+                              <p>{{ news.cover }}</p>
+                            </div>
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Clear</button>  
+                            </div>   
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="uploadC();" class="btn btn-fw btn-primary" type="button">upload</button>   
+                            </div>   
+                          </div>
+                        </div>  
+                      </div>
                     </div>
                   </div>                 
                   <div class="row">
