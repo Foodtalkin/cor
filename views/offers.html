@@ -509,16 +509,16 @@
                                 <small class="text-grey-dark">Search for restaurant name selected restaurant's id will below</small>
                               </div>
                               <div class="col-md-12">
-                              <span ng-repeat="slct in slectedRestro">{{ slct }}</span>
+                              <span ng-repeat="slct in slectedRestro"> {{ slct }} </span>
                               </div>
                             </div>
                           </div>
                           <div class="col-md-9">
                             <div style="max-height: 200px; overflow-y: auto;border: 1px solid #e6e6e6;padding: 5px 0;     min-height: 150px; margin-bottom: 20px;">
-                              <ul style="list-style: none;" ng-repeat="restro in restroList">
-                                <li>
+                              <ul style="list-style: none; padding-left: 15px" ng-repeat="restro in restroList">
+                                <li style="height: 50px;">
                                   <span style="width: 80%;display: inline-block;float: left; "> 
-                                    {{restro._source.restaurantname}}, {{restro._source.address}}
+                                    <i class="fa fa-check-square-o" aria-hidden="true" style="color: green;opacity: 0" id="chck{{restro._source.id}}"></i> {{restro._source.restaurantname}}, {{restro._source.address}}
                                   </span>
                                   <span style="width: 10%;display: inline-block;float: left; text-align: center;">
                                     <button class="btn" style="cursor: pointer;color:blue; box-shadow: none;background-color: transparent;border: none;" ng-click="addToList(restro._source.id);" id="add{{restro._source.id}}">

@@ -42,6 +42,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       var myEl2 = angular.element(  document.querySelector( '#remove'+id ) );
       myEl2.attr('disabled', false);
       myEl2.css('color', 'red');
+      var myEl3 = angular.element(  document.querySelector( '#chck'+id ) );
+      myEl3.css('opacity', 1);
     }
     $scope.removeFromList = function(id){
       var index = $scope.slectedRestro.indexOf(id);
@@ -52,6 +54,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       var myEl2 = angular.element(  document.querySelector( '#add'+id ) );
       myEl2.attr('disabled', false);
       myEl2.css('color', 'blue');
+      var myEl3 = angular.element(  document.querySelector( '#chck'+id ) );
+      myEl3.css('opacity', 0);
     }
 
     
