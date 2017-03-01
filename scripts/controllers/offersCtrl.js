@@ -5,6 +5,8 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
    // $scope.loader = true;
    $scope.store = {};
    $scope.hidesingle = false;
+   $scope.restroList = [];
+   $scope.slectedRestro = [];
    
    $scope.store.methodofpayment = "";
    $scope.store.subtype = "";
@@ -23,6 +25,36 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
         $scope.offers = response.data.storeOffers;
         console.log(response.data.storeOffers);
       });
+
+    $scope.serchRestro = function(q_key){
+      //console.log(q_key);
+      offerFactory.getrestro(q_key,function(response){
+        // console.log(response.data.result.hits.hits);
+        $scope.restroList = response.data.result.hits.hits;
+      })
+    }
+
+    $scope.addToList = function(id){
+      $scope.slectedRestro.push(id);
+      var myEl1 = angular.element(  document.querySelector( '#add'+id ) );
+      myEl1.attr('disabled', 'disabled');
+      myEl1.css('color', 'gray');
+      var myEl2 = angular.element(  document.querySelector( '#remove'+id ) );
+      myEl2.attr('disabled', false);
+      myEl2.css('color', 'red');
+    }
+    $scope.removeFromList = function(id){
+      var index = $scope.slectedRestro.indexOf(id);
+      $scope.slectedRestro.splice(index, 1);
+      var myEl1 = angular.element(  document.querySelector( '#remove'+id ) );
+      myEl1.attr('disabled', 'disabled');
+      myEl1.css('color', 'gray');
+      var myEl2 = angular.element(  document.querySelector( '#add'+id ) );
+      myEl2.attr('disabled', false);
+      myEl2.css('color', 'blue');
+    }
+
+    
 
     $scope.getofferpage = function(page){
       //console.log(page);
@@ -162,14 +194,16 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     $scope.typechange = function(){
       if($scope.store.type == "DINE-IN"){
         $scope.hidesingle = true;
+        $scope.store.autogen = true;
       }else{
         $scope.hidesingle = false;
+        $scope.store.autogen = false;
       }
     }
 
     $scope.createOffer = function(){
-      console.log();
-      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill ||  !$scope.store.city || !$scope.store.reedeemdata){
+      // checking fields
+      if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill ||  !$scope.store.city){
         alert('all fields are required, please check your form and try again');
         return;
       }
@@ -182,9 +216,9 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           $scope.store.redirectphone = $scope.store.reedeemdata;
           console.log($scope.store.reedeemdata);
       }else{
-        console.log($scope.store.reedeemdata);
-        alert('Method of Reedeeming cannot be empty');
-        return;
+        $scope.store.methodofreedeem = "";
+        $scope.store.redirecturl = "";
+        $scope.store.redirectphone = "";
       }
 
       if($scope.store.methodofpayment == ""){
@@ -198,9 +232,6 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       }
 
       
-
-
-
       if(!$scope.store.cardcover || !$scope.store.cover){
         if(!$scope.store.cardcover){
           alert('No Card Image, Please upload the image again');
@@ -282,7 +313,12 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
               //console.log(response.storeOfferId);
              $scope.storeOfferId = response.storeOfferId;
              if($scope.store.autogen == "1"){
-               window.location.reload();
+                if($scope.store.type == "DINE-IN"){
+                  $scope.addRestro();
+                }else{
+                  window.location.reload();
+                }
+               
              }else{
                 $scope.couponcode();
              }
@@ -304,25 +340,20 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           }
         })
     }
-    
-    // $scope.checkdate = function(disable, enddate){
-    //   //offer.isDisabled == '0'
-    //   var today = new Date();
-    //   var dd = today.getDate();
-    //   var mm = today.getMonth()+1; //January is 0!
-    //   var yyyy = today.getFullYear();
-    //   if(dd<10) {
-    //       dd='0'+dd
-    //   } 
-    //   if(mm<10) {
-    //       mm='0'+mm
-    //   } 
 
-    //   today = yyyy+'-'+mm+'-'+dd;
-    //   console.log(today);
-    //   console.log(enddate);
-    //   return true;
-    // }
+    $scope.addRestro = function(){
+      offerFactory.addRestro($scope.storeOfferId, $scope.slectedRestro, function(response){
+        if(response.data.status == "OK"){
+          // console.log(response);
+          window.location.reload();
+        }else{
+
+          console.log("Le wild error");
+        }
+      })
+    }
+    
+    
    
    $scope.logout = function(){
     authFactory.logout(function(response) {

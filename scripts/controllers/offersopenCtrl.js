@@ -8,6 +8,7 @@ app.controller('offersopenCtrl', ['$scope','$rootScope','$location','authFactory
     offerFactory.getOfferDetails(offerid,function(response){
         if(response){
           $scope.offerdetails = response.data.storeOffer;
+          $scope.userClaims = response.data.clamedUsers;
           console.log(response);
         }else{
           console.log("Le wild error");

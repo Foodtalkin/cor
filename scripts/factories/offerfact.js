@@ -162,6 +162,16 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
           });
 	}
 
+	offerFactory.getrestro = function(key,callback){
+		$http({
+			method: 'POST',
+			url: 'http://52.74.136.146/index.php/service/search/es',
+			data: {sessionId:"GUEST", type:'restaurant', searchText:key}
+		}).then(function (response) {
+            callback(response);
+          });
+	}
+
 	offerFactory.getOfferDetails = function(id,callback){
 		$http({
 			method: 'GET',
@@ -188,6 +198,26 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 			method: 'POST',
 			url: 'http://52.74.136.146/index.php/service/storeOffer/addCoupon',
 			data: {sessionId:"GUEST",storeOfferId:id,coupons:coupons}
+		}).then(function (response) {
+            if(response.statusText === "OK"){
+                callback(true);
+                console.log(response);
+            }else{
+              //Create an error Box and display the 
+              console.log(response);
+              alert('something went wrong please try again after refreshing the page');
+              callback(false);
+              
+
+            }
+          });
+	}
+
+	offerFactory.addRestro = function(id,list,callback){
+		$http({
+			method: 'POST',
+			url: 'http://52.74.136.146/index.php/service/storeOffer/addRestaurant',
+			data: {sessionId:"GUEST",storeOfferId:id,restaurants:list}
 		}).then(function (response) {
             if(response.statusText === "OK"){
                 callback(true);

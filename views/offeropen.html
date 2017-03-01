@@ -504,7 +504,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <form class="form-inline">
+                  <form class="form-inline" style="padding-left: 15px; padding-right: 15px;">
                         <div class="res">
                           <p>Showing {{filtered.length}} Results</p>
                         </div>
@@ -522,18 +522,19 @@
                           <!-- <th></th> -->
                           <th>#</th>
                           <th >Name</th>
+                          <th>UserName</th>
                           <th>redeem via</th>
-                          <th>Action</th>
+                          
                         </tr>
                       </thead>
                       <tbody>
-                        <!-- <tr ng-repeat="contest in filtered = (contest.data.result.data | filter:search) " ng-click=""> -->
-                        <tr>
+                        <tr ng-repeat="user in filtered = (userClaims | filter:search) " ng-click="">
                           <!-- <td><span class="online  sttt"></span></td> -->
-                          <td><!-- {{ $index +1 }} -->1</td>
-                          <td><!-- {{ contest.name }} -->user name</td>
-                          <td><!-- {{ contest.start_date }} -->points</td>
-                          <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#user/1200">Details</a></td>
+                          <td>{{ $index +1 }}</td>
+                          <td>{{ user.fullName }}</td>
+                          <td><a href="http://foodtalk.in/{{ user.userName }}" target="_blank">{{ user.userName }}</a></td>
+                          <td>{{ user.costType }}</td>
+                          
                         </tr>
                       </tbody>
                       

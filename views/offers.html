@@ -422,7 +422,7 @@
                             </div>
                             <div class="col-md-12">
                               <select id="" class="form-control" ng-model="store.type" ng-change="typechange()">
-                                <option value="" selected>Select type</option>
+                                <option value="" selected disabled>Select type</option>
                                 <option value="">Offer</option>
                                 <option value="DINE-IN">Dine- In</option>
                               </select>
@@ -439,7 +439,7 @@
                             </div>
                             <div class="col-md-12">
                               <select id="" class="form-control" ng-model="store.subtype" >
-                                <option value="" selected>Select sub type</option>
+                                <option value="" selected disabled>Select sub type</option>
                                 <option value="SINGLE_CODE" ng-hide="hidesingle">Single Code</option>
                                 <option value="UNIQUE_CODE">Unique Code</option>
                               </select>
@@ -456,7 +456,7 @@
                             </div>
                             <div class="col-md-12" >
                               <select id="" class="form-control" ng-model="store.methodofpayment" >
-                                <option value="" selected>Select Method of payment</option>
+                                <option value="" selected disabled>Select Method of payment</option>
                                 <!-- <option value="BOTH">Both points and Online</option> -->
                                 <option value="POINTS">Via Points</option>
                                 <!-- <option value="ONLINE">Via Online Payment</option> -->
@@ -487,8 +487,51 @@
                           <div class="form-group">
                             <div class="col-md-12">
                               <input type="checkbox" ng-model="store.autogen">
-                              <label for="" style="color: #ff7777">Auto Genrate Coupon Codes</label>
+                                <label for="" style="color: #ff7777">Auto Genrate Coupon Codes</label>
                               </input>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12" style="padding-left: 0;, padding-right: 0;" ng-show="hidesingle">
+                          <!-- <md-chips collection='restroList' ng-model='searchkey' md-title='title' md-thumbnail='thumbnailUrl' md-subtitle='subtitle' disabled='false' unique='true' ng-keyup="serchRestro('hjdgh')" /> -->
+                          <div class="col-md-12">
+                            <h5>Attech Dine In offers to restaurant <span style="color:red;">(Required in case of Dine In offers)</span></h5>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label for="" class="grey-text">Search</label>
+                              </div>
+                              <div class="col-md-12">
+                                <input type="text" class="form-control" ng-model="key" ng-keyup="serchRestro(key)" placeholder="instapizza">
+                              </div>
+                              <div class="col-md-12">
+                                <small class="text-grey-dark">Search for restaurant name selected restaurant's id will below</small>
+                              </div>
+                              <div class="col-md-12">
+                              <span ng-repeat="slct in slectedRestro">{{ slct }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-9">
+                            <div style="max-height: 200px; overflow-y: auto;border: 1px solid #e6e6e6;padding: 5px 0;     min-height: 150px; margin-bottom: 20px;">
+                              <ul style="list-style: none;" ng-repeat="restro in restroList">
+                                <li>
+                                  <span style="width: 80%;display: inline-block;float: left; "> 
+                                    {{restro._source.restaurantname}}, {{restro._source.address}}
+                                  </span>
+                                  <span style="width: 10%;display: inline-block;float: left; text-align: center;">
+                                    <button class="btn" style="cursor: pointer;color:blue; box-shadow: none;background-color: transparent;border: none;" ng-click="addToList(restro._source.id);" id="add{{restro._source.id}}">
+                                      <i class="fa fa-2x fa-plus-square-o" aria-hidden="true" ></i>
+                                    </button>
+                                  </span>
+                                  <span style="width: 10%;display: inline-block;float: left; text-align: center;">
+                                    <button class="btn" style="cursor: pointer;color:gray; box-shadow: none;background-color: transparent;border: none;" ng-click="removeFromList(restro._source.id);" id="remove{{restro._source.id}}" disabled="disabled">
+                                      <i class="fa fa-2x fa-minus-square-o" aria-hidden="true"></i>
+                                    </button>
+                                  </span>
+                                </li>
+                              </ul>
                             </div>
                           </div>
                         </div>
@@ -553,7 +596,7 @@
                             </div>
                             <div class="col-md-12">
                               <select class="form-control" ng-model="store.methodofreedeem" ng-change="reedeemchange();">
-                                <option value="">---</option>
+                                <option value="" disabled>---</option>
                                 <option value="LINK">LINK</option>
                                 <option value="PHONE">PHONE</option>
                               </select>

@@ -19,6 +19,10 @@ app.factory('sessionInjector', ['$cookies', function($cookies) {
 
             }else if(config.url == 'http://52.74.136.146/index.php/service/storeOffer/list'){
 
+            }else if(config.url == 'http://52.74.136.146/index.php/service/search/es'){
+                
+            }else if(config.url == 'http://52.74.136.146/index.php/service/storeOffer/addRestaurant'){
+                
             }else{
                 if (session) {
                     config.headers['APPSESSID'] = session;
