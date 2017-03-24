@@ -215,59 +215,7 @@
                       <!-- card design start -->
                       <div class="row">
                         <h4 class="grey-text">Design the Card </h4>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <div class="col-md-12">
-                              <label for="" class="grey-text">Card Image</label>
-                            </div>
-                            <div class="col-md-12">
-                              <div id="direct_upload" 
-                                ngf-drop="uploadFiles2($files)"
-                                ngf-drag-over-class="dragOverClass($event)"
-                                ng-model="files2"
-                                ng-multiple="false">
-                                <div class="col-md-12">
-                                  <form>  
-                                    <div class="form_line">
-                                        <!-- <label>Image:</label> -->
-                                        <div class="form_controls">
-                                            <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
-                                                <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles2($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 480 && $height == 300" >Upload</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </form>
-                                </div>
-                                <div class="col-md-12" style="padding: 10px">
-                                  <div class="file" ng-repeat="file in files2">
-                                    <div class="col-md-6">
-                                      <p class="grey-text">{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
-                                      <div class="status">{{file.status}}</div>
-                                      
-                                      <div class="progress-bar">
-                                        <div class="progress grey-text" style="width: {{file.progress}}%" ng-init="progress=0"></div>
-                                      </div>
-                                      <p>{{store2.cardcover}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="form_line">
-                                          <div class="form_controls">
-                                              <div class="preview">
-                                                  <img ngf-src="file.result.url || file" style="width: 80%;">
-                                              </div>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div> 
-
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <small class="text-grey-dark">Offer Card Creative (image size : 480 X 300)</small>
-                            </div>
-                          </div>
-                        </div>
+                        
                         <div class="col-md-12">
                           <div class="form-group">
                             <div class="col-md-12">

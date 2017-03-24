@@ -1,4 +1,5 @@
-app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$routeParams', 'Upload', 'cloudinary','newsFactory', function($scope, $rootScope,$location,authFactory,$routeParams, $upload, cloudinary, newsFactory){
+app.controller('newsCtrl', ['$scope','$rootScope','$location','authFactory','$routeParams', 'Upload', 'cloudinary','newsFactory', 
+  function($scope, $rootScope,$location,authFactory,$routeParams, $upload, cloudinary, newsFactory){
 	$scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
    // $scope.loader = true;

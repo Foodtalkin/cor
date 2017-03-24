@@ -1,7 +1,7 @@
 app.factory('offerFactory', ['$http','$q', function($http,$q){
 	var offerFactory = {};
 
-	offerFactory.createsinglecodeOffer = function(type,title,coverImage,cardImage,
+	offerFactory.createsinglecodeOffer = function(type,title,coverImage,
 		cardActionButtonText,actionButtonText,description,
 		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
@@ -14,7 +14,6 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					type:type,
 					title:title,
 					coverImage:coverImage,
-			 		cardImage:cardImage,
 			 		cardActionButtonText:cardActionButtonText,
 					actionButtonText:actionButtonText,
 					description:description,
@@ -47,7 +46,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
           });
 	}
 
-	offerFactory.createuniquecodeOffer = function(type,title,coverImage,cardImage,
+	offerFactory.createuniquecodeOffer = function(type,title,coverImage,
 		cardActionButtonText,actionButtonText,description,
 		shortDescription,costType,costPoints,
 		termConditionsLink,thankYouText,
@@ -62,7 +61,6 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					type:type,
 					title:title,
 					coverImage:coverImage,
-			 		cardImage:cardImage,
 			 		cardActionButtonText:cardActionButtonText,
 					actionButtonText:actionButtonText,
 					description:description,
@@ -97,7 +95,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 		cardActionButtonText,actionButtonText,description,
 		shortDescription,
 		termConditionsLink,thankYouText,
-		startDate,endDate,cityText,cardImage,coverImage,callback){
+		startDate,endDate,cityText,coverImage,callback){
 		$http({
 			method: 'POST',
 			url: 'http://52.74.136.146/index.php/service/storeOffer/add',
@@ -113,7 +111,6 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 					startDate:startDate,
 					endDate:endDate,
 					cityText:cityText,
-					cardImage:cardImage,
 					coverImage:coverImage}
 		}).then(function (response) {
             if(response.statusText === "OK"){

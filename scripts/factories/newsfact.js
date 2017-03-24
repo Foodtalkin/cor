@@ -2,10 +2,6 @@ app.factory('newsFactory', ['$http', function($http){
 	var newsFactory = {};
 
 	newsFactory.getallnews = function(page,callback){
-		// $http.get("http://52.74.136.146/index.php/service/news/list?sessionId=GUEST&status=all").then(function(response){
-	 //      callback(response);
-	 //    });
-
     $http({
       method: 'GET',
       url: 'http://52.74.136.146/index.php/service/news/list',

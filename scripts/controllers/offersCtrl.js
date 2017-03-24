@@ -133,38 +133,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 
     
 
-    $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
-    //$scope.$watch('files', function() {
-    $scope.uploadFiles2 = function(files2){
-      $scope.files2 = files2;
-      if (!$scope.files2) return;
-      angular.forEach(files2, function(file){
-        if (file && !file.$error) {
-          file.upload = $upload.upload({
-            url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
-            data: {
-              upload_preset: cloudinary.config().upload_preset,
-              tags: 'myphotoalbum',
-              context: 'photo=' + $scope.title,
-              file: file
-            }
-          }).progress(function (e) {
-            file.progress = Math.round((e.loaded * 100.0) / e.total);
-            file.status = "Uploading... " + file.progress + "%";
-          }).success(function (data, status, headers, config) {
-            $rootScope.photos = $rootScope.photos || [];
-            data.context = {custom: {photo: $scope.title}};
-            file.result = data;
-            $scope.store.cardcover = file.result.url;
-            
-            $rootScope.photos.push(data);
-          }).error(function (data, status, headers, config) {
-            file.result = data;
-          });
-        }
-      });
-    };
-    //});
+    
 
     /* Modify the look and fill of the dropzone when files are being dragged over it */
     $scope.dragOverClass = function($event) {
@@ -206,10 +175,13 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     }
 
     $scope.createOffer = function(){
+      $scope.loader = true;
       // checking fields
       if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill ||  !$scope.store.city){
         alert('all fields are required, please check your form and try again');
+        $scope.loader = false;
         return;
+
       }
       if($scope.store.methodofreedeem == "LINK"){
         $scope.store.redirecturl = $scope.store.reedeemdata;
@@ -227,29 +199,26 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 
       if($scope.store.methodofpayment == ""){
         alert('Method of payment cannot be empty');
+        $scope.loader = false;
         return;
       }
       
       if($scope.store.subtype == ""){
         alert('Offer Sub Type cannot be empty');
+        $scope.loader = false;
         return;
       }
 
-      
-      if(!$scope.store.cardcover || !$scope.store.cover){
-        if(!$scope.store.cardcover){
-          alert('No Card Image, Please upload the image again');
-        }
-        if(!$scope.store.cover){
+      if(!$scope.store.cover){
           alert('No Cover Image, Please upload the image again');
-        }
-        return;
+          $scope.loader = false;
+          return;
       }
+      
       
       if($scope.store.subtype == "SINGLE_CODE"){
         offerFactory.createsinglecodeOffer($scope.store.type,$scope.store.name,
           $scope.store.cover,
-          $scope.store.cardcover,
           $scope.store.cardbtn,
           $scope.store.formbtn,
           $scope.store.longdesc,
@@ -273,6 +242,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           function(response){
           if(response){
             window.location.reload();
+            
           }else{
               console.log("Le wild error");
 
@@ -292,7 +262,6 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
         }
         offerFactory.createuniquecodeOffer($scope.store.type,$scope.store.name,
           $scope.store.cover,
-          $scope.store.cardcover,
           $scope.store.cardbtn,
           $scope.store.formbtn,
           $scope.store.longdesc,
