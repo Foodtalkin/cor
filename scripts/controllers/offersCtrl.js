@@ -241,9 +241,11 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           // $scope.store.paymenturl, 
           function(response){
           if(response){
+            $scope.loader = false;
             window.location.reload();
             
           }else{
+            $scope.loader = false;
               console.log("Le wild error");
 
           }
@@ -289,6 +291,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
                 if($scope.store.type == "DINE-IN"){
                   $scope.addRestro();
                 }else{
+                  $scope.loader = false;
                   window.location.reload();
                 }
                
@@ -306,9 +309,10 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       offerFactory.adduniquecode($scope.storeOfferId,$scope.codes,function(response){
           if(response){
             //console.log(response);
+            $scope.loader = false;
             window.location.reload();
           }else{
-
+            $scope.loader = false;
             console.log("Le wild error");
           }
         })
@@ -318,9 +322,10 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       offerFactory.addRestro($scope.storeOfferId, $scope.slectedRestro, function(response){
         if(response.data.status == "OK"){
           // console.log(response);
+          $scope.loader = false;
           window.location.reload();
         }else{
-
+          $scope.loader = false;
           console.log("Le wild error");
         }
       })
@@ -328,7 +333,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     
     
    
-   $scope.logout = function(){
+  $scope.logout = function(){
     authFactory.logout(function(response) {
      
     });
