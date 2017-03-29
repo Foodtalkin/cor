@@ -3,8 +3,8 @@ app.controller('offersopenCtrl', ['$scope','$rootScope','$location','authFactory
    $scope.email =$rootScope.useremail;
    $scope.offerdetails = {};
    $scope.store2 = {};
-   
-   // 
+   $scope.loader = false;
+   // $scope.loader = true;
    var offerid = $routeParams.offerid;
     offerFactory.getOfferDetails(offerid,function(response){
         if(response){
@@ -70,10 +70,10 @@ app.controller('offersopenCtrl', ['$scope','$rootScope','$location','authFactory
 
 
     $scope.editoffer = function(){
-      
+      $scope.loader = true;
       if(!$scope.offerdetails.title && !$scope.offerdetails.cardActionButtonText && !$scope.offerdetails.actionButtonText && !$scope.offerdetails.description && !$scope.offerdetails.shortDescription && !$scope.offerdetails.termConditionsLink && !$scope.offerdetails.thankYouText && !$scope.offerdetails.startDate && !$scope.offerdetails.endDate && !$scope.offerdetails.cityText){
         alert('all fields are required, please check your form and try again');
-        
+        $scope.loader = false;
         return;
       }
       
@@ -90,10 +90,10 @@ app.controller('offersopenCtrl', ['$scope','$rootScope','$location','authFactory
         if(response){
           window.location.reload();
           console.log(response);
-          
+          $scope.loader = false;
         }else{
           console.log("Le wild error");
-          
+          $scope.loader = false;
         }
       })
     }

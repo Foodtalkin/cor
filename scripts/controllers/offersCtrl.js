@@ -2,7 +2,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 	$scope.username = $rootScope.username;
    $scope.email =$rootScope.useremail;
    //$scope.onlineOfflene = 'offline';
-   // 
+   // $scope.loader = true;
    $scope.store = {};
    $scope.hidesingle = false;
    $scope.restroList = [];
@@ -175,11 +175,11 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
     }
 
     $scope.createOffer = function(){
-      
+      $scope.loader = true;
       // checking fields
       if(!$scope.store.name || !$scope.store.cardbtn || !$scope.store.formbtn || !$scope.store.longdesc || !$scope.store.shortdesc || !$scope.store.couponno || !$scope.store.terms || !$scope.store.thankyoutext || !$scope.store.sdate || !$scope.store.edate || !$scope.store.validtill ||  !$scope.store.city){
         alert('all fields are required, please check your form and try again');
-        
+        $scope.loader = false;
         return;
 
       }
@@ -199,19 +199,19 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 
       if($scope.store.methodofpayment == ""){
         alert('Method of payment cannot be empty');
-        
+        $scope.loader = false;
         return;
       }
       
       if($scope.store.subtype == ""){
         alert('Offer Sub Type cannot be empty');
-        
+        $scope.loader = false;
         return;
       }
 
       if(!$scope.store.cover){
           alert('No Cover Image, Please upload the image again');
-          
+          $scope.loader = false;
           return;
       }
       
@@ -241,11 +241,11 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
           // $scope.store.paymenturl, 
           function(response){
           if(response){
-            
+            $scope.loader = false;
             window.location.reload();
             
           }else{
-            
+            $scope.loader = false;
               console.log("Le wild error");
 
           }
@@ -291,7 +291,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
                 if($scope.store.type == "DINE-IN"){
                   $scope.addRestro();
                 }else{
-                  
+                  $scope.loader = false;
                   window.location.reload();
                 }
                
@@ -309,10 +309,10 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
       offerFactory.adduniquecode($scope.storeOfferId,$scope.codes,function(response){
           if(response){
             //console.log(response);
-            
+            $scope.loader = false;
             window.location.reload();
           }else{
-            
+            $scope.loader = false;
             console.log("Le wild error");
           }
         })
@@ -320,12 +320,12 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
 
     $scope.addRestro = function(){
       offerFactory.addRestro($scope.storeOfferId, $scope.slectedRestro, function(response){
-        if(response.data.status == "OK"){
+        if(response){
           // console.log(response);
-          
+          $scope.loader = false;
           window.location.reload();
         }else{
-          
+          $scope.loader = false;
           console.log("Le wild error");
         }
       })

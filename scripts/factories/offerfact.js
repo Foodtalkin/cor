@@ -217,8 +217,9 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 			data: {sessionId:"GUEST",storeOfferId:id,restaurants:list}
 		}).then(function (response) {
             if(response.statusText === "OK"){
+            	console.log(response);
                 callback(true);
-                console.log(response);
+                
             }else{
               //Create an error Box and display the 
               console.log(response);
