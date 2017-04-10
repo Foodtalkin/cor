@@ -647,7 +647,8 @@
                           <th>Offer ID</th>
                           <th>Type</th>
                           <th >Name</th>
-                          <th>offer redeemed</th>
+                          <th>claimed</th>
+                          <th>Redeemed</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -659,6 +660,7 @@
                           <td>{{ offer.type }}</td>
                           <td>{{ offer.title }}</td>
                           <td>{{ offer.totalQuantity - offer.availableQuantity}}</td>
+                          <td>{{ offer.type == 'DINE-IN' ? offer.totalRedeemed : 'N/A'}}</td>
                           <td><a md-ink-ripple class="btn btn-sm btn-fw btn-dark" href="#offers/{{ offer.id }}">Details</a></td>
                         </tr>
                       </tbody>
