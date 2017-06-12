@@ -210,7 +210,8 @@
                                 </div>
                               </div>
                             </div>
-                            <button class="btn orange" ng-click="addTagsImages()">Next</button>
+                            <button class="btn red" ng-click="AddImagesoutlet = false">Cancel</button>
+                            <button class="btn orange pull-right" ng-click="addTagsImages()">Next</button>
                           </div> 
                         </div>
                       </div>
@@ -228,6 +229,7 @@
                             <button class="btn btn-success" ng-click="outletimgaddarray(img.url,ImageType )" >Add</button>
                           </div>
                         </div>
+                        <button class="btn red" ng-click="AddImagesoutlet = false">Cancel</button>
                         <button class="btn btn-primary pull-right" style="margin-top: 40px;" ng-click="saveImagesToOutlet()" >save</button>
                       </div>
                       
@@ -305,6 +307,7 @@
                         </div>  
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
+                        <button class="btn red" ng-click="createoutletoffer = false">Cancel</button>
                         <button class="btn pink pull-right" ng-click="createOutletOffer()">Create Offer</button>
                       </div>
                     </div>
@@ -381,8 +384,8 @@
                         </div>  
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
-                        <button class="btn red" ng-click="updateoutletoffer = false">cancle</button>
-                        <button class="btn pink pull-right" ng-click="updateOutletOffer()">Create Offer</button>
+                        <button class="btn red" ng-click="updateoutletoffer = false">Cancel</button>
+                        <button class="btn pink pull-right" ng-click="updateOutletOffer()">Update outlet offer</button>
                       </div>
                     </div>
                   </div>
@@ -456,6 +459,7 @@
                         
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
+                        <button class="btn red" ng-click="updateoutlet = false">Cancel</button>
                         <button class="btn pink pull-right" ng-click="updateOutlet()">Update outlet</button>
                       </div>
                     </div>
@@ -486,6 +490,7 @@
                         </div>
                       </div>
                       <div class="col-sm-12">
+                        <button class="btn red" ng-click="createNewoffer = false">Cancel</button>
                         <button class="btn btn-info" ng-click="createNewOffer()">Create New Offer</button>
                       </div>
                     </div>
