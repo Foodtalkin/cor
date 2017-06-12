@@ -1,0 +1,545 @@
+
+<aside id="aside" class="app-aside modal fade " role="menu">
+    <div class="left">
+      <div class="box bg-white">
+        <div class="navbar md-whiteframe-z1 no-radius blue">
+            <!-- brand -->
+            <a class="navbar-brand" href="#dashboard">
+              
+              <img src="images/logo.png" alt="." style="max-height: 36px; display:none">
+              <span class="hidden-folded m-l inline">Batcave</span>
+            </a>
+            <!-- / brand -->
+        </div>
+        <div class="box-row">
+          <div class="box-cell scrollable hover">
+            <div class="box-inner">
+              <div class="p hidden-folded blue-50" style="background-image:url(images/bg.png); background-size:cover">
+                <a class="block m-t-sm">
+                  <span class="block font-bold">{{username}}</span>
+                  {{email}}
+                </a>
+              </div>
+              <div id="nav">
+                <nav ui-nav>
+                  <ul class="nav">
+                    <li>
+                      <a md-ink-ripple>
+                        <span class="pull-right text-muted">
+                          <i class="fa fa-caret-down"></i>
+                        </span>
+                        <i class="icon mdi-action-settings-input-svideo i-20"></i>
+                        <span class="font-normal">Dashboard</span>
+                      </a>
+                      <ul class="nav nav-sub">
+                        <li>
+                          <a md-ink-ripple href="#dashboard">Web Analytics</a>
+                        </li>
+                        <li>
+                          <a md-ink-ripple href="#appdashboard">App Analytics</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="#users">
+                        <i class="icon mdi-social-people i-20"></i>
+                        <span class="font-normal">Users</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="#events">
+                        <i class="icon mdi-maps-local-bar i-20"></i>
+                        <span class="font-normal">Events</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="#contest">
+                        <i class="icon mdi-action-extension i-20"></i>
+                        <span class="font-normal">Contest</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="#offers">
+                        <i class="icon fa fa-tags i-20"></i>
+                        <span class="font-normal">offers</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="#news">
+                        <i class="fa fa-newspaper-o icon " aria-hidden="true"></i>
+                        <span class="font-normal">News</span>
+                      </a>
+                    </li>
+                    <!-- <li>
+                      <a md-ink-ripple href="#contacts">
+                        <i class="icon mdi-action-extension i-20"></i>
+                        <span class="font-normal">Contacts</span>
+                      </a>
+                    </li> -->
+                    <li>
+                      <a md-ink-ripple href="#contactfrm">
+                        <i class="icon fa-phone fa i-20"></i>
+                        <span class="font-normal">Contact form</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="#privilege" class="active-menu">
+                        <i class="icon fa-ticket fa i-20"></i>
+                        <span class="font-normal">privilege</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a md-ink-ripple>
+                        <span class="pull-right text-muted">
+                          <i class="fa fa-caret-down"></i>
+                        </span>
+                        <i class="icon mdi-editor-insert-drive-file i-20"></i>
+                        <span class="font-normal">CRM</span>
+                      </a>
+                      <ul class="nav nav-sub">
+                        <li>
+                          <a md-ink-ripple href="#vendors">Vendor Managment</a>
+                        </li>
+                        <li>
+                          <a md-ink-ripple href="#media">Media Managment</a>
+                        </li>
+                        <li>
+                          <a md-ink-ripple href="#bloggers">Bloggers Managment</a>
+                        </li>
+                        <li>
+                          <a md-ink-ripple href="#influencer">influencer Managment</a>
+                        </li>
+                      </ul>
+                    </li>
+                    
+                    <li class="b-b b m-v-sm"></li>
+                    <li>
+                      <a md-ink-ripple ng-click="logout();">
+                        <i class="icon mdi-action-exit-to-app i-20"></i>
+                        <span>Logout</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>
+  </aside>
+  <!-- / aside -->
+  
+
+
+  <!-- content -->
+  <div id="content" class="app-content" role="main">
+    <div class="box">
+          <!-- Content Navbar -->
+    <div class="navbar md-whiteframe-z1 no-radius blue">
+      <!-- Open side - Naviation on mobile -->
+      <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
+      <!-- / -->
+      <!-- Page title - Bind to $state's title -->
+      <div class="navbar-item pull-left h4">Events List</div>
+     
+      <div class="pull-right" ui-view="navbar@"></div>
+      <!-- / -->
+      <!-- Search form -->
+      
+      <!-- / -->
+    </div>
+    <!-- Content -->
+      
+      <div class="box-row">
+        <div class="box-cell">
+          <div class="box-inner padding"> 
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="col-sm-12" style="padding: 20px;">
+                  <button class="btn blue" ng-click="updateoutlet = !updateoutlet">Update This outlet</button>
+                  <button class="btn green" ng-click="createoutletoffer = !createoutletoffer">Create offer For outlet</button>
+                  <button class="btn red" ng-click="createNewoffer = !createNewoffer">Create new Offer</button>
+                  <button class="btn orange" ng-click="AddImagesoutlet = !AddImagesoutlet">Add Outlet Images</button>
+                </div>
+                <div class="col-sm-12" ng-show="AddImagesoutlet">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      add images to outlet
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12" ng-hide="uploadoutletimahegesstep1">
+                        <div id="direct_upload" 
+                          ngf-drop="uploadFiles($files)"
+                          ngf-drag-over-class="dragOverClass($event)"
+                          ng-model="files"
+                          ng-multiple="fasle">
+                          <div class="col-md-12">
+                            <form>  
+                              <div class="form_line">
+                                  <!-- <label>Image:</label> -->
+                                  <div class="form_controls">
+                                      <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
+                                          <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" multiple>Upload</div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </form>
+                            <h3>Images uploded: {{photos.length}}</h3>
+                          </div>
+                          <div class="col-md-12" style="padding: 10px">
+                            <div class="file" ng-repeat="file in files">
+                              <div class="col-md-6">
+                                <p class="grey-text">{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
+                                <div class="status">{{file.status}}</div>
+                                
+                                <div class="progress-bar">
+                                  <div class="progress grey-text" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+                                </div>
+                            
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form_line">
+                                    <div class="form_controls">
+                                        <div class="preview">
+                                            <img ngf-src="file.result.url || file" style="width: 80%;">
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button class="btn orange" ng-click="addTagsImages()">Next</button>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-sm-12" ng-show="uploadoutletimahegesstep2" style="padding: 20px;">
+                        <div class="col-sm-6" ng-repeat="img in outletimages">
+                          <div class="col-xs-8">
+                            <img ng-src="{{img.url}}" alt="" class="img-responsive">
+                            
+                          </div>
+                          <div class="col-xs-4">
+                            <select name="imagetype" id="" ng-model="ImageType">
+                              <option value="menu">Menu</option>
+                              <option value="photo">Photo</option>
+                            </select>
+                            <button class="btn btn-success" ng-click="outletimgaddarray(img.url,ImageType )" >Add</button>
+                          </div>
+                        </div>
+                        <button class="btn btn-primary pull-right" style="margin-top: 40px;" ng-click="saveImagesToOutlet()" >save</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12" ng-show="createoutletoffer">
+                  <div class="panel panel-default" style="padding: 10px;">
+                    <div class="panel-title">
+                      <h4>Create outlet offer</h3>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="rest-name">Offer</label>
+                          <select name="offername" id="" class="form-control" ng-model="outletoffer.offer_id">
+                            <option ng-repeat="mainoffer in offerList" value="{{ mainoffer.id }}">{{ mainoffer.title }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">start date</label>
+                          <input type="text" ng-model="outletoffer.start_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">end Date</label>
+                          <input type="text" ng-model="outletoffer.end_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">short description</label>
+                          <textarea name="short_description" id="" cols="30" rows="2" class="form-control"  ng-model="outletoffer.short_description"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="">description</label>
+                          <textarea name="description" id="description" cols="30" rows="4" class="form-control" ng-model="outletoffer.description"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="col-md-12" style="padding: 10px 0;">
+                          <label for="" class="grey-text">Upload Image (640 x 340) </label>
+                          <p style="color:red;">please uplaod a larger image size</p>
+                        </div>
+                        <div class="col-md-12">
+                          <div ng-show="imageCropStep == 1" style="">
+                            <div class="col-md-4">
+                              <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                            </div>
+                          </div> 
+                          <div ng-show="imageCropStep == 2">                                   
+                             <image-crop heightc="cropheight" widthc="cropWidth" data-shape="square"
+                             data-step="imageCropStep" src="imgSrc" data-result="result" data-result-blob="resultBlob" crop="initCrop" padding="0"
+                             ></image-crop>      
+                          </div> 
+                          <div ng-show="imageCropStep == 2">
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Cancel</button>
+                            </div>
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="initCrop = true" type="button" class="btn btn-fw btn-primary">Crop</button>   
+                            </div>                                   
+                          </div> 
+                          <div ng-show="imageCropStep == 3">
+                            <div class="col-md-12" style="text-align: center;">
+                              <img ng-src="{{result}}"></img>
+                            </div>
+                            <div class="col-md-12" style="text-align: center; margin-top: 10px;">
+                              <p>{{ cover }}</p>
+                            </div>
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Clear</button>  
+                            </div>   
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="uploadC();" class="btn btn-fw btn-primary" type="button">upload</button>   
+                            </div>   
+                          </div>
+                        </div>  
+                      </div>
+                      <div class="col-sm-12" style="padding: 20px;">
+                        <button class="btn pink pull-right" ng-click="createOutletOffer()">Create Offer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12" ng-show="updateoutletoffer">
+                  <div class="panel panel-default" style="padding: 10px;">
+                    <div class="panel-title">
+                      <h4>Update outlet offer</h3>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="rest-name">Offer</label>
+                          <select name="offername" id="" class="form-control" ng-model="editoutletoffer.offer_id">
+                            <option ng-repeat="mainoffer in offerList" value="{{ mainoffer.id }}">{{ mainoffer.title }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">start date</label>
+                          <input type="text" ng-model="editoutletoffer.start_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">end Date</label>
+                          <input type="text" ng-model="editoutletoffer.end_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">short description</label>
+                          <textarea name="short_description" id="" cols="30" rows="3" class="form-control"  ng-model="editoutletoffer.short_description"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="">description</label>
+                          <textarea name="description" id="description" cols="30" rows="4" class="form-control" ng-model="editoutletoffer.description"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="col-md-12" style="padding: 10px 0;">
+                          <label for="" class="grey-text">Upload Image (640 x 340) </label>
+                          <p style="color:red;">please uplaod a larger image size</p>
+                        </div>
+                        <div class="col-md-12">
+                          <div ng-show="imageCropStep == 1" style="">
+                            <div class="col-md-4">
+                              <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                            </div>
+                          </div> 
+                          <div ng-show="imageCropStep == 2">                                   
+                             <image-crop heightc="cropheight" widthc="cropWidth" data-shape="square"
+                             data-step="imageCropStep" src="imgSrc" data-result="result" data-result-blob="resultBlob" crop="initCrop" padding="0"
+                             ></image-crop>      
+                          </div> 
+                          <div ng-show="imageCropStep == 2">
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Cancel</button>
+                            </div>
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="initCrop = true" type="button" class="btn btn-fw btn-primary">Crop</button>   
+                            </div>                                   
+                          </div> 
+                          <div ng-show="imageCropStep == 3">
+                            <div class="col-md-12" style="text-align: center;">
+                              <img ng-src="{{result}}"></img>
+                            </div>
+                            <div class="col-md-12" style="text-align: center; margin-top: 10px;">
+                              <p>{{ cover }}</p>
+                            </div>
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Clear</button>  
+                            </div>   
+                            <div class="col-md-6" style="margin-top: 15px">
+                              <button ng-click="uploadC();" class="btn btn-fw btn-primary" type="button">upload</button>   
+                            </div>   
+                          </div>
+                        </div>  
+                      </div>
+                      <div class="col-sm-12" style="padding: 20px;">
+                        <button class="btn red" ng-click="updateoutletoffer = false">cancle</button>
+                        <button class="btn pink pull-right" ng-click="updateOutletOffer()">Create Offer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12" ng-show="updateoutlet">
+                  <div class="panel panel-default" style="padding: 10px;">
+                    <div class="panel-title">
+                      <h4>Update Outlet</h3>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="rest-name">Name</label>
+                          <input type="text" class="form-control" ng-model="outletdata.name">
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">phone</label>
+                          <input type="tel" class="form-control" ng-model="outletdata.phone">
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">address</label>
+                          <textarea name="address" id="" cols="30" rows="5" class="form-control" ng-model="outletdata.address"></textarea>
+                        </div>
+                        
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="rest-name">City</label>
+                          <select name="city" id="" class="form-control" ng-model="outletdata.city_id">
+                            <option value=""> --select city-- </option>
+                            <option value="1">Delhi NCR</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">City zone</label>
+                          <select name="city" id="" class="form-control" ng-model="outletdata.city_zone_id">
+                            <option value=""> --select city zone-- </option>
+                            <option value="1">Gurgaon</option>
+                            <option value="2">Noida</option>
+                            <option value="3">South Delhi</option>
+                            <option value="4">North Delhi</option>
+                            <option value="5">East Delhi</option>
+                            <option value="6">West Delhi</option>
+                            <option value="7">Central Delhi</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">postcode</label>
+                          <input type="text" name="postcode" class="form-control" ng-model="outletdata.postcode">
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="rest-name">area</label>
+                          <input type="text" class="form-control" ng-model="outletdata.area">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="rest-name">work hours</label>
+                          <input type="text" class="form-control" ng-model="outletdata.work_hours">
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">pin</label>
+                          <input type="text" name="pin" class="form-control" ng-model="outletdata.pin" minlength="4" maxlength="4">
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="rest-name">suggested dishes</label>
+                          <textarea name="dishes" id="" cols="30" rows="5" class="form-control" ng-model="outletdata.suggested_dishes"></textarea>
+                        </div>
+                        
+                      </div>
+                      <div class="col-sm-12" style="padding: 20px;">
+                        <button class="btn pink pull-right" ng-click="updateOutlet()">Update outlet</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12" ng-show="createNewoffer">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      Create offer
+                    </div>
+                    <div class="row" style="padding: 20px;">
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="rest-name">Name</label>
+                          <input type="text" class="form-control" ng-model="newOffer.title">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="rest-name">Short description</label>
+                          <input type="text" class="form-control" ng-model="newOffer.short_description">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="rest-name">t&amp;c url</label>
+                          <input type="text" class="form-control" ng-model="newOffer.term_conditions_link">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <button class="btn btn-info" ng-click="createNewOffer()">Create New Offer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      Outlet List
+                    </div>
+                    <div class="table-responsive">
+                      <form class="form-inline">
+                          <div class="res">
+                            <p>Showing {{filtered.length}} Results</p>
+                          </div>
+                          <div class="form-group" id="search">
+                              <!-- <label >Search</label> -->
+                              <input type="text" ng-model="search" class="form-control" placeholder="Search" >
+                          </div>
+                      </form>
+                      <table class="table table-hover b-t b-b bordert">
+                        <thead>
+                          <tr >
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>T&amp;c</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="offer in filtered = (outletdata.offer | filter:search) " ng-class="offer.is_disabled == '1' ? 'text-muted' : ''">
+                            <td>{{ offer.id }}</td>
+                            <td>{{ offer.title }}</td>
+                            <td>{{ offer.type }}</td>
+                            <td>{{ offer.short_description }}</td>
+                            <td><a href="{{ offer.term_conditions_link }}" target="_blank">{{ offer.term_conditions_link }}</a></td>
+                            <td><!-- <a href="#privilege/outlet/{{ outlet.id }}" class="btn btn-info">Open details</a> -->
+                              <button class="btn btn-warning" ng-disabled="offer.is_disabled == '1' ? true : false" ng-click="editoutletofferfun(offer.pivot.id)">edit</button>
+                              <button class="btn btn-danger" ng-click="deleteoffer(offer.pivot.id);" ng-disabled="offer.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / content

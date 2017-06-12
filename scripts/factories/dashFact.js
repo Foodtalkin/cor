@@ -9,6 +9,7 @@ app.factory('dashAnalytics', ['$http','urlFactory', function($http, urlFactory){
       callback(response.data);
     })
   };
+
   info.getAllDashboard = function(callback){
     $http.get(urlFactory.dashboard).then(function(response){
       callback(response.data);

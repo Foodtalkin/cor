@@ -165,6 +165,27 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
       }).
+  when('/privilege',{
+    templateUrl: 'views/privilege.html',
+        controller: 'privilegeCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+  }).
+  when('/privilege/:restroid',{
+    templateUrl: 'views/prvlgrestrentopen.html',
+        controller: 'privilegeRestroDetailsctrl',
+        resolve: {
+                    factory: checkRouting
+                }
+  }).
+  when('/privilege/:restroid/outlet/:outletid',{
+    templateUrl: 'views/outletopen.html',
+        controller: 'outletCtrl',
+        resolve: {
+                    factory: checkRouting
+                }
+  }).
 	otherwise({
         redirectTo: '/login'
       });

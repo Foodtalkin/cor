@@ -156,7 +156,7 @@ app.factory('offerFactory', ['$http','$q', function($http,$q){
 			params: {sessionId:"GUEST", status:'all', page:page}
 		}).then(function (response) {
             callback(response);
-          });
+        });
 	}
 
 	offerFactory.getrestro = function(key,callback){

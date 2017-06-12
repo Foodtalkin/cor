@@ -3,7 +3,7 @@ require_once 'gapi.class.php';
 $ga = new gapi("foodtalk@foodtalk-k325.iam.gserviceaccount.com", "key.p12");
 
 
-$ga->requestReportData(99009092,array('date'),array('pageviews','visits'),array('date'),null,date('Y-m-d',strtotime('1 week ago')),date('Y-m-d'),1,7);
+$ga->requestReportData(90797670,array('date'),array('pageviews','visits'),array('date'),null,date('Y-m-d',strtotime('1 week ago')),date('Y-m-d'),1,7);
 $data = array();
 foreach($ga->getResults() as $result)
 {
