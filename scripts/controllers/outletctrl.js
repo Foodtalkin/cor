@@ -17,6 +17,103 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 		$scope.offerList = response.data.result;
 	})
 
+  // crop code start
+  
+    $scope.fileChanged = function(e) {      
+    
+      var files = e.target.files;
+    
+        var fileReader = new FileReader();
+      fileReader.readAsDataURL(files[0]);   
+      
+      fileReader.onload = function(e) {
+        $scope.imgSrc = this.result;
+        $scope.$apply();
+      };
+      
+    }   
+     
+    $scope.clear = function() {
+       $scope.imageCropStep = 1;
+       delete $scope.imgSrc;
+       delete $scope.result;
+       delete $scope.resultBlob;
+    }; 
+
+    $scope.cropWidth = "640";
+    $scope.cropheight = "340";
+     
+
+    $scope.uploadC = function(){
+
+      var blob = new Blob([$scope.result], {type: 'image/png'});
+      var file = new File([$scope.resultBlob], 'imageFileName.png');
+      var files = [file];
+      console.log(files);
+      $scope.uploadFiles(files);
+    }
+
+
+    // crop code end
+
+    // upload image to cloudinary
+    var d = new Date();
+    $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
+    //$scope.$watch('files', function() {
+    $scope.uploadFiles = function(files){
+      //console.log(files);
+      $scope.files = files;
+      if (!$scope.files){
+        return;
+      }
+      angular.forEach(files, function(file){
+
+        if (file && !file.$error) {
+          file.upload = $upload.upload({
+            url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
+            data: {
+              upload_preset: cloudinary.config().upload_preset,
+              tags: 'myphotoalbum',
+              context: 'photo=' + $scope.title,
+              file: file
+            }
+          }).progress(function (e) {
+            file.progress = Math.round((e.loaded * 100.0) / e.total);
+            file.status = "Uploading... " + file.progress + "%";
+          }).success(function (data, status, headers, config) {
+            $rootScope.photos = $rootScope.photos || [];
+            data.context = {custom: {photo: $scope.title}};
+            file.result = data;
+            $scope.cover = file.result.url;
+            $rootScope.photos.push(data);
+            console.log($rootScope.photos);
+          }).error(function (data, status, headers, config) {
+            file.result = data;
+          });
+        }
+
+      });
+    };
+
+    $scope.dragOverClass = function($event) {
+      var items = $event.dataTransfer.items;
+      var hasFile = false;
+      if (items != null) {
+        for (var i = 0 ; i < items.length; i++) {
+          if (items[i].kind == 'file') {
+            hasFile = true;
+            break;
+          }
+        }
+      } else {
+        hasFile = true;
+      }
+      return hasFile ? "dragover" : "dragover-err";
+    };
+
+    // end
+
+  
 	// update Outlet
     $scope.updateOutlet = function(){
     	if(!$scope.outletdata.name || $scope.outletdata.name == "" || !$scope.outletdata.phone || $scope.outletdata.phone == ""
@@ -137,26 +234,31 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     }
 
 
-    $scope.addTagsImages = function(){
+    
+
+    // $scope.outletimgaddarray = function(url, type){
+    //   var myobj = {
+    //   "url": url,
+    //   "type": type
+    // };
+    //   $scope.outletImageData.push(myobj);
+    //   console.log($scope.outletImageData);
+    // }
+
+    $scope.saveImagesToOutlet = function(){
       if($rootScope.photos.length != 0){
         $scope.outletimages = $rootScope.photos;
-        $scope.uploadoutletimahegesstep1 = true;
-        $scope.uploadoutletimahegesstep2 = true;
+        //console.log($scope.outletimages);
+        angular.forEach($scope.outletimages, function(data) {
+          var myobj = {
+            "url": data.url,
+            "type": "photo"
+          };
+          $scope.outletImageData.push(myobj);
+        });
       }else{
         alert('no images');
       }
-    }
-
-    $scope.outletimgaddarray = function(url, type){
-      var myobj = {
-      "url": url,
-      "type": type
-    };
-      $scope.outletImageData.push(myobj);
-      console.log($scope.outletImageData);
-    }
-
-    $scope.saveImagesToOutlet = function(){
       outletFact.saveImagesToOutlet($scope.outletid, $scope.outletImageData, function(response){
         if(response){
             window.location.reload();
@@ -166,100 +268,6 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
           }
       })
     }
-	// crop code start
-   $scope.fileChanged = function(e) {     
-    
-      var files = e.target.files;
-    
-        var fileReader = new FileReader();
-      fileReader.readAsDataURL(files[0]);   
-      
-      fileReader.onload = function(e) {
-        $scope.imgSrc = this.result;
-        $scope.$apply();
-      };
-      
-    }   
-
-    $scope.cropWidth = "640";
-    $scope.cropheight = "340";
-     
-    $scope.clear = function() {
-       $scope.imageCropStep = 1;
-       delete $scope.imgSrc;
-       delete $scope.result;
-       delete $scope.resultBlob;
-    };
-
-    $scope.uploadC = function(){
-
-      var blob = new Blob([$scope.result], {type: 'image/png'});
-      var file = new File([$scope.resultBlob], 'imageFileName.png');
-      var files = [file];
-
-      $scope.uploadFiles(files);
-    }
-
-
-    // crop code end
-
-    // upload image to cloudinary
-    var d = new Date();
-    $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
-    //$scope.$watch('files', function() {
-    $scope.uploadFiles = function(files){
-      //console.log(files);
-      $scope.files = files;
-      if (!$scope.files){
-        return;
-      }
-      angular.forEach(files, function(file){
-
-        if (file && !file.$error) {
-          file.upload = $upload.upload({
-            url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
-            data: {
-              upload_preset: cloudinary.config().upload_preset,
-              tags: 'myphotoalbum',
-              context: 'photo=' + $scope.title,
-              file: file
-            }
-          }).progress(function (e) {
-            file.progress = Math.round((e.loaded * 100.0) / e.total);
-            file.status = "Uploading... " + file.progress + "%";
-          }).success(function (data, status, headers, config) {
-            $rootScope.photos = $rootScope.photos || [];
-            data.context = {custom: {photo: $scope.title}};
-            file.result = data;
-            $scope.cover = file.result.url;
-            $rootScope.photos.push(data);
-            //console.log($rootScope.photos);
-          }).error(function (data, status, headers, config) {
-            file.result = data;
-          });
-        }
-
-      });
-    };
-
-    $scope.dragOverClass = function($event) {
-      var items = $event.dataTransfer.items;
-      var hasFile = false;
-      if (items != null) {
-        for (var i = 0 ; i < items.length; i++) {
-          if (items[i].kind == 'file') {
-            hasFile = true;
-            break;
-          }
-        }
-      } else {
-        hasFile = true;
-      }
-      return hasFile ? "dragover" : "dragover-err";
-    };
-
-    // end
-
 	
 	$scope.logout = function(){
 		authFactory.logout(function(response) {

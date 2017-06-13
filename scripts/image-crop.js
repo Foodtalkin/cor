@@ -766,19 +766,19 @@
         replace: true,
         restrict: 'AE',
         scope: {
-		  crop: '=',
+      crop: '=',
           width: '=widthc',
           height: '=heightc',
           shape: '@',
-		  src: '=',
+      src: '=',
           resultBlob: '=',
-		  result: '=',
+      result: '=',
           step: '=',
           padding: '@',
-		  maxSize: '@'
+      maxSize: '@'
         },
         link: function (scope, element, attributes) {
-		        scope.$watch(function() {
+            scope.$watch(function() {
 
                 return scope.width;
             },
@@ -796,8 +796,8 @@
                 myfun();
             });
 
-		      var padding = scope.padding ? Number(scope.padding) : 200;
-		  
+          var padding = scope.padding ? Number(scope.padding) : 200;
+      
           scope.rand = Math.round(Math.random() * 99999);
           scope.step = scope.step || 1;
           scope.shape = scope.shape || 'circle';
@@ -822,9 +822,9 @@
           var zoom = 1;
           var maxZoomGestureLength = 0;
           var maxZoomedInLevel = 0, maxZoomedOutLevel = 3;
-          var minXPos = 0, maxXPos = (padding/2), minYPos = 0, maxYPos = (padding/2); // for dragging bounds		  
-		      var maxSize = scope.maxSize ? Number(scope.maxSize) : null; //max size of the image in px
-		  
+          var minXPos = 0, maxXPos = (padding/2), minYPos = 0, maxYPos = (padding/2); // for dragging bounds      
+          var maxSize = scope.maxSize ? Number(scope.maxSize) : null; //max size of the image in px
+      
           var zoomWeight = .6;
           var ctx = $canvas.getContext('2d');
           var exif = null;
@@ -847,7 +847,7 @@
             top: (padding/2)+'px',
             left: (padding/2)+'px'
           };
-  		  
+        
         function myfun(){
           var padding = scope.padding ? Number(scope.padding) : 200;
       
@@ -901,182 +901,182 @@
             left: (padding/2)+'px'
           };
         }
-		  function handleSize(base64ImageSrc) {
-		  
-  			return new Promise(function(resolve, reject) {
-  				
-  				if(!maxSize) {
-  					return resolve(base64ImageSrc);
-  				}
-  				
-  				var img = new Image();
-  				img.src = base64ImageSrc;
-  				
-  				img.onload = function() {
-  				
-  					var height = img.height;
-  					var width = img.width;
-  															
-  					//if the size is already ok, just return the image
-  					if(height <= maxSize && width <= maxSize) {						
-  						return resolve(base64ImageSrc);
-  					}			 	
-  					
-  					var ratio = width/height;
-  					
-  					if(ratio > 1) {
-  						width = maxSize;
-  						height = maxSize/ratio;
-  					}
-  					else {
-  						width = maxSize*ratio;
-  						height = maxSize;
-  					}							
-  					
-  					width = Math.round(width);
-  					height = Math.round(height);			 	
-  					
-  					var canvas = document.createElement("canvas");
-  					canvas.width = width;
-  					canvas.height = height;			 	
-  					
-  					var context = canvas.getContext("2d");
-  									
-  					context.drawImage(img, 0, 0, img.width,    img.height,      // source
-  										   0, 0, canvas.width, canvas.height);  // destination	 
-  					
-  					context.save();
-  								
-  					var dataUrl = canvas.toDataURL();
-  					
-  					resolve(dataUrl);
+      function handleSize(base64ImageSrc) {
+      
+        return new Promise(function(resolve, reject) {
+          
+          if(!maxSize) {
+            return resolve(base64ImageSrc);
+          }
+          
+          var img = new Image();
+          img.src = base64ImageSrc;
+          
+          img.onload = function() {
+          
+            var height = img.height;
+            var width = img.width;
+                                
+            //if the size is already ok, just return the image
+            if(height <= maxSize && width <= maxSize) {           
+              return resolve(base64ImageSrc);
+            }       
+            
+            var ratio = width/height;
+            
+            if(ratio > 1) {
+              width = maxSize;
+              height = maxSize/ratio;
+            }
+            else {
+              width = maxSize*ratio;
+              height = maxSize;
+            }             
+            
+            width = Math.round(width);
+            height = Math.round(height);        
+            
+            var canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;       
+            
+            var context = canvas.getContext("2d");
+                    
+            context.drawImage(img, 0, 0, img.width,    img.height,      // source
+                         0, 0, canvas.width, canvas.height);  // destination   
+            
+            context.save();
+                  
+            var dataUrl = canvas.toDataURL();
+            
+            resolve(dataUrl);
 
-  				};
-  					
-  			});		  
-				
-		  }
-					
-		  function handleEXIF(base64ImageSrc, exif) {
-		  		
-  			return new Promise(function(resolve, reject) {
-  								
-  				var img = new Image();
-  				img.src = base64ImageSrc;
-  				
-  				img.onload = function() {
-  				
-  					var canvas = document.createElement("canvas");
-  					
-  					if(exif.Orientation >= 5) {
-  						canvas.width = img.height;
-  						canvas.height = img.width;
-  					} else {
-  						canvas.width = img.width;
-  						canvas.height = img.height;
-  					}
-  					
-  					var context = canvas.getContext("2d");
-  		
-  					// change mobile orientation, if required
-  					switch(exif.Orientation){
-  						case 1:
-  							// nothing
-  							break;
-  						case 2:
-  							// horizontal flip
-  							context.translate(img.width, 0);
-  							context.scale(-1, 1);
-  							break;
-  						case 3:
-  							// 180 rotate left
-  							context.translate(img.width, img.height);
-  							context.rotate(Math.PI);
-  							break;
-  						case 4:
-  							// vertical flip
-  							context.translate(0, img.height);
-  							context.scale(1, -1);
-  							break;
-  						case 5:
-  							// vertical flip + 90 rotate right
-  							context.rotate(0.5 * Math.PI);
-  							context.scale(1, -1);
-  							break;
-  						case 6:
-  							// 90 rotate right
-  							context.rotate(0.5 * Math.PI);
-  							context.translate(0, -img.height);
-  							break;
-  						case 7:
-  							// horizontal flip + 90 rotate right
-  							context.rotate(0.5 * Math.PI);
-  							context.translate(img.width, -img.height);
-  							context.scale(-1, 1);
-  							break;
-  						case 8:
-  							// 90 rotate left					 		                   
-  							context.rotate(-0.5 * Math.PI);
-  							context.translate(-img.width, 0);
-  							break;
-  						default:
-  							break;
-  					}
-  					
-  					context.drawImage(img, 0, 0);	
-  					context.save();
-  					
-  					var dataUrl = canvas.toDataURL();
-  					
-  					resolve(dataUrl);										
-  				
-  				};
-  				
-  			});				
-				
-		  }
-		  
-		  function loadImage(base64ImageSrc) {
-		  
-			//get the EXIF information from the image
+          };
+            
+        });     
+        
+      }
+          
+      function handleEXIF(base64ImageSrc, exif) {
+          
+        return new Promise(function(resolve, reject) {
+                  
+          var img = new Image();
+          img.src = base64ImageSrc;
+          
+          img.onload = function() {
+          
+            var canvas = document.createElement("canvas");
+            
+            if(exif.Orientation >= 5) {
+              canvas.width = img.height;
+              canvas.height = img.width;
+            } else {
+              canvas.width = img.width;
+              canvas.height = img.height;
+            }
+            
+            var context = canvas.getContext("2d");
+      
+            // change mobile orientation, if required
+            switch(exif.Orientation){
+              case 1:
+                // nothing
+                break;
+              case 2:
+                // horizontal flip
+                context.translate(img.width, 0);
+                context.scale(-1, 1);
+                break;
+              case 3:
+                // 180 rotate left
+                context.translate(img.width, img.height);
+                context.rotate(Math.PI);
+                break;
+              case 4:
+                // vertical flip
+                context.translate(0, img.height);
+                context.scale(1, -1);
+                break;
+              case 5:
+                // vertical flip + 90 rotate right
+                context.rotate(0.5 * Math.PI);
+                context.scale(1, -1);
+                break;
+              case 6:
+                // 90 rotate right
+                context.rotate(0.5 * Math.PI);
+                context.translate(0, -img.height);
+                break;
+              case 7:
+                // horizontal flip + 90 rotate right
+                context.rotate(0.5 * Math.PI);
+                context.translate(img.width, -img.height);
+                context.scale(-1, 1);
+                break;
+              case 8:
+                // 90 rotate left                                
+                context.rotate(-0.5 * Math.PI);
+                context.translate(-img.width, 0);
+                break;
+              default:
+                break;
+            }
+            
+            context.drawImage(img, 0, 0); 
+            context.save();
+            
+            var dataUrl = canvas.toDataURL();
+            
+            resolve(dataUrl);                   
+          
+          };
+          
+        });       
+        
+      }
+      
+      function loadImage(base64ImageSrc) {
+      
+      //get the EXIF information from the image
             var byteString = atob(base64ImageSrc.split(',')[1]);
             var binary = new BinaryFile(byteString, 0, byteString.length);
-            exif = EXIF.readFromBinaryFile(binary);		  
+            exif = EXIF.readFromBinaryFile(binary);     
            
-		    //handle image size
+        //handle image size
             handleSize(base64ImageSrc).then(function(base64ImageSrc) {
-			
-				//if the image has EXIF orientation..
-				if (exif && exif.Orientation && exif.Orientation > 1) {			
-					return handleEXIF(base64ImageSrc, exif);
-				} 
-				//otherwise, just return the image without any treatment
-				else {
-					return base64ImageSrc;
-				}
-				
-			}).then(function(base64ImageSrc) {
-			
-				$img.src = base64ImageSrc;
-				
-			}).catch(function(error) {							
-				console.log(error);				
-			});    
-			
-		  };
-		  
+      
+        //if the image has EXIF orientation..
+        if (exif && exif.Orientation && exif.Orientation > 1) {     
+          return handleEXIF(base64ImageSrc, exif);
+        } 
+        //otherwise, just return the image without any treatment
+        else {
+          return base64ImageSrc;
+        }
+        
+      }).then(function(base64ImageSrc) {
+      
+        $img.src = base64ImageSrc;
+        
+      }).catch(function(error) {              
+        console.log(error);       
+      });    
+      
+      };
+      
           // ---------- EVENT HANDLERS ---------- //
           fileReader.onload = function(e) {
-          	
-          	loadImage(this.resultBlob);	
+            
+            loadImage(this.resultBlob); 
 
-          };	  
+          };    
 
           $img.onload = function() {
-		  
-			scope.step = 2;
-			scope.$apply();		  
-			
+      
+      scope.step = 2;
+      scope.$apply();     
+      
             ctx.drawImage($img, 0, 0);
 
             imgWidth = $img.width;
@@ -1087,51 +1087,51 @@
             newWidth = imgWidth;
             newHeight = imgHeight;
             
-			if(imgWidth >= imgHeight) {
-				maxZoomedInLevel = ($canvas.height - padding) / imgHeight;
-			} else {
-				maxZoomedInLevel = ($canvas.width - padding) / imgWidth;
-			}		
+      if(imgWidth >= imgHeight) {
+        maxZoomedInLevel = ($canvas.height - padding) / imgHeight;
+      } else {
+        maxZoomedInLevel = ($canvas.width - padding) / imgWidth;
+      }   
 
             maxZoomGestureLength = to2Dp(Math.sqrt(Math.pow($canvas.width, 2) + Math.pow($canvas.height, 2)));
 
             updateDragBounds();
-			
-			var initialX = Math.round((minXPos + maxXPos)/2);
-			var initialY = Math.round((minYPos + maxYPos)/2);
-						
-			moveImage(initialX, initialY);
-			
+      
+      var initialX = Math.round((minXPos + maxXPos)/2);
+      var initialY = Math.round((minYPos + maxYPos)/2);
+            
+      moveImage(initialX, initialY);
+      
           };
-		  
+      
           function reset() {
             files = [];
             zoom = 1;
-			currentX = 0; 
-			currentY = 0; 
-			dragging = false; 
-			startX = 0; 
-			startY = 0; 
-			zooming = false;
+      currentX = 0; 
+      currentY = 0; 
+      dragging = false; 
+      startX = 0; 
+      startY = 0; 
+      zooming = false;
             ctx.clearRect(0, 0, $canvas.width, $canvas.height);            
             $img.src = '';
-          }		  
+          }     
 
           // ---------- PRIVATE FUNCTIONS ---------- //
           function moveImage(x, y) {
-			
-			x = x < minXPos ? minXPos : x;
-			x = x > maxXPos ? maxXPos : x;
-			y = y < minYPos ? minYPos : y;
-			y = y > maxYPos ? maxYPos : y;			
+      
+      x = x < minXPos ? minXPos : x;
+      x = x > maxXPos ? maxXPos : x;
+      y = y < minYPos ? minYPos : y;
+      y = y > maxYPos ? maxYPos : y;      
 
             targetX = x;
             targetY = y;
-			
+      
             ctx.clearRect(0, 0, $canvas.width, $canvas.height);
             ctx.drawImage($img, x, y, newWidth, newHeight);
-			
-			return x == minXPos || x == maxXPos || y == minYPos || y == maxYPos;
+      
+      return x == minXPos || x == maxXPos || y == minYPos || y == maxYPos;
           }
 
           function to2Dp(val) {
@@ -1151,9 +1151,9 @@
             if (!val) {
               return;
             }
-			
+      
             var proposedZoomLevel = to2Dp(zoom + val);
-			
+      
             if ((proposedZoomLevel < maxZoomedInLevel) || (proposedZoomLevel > maxZoomedOutLevel)) {
               // image wont fill whole canvas
               // or image is too far zoomed in, it's gonna get pretty pixelated!
@@ -1195,54 +1195,54 @@
             var zoomGestureRatio = to2Dp(hyp / maxZoomGestureLength);
             var newZoomDiff = to2Dp((maxZoomedOutLevel - maxZoomedInLevel) * zoomGestureRatio * zoomWeight);
             return diffX > 0 ? -newZoomDiff : newZoomDiff;
-			
+      
           }
           
-		  function dataURItoBlob(dataURI) {
-			    var byteString, 
-			        mimestring;
-			
-			    if(dataURI.split(',')[0].indexOf('base64') !== -1 ) {
-			        byteString = atob(dataURI.split(',')[1]);
-			    } else {
-			        byteString = decodeURI(dataURI.split(',')[1]);
-			    }
-			
-			    mimestring = dataURI.split(',')[0].split(':')[1].split(';')[0];
-			
-			    var content = new Array();
-			    for (var i = 0; i < byteString.length; i++) {
-			        content[i] = byteString.charCodeAt(i);
-			    }
-			
-			    return new Blob([new Uint8Array(content)], {type: mimestring});
-		  }       
+      function dataURItoBlob(dataURI) {
+          var byteString, 
+              mimestring;
+      
+          if(dataURI.split(',')[0].indexOf('base64') !== -1 ) {
+              byteString = atob(dataURI.split(',')[1]);
+          } else {
+              byteString = decodeURI(dataURI.split(',')[1]);
+          }
+      
+          mimestring = dataURI.split(',')[0].split(':')[1].split(';')[0];
+      
+          var content = new Array();
+          for (var i = 0; i < byteString.length; i++) {
+              content[i] = byteString.charCodeAt(i);
+          }
+      
+          return new Blob([new Uint8Array(content)], {type: mimestring});
+      }       
 
           // ---------- SCOPE FUNCTIONS ---------- //
 
-		  scope.$watch('src', function(){
-			if(scope.src) {
-				if(scope.step != 3) {
-					if(typeof(scope.src) == 'Blob') {
-						fileReader.readAsDataURL(scope.src);	
-					} else {
-						loadImage(scope.src);
-					}
-				}		
-			} else {
-				scope.step = 1;
-				reset();
-			}
-		  });	
+      scope.$watch('src', function(){
+      if(scope.src) {
+        if(scope.step != 3) {
+          if(typeof(scope.src) == 'Blob') {
+            fileReader.readAsDataURL(scope.src);  
+          } else {
+            loadImage(scope.src);
+          }
+        }   
+      } else {
+        scope.step = 1;
+        reset();
+      }
+      }); 
 
-		  scope.$watch('crop',function(){
-			if(scope.crop) {
-				scope.doCrop();
-				scope.crop = false;
-			}
-		  });	
-		  
-          $finalImg.onload = function() {			
+      scope.$watch('crop',function(){
+      if(scope.crop) {
+        scope.doCrop();
+        scope.crop = false;
+      }
+      }); 
+      
+          $finalImg.onload = function() {     
             var tempCanvas = document.createElement('canvas');
             tempCanvas.width = this.width - padding;
             tempCanvas.height = this.height - padding;
@@ -1252,10 +1252,10 @@
             tempCanvasContext.drawImage($finalImg, -(padding/2), -(padding/2));
 
             $elm.getElementsByClassName('image-crop-section-final')[0].appendChild(tempCanvas);
-			
-			var dataUrl = tempCanvas.toDataURL();
-			
-			scope.result = dataUrl;
+      
+      var dataUrl = tempCanvas.toDataURL();
+      
+      scope.result = dataUrl;
             scope.resultBlob = dataURItoBlob(dataUrl);
             
             scope.$apply();
@@ -1323,7 +1323,7 @@
             addBodyEventListener('touchend', scope.onHandleMouseUp);
             addBodyEventListener('mousemove', scope.onHandleMouseMove);
             addBodyEventListener('touchmove', scope.onHandleMouseMove);
-			
+      
           };
 
           $handle.addEventListener('touchstart', scope.onHandleMouseDown, false);
@@ -1390,21 +1390,21 @@
             lastHandleX = (e.type === 'touchmove') ? e.changedTouches[0].clientX : e.clientX;
             lastHandleY = (e.type === 'touchmove') ? e.changedTouches[0].clientY : e.clientY;
 
-            var zoomVal = calcZoomLevel(diffX, diffY);			
+            var zoomVal = calcZoomLevel(diffX, diffY);      
             zoomImage(zoomVal);
 
           };
 
-          $handle.addEventListener('touchmove', scope.onHandleMouseMove, false);	  		 
-		  	  		  
-		  scope.onHandleMouseWheel = function(e){
-			  e.preventDefault();		  
-			  
-			  zoomImage(e.deltaY > 0 ? -0.05 : 0.05);			  
-		  };
+          $handle.addEventListener('touchmove', scope.onHandleMouseMove, false);         
+                
+      scope.onHandleMouseWheel = function(e){
+        e.preventDefault();     
+        
+        zoomImage(e.deltaY > 0 ? -0.05 : 0.05);       
+      };
 
-		  $canvas.addEventListener('mousewheel', scope.onHandleMouseWheel);
-		  $handle.addEventListener('mousewheel', scope.onHandleMouseWheel);
+      $canvas.addEventListener('mousewheel', scope.onHandleMouseWheel);
+      $handle.addEventListener('mousewheel', scope.onHandleMouseWheel);
 
         }
       };
