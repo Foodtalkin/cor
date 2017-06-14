@@ -6,41 +6,7 @@ app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'c
 	$scope.restaurent = {};
 	//$scope.restroList = {}
 
-	// crop code start
-   $scope.fileChanged = function(e) {     
-    
-      var files = e.target.files;
-    
-        var fileReader = new FileReader();
-      fileReader.readAsDataURL(files[0]);   
-      
-      fileReader.onload = function(e) {
-        $scope.imgSrc = this.result;
-        $scope.$apply();
-      };
-      
-    }   
-
-    $scope.cropWidth = "400";
-    $scope.cropheight = "400";
-     
-    $scope.clear = function() {
-       $scope.imageCropStep = 1;
-       delete $scope.imgSrc;
-       delete $scope.result;
-       delete $scope.resultBlob;
-    };
-
-    $scope.uploadC = function(){
-
-      var blob = new Blob([$scope.result], {type: 'image/png'});
-      var file = new File([$scope.resultBlob], 'imageFileName.png');
-      var files = [file];
-
-      $scope.uploadFiles(files);
-    }
-
-    // crop code end
+	
 
     // upload image to cloudinary
     var d = new Date();

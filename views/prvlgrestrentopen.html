@@ -158,11 +158,39 @@
         <div class="box-cell">
           <div class="box-inner padding">  
             <div class="row">
+                
               <div class="col-sm-12">
-                <div class="col-sm-12" style="padding: 20px;">
-                  <button class="btn blue" ng-click="editrestroform = !editrestroform">Update This Restaurant</button>
-                  <button class="btn green" ng-click="addoutletform = !addoutletform">Create Outlet For Restaurant</button>
-                  <button class="btn red" ng-click="addcusinesform = !addcusinesform">Add / Delete Cuisines</button>
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="row" style="">
+                      <div class="col-sm-3">
+                        <img ng-src="{{restroData.card_image}}" alt="" class="img-responsive">
+                      </div>
+                      <div class="col-sm-4">
+                        <h2>{{restroData.name}}</h2>
+                        <h5>{{restroData.cost}} for one</h5>
+                        <h5>{{restroData.one_liner}}</h5>
+                        <h6>cuisine</h6>
+                        <ul ng-repeat="cuisine in restroData.cuisine">
+                          <li>{{cuisine.title}}</li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-5">
+                        <div style="padding: 8px;">
+                          <a class="btn btn-default" href="#privilege" style="width: 100%">Go Back to List</a>
+                        </div>
+                        <div style="padding: 8px;">
+                          <button class="btn blue" ng-click="editrestroform = !editrestroform" style="width: 100%">Update This Restaurant</button>
+                        </div>
+                        <div style="padding: 8px;">
+                          <button class="btn green" ng-click="addoutletform = !addoutletform" style="width: 100%">Create Outlet For Restaurant</button>
+                        </div>
+                        <div style="padding: 8px;">
+                          <button class="btn orange" ng-click="addcusinesform = !addcusinesform" style="width: 100%">Add / Delete Cuisines</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-sm-12" ng-show="addoutletform">
                   <div class="panel panel-default" style="padding: 10px;">
@@ -181,9 +209,12 @@
                         </div>
                         <div class="form-group">
                           <label for="rest-name">address</label>
-                          <textarea name="address" id="" cols="30" rows="5" class="form-control" ng-model="outlet.address"></textarea>
+                          <textarea name="address" id="" cols="30" rows="3" class="form-control" ng-model="outlet.address"></textarea>
                         </div>
-                        
+                        <div class="form-group">
+                          <label for="rest-name">work hours</label>
+                          <input type="text" class="form-control" ng-model="outlet.work_hours">
+                        </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
@@ -217,9 +248,14 @@
                         </div>
                       </div>
                       <div class="col-md-4">
+                        
                         <div class="form-group">
-                          <label for="rest-name">work hours</label>
-                          <input type="text" class="form-control" ng-model="outlet.work_hours">
+                          <label for="rest-name">latitude</label>
+                          <input type="text" name="latitude" class="form-control" ng-model="outlet.latitude">
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">longitude</label>
+                          <input type="text" name="longitude" class="form-control" ng-model="outlet.longitude">
                         </div>
                         <div class="form-group">
                           <label for="rest-name">pin</label>
@@ -228,7 +264,7 @@
                         
                         <div class="form-group">
                           <label for="rest-name">suggested dishes</label>
-                          <textarea name="dishes" id="" cols="30" rows="5" class="form-control" ng-model="outlet.dishes"></textarea>
+                          <textarea name="dishes" id="" cols="30" rows="3" class="form-control" ng-model="outlet.dishes"></textarea>
                         </div>
                         
                       </div>
@@ -262,43 +298,52 @@
                       <div class="col-md-8">
                         <div class="col-md-12" style="padding: 10px 0;">
                           <label for="" class="grey-text">Upload Image (400 x 400) </label>
-                          <p style="color:red;">please uplaod a larger image size</p>
                           <h6>do not upload image if you dont want to change it</h6>
                         </div>
                         <div class="col-md-12">
-                          <div ng-show="imageCropStep == 1" style="">
-                            <div class="col-md-4">
-                              <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                          <div id="direct_upload" 
+                            ngf-drop="uploadFiles($files)"
+                            ngf-drag-over-class="dragOverClass($event)"
+                            ng-model="files"
+                            ng-multiple="fasle">
+                            <div class="col-md-12">
+                              <form>  
+                                <div class="form_line">
+                                    <!-- <label>Image:</label> -->
+                                    <div class="form_controls">
+                                        <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
+                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true">Upload</div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </form>
+                              <p>{{cover}}</p>
                             </div>
-                          </div> 
-                          <div ng-show="imageCropStep == 2">                                   
-                             <image-crop heightc="cropheight" widthc="cropWidth" data-shape="square"
-                             data-step="imageCropStep" src="imgSrc" data-result="result" data-result-blob="resultBlob" crop="initCrop" padding="0"
-                             ></image-crop>      
-                          </div> 
-                          <div ng-show="imageCropStep == 2">
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Cancel</button>
-                            </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="initCrop = true" type="button" class="btn btn-fw btn-primary">Crop</button>   
-                            </div>                                   
-                          </div> 
-                          <div ng-show="imageCropStep == 3">
-                            <div class="col-md-12" style="text-align: center;">
-                              <img ng-src="{{result}}"></img>
-                            </div>
-                            <div class="col-md-12" style="text-align: center; margin-top: 10px;">
-                              <p>{{ cover }}</p>
-                            </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Clear</button>  
-                            </div>   
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="uploadC();" class="btn btn-fw btn-primary" type="button">upload</button>   
-                            </div>   
+                            <div class="col-md-12" style="padding: 10px">
+                              <div class="file" ng-repeat="file in files">
+                                <div class="col-md-6">
+                                  <p class="grey-text">{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
+                                  <div class="status">{{file.status}}</div>
+                                  
+                                  <div class="progress-bar">
+                                    <div class="progress grey-text" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+                                  </div>
+                              
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form_line">
+                                      <div class="form_controls">
+                                          <div class="preview">
+                                              <img ngf-src="file.result.url || file" style="width: 80%;">
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div> 
                           </div>
-                        </div>  
+                        </div>
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
                         <button class="btn red" ng-click="editrestroform = false">Cancel</button>
@@ -358,6 +403,8 @@
                   </div>
                     
                 </div>
+
+                
                 <div class="col-sm-12">
                   <div class="panel panel-default">
                     <div class="panel-heading">
@@ -378,6 +425,7 @@
                           <tr >
                             <th>#</th>
                             <th>Name</th>
+                            <th>Area</th>
                             <th>action</th>
                           </tr>
                         </thead>
@@ -385,7 +433,8 @@
                           <tr ng-repeat="outlet in filtered = (restroData.outlet | filter:search) " ng-class="outlet.is_disabled == '1' ? 'text-muted' : ''">
                             <td>{{ outlet.id }}</td>
                             <td>{{ outlet.name }}</td>
-                            <td><a href="#privilege/{{restroid}}/outlet/{{ outlet.id }}" class="btn btn-info" ng-disabled="outlet.is_disabled == '1' ? true : false">Open details</a>
+                            <td>{{ outlet.area }}</td>
+                            <td><a href="#privilege/{{restroid}}/outlet/{{ outlet.id }}" class="btn btn-info" ng-disabled="outlet.is_disabled == '1' ? true : false">Open Outlet</a>
                             <button class="btn btn-danger" ng-click="deleteoutlet(outlet.id);" ng-disabled="outlet.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button>
                             </td>
                           </tr>

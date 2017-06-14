@@ -1,5 +1,5 @@
 app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','outletFact','$routeParams',
- function($scope,$rootScope,$location,$upload, cloudinary,outletFact,$routeParams, ){
+ function($scope,$rootScope,$location,$upload, cloudinary,outletFact,$routeParams){
 	$scope.username = $rootScope.username;
 	$scope.email =$rootScope.useremail;
 
@@ -17,44 +17,8 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 		$scope.offerList = response.data.result;
 	})
 
-  // crop code start
   
-    $scope.fileChanged = function(e) {      
-    
-      var files = e.target.files;
-    
-        var fileReader = new FileReader();
-      fileReader.readAsDataURL(files[0]);   
-      
-      fileReader.onload = function(e) {
-        $scope.imgSrc = this.result;
-        $scope.$apply();
-      };
-      
-    }   
-     
-    $scope.clear = function() {
-       $scope.imageCropStep = 1;
-       delete $scope.imgSrc;
-       delete $scope.result;
-       delete $scope.resultBlob;
-    }; 
 
-    $scope.cropWidth = "640";
-    $scope.cropheight = "340";
-     
-
-    $scope.uploadC = function(){
-
-      var blob = new Blob([$scope.result], {type: 'image/png'});
-      var file = new File([$scope.resultBlob], 'imageFileName.png');
-      var files = [file];
-      console.log(files);
-      $scope.uploadFiles(files);
-    }
-
-
-    // crop code end
 
     // upload image to cloudinary
     var d = new Date();
@@ -122,14 +86,15 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     		!$scope.outletdata.area || $scope.outletdata.area == "" || !$scope.outletdata.postcode ||
     		$scope.outletdata.postcode == "" || !$scope.outletdata.suggested_dishes || $scope.outletdata.suggested_dishes == "" ||
     		!$scope.outletdata.work_hours || $scope.outletdata.work_hours == "" || !$scope.outletdata.pin ||
-    		$scope.outletdata.pin == ""){
+    		$scope.outletdata.pin == "" || $scope.outletdata.latitude == "" || !$scope.outletdata.latitude ||
+        !$scope.outletdata.longitude || $scope.outletdata.longitude == ""){
     		alert("fields can't be empty");
     		return;
     	}
     	outletFact.updateOutlet($scope.outletid, $scope.outletdata.name, $scope.outletdata.phone, $scope.outletdata.address, 
 		$scope.outletdata.city_id, $scope.outletdata.city_zone_id, $scope.outletdata.area, 
 		$scope.outletdata.postcode, $scope.outletdata.suggested_dishes ,$scope.restroid,
-		$scope.outletdata.work_hours ,$scope.outletdata.pin,function(response){
+		$scope.outletdata.work_hours ,$scope.outletdata.pin, $scope.outletdata.latitude, $scope.outletdata.longitude,function(response){
 			if(response){
     				window.location.reload();
     			}else{
@@ -402,7 +367,7 @@ app.factory('outletFact', ['$http', function($http){
 
 	prvlg.updateOutlet = function(id, name, phone, address, 
 		city_id, city_zone_id, area, postcode, suggested_dishes,resturant_id,
-		work_hours,pin, callback){
+		work_hours,pin,latitude,longitude, callback){
 		$http({
 	      method: 'PUT',
 	      url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id,
@@ -417,7 +382,9 @@ app.factory('outletFact', ['$http', function($http){
 	        'suggested_dishes' : suggested_dishes,
 	        'resturant_id' : resturant_id,
 	        'work_hours' : work_hours,
-	        'pin' : pin
+	        'pin' : pin,
+          'latitude': latitude,
+          'longitude':longitude
 	      }
 	    }).then(function (response) {
 	        console.log(response);

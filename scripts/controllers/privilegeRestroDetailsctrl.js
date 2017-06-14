@@ -80,14 +80,15 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     		!$scope.outlet.area || $scope.outlet.area == "" || !$scope.outlet.postcode ||
     		$scope.outlet.postcode == "" || !$scope.outlet.dishes || $scope.outlet.dishes == "" ||
     		!$scope.outlet.work_hours || $scope.outlet.work_hours == "" || !$scope.outlet.pin ||
-    		$scope.outlet.pin == ""){
+    		$scope.outlet.pin == "" || $scope.outlet.latitude == "" || !$scope.outlet.latitude ||
+        !$scope.outlet.longitude || $scope.outlet.longitude == ""){
     		alert("fields can't be empty");
     		return;
     	}
     	privilegeFact2.createOutlet($scope.outlet.name, $scope.outlet.phone, $scope.outlet.address, 
 		$scope.outlet.cityid, $scope.outlet.zoneid, $scope.outlet.area, 
 		$scope.outlet.postcode, $scope.outlet.dishes ,$scope.restroid,
-		$scope.outlet.work_hours ,$scope.outlet.pin,function(response){
+		$scope.outlet.work_hours ,$scope.outlet.pin, $scope.outlet.latitude, $scope.outlet.longitude, function(response){
 			if(response){
     				window.location.reload();
     			}else{
@@ -116,41 +117,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     // end
 
 
-	// crop code start
-   $scope.fileChanged = function(e) {     
-    
-      var files = e.target.files;
-    
-        var fileReader = new FileReader();
-      fileReader.readAsDataURL(files[0]);   
-      
-      fileReader.onload = function(e) {
-        $scope.imgSrc = this.result;
-        $scope.$apply();
-      };
-      
-    }   
 
-    $scope.cropWidth = "400";
-    $scope.cropheight = "400";
-     
-    $scope.clear = function() {
-       $scope.imageCropStep = 1;
-       delete $scope.imgSrc;
-       delete $scope.result;
-       delete $scope.resultBlob;
-    };
-
-    $scope.uploadC = function(){
-
-      var blob = new Blob([$scope.result], {type: 'image/png'});
-      var file = new File([$scope.resultBlob], 'imageFileName.png');
-      var files = [file];
-
-      $scope.uploadFiles(files);
-    }
-
-    // crop code end
 
 
     // upload image to cloudinary
@@ -301,7 +268,7 @@ app.factory('privilegeFact2', ['$http', function($http){
   }
 	prvlg.createOutlet = function(name, phone, address, 
 		city_id, city_zone_id, area, postcode, suggested_dishes,resturant_id,
-		work_hours,pin, callback){
+		work_hours,pin,latitude,longitude, callback){
 		$http({
 	      method: 'POST',
 	      url: 'http://stg-api.foodtalk.in/privilege/outlet',
@@ -316,7 +283,9 @@ app.factory('privilegeFact2', ['$http', function($http){
 	        'suggested_dishes' : suggested_dishes,
 	        'resturant_id' : resturant_id,
 	        'work_hours' : work_hours,
-	        'pin' : pin
+	        'pin' : pin,
+          'latitude': latitude,
+          'longitude':longitude
 	      }
 	    }).then(function (response) {
 	        //console.log(response);

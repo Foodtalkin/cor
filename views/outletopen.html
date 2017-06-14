@@ -158,11 +158,44 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="col-sm-12" style="padding: 20px;">
-                  <button class="btn blue" ng-click="updateoutlet = !updateoutlet">Update This outlet</button>
-                  <button class="btn green" ng-click="createoutletoffer = !createoutletoffer">Create offer For outlet</button>
-                  <button class="btn red" ng-click="createNewoffer = !createNewoffer">Create new Offer</button>
-                  <button class="btn orange" ng-click="AddImagesoutlet = !AddImagesoutlet">Add Outlet Images</button>
+                
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="row" style="">
+                      <div class="col-sm-7">
+                        <h2 style="padding-left: 15px;">{{outletdata.name}}</h2>
+                        <h3 style="padding-left: 15px;">{{outletdata.pin}}</h3>
+                        <div class="col-sm-6">
+                          <h5>{{outletdata.work_hours}}</h5>
+                          <h5>{{outletdata.suggested_dishes}}</h5>
+                          <h5>{{outletdata.longitude}}</h5>
+                          <h5>{{outletdata.latitude}}</h5>
+                        </div>
+                        <div class="col-sm-6">
+                          
+                          <h5>{{outletdata.city_id == '1' ? 'Delhi' : 'Other'}}</h5>
+                          <h5>{{outletdata.area}}</h5>
+                          <h5>{{outletdata.address}}</h5>
+                          <h5>{{outletdata.postcode}}</h5>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-5">
+                        <div style="padding: 8px;">
+                          <a class="btn btn-default" href="#privilege/{{ outletdata.resturant_id }}" style="width: 100%">Go Back to Restaurant</a>
+                        </div>
+                        <div style="padding: 8px;">
+                          <button class="btn blue" ng-click="updateoutlet = !updateoutlet" style="width: 100%">Update This outlet</button>
+                        </div>
+                        <div style="padding: 8px;">
+                          <button class="btn green" ng-click="createoutletoffer = !createoutletoffer" style="width: 100%">Create offer For outlet</button>
+                        </div>
+                        <div style="padding: 8px;">
+                          <button class="btn orange" ng-click="AddImagesoutlet = !AddImagesoutlet" style="width: 100%">Add Outlet Images</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-sm-12" ng-show="AddImagesoutlet">
                   <div class="panel panel-default">
@@ -175,7 +208,7 @@
                           ngf-drop="uploadFiles($files)"
                           ngf-drag-over-class="dragOverClass($event)"
                           ng-model="files"
-                          ng-multiple="fasle">
+                          ng-multiple="true">
                           <div class="col-md-12">
                             <form>  
                               <div class="form_line">
@@ -237,11 +270,17 @@
                         </div>
                         <div class="form-group">
                           <label for="rest-name">start date</label>
-                          <input type="text" ng-model="outletoffer.start_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
+                          <!-- <input type="text" ng-model="outletoffer.start_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/> -->
+                          <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" ng-model="outletoffer.start_date" class="form-control" />
+                          </datepicker>
                         </div>
                         <div class="form-group">
                           <label for="rest-name">end Date</label>
-                          <input type="text" ng-model="outletoffer.end_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
+                          <!-- <input type="text" ng-model="outletoffer.end_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/> -->
+                          <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" ng-model="outletoffer.end_date" class="form-control" />
+                          </datepicker>
                         </div>
                         <div class="form-group">
                           <label for="rest-name">Offer Details</label>
@@ -255,9 +294,100 @@
                       <div class="col-md-8">
                         <div class="col-md-12" style="padding: 10px 0;">
                           <label for="" class="grey-text">Upload Image (640 x 340) </label>
-                          <p style="color:red;">please uplaod a larger image size</p>
                         </div>
-                        <div class="col-md-12" ng-hide="uploadoutletimahegesstep1">
+                        <div class="col-md-12">
+                          <div id="direct_upload" 
+                            ngf-drop="uploadFiles($files)"
+                            ngf-drag-over-class="dragOverClass($event)"
+                            ng-model="files"
+                            ng-multiple="fasle">
+                            <div class="col-md-12">
+                              <form>  
+                                <div class="form_line">
+                                    <!-- <label>Image:</label> -->
+                                    <div class="form_controls">
+                                        <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
+                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true">Upload</div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </form>
+                              <p>{{cover}}</p>
+                            </div>
+                            <div class="col-md-12" style="padding: 10px">
+                              <div class="file" ng-repeat="file in files">
+                                <div class="col-md-6">
+                                  <p class="grey-text">{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
+                                  <div class="status">{{file.status}}</div>
+                                  
+                                  <div class="progress-bar">
+                                    <div class="progress grey-text" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+                                  </div>
+                              
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form_line">
+                                      <div class="form_controls">
+                                          <div class="preview">
+                                              <img ngf-src="file.result.url || file" style="width: 80%;">
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div> 
+                          </div>
+                        </div>  
+                      </div>
+                      <div class="col-sm-12" style="padding: 20px;">
+                        <button class="btn red" ng-click="createoutletoffer = false">Cancel</button>
+                        <button class="btn pink pull-right" ng-click="createOutletOffer()">Create Offer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12" ng-show="updateoutletoffer">
+                  <div class="panel panel-default" style="padding: 10px;">
+                    <div class="panel-title">
+                      <h4>Update outlet offer</h3>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="rest-name">Offer</label>
+                          <select name="offername" id="" class="form-control" ng-model="editoutletoffer.offer_id">
+                            <option ng-repeat="mainoffer in offerList" value="{{ mainoffer.id }}">{{ mainoffer.title }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">start date</label>
+                          <!-- <input type="text" ng-model="editoutletoffer.start_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/> -->
+                          <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" ng-model="editoutletoffer.start_date" class="form-control" />
+                          </datepicker>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">end Date</label>
+                          <!-- <input type="text" ng-model="editoutletoffer.end_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/> -->
+                          <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" ng-model="editoutletoffer.end_date" class="form-control" />
+                          </datepicker>
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">Offer Detail</label>
+                          <textarea name="short_description" id="" cols="30" rows="3" class="form-control"  ng-model="editoutletoffer.short_description"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="">Restaurant description</label>
+                          <textarea name="description" id="description" cols="30" rows="4" class="form-control" ng-model="editoutletoffer.description"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="col-md-12" style="padding: 10px 0;">
+                          <label for="" class="grey-text">Upload Image (640 x 340) </label>
+                        </div>
+                        <div class="col-md-12">
                         <div id="direct_upload" 
                           ngf-drop="uploadFiles($files)"
                           ngf-drag-over-class="dragOverClass($event)"
@@ -300,84 +430,7 @@
                             
                           </div> 
                         </div>
-                      </div>  
-                      </div>
-                      <div class="col-sm-12" style="padding: 20px;">
-                        <button class="btn red" ng-click="createoutletoffer = false">Cancel</button>
-                        <button class="btn pink pull-right" ng-click="createOutletOffer()">Create Offer</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-12" ng-show="updateoutletoffer">
-                  <div class="panel panel-default" style="padding: 10px;">
-                    <div class="panel-title">
-                      <h4>Update outlet offer</h3>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="rest-name">Offer</label>
-                          <select name="offername" id="" class="form-control" ng-model="editoutletoffer.offer_id">
-                            <option ng-repeat="mainoffer in offerList" value="{{ mainoffer.id }}">{{ mainoffer.title }}</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="rest-name">start date</label>
-                          <input type="text" ng-model="editoutletoffer.start_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
-                        </div>
-                        <div class="form-group">
-                          <label for="rest-name">end Date</label>
-                          <input type="text" ng-model="editoutletoffer.end_date" class="form-control" placeholder="yyyy-mm-dd" datepicker/>
-                        </div>
-                        <div class="form-group">
-                          <label for="rest-name">Offer Detail</label>
-                          <textarea name="short_description" id="" cols="30" rows="3" class="form-control"  ng-model="editoutletoffer.short_description"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label for="">Restaurant description</label>
-                          <textarea name="description" id="description" cols="30" rows="4" class="form-control" ng-model="editoutletoffer.description"></textarea>
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="col-md-12" style="padding: 10px 0;">
-                          <label for="" class="grey-text">Upload Image (640 x 340) </label>
-                          <p style="color:red;">please uplaod a larger image size</p>
-                        </div>
-                        <div class="col-md-12">
-                          <div ng-show="imageCropStep == 1" style="">
-                            <div class="col-md-4">
-                              <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
-                            </div>
-                          </div> 
-                          <div ng-show="imageCropStep == 2">                                   
-                             <image-crop heightc="cropheight" widthc="cropWidth" data-shape="square"
-                             data-step="imageCropStep" src="imgSrc" data-result="result" data-result-blob="resultBlob" crop="initCrop" padding="0"
-                             ></image-crop>      
-                          </div> 
-                          <div ng-show="imageCropStep == 2">
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Cancel</button>
-                            </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="initCrop = true" type="button" class="btn btn-fw btn-primary">Crop</button>   
-                            </div>                                   
-                          </div> 
-                          <div ng-show="imageCropStep == 3">
-                            <div class="col-md-12" style="text-align: center;">
-                              <img ng-src="{{result}}"></img>
-                            </div>
-                            <div class="col-md-12" style="text-align: center; margin-top: 10px;">
-                              <p>{{ cover }}</p>
-                            </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="clear()" class="btn btn-fw btn-danger right">Clear</button>  
-                            </div>   
-                            <div class="col-md-6" style="margin-top: 15px">
-                              <button ng-click="uploadC();" class="btn btn-fw btn-primary" type="button">upload</button>   
-                            </div>   
-                          </div>
-                        </div>  
+                      </div> 
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
                         <button class="btn red" ng-click="updateoutletoffer = false">Cancel</button>
@@ -403,9 +456,12 @@
                         </div>
                         <div class="form-group">
                           <label for="rest-name">address</label>
-                          <textarea name="address" id="" cols="30" rows="5" class="form-control" ng-model="outletdata.address"></textarea>
+                          <textarea name="address" id="" cols="30" rows="3" class="form-control" ng-model="outletdata.address"></textarea>
                         </div>
-                        
+                        <div class="form-group">
+                          <label for="rest-name">work hours</label>
+                          <input type="text" class="form-control" ng-model="outletdata.work_hours">
+                        </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
@@ -440,8 +496,12 @@
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="rest-name">work hours</label>
-                          <input type="text" class="form-control" ng-model="outletdata.work_hours">
+                          <label for="rest-name">latitude</label>
+                          <input type="text" name="latitude" class="form-control" ng-model="outletdata.latitude">
+                        </div>
+                        <div class="form-group">
+                          <label for="rest-name">longitude</label>
+                          <input type="text" name="longitude" class="form-control" ng-model="outletdata.longitude">
                         </div>
                         <div class="form-group">
                           <label for="rest-name">pin</label>
@@ -450,7 +510,7 @@
                         
                         <div class="form-group">
                           <label for="rest-name">suggested dishes</label>
-                          <textarea name="dishes" id="" cols="30" rows="5" class="form-control" ng-model="outletdata.suggested_dishes"></textarea>
+                          <textarea name="dishes" id="" cols="30" rows="3" class="form-control" ng-model="outletdata.suggested_dishes"></textarea>
                         </div>
                         
                       </div>
