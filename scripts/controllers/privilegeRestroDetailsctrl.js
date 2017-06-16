@@ -79,8 +79,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     		$scope.outlet.cityid == "" || !$scope.outlet.zoneid || $scope.outlet.zoneid == "" ||
     		!$scope.outlet.area || $scope.outlet.area == "" || !$scope.outlet.postcode ||
     		$scope.outlet.postcode == "" || !$scope.outlet.dishes || $scope.outlet.dishes == "" ||
-    		!$scope.outlet.work_hours || $scope.outlet.work_hours == "" || !$scope.outlet.pin ||
-    		$scope.outlet.pin == "" || $scope.outlet.latitude == "" || !$scope.outlet.latitude ||
+    		!$scope.outlet.work_hours || $scope.outlet.work_hours == "" ||  $scope.outlet.latitude == "" || !$scope.outlet.latitude ||
         !$scope.outlet.longitude || $scope.outlet.longitude == ""){
     		alert("fields can't be empty");
     		return;
@@ -88,7 +87,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     	privilegeFact2.createOutlet($scope.outlet.name, $scope.outlet.phone, $scope.outlet.address, 
 		$scope.outlet.cityid, $scope.outlet.zoneid, $scope.outlet.area, 
 		$scope.outlet.postcode, $scope.outlet.dishes ,$scope.restroid,
-		$scope.outlet.work_hours ,$scope.outlet.pin, $scope.outlet.latitude, $scope.outlet.longitude, function(response){
+		$scope.outlet.work_hours , $scope.outlet.latitude, $scope.outlet.longitude, function(response){
 			if(response){
     				window.location.reload();
     			}else{
@@ -268,7 +267,7 @@ app.factory('privilegeFact2', ['$http', function($http){
   }
 	prvlg.createOutlet = function(name, phone, address, 
 		city_id, city_zone_id, area, postcode, suggested_dishes,resturant_id,
-		work_hours,pin,latitude,longitude, callback){
+		work_hours,latitude,longitude, callback){
 		$http({
 	      method: 'POST',
 	      url: 'http://stg-api.foodtalk.in/privilege/outlet',
@@ -283,7 +282,6 @@ app.factory('privilegeFact2', ['$http', function($http){
 	        'suggested_dishes' : suggested_dishes,
 	        'resturant_id' : resturant_id,
 	        'work_hours' : work_hours,
-	        'pin' : pin,
           'latitude': latitude,
           'longitude':longitude
 	      }
