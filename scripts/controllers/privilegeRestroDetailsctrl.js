@@ -1,5 +1,5 @@
-app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','privilegeFact2','$routeParams',
- function($scope, $rootScope, $location,$upload, cloudinary, privilegeFact2,$routeParams){
+app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','privilegeFact2','$routeParams','$http',
+ function($scope, $rootScope, $location,$upload, cloudinary, privilegeFact2,$routeParams,$http){
 	$scope.username = $rootScope.username;
 	$scope.email =$rootScope.useremail;
 
@@ -8,7 +8,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
 	$scope.restroid= $routeParams.restroid;
 	privilegeFact2.getrestrodata($scope.restroid, function(response){
 		$scope.restroData = response.data.result;
-    console.log($scope.restroData);
+    //console.log($scope.restroData);
 	});
 
   privilegeFact2.getcusine(function(response){
@@ -26,19 +26,27 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     })
   }
 
+  $http.get('scripts/controllers/delhiarea.js').success(function(data) {
+   $scope.arealist = data;
+   //console.log($scope.arealist);
+  });
 	// create Restro
     $scope.updateRestro = function(){
     	//console.log($scope.restroData);
+      $scope.updateBtnRestro = true;
       if(!$scope.restroData.name || $scope.restroData.name == ""){
         alert("name is required");
+        $scope.updateBtnRestro = false;
         return;
       }
       if(!$scope.restroData.one_liner || $scope.restroData.one_liner == ""){
         alert("oneliner is required");
+        $scope.updateBtnRestro = false;
         return;
       }
       if(!$scope.restroData.cost || $scope.restroData.cost == ""){
         alert("cost is required");
+        $scope.updateBtnRestro = false;
         return;
       }
       if(!$scope.cover || $scope.cover == ""){
@@ -49,6 +57,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     				window.location.reload();
     			}else{
     				alert("oops somthing went wrong try again");
+            $scope.updateBtnRestro = false;
     			}
       })
     }
@@ -74,6 +83,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
 
     // create Outlet
     $scope.createOutlet = function(){
+      $scope.createBtnOutlet = true;
     	if(!$scope.outlet.name || $scope.outlet.name == "" || !$scope.outlet.phone || $scope.outlet.phone == ""
     		|| !$scope.outlet.address || $scope.outlet.address == "" || !$scope.outlet.cityid ||
     		$scope.outlet.cityid == "" || !$scope.outlet.zoneid || $scope.outlet.zoneid == "" ||
@@ -82,6 +92,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     		!$scope.outlet.work_hours || $scope.outlet.work_hours == "" ||  $scope.outlet.latitude == "" || !$scope.outlet.latitude ||
         !$scope.outlet.longitude || $scope.outlet.longitude == ""){
     		alert("fields can't be empty");
+        $scope.createBtnOutlet = false;
     		return;
     	}
     	privilegeFact2.createOutlet($scope.outlet.name, $scope.outlet.phone, $scope.outlet.address, 
@@ -92,6 +103,7 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     				window.location.reload();
     			}else{
     				alert("oops somthing went wrong try again");
+            $scope.createBtnOutlet = false;
     			}
 		})
     }

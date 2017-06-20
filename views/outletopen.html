@@ -142,7 +142,7 @@
       <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
       <!-- / -->
       <!-- Page title - Bind to $state's title -->
-      <div class="navbar-item pull-left h4">{{outletdata.name}}</div>
+      <div class="navbar-item pull-left h4">{{outletdata.resturant.name}}/{{outletdata.name}}</div>
      
       <div class="pull-right" ui-view="navbar@"></div>
       <!-- / -->
@@ -164,19 +164,18 @@
                     <div class="row" style="">
                       <div class="col-sm-7">
                         <h2 style="padding-left: 15px;">{{outletdata.name}}</h2>
-                        <h3 style="padding-left: 15px;">{{outletdata.pin}}</h3>
+                        <h3 style="padding-left: 15px;">Pin : {{outletdata.pin}}</h3>
                         <div class="col-sm-6">
-                          <h5>{{outletdata.work_hours}}</h5>
-                          <h5>{{outletdata.suggested_dishes}}</h5>
-                          <h5>{{outletdata.longitude}}</h5>
-                          <h5>{{outletdata.latitude}}</h5>
+                          <h5><b>Work Hours:</b> {{outletdata.work_hours}}</h5>
+                          <h5><b>latitude:</b> {{outletdata.latitude}}</h5>
+                          <h5><b>longitude:</b> {{outletdata.longitude}}</h5>
+                          <h5><b>Suggested Dishes:</b> {{outletdata.suggested_dishes}}</h5>
                         </div>
                         <div class="col-sm-6">
-                          
-                          <h5>{{outletdata.city_id == '1' ? 'Delhi' : 'Other'}}</h5>
-                          <h5>{{outletdata.area}}</h5>
-                          <h5>{{outletdata.address}}</h5>
-                          <h5>{{outletdata.postcode}}</h5>
+                          <h5><b>City :</b> {{outletdata.city_id == '1' ? 'Delhi' : 'Other'}}</h5>
+                          <h5><b>Area :</b> {{outletdata.area}}</h5>
+                          <h5><b>Address:</b> {{outletdata.address}}</h5>
+                          <h5><b>Postcode:</b> {{outletdata.postcode}}</h5>
                         </div>
                       </div>
 
@@ -245,7 +244,7 @@
                             </div>
                             <div class="col-sm-12">
                               <button class="btn red" ng-click="AddImagesoutlet = false">Cancel</button>
-                              <button class="btn btn-primary pull-right" style="margin-top: 40px;" ng-click="saveImagesToOutlet()" >save</button>
+                              <button class="btn btn-primary pull-right" style="margin-top: 40px;" ng-click="saveImagesToOutlet()" ng-disabled="saveImgBtnOutlet">save</button>
                             </div>
                           </div> 
                         </div>
@@ -300,14 +299,14 @@
                             ngf-drop="uploadFiles($files)"
                             ngf-drag-over-class="dragOverClass($event)"
                             ng-model="files"
-                            ng-multiple="fasle">
+                            ng-multiple="fasle" ngf-dimensions="$width == 640 && $height == 340">
                             <div class="col-md-12">
                               <form>  
                                 <div class="form_line">
                                     <!-- <label>Image:</label> -->
                                     <div class="form_controls">
                                         <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
-                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true">Upload</div>
+                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 640 && $height == 340">Upload</div>
                                         </div>
                                     </div>
                                 </div>
@@ -342,7 +341,7 @@
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
                         <button class="btn red" ng-click="createoutletoffer = false">Cancel</button>
-                        <button class="btn pink pull-right" ng-click="createOutletOffer()">Create Offer</button>
+                        <button class="btn pink pull-right" ng-click="createOutletOffer()" ng-disabled="creatOfferBtnOutlet">Create Offer</button>
                       </div>
                     </div>
                   </div>
@@ -392,14 +391,14 @@
                           ngf-drop="uploadFiles($files)"
                           ngf-drag-over-class="dragOverClass($event)"
                           ng-model="files"
-                          ng-multiple="fasle">
+                          ng-multiple="fasle" ngf-dimensions="$width == 640 && $height == 340">
                           <div class="col-md-12">
                             <form>  
                               <div class="form_line">
                                   <!-- <label>Image:</label> -->
                                   <div class="form_controls">
                                       <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
-                                          <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true">Upload</div>
+                                          <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 640 && $height == 340">Upload</div>
                                       </div>
                                   </div>
                               </div>
@@ -434,7 +433,7 @@
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
                         <button class="btn red" ng-click="updateoutletoffer = false">Cancel</button>
-                        <button class="btn pink pull-right" ng-click="updateOutletOffer()">Update outlet offer</button>
+                        <button class="btn pink pull-right" ng-click="updateOutletOffer()" ng-disabled="updateOfferBtnOutlet">Update outlet offer</button>
                       </div>
                     </div>
                   </div>
@@ -449,6 +448,7 @@
                         <div class="form-group">
                           <label for="rest-name">Name</label>
                           <input type="text" class="form-control" ng-model="outletdata.name">
+                          <!-- <autocomplete ng-model="outletdata.name" data="arealist"></autocomplete> -->
                         </div>
                         <div class="form-group">
                           <label for="rest-name">phone</label>
@@ -491,7 +491,8 @@
                         
                         <div class="form-group">
                           <label for="rest-name">area</label>
-                          <input type="text" class="form-control" ng-model="outletdata.area">
+                          <!-- <input type="text" class="form-control" ng-model="outletdata.area"> -->
+                          <autocomplete ng-model="outletdata.area" data="arealist"></autocomplete>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -513,7 +514,7 @@
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
                         <button class="btn red" ng-click="updateoutlet = false">Cancel</button>
-                        <button class="btn pink pull-right" ng-click="updateOutlet()">Update outlet</button>
+                        <button class="btn pink pull-right" ng-click="updateOutlet()" ng-disabled="updateBtnOutlet">Update outlet</button>
                       </div>
                     </div>
                   </div>
@@ -576,15 +577,15 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr ng-repeat="offer in filtered = (outletdata.offer | filter:search) " ng-class="offer.is_disabled == '1' ? 'text-muted' : ''">
+                          <tr ng-repeat="offer in filtered = (outletdata.offer | filter:search) " ng-class="offer.pivot.is_disabled == '1' ? 'text-muted' : ''">
                             <td>{{ offer.id }}</td>
                             <td>{{ offer.title }}</td>
                             <td>{{ offer.type }}</td>
                             <td>{{ offer.short_description }}</td>
                             <td><a href="{{ offer.term_conditions_link }}" target="_blank">{{ offer.term_conditions_link }}</a></td>
                             <td><!-- <a href="#privilege/outlet/{{ outlet.id }}" class="btn btn-info">Open details</a> -->
-                              <button class="btn btn-warning" ng-disabled="offer.is_disabled == '1' ? true : false" ng-click="editoutletofferfun(offer.pivot.id)">edit</button>
-                              <button class="btn btn-danger" ng-click="deleteoffer(offer.pivot.id);" ng-disabled="offer.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button>
+                              <button class="btn btn-warning" ng-disabled="offer.pivot.is_disabled == '1' ? true : false" ng-click="editoutletofferfun(offer.pivot.id)">edit</button>
+                              <button class="btn btn-danger" ng-click="deleteoffer(offer.pivot.id);" ng-disabled="offer.pivot.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button>
                             </td>
                           </tr>
                         </tbody>

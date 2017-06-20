@@ -172,7 +172,7 @@
                         </div>
                         <div class="form-group">
                           <label for="rest-name">One Liner</label>
-                          <input type="text" class="form-control" ng-model="restaurent.oneliner">
+                          <input type="text" class="form-control" ng-model="restaurent.oneliner" maxlength="80">
                         </div>
                         <div class="form-group">
                           <label for="rest-name">Cost</label>
@@ -188,14 +188,14 @@
                             ngf-drop="uploadFiles($files)"
                             ngf-drag-over-class="dragOverClass($event)"
                             ng-model="files"
-                            ng-multiple="fasle">
+                            ng-multiple="fasle" ngf-dimensions="$width == 400 && $height == 400">
                             <div class="col-md-12">
                               <form>  
                                 <div class="form_line">
                                     <!-- <label>Image:</label> -->
                                     <div class="form_controls">
                                         <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
-                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true">Upload</div>
+                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 400 && $height == 400">Upload</div>
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@
                         </div>  
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
-                        <button class="btn pink pull-right" ng-click="createRestro();">Create Restaurent</button>
+                        <button class="btn pink pull-right" ng-click="createRestro();" ng-disabled="createBtnRestro">Create Restaurent</button>
                       </div>
                     </div>
                   </div>

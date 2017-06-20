@@ -1,5 +1,5 @@
-app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','outletFact','$routeParams',
- function($scope,$rootScope,$location,$upload, cloudinary,outletFact,$routeParams){
+app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','outletFact','$routeParams','$http',
+ function($scope,$rootScope,$location,$upload, cloudinary,outletFact,$routeParams,$http){
 	$scope.username = $rootScope.username;
 	$scope.email =$rootScope.useremail;
 
@@ -9,7 +9,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 	$scope.outletid= $routeParams.outletid;
 	outletFact.getoutletdata($scope.outletid, function(response){
 		$scope.outletdata = response.data.result;
-    console.log($scope.outletdata)
+    //console.log($scope.outletdata)
 	});
 
 
@@ -17,7 +17,10 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 		$scope.offerList = response.data.result;
 	})
 
-  
+  $http.get('scripts/controllers/delhiarea.js').success(function(data) {
+   $scope.arealist = data;
+   //console.log($scope.arealist);
+  });
 
 
     // upload image to cloudinary
@@ -80,6 +83,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
   
 	// update Outlet
     $scope.updateOutlet = function(){
+      $scope.updateBtnOutlet = true;
     	if(!$scope.outletdata.name || $scope.outletdata.name == "" || !$scope.outletdata.phone || $scope.outletdata.phone == ""
     		|| !$scope.outletdata.address || $scope.outletdata.address == "" || !$scope.outletdata.city_id ||
     		$scope.outletdata.city_id == "" || !$scope.outletdata.city_zone_id || $scope.outletdata.city_zone_id == "" ||
@@ -88,6 +92,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     		!$scope.outletdata.work_hours || $scope.outletdata.work_hours == "" || $scope.outletdata.latitude == "" || !$scope.outletdata.latitude ||
         !$scope.outletdata.longitude || $scope.outletdata.longitude == ""){
     		alert("fields can't be empty");
+        $scope.updateBtnOutlet = false;
     		return;
     	}
     	outletFact.updateOutlet($scope.outletid, $scope.outletdata.name, $scope.outletdata.phone, $scope.outletdata.address, 
@@ -98,6 +103,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     				window.location.reload();
     			}else{
     				alert("oops somthing went wrong try again");
+            $scope.updateBtnOutlet = false;
     			}
 		})
     }
@@ -123,6 +129,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 
     // create oulet offer
     $scope.createOutletOffer = function(){
+      $scope.creatOfferBtnOutlet = true;
     	if(!$scope.outletoffer.offer_id || $scope.outletoffer.offer_id == "" || 
     		!$scope.cover || $scope.cover == "" ||
     		!$scope.outletoffer.short_description || $scope.outletoffer.short_description == "" ||
@@ -130,6 +137,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     		!$scope.outletoffer.end_date || $scope.outletoffer.end_date == "" ||
         !$scope.outletoffer.description || $scope.outletoffer.description == ""){
     		alert("fields can't be empty");
+        $scope.creatOfferBtnOutlet = false;
     		return;
     	}
     	outletFact.createOutletOffer($scope.outletid, $scope.outletoffer.offer_id, 
@@ -140,6 +148,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     				$scope.cover = "";
     			}else{
     				alert("oops somthing went wrong try again");
+            $scope.creatOfferBtnOutlet = false;
     			}
     		})
     }
@@ -166,13 +175,16 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 
     // create oulet offer
     $scope.updateOutletOffer = function(){
+      $scope.updateOfferBtnOutlet = true;
     	if(!$scope.editoutletoffer.offer_id || $scope.editoutletoffer.offer_id == "" || 
     		!$scope.editoutletoffer.short_description || $scope.editoutletoffer.short_description == "" ||
     		!$scope.editoutletoffer.start_date || $scope.editoutletoffer.start_date == "" ||
     		!$scope.editoutletoffer.end_date || $scope.editoutletoffer.end_date == ""  ||
         !$scope.editoutletoffer.description || $scope.editoutletoffer.description == ""){
     		alert("fields can't be empty");
+        $scope.updateOfferBtnOutlet = false;
     		return;
+
     	}
     	if(!$scope.cover || $scope.cover == ""){
     		$scope.cover = $scope.editoutletoffer.cover_image;
@@ -185,6 +197,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     				$scope.cover = "";
     			}else{
     				alert("oops somthing went wrong try again");
+            $scope.updateOfferBtnOutlet = false;
     			}
     		})
     }
@@ -210,6 +223,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
     // }
 
     $scope.saveImagesToOutlet = function(){
+      $scope.saveImgBtnOutlet = true;
       if($rootScope.photos.length != 0){
         $scope.outletimages = $rootScope.photos;
         //console.log($scope.outletimages);
@@ -222,6 +236,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
         });
       }else{
         alert('no images');
+        $scope.saveImgBtnOutlet = false;
       }
       outletFact.saveImagesToOutlet($scope.outletid, $scope.outletImageData, function(response){
         if(response){
@@ -229,6 +244,7 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
             $scope.cover = "";
           }else{
             alert("oops somthing went wrong try again");
+            $scope.saveImgBtnOutlet = false;
           }
       })
     }
@@ -248,7 +264,7 @@ app.factory('outletFact', ['$http', function($http){
 	prvlg.getoutletdata = function(id,callback){
 		$http({
 			method: 'GET',
-			url: 'http://stg-api.foodtalk.in/outlet/'+id
+			url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id
 		}).then(function (response) {
             callback(response);
         });
@@ -285,14 +301,14 @@ app.factory('outletFact', ['$http', function($http){
           'description' :description
 	      }
 	    }).then(function (response) {
-	        console.log(response);
+	        //console.log(response);
 	        if(response.data.code === "200"){
 	            callback(true);
-	            console.log(response);
+	            //console.log(response);
 	        }else{
 	          //Create an error Box and display the 
 	          alert('something went wrong please try again after refreshing the page');
-	          console.log(response);
+	          //console.log(response);
 	          callback(false);
 	        }
 		});

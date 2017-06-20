@@ -74,20 +74,25 @@ app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'c
 
     // create Restro
     $scope.createRestro = function(){
+      $scope.createBtnRestro = true;
       if(!$scope.restaurent.name || $scope.restaurent.name == ""){
         alert("name is required");
+        $scope.createBtnRestro = false;
         return;
       }
       if(!$scope.restaurent.oneliner || $scope.restaurent.oneliner == ""){
         alert("oneliner is required");
+        $scope.createBtnRestro = false;
         return;
       }
       if(!$scope.restaurent.cost || $scope.restaurent.cost == ""){
         alert("cost is required");
+        $scope.createBtnRestro = false;
         return;
       }
       if(!$scope.cover || $scope.cover == ""){
         alert("cover Image is required");
+        $scope.createBtnRestro = false;
         return;
       }
       privilegeFact.createRestro($scope.restaurent.name, $scope.restaurent.oneliner, $scope.restaurent.cost, $scope.cover, function(response){
@@ -95,6 +100,7 @@ app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'c
             window.location.reload();
           }else{
             alert("oops somthing went wrong try again");
+            $scope.createBtnRestro = false;
           }
       })
     }

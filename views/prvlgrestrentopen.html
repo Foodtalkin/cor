@@ -168,9 +168,9 @@
                       </div>
                       <div class="col-sm-4">
                         <h2>{{restroData.name}}</h2>
-                        <h5>{{restroData.cost}} for one</h5>
-                        <h5>{{restroData.one_liner}}</h5>
-                        <h6>cuisine</h6>
+                        <h5><b>Cost: </b>{{restroData.cost}} for one</h5>
+                        <h5><b>One Liner: </b>{{restroData.one_liner}}</h5>
+                        <h4>cuisine</h4>
                         <ul ng-repeat="cuisine in restroData.cuisine">
                           <li>{{cuisine.title}}</li>
                         </ul>
@@ -244,7 +244,8 @@
                         
                         <div class="form-group">
                           <label for="rest-name">area</label>
-                          <input type="text" class="form-control" ng-model="outlet.area">
+                          <!-- <input type="text" class="form-control" ng-model="outlet.area"> -->
+                          <autocomplete ng-model="outlet.area" data="arealist"></autocomplete>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -270,7 +271,7 @@
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
                         <button class="btn red" ng-click="addoutletform = false">Cancel</button>
-                        <button class="btn pink pull-right" ng-click="createOutlet()">Create outlet</button>
+                        <button class="btn pink pull-right" ng-click="createOutlet()" ng-disabled="createBtnOutlet">Create outlet</button>
                       </div>
                     </div>
                   </div>
@@ -288,11 +289,11 @@
                         </div>
                         <div class="form-group">
                           <label for="rest-name">One Liner</label>
-                          <input type="text" class="form-control" ng-model="restroData.one_liner">
+                          <input type="text" class="form-control" ng-model="restroData.one_liner" maxlength="80">
                         </div>
                         <div class="form-group">
-                          <label for="rest-name">Cost</label>
-                          <input type="text" class="form-control" ng-model="restroData.cost">
+                          <label for="rest-name">Cost for one</label>
+                          <input type="text" class="form-control" ng-model="restroData.cost" placeholder="1000">
                         </div>
                       </div>
                       <div class="col-md-8">
@@ -305,14 +306,14 @@
                             ngf-drop="uploadFiles($files)"
                             ngf-drag-over-class="dragOverClass($event)"
                             ng-model="files"
-                            ng-multiple="fasle">
+                            ng-multiple="fasle" ngf-dimensions="$width == 400 && $height == 400">
                             <div class="col-md-12">
                               <form>  
                                 <div class="form_line">
                                     <!-- <label>Image:</label> -->
                                     <div class="form_controls">
                                         <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
-                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true">Upload</div>
+                                            <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" ngf-dimensions="$width == 400 && $height == 400">Upload</div>
                                         </div>
                                     </div>
                                 </div>
@@ -347,7 +348,7 @@
                       </div>
                       <div class="col-sm-12" style="padding: 20px;">
                         <button class="btn red" ng-click="editrestroform = false">Cancel</button>
-                        <button class="btn pink pull-right" ng-click="updateRestro();">update Restaurent</button>
+                        <button class="btn pink pull-right" ng-click="updateRestro();" ng-disabled="updateBtnRestro">update Restaurent</button>
                       </div>
                     </div>
                   </div>
