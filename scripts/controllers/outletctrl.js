@@ -6,16 +6,43 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 	$scope.outletoffer = {};
 	$scope.outletdata = {};
   $scope.outletImageData = [];
+  $scope.imageList = {};
 	$scope.outletid= $routeParams.outletid;
 	outletFact.getoutletdata($scope.outletid, function(response){
 		$scope.outletdata = response.data.result;
-    //console.log($scope.outletdata)
+    console.log($scope.outletdata)
 	});
 
 
 	outletFact.getofferList(function(response){
 		$scope.offerList = response.data.result;
-	})
+	});
+
+  
+  $scope.getOutletImages = function(){
+    outletFact.getOutletImages($scope.outletid, function(response){
+      console.log(response);
+      $scope.imageList = response.data.result;
+    });
+  }
+  $scope.getOutletImages();
+
+  $scope.deleteImage = function(imgid){
+    var retVal = confirm("Do you want to delete this image ?");
+     if( retVal == true ){
+       outletFact.deleteImage(imgid,$scope.outletid, function(response){
+          if(response){
+              //window.location.reload();
+              $scope.getOutletImages();
+            }else{
+              alert("oops somthing went wrong try again");
+            }
+        })
+     }
+     else{
+        return false;
+     }
+  }
 
   $http.get('scripts/controllers/delhiarea.js').success(function(data) {
    $scope.arealist = data;
@@ -278,6 +305,15 @@ app.factory('outletFact', ['$http', function($http){
         });
 	}
 
+  prvlg.getOutletImages = function(id,callback){
+    $http({
+      method: 'GET',
+      url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id+'/image'
+    }).then(function (response) {
+            callback(response);
+        });
+  }
+
 	prvlg.getoutletofferdata = function(id,callback){
 		$http({
 			method: 'GET',
@@ -420,6 +456,23 @@ app.factory('outletFact', ['$http', function($http){
       url: 'http://stg-api.foodtalk.in/privilege/outlet-offer/'+id
     }).then(function (response) {
         if(response.data.code === "200"){
+            callback(true);
+            console.log(response);
+        }else{
+          //Create an error Box and display the 
+          alert('something went wrong please try again after refreshing the page');
+          console.log(response);
+          callback(false);
+        }
+    });
+  }
+
+  prvlg.deleteImage = function(id,outletid, callback){
+    $http({
+      method: 'DELETE',
+      url: 'http://stg-api.foodtalk.in/privilege/outlet/'+ outletid +'/image/'+id
+    }).then(function (response) {
+        if(response.data.code === "202"){
             callback(true);
             console.log(response);
         }else{

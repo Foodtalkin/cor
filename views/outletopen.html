@@ -553,6 +553,19 @@
                 <div class="col-sm-12">
                   <div class="panel panel-default">
                     <div class="panel-heading">
+                      Outlet Images
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-3" ng-repeat="image in imageList" >
+                        <img ng-src="{{image.url}}" alt="" style="height: 100px; width: auto; padding: 10px;">
+                        <button class="btn btn-danger" ng-click="deleteImage(image.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
                       Outlet List
                     </div>
                     <div class="table-responsive">
