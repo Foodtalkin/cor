@@ -142,7 +142,7 @@ app.factory('privilegeFact', ['$http', function($http){
 	prvlg.getAllRestro = function(callback){
 		$http({
 			method: 'GET',
-			url: 'http://stg-api.foodtalk.in/privilege/restaurant'
+			url: 'http://api.foodtalk.in/privilege/restaurant'
 		}).then(function (response) {
             callback(response);
         });
@@ -151,7 +151,7 @@ app.factory('privilegeFact', ['$http', function($http){
   prvlg.disableRestaurant = function(id, callback){
     $http({
       method: 'DELETE',
-      url: 'http://stg-api.foodtalk.in/privilege/restaurant/'+id
+      url: 'http://api.foodtalk.in/privilege/restaurant/'+id
     }).then(function (response) {
         if(response.data.code === "202"){
             callback(true);
@@ -168,7 +168,7 @@ app.factory('privilegeFact', ['$http', function($http){
   prvlg.createRestro = function(name, one_liner, cost, card_image, callback){
     $http({
       method: 'POST',
-      url: 'http://stg-api.foodtalk.in/privilege/restaurant',
+      url: 'http://api.foodtalk.in/privilege/restaurant',
       data : {
         'name' : name,
         'one_liner' : one_liner,

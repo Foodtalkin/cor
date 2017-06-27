@@ -201,7 +201,7 @@ app.factory('privilegeFact2', ['$http', function($http){
 	prvlg.getrestrodata = function(id,callback){
 		$http({
 			method: 'GET',
-			url: 'http://stg-api.foodtalk.in/privilege/restaurant/'+id
+			url: 'http://api.foodtalk.in/privilege/restaurant/'+id
 		}).then(function (response) {
             callback(response);
         });
@@ -210,7 +210,7 @@ app.factory('privilegeFact2', ['$http', function($http){
 	prvlg.updateRestro = function(id,name, one_liner, cost, card_image, callback){
 	    $http({
 	      method: 'PUT',
-	      url: 'http://stg-api.foodtalk.in/privilege/restaurant/'+id,
+	      url: 'http://api.foodtalk.in/privilege/restaurant/'+id,
 	      data : {
 	        'name' : name,
 	        'one_liner' : one_liner,
@@ -234,7 +234,7 @@ app.factory('privilegeFact2', ['$http', function($http){
   prvlg.getcusine = function(callback){
     $http({
       method: 'GET',
-      url: 'http://stg-api.foodtalk.in/privilege/cuisine'
+      url: 'http://api.foodtalk.in/privilege/cuisine'
     }).then(function (response) {
             callback(response);
         });
@@ -243,7 +243,7 @@ app.factory('privilegeFact2', ['$http', function($http){
   prvlg.addcusine = function(id,cuisines, callback){
     $http({
       method: 'POST',
-      url: 'http://stg-api.foodtalk.in/privilege/restaurant/'+id+'/cuisine',
+      url: 'http://api.foodtalk.in/privilege/restaurant/'+id+'/cuisine',
       data: {
         'cuisines' : cuisines
       }
@@ -264,7 +264,7 @@ app.factory('privilegeFact2', ['$http', function($http){
   prvlg.deletecusine = function(Restroid, cuisineId, callback){
     $http({
       method: 'DELETE',
-      url: 'http://stg-api.foodtalk.in/privilege/restaurant/'+Restroid+'/cuisine/'+cuisineId
+      url: 'http://api.foodtalk.in/privilege/restaurant/'+Restroid+'/cuisine/'+cuisineId
     }).then(function (response) {
         if(response.data.code === "200"){
             callback(true);
@@ -282,7 +282,7 @@ app.factory('privilegeFact2', ['$http', function($http){
 		work_hours,latitude,longitude, callback){
 		$http({
 	      method: 'POST',
-	      url: 'http://stg-api.foodtalk.in/privilege/outlet',
+	      url: 'http://api.foodtalk.in/privilege/outlet',
 	      data : {
 	        'name' : name,
 	        'phone' : phone,
@@ -314,7 +314,7 @@ app.factory('privilegeFact2', ['$http', function($http){
   prvlg.deleteoutlet = function(id, callback){
     $http({
       method: 'DELETE',
-      url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id
+      url: 'http://api.foodtalk.in/privilege/outlet/'+id
     }).then(function (response) {
         if(response.data.code === "202"){
             callback(true);

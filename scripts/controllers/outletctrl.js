@@ -291,7 +291,7 @@ app.factory('outletFact', ['$http', function($http){
 	prvlg.getoutletdata = function(id,callback){
 		$http({
 			method: 'GET',
-			url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id
+			url: 'http://api.foodtalk.in/privilege/outlet/'+id
 		}).then(function (response) {
             callback(response);
         });
@@ -299,7 +299,7 @@ app.factory('outletFact', ['$http', function($http){
 	prvlg.getofferList = function(callback){
 		$http({
 			method: 'GET',
-			url: 'http://stg-api.foodtalk.in/privilege/offer'
+			url: 'http://api.foodtalk.in/privilege/offer'
 		}).then(function (response) {
             callback(response);
         });
@@ -308,7 +308,7 @@ app.factory('outletFact', ['$http', function($http){
   prvlg.getOutletImages = function(id,callback){
     $http({
       method: 'GET',
-      url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id+'/image'
+      url: 'http://api.foodtalk.in/privilege/outlet/'+id+'/image'
     }).then(function (response) {
             callback(response);
         });
@@ -317,7 +317,7 @@ app.factory('outletFact', ['$http', function($http){
 	prvlg.getoutletofferdata = function(id,callback){
 		$http({
 			method: 'GET',
-			url: 'http://stg-api.foodtalk.in/privilege/outlet-offer/'+id
+			url: 'http://api.foodtalk.in/privilege/outlet-offer/'+id
 		}).then(function (response) {
             callback(response);
         });
@@ -326,7 +326,7 @@ app.factory('outletFact', ['$http', function($http){
 	prvlg.createOutletOffer = function(outlet_id, offer_id, cover_image, short_description,start_date, end_date,description, callback){
 		$http({
 	      method: 'POST',
-	      url: 'http://stg-api.foodtalk.in/privilege/outlet-offer',
+	      url: 'http://api.foodtalk.in/privilege/outlet-offer',
 	      data : {
 	        'outlet_id' : outlet_id,
 	        'offer_id' : offer_id,
@@ -353,7 +353,7 @@ app.factory('outletFact', ['$http', function($http){
 	prvlg.createNewOffer = function(title, short_description, term_conditions_link, callback){
 		$http({
 	      method: 'POST',
-	      url: 'http://stg-api.foodtalk.in/privilege/offer',
+	      url: 'http://api.foodtalk.in/privilege/offer',
 	      data : {
 	        'title' : title,
 	        'short_description' : short_description,
@@ -376,7 +376,7 @@ app.factory('outletFact', ['$http', function($http){
   prvlg.saveImagesToOutlet = function(id, data, callback){
     $http({
         method: 'POST',
-        url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id+'/image',
+        url: 'http://api.foodtalk.in/privilege/outlet/'+id+'/image',
         data : { "images" : data}
       }).then(function (response) {
           console.log(response);
@@ -395,7 +395,7 @@ app.factory('outletFact', ['$http', function($http){
 	prvlg.updateOutletOffer = function(id, cover_image, short_description, start_date, end_date,description, callback){
 		$http({
 	      method: 'PUT',
-	      url: 'http://stg-api.foodtalk.in/privilege/outlet-offer/'+id,
+	      url: 'http://api.foodtalk.in/privilege/outlet-offer/'+id,
 	      data : {
 	        'cover_image' : cover_image,
 	        'short_description' : short_description,
@@ -421,7 +421,7 @@ app.factory('outletFact', ['$http', function($http){
 		work_hours,latitude,longitude, callback){
 		$http({
 	      method: 'PUT',
-	      url: 'http://stg-api.foodtalk.in/privilege/outlet/'+id,
+	      url: 'http://api.foodtalk.in/privilege/outlet/'+id,
 	      data : {
 	        'name' : name,
 	        'phone' : phone,
@@ -453,7 +453,7 @@ app.factory('outletFact', ['$http', function($http){
   prvlg.deleteoffer = function(id, callback){
     $http({
       method: 'DELETE',
-      url: 'http://stg-api.foodtalk.in/privilege/outlet-offer/'+id
+      url: 'http://api.foodtalk.in/privilege/outlet-offer/'+id
     }).then(function (response) {
         if(response.data.code === "200"){
             callback(true);
@@ -470,7 +470,7 @@ app.factory('outletFact', ['$http', function($http){
   prvlg.deleteImage = function(id,outletid, callback){
     $http({
       method: 'DELETE',
-      url: 'http://stg-api.foodtalk.in/privilege/outlet/'+ outletid +'/image/'+id
+      url: 'http://api.foodtalk.in/privilege/outlet/'+ outletid +'/image/'+id
     }).then(function (response) {
         if(response.data.code === "202"){
             callback(true);
