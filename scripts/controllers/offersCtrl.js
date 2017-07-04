@@ -79,6 +79,7 @@ app.controller('offersCtrl', ['$scope','$rootScope','$location','authFactory','$
         }
       });
     }
+    
    var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     //$scope.$watch('files', function() {

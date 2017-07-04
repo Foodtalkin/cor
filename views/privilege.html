@@ -265,8 +265,8 @@
                             <td>{{ restro.one_liner }}</td>
                             <td>{{ restro.cost }}</td>
                             <td><img ng-src="{{ restro.card_image }}" alt="" width="80"></td>
-                            <td><a href="#privilege/{{ restro.id }}" class="btn btn-info" ng-disabled="restro.is_disabled == '1' ? true : false">Open</a>
-                            <button class="btn btn-danger" ng-click="disableRestaurant(restro.id);" ng-disabled="restro.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button></td>
+                            <td><a href="#privilege/{{ restro.id }}" class="btn btn-info">Open</a>
+                            <button class="btn " ng-class="restro.is_disabled == '1' ? 'btn-success' : 'btn-danger'" ng-click="updateRestroStatus(restro.id, restro.is_disabled);">{{restro.is_disabled == '1' ? 'Show' : 'Hide'}}</button></td>
                           </tr>
                         </tbody>
                         

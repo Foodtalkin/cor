@@ -67,6 +67,7 @@ app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'c
     // restro get all data
     privilegeFact.getAllRestro(function(response){
     	$scope.restroList = response.data.result;
+      // console.log($scope.restroList);
     })
     // end
 
@@ -108,23 +109,39 @@ app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'c
 
 
     // disable restaurant
-    $scope.disableRestaurant = function(id){
-      var retVal = confirm("Do you want to delete this item ?");
-       if( retVal == true ){
-         privilegeFact.disableRestaurant(id, function(response){
-          if(response){
+    // $scope.disableRestaurant = function(id){
+    //   var retVal = confirm("Do you want to delete this item ?");
+    //    if( retVal == true ){
+    //      privilegeFact.disableRestaurant(id, function(response){
+    //       if(response){
+    //           window.location.reload();
+    //         }else{
+    //           alert("oops somthing went wrong try again");
+    //         }
+    //     })
+    //    }
+    //    else{
+    //       return false;
+    //    }
+        
+    // }
+
+    // end
+
+    $scope.updateRestroStatus = function(id, status){
+      if(status == "0"){
+        status = '1';
+      }else if(status == '1'){
+        status = '0';
+      }
+      privilegeFact.updateRestroStatus(id, status, function(response){
+        if(response){
               window.location.reload();
             }else{
               alert("oops somthing went wrong try again");
             }
-        })
-       }
-       else{
-          return false;
-       }
-        
+      })
     }
-    // end
 
 
 	$scope.logout = function(){
@@ -148,20 +165,41 @@ app.factory('privilegeFact', ['$http', function($http){
         });
 	}
 
-  prvlg.disableRestaurant = function(id, callback){
-    $http({
-      method: 'DELETE',
-      url: 'http://api.foodtalk.in/privilege/restaurant/'+id
-    }).then(function (response) {
-        if(response.data.code === "202"){
-            callback(true);
-            //console.log(response);
-        }else{
-          //Create an error Box and display the 
-          alert('something went wrong please try again after refreshing the page');
-          //console.log(response);
-          callback(false);
+  // prvlg.disableRestaurant = function(id, callback){
+  //   $http({
+  //     method: 'DELETE',
+  //     url: 'http://api.foodtalk.in/privilege/restaurant/'+id
+  //   }).then(function (response) {
+  //       if(response.data.code === "202"){
+  //           callback(true);
+  //           //console.log(response);
+  //       }else{
+  //         //Create an error Box and display the 
+  //         alert('something went wrong please try again after refreshing the page');
+  //         //console.log(response);
+  //         callback(false);
+  //       }
+  //   });
+  // }
+
+  prvlg.updateRestroStatus = function(id, active, callback){
+      $http({
+        method: 'PUT',
+        url: 'http://api.foodtalk.in/privilege/restaurant/'+id,
+        data : {
+          'is_disabled' : active
         }
+      }).then(function (response) {
+          //console.log(response);
+          if(response.data.code === "200"){
+              callback(true);
+              //console.log(response);
+          }else{
+            //Create an error Box and display the 
+            alert('something went wrong please try again after refreshing the page');
+            //console.log(response);
+            callback(false);
+          }
     });
   }
 

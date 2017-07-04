@@ -435,8 +435,8 @@
                             <td>{{ outlet.id }}</td>
                             <td>{{ outlet.name }}</td>
                             <td>{{ outlet.area }}</td>
-                            <td><a href="#privilege/{{restroid}}/outlet/{{ outlet.id }}" class="btn btn-info" ng-disabled="outlet.is_disabled == '1' ? true : false">Open Outlet</a>
-                            <button class="btn btn-danger" ng-click="deleteoutlet(outlet.id);" ng-disabled="outlet.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button>
+                            <td><a href="#privilege/{{restroid}}/outlet/{{ outlet.id }}" class="btn btn-info">Open Outlet</a>
+                            <button class="btn" ng-class="outlet.is_disabled == '1' ? 'btn-success' : 'btn-danger'" ng-click="updateOutletStatus(outlet.id, outlet.is_disabled);">{{outlet.is_disabled == '1' ? 'Show' : 'Hide'}}</button>
                             </td>
                           </tr>
                         </tbody>

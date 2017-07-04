@@ -110,23 +110,36 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
     // end
 
     // delete outlet
-    $scope.deleteoutlet = function(id){
-      var retVal = confirm("Do you want to delete this item ?");
-       if( retVal == true ){
-         privilegeFact2.deleteoutlet(id, function(response){
-            if(response){
-                window.location.reload();
-              }else{
-                alert("oops somthing went wrong try again");
-              }
-          })
-       }
-       else{
-          return false;
-       }
-    }
+    // $scope.deleteoutlet = function(id){
+    //   var retVal = confirm("Do you want to delete this item ?");
+    //    if( retVal == true ){
+    //      privilegeFact2.deleteoutlet(id, function(response){
+    //         if(response){
+    //             window.location.reload();
+    //           }else{
+    //             alert("oops somthing went wrong try again");
+    //           }
+    //       })
+    //    }
+    //    else{
+    //       return false;
+    //    }
+    // }
     // end
-
+    $scope.updateOutletStatus = function(id, status){
+      if(status == "0"){
+        status = '1';
+      }else if(status == '1'){
+        status = '0';
+      }
+      privilegeFact2.updateOutletStatus(id, status, function(response){
+        if(response){
+              window.location.reload();
+            }else{
+              alert("oops somthing went wrong try again");
+            }
+      })
+    }
 
 
 
@@ -311,20 +324,41 @@ app.factory('privilegeFact2', ['$http', function($http){
 		});
 	}
 
-  prvlg.deleteoutlet = function(id, callback){
-    $http({
-      method: 'DELETE',
-      url: 'http://api.foodtalk.in/privilege/outlet/'+id
-    }).then(function (response) {
-        if(response.data.code === "202"){
-            callback(true);
-            //console.log(response);
-        }else{
-          //Create an error Box and display the 
-          alert('something went wrong please try again after refreshing the page');
-          //console.log(response);
-          callback(false);
+  // prvlg.deleteoutlet = function(id, callback){
+  //   $http({
+  //     method: 'DELETE',
+  //     url: 'http://api.foodtalk.in/privilege/outlet/'+id
+  //   }).then(function (response) {
+  //       if(response.data.code === "202"){
+  //           callback(true);
+  //           //console.log(response);
+  //       }else{
+  //         //Create an error Box and display the 
+  //         alert('something went wrong please try again after refreshing the page');
+  //         //console.log(response);
+  //         callback(false);
+  //       }
+  //   });
+  // }
+
+  prvlg.updateOutletStatus = function(id, active, callback){
+      $http({
+        method: 'PUT',
+        url: 'http://api.foodtalk.in/privilege/outlet/'+id,
+        data : {
+          'is_disabled' : active
         }
+      }).then(function (response) {
+          //console.log(response);
+          if(response.data.code === "200"){
+              callback(true);
+              //console.log(response);
+          }else{
+            //Create an error Box and display the 
+            alert('something went wrong please try again after refreshing the page');
+            //console.log(response);
+            callback(false);
+          }
     });
   }
 	return prvlg;
