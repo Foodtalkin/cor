@@ -1,5 +1,5 @@
-app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','privilegeFact',
- function($scope,$rootScope,$location, $upload, cloudinary,privilegeFact){
+app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','privilegeFact','authFactory',
+ function($scope,$rootScope,$location, $upload, cloudinary,privilegeFact, authFactory){
 	$scope.username = $rootScope.username;
 	$scope.email =$rootScope.useremail;
 

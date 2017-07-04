@@ -1,5 +1,5 @@
-app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','outletFact','$routeParams','$http',
- function($scope,$rootScope,$location,$upload, cloudinary,outletFact,$routeParams,$http){
+app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','outletFact','$routeParams','$http','authFactory',
+ function($scope,$rootScope,$location,$upload, cloudinary,outletFact,$routeParams,$http,authFactory){
 	$scope.username = $rootScope.username;
 	$scope.email =$rootScope.useremail;
 

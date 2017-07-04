@@ -1,5 +1,5 @@
-app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','privilegeFact2','$routeParams','$http',
- function($scope, $rootScope, $location,$upload, cloudinary, privilegeFact2,$routeParams,$http){
+app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location','Upload', 'cloudinary','privilegeFact2','$routeParams','$http','authFactory',
+ function($scope, $rootScope, $location,$upload, cloudinary, privilegeFact2,$routeParams,$http,authFactory){
 	$scope.username = $rootScope.username;
 	$scope.email =$rootScope.useremail;
 
