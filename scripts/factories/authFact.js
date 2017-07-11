@@ -10,16 +10,17 @@ app.factory('authFactory', ['$http','$cookies','urlFactory','$location', functio
           url: urlFactory.login,
           data : {email:email, password:password}
         }).then(function (response) {
+            //console.log(response);
             if(response.data.result.APPSESSID){
                 $cookies.put("batuser", response.data.result.name);
                 $cookies.put("batemail", response.data.result.email);
                 $cookies.put("APPSESSID", response.data.result.APPSESSID);
-                console.log(response);
+                //console.log(response);
                 callback(true);
 
             }else{
               //Create an error Box and display the error
-              console.log(response);
+              //console.log(response);
               callback(response);
             }
           });

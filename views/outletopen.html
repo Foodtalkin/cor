@@ -597,8 +597,9 @@
                             <td>{{ offer.short_description }}</td>
                             <td><a href="{{ offer.term_conditions_link }}" target="_blank">{{ offer.term_conditions_link }}</a></td>
                             <td><!-- <a href="#privilege/outlet/{{ outlet.id }}" class="btn btn-info">Open details</a> -->
-                              <button class="btn btn-warning" ng-disabled="offer.pivot.is_disabled == '1' ? true : false" ng-click="editoutletofferfun(offer.pivot.id)">edit</button>
-                              <button class="btn btn-danger" ng-click="deleteoffer(offer.pivot.id);" ng-disabled="offer.pivot.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button>
+                              <button class="btn btn-warning"  ng-click="editoutletofferfun(offer.pivot.id)">edit</button>
+                              <!-- <button class="btn btn-danger" ng-click="deleteoffer(offer.pivot.id);" ng-disabled="offer.pivot.is_disabled == '1' ? true : false"><i class="fa fa-times"></i></button> -->
+                              <button class="btn " ng-class="offer.pivot.is_disabled == '1' ? 'btn-success' : 'btn-danger'" ng-click="updateofferStatus(offer.pivot.id, offer.pivot.is_disabled);">{{offer.pivot.is_disabled == '1' ? 'Show' : 'Hide'}}</button></td>
                             </td>
                           </tr>
                         </tbody>

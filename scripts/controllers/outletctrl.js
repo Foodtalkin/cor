@@ -44,6 +44,21 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
      }
   }
 
+  $scope.updateofferStatus = function(id, status){
+      if(status == "0"){
+        status = '1';
+      }else if(status == '1'){
+        status = '0';
+      }
+      outletFact.updateofferStatus(id, status, function(response){
+        if(response){
+              window.location.reload();
+            }else{
+              alert("oops somthing went wrong try again");
+            }
+      })
+    }
+
   $http.get('scripts/controllers/delhiarea.js').success(function(data) {
    $scope.arealist = data;
    //console.log($scope.arealist);
@@ -415,7 +430,26 @@ app.factory('outletFact', ['$http', function($http){
 	        }
 		});
 	}
-
+  prvlg.updateofferStatus = function(id, active, callback){
+      $http({
+        method: 'PUT',
+        url: 'http://api.foodtalk.in/privilege/outlet-offer/'+id,
+        data : {
+          'is_disabled' : active
+        }
+      }).then(function (response) {
+          //console.log(response);
+          if(response.data.code === "200"){
+              callback(true);
+              //console.log(response);
+          }else{
+            //Create an error Box and display the 
+            alert('something went wrong please try again after refreshing the page');
+            //console.log(response);
+            callback(false);
+          }
+    });
+  }
 	prvlg.updateOutlet = function(id, name, phone, address, 
 		city_id, city_zone_id, area, postcode, suggested_dishes,resturant_id,
 		work_hours,latitude,longitude, callback){

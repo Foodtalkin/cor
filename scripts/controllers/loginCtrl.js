@@ -1,8 +1,11 @@
-app.controller('loginCtrl', ['$scope', 'authFactory', '$location', function($scope, authFactory, $location){
+app.controller('loginCtrl', ['$scope','$rootScope', 'authFactory', '$location','$cookies',
+ function($scope,$rootScope, authFactory, $location, $cookies){
   $scope.doLogin = function(){
     authFactory.doLogin($scope.username, $scope.password, function(response){
       if(response){
-        $location.path('/appdashboard');
+        $rootScope.username = $cookies.get("batuser");
+        $rootScope.useremail = $cookies.get("batemail");
+        $location.path('/privilege');
       }else{
         //Display generic error
         console.log("Le wild login error");
