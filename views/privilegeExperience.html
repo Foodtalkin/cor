@@ -60,6 +60,18 @@
                         <span class="font-normal">Contest</span>
                       </a>
                     </li>
+                    <li>
+                      <a md-ink-ripple href="#offers">
+                        <i class="icon fa fa-tags i-20"></i>
+                        <span class="font-normal">offers</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="#news">
+                        <i class="fa fa-newspaper-o icon " aria-hidden="true"></i>
+                        <span class="font-normal">News</span>
+                      </a>
+                    </li>
                     <!-- <li>
                       <a md-ink-ripple href="#contacts">
                         <i class="icon mdi-action-extension i-20"></i>
@@ -68,7 +80,7 @@
                     </li> -->
                     <li>
                       <a md-ink-ripple href="#contactfrm">
-                        <i class="icon mdi-action-extension i-20"></i>
+                        <i class="icon fa-phone fa i-20"></i>
                         <span class="font-normal">Contact form</span>
                       </a>
                     </li>
@@ -79,7 +91,7 @@
                       </a>
                     </li>
                     <li>
-                      <a md-ink-ripple href="#privilegeExperience">
+                      <a md-ink-ripple href="#privilegeExperience" class="active-menu">
                         <i class="icon fa-ticket fa i-20"></i>
                         <span class="font-normal">Privilege Experiences</span>
                       </a>
@@ -107,12 +119,7 @@
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <a md-ink-ripple href="#all_data" class="active-menus">
-                        <i class="icon mdi-action-extension i-20"></i>
-                        <span class="font-normal">all data</span>
-                      </a>
-                    </li>
+                   
                     <li class="b-b b m-v-sm"></li>
                     <li>
                       <a md-ink-ripple ng-click="logout();">
@@ -134,15 +141,15 @@
 
 
   <!-- content -->
-  <div id="content" class="app-content" role="main">
-    <div class="box">
+<div id="content" class="app-content" role="main">
+  <div class="box">
           <!-- Content Navbar -->
     <div class="navbar md-whiteframe-z1 no-radius blue">
       <!-- Open side - Naviation on mobile -->
       <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
       <!-- / -->
       <!-- Page title - Bind to $state's title -->
-      <div class="navbar-item pull-left h4"></div>
+      <div class="navbar-item pull-left h4">Users List privilege</div>
      
       <div class="pull-right" ui-view="navbar@"></div>
       <!-- / -->
@@ -151,86 +158,53 @@
       <!-- / -->
     </div>
     <!-- Content -->
-
+      <a class="btn btn-lg btn-icon btn-rounded btn-danger csv" ng-csv="usercsv" filename="users.csv" field-separator="," decimal-separator="." title="download csv"><i class="fa fa-download "></i></a>
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
             
-
-            <h3>{{message}}</h3>
-            <!-- <div>{{users.data.result.data}}</div> -->
-            
-
-            <div class="panel panel-default">
-              
               <div class="panel-heading">
-                Entries
+                <strong>Users List</strong>
               </div>
-              <div class="table-responsive">
-
-                <form class="form-inline">
+              <div class="col-md-12">
+                  <form class="form-inline m-t-sm hidden-xs hidden-sm">
                     <div class="res">
-                      <p>Showing {{filtered.length}} Results</p>
+                      <p>Showing {{filtered.length}} Results of Page {{current_page}}</p>
+                      <p>Total Users {{total}}</p>
                     </div>
                     <div class="form-group" id="search">
                         <!-- <label >Search</label> -->
-                        <input type="text" ng-model="search" class="form-control" placeholder="Search" >
+                        <input type="text" ng-model="searchkey" class="form-control m-r-lg" placeholder="Search" >
                     </div>
-                </form>
-                <table class="table table-hover b-t b-b bordert">
+                  </form>
+                </div>
+              <div class="table-responsive">
+                <table class="table table-hover b-t b-b">
                   <thead>
                     <tr >
-                      <th>#</th>
-                      <th>event_name</th>
-                      <th>user_name</th>
-                      <th>email</th>
-                      <th>contact</th>
-                      <th>dob</th>
-                      <th>gender</th>
-                      <th>insta</th>
-                      <th>profession</th>
-                      <th>Veg/Non-Veg</th>
-                      <th>Points</th>
-                      <th>source</th>
-                      <th>response</th>
-                      <th>Meta1</th>
-                      <th>Meta2</th>
-                      <th>Meta3</th>
-                      <th>Amount</th>
-                      <th>time_stamp</th>
+                      <th><input type="checkbox" ng-change="selectall(boo)" ng-model="boo"></th>
+                      <th>Event Name</th>
+                      <th>User Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Gender</th>
+                      <th>Prefrence</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="name in filtered = (entries.data | filter:search) " >
-                      
-                      <td>{{ $index +1 }}</td>
-                      <td>{{name.event_name}}</td>
-                      <td><a href="https://www.facebook.com//{{name.user_id}}" target="_blank">{{name.user_name}}</a></td>
-                      <td>{{name.email}}</td>
-                      <td>{{name.contact}}</td>
-                      <td>{{name.dob | ageFilter}}</td>
-                      <td>{{name.gender}}</td>
-                      <td>{{name.insta}}</td>
-                      <td>{{name.profession}}</td>
-                      <td>{{name.food_type}}</td>
-                      <td>{{name.points}}</td>
-                      <td>{{name.source}}</td>
-                      <td>{{name.response}}</td>
-                      <td>{{name.meta1}}</td>
-                      <td>{{name.meta2}}</td>
-                      <td>{{name.meta3}}</td>
-                      <td>{{name.amount}}</td>
-                      <td>{{name.time_stamp}}</td>
-                      
+                    <tr ng-repeat="item in filtered = (allData  | filter:searchkey) " >
+                      <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:item.event_name,b:item.name,c:item.email,d:item.phone,e:item.gender,f:item.preference})" ng-model="bool" ng-checked="checkall"></td> 
+                      <td>{{ item.event_name }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.email }}</td>
+                      <td>{{ item.phone }}</td>
+                      <td>{{ item.gender }}</td>
+                      <td>{{ item.preference }}</td>
                     </tr>
                   </tbody>
                   
                 </table>
               </div>
-            </div>
-
-
-
           </div>
         </div>
       </div>

@@ -187,6 +187,10 @@ app.config(['$routeProvider','$httpProvider',function($routeProvider, $httpProvi
                     factory: checkRouting
                 }
   }).
+  when('/privilegeExperience',{
+    templateUrl: 'views/privilegeExperience.html',
+    controller : 'privilegeExperienceCtrl'
+  }).
 	otherwise({
         redirectTo: '/login'
       });
