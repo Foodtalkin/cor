@@ -257,6 +257,7 @@
                           <tr >
                             <th>#</th>
                             <th>Name</th>
+                            <th>Primary cuisine</th>
                             <th>One Liner</th>
                             <th>Cost</th>
                             <th>card image url</th>
@@ -267,6 +268,9 @@
                           <tr ng-repeat="restro in filtered = (restroList | filter:search) " ng-click="" ng-class="restro.is_disabled == '1' ? 'text-muted' : ''">
                             <td>{{ restro.id }}</td>
                             <td>{{ restro.name }}</td>
+                            <td>
+                            <button class="btn btn-sm  {{ restro.primary_cuisine != '' ? 'btn-success' : 'btn-danger' }}" ></button>
+                            </td>
                             <td>{{ restro.one_liner }}</td>
                             <td>{{ restro.cost }}</td>
                             <td><img ng-src="{{ restro.card_image }}" alt="" width="80"></td>
