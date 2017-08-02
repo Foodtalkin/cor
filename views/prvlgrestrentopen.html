@@ -176,9 +176,10 @@
                         <h2>{{restroData.name}}</h2>
                         <h5><b>Cost: </b>{{restroData.cost}} for one</h5>
                         <h5><b>One Liner: </b>{{restroData.one_liner}}</h5>
+                        <h5><b>Primary Cuisine: </b>{{restroData.primary_cuisine.title}}</h5>
                         <h4>cuisine</h4>
                         <ul ng-repeat="cuisine in restroData.cuisine">
-                          <li>{{cuisine.title}}</li>
+                          <li>{{cuisine.title}} <button class="btn btn-sm {{restroData.primary_cuisine.id == cuisine.id ? 'btn-default' : 'btn-info'}}" ng-click="makePrimary(cuisine.id)" style="font-size: 12px;padding: 3px;">Make Primary</button></li>
                         </ul>
                       </div>
                       <div class="col-sm-5">

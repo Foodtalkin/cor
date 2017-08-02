@@ -8,11 +8,12 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
 	$scope.restroid= $routeParams.restroid;
 	privilegeFact2.getrestrodata($scope.restroid, function(response){
 		$scope.restroData = response.data.result;
-    //console.log($scope.restroData);
+    // console.log($scope.restroData);
 	});
 
   privilegeFact2.getcusine(function(response){
       $scope.cusinelist = response.data.result;
+      
     });
 
 
@@ -23,6 +24,17 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
           }else{
             alert("oops somthing went wrong try again");
           }
+    })
+  }
+
+  $scope.makePrimary = function(id){
+    console.log(id);
+    privilegeFact2.makePrimary($scope.restroid, id, function(response){
+      if(response){
+        window.location.reload();
+      }else{
+        alert('somthing went wrong! Please Try again');
+      }
     })
   }
 
@@ -347,6 +359,26 @@ app.factory('privilegeFact2', ['$http', function($http){
         url: 'http://api.foodtalk.in/privilege/outlet/'+id,
         data : {
           'is_disabled' : active
+        }
+      }).then(function (response) {
+          //console.log(response);
+          if(response.data.code === "200"){
+              callback(true);
+              //console.log(response);
+          }else{
+            //Create an error Box and display the 
+            alert('something went wrong please try again after refreshing the page');
+            //console.log(response);
+            callback(false);
+          }
+    });
+  }
+  prvlg.makePrimary = function(id, cusine, callback){
+      $http({
+        method: 'PUT',
+        url: 'http://api.foodtalk.in/privilege/restaurant/'+id,
+        data : {
+          'primary_cuisine' : cusine
         }
       }).then(function (response) {
           //console.log(response);
