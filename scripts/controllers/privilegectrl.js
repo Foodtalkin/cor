@@ -67,7 +67,7 @@ app.controller('privilegeCtrl', ['$scope', '$rootScope','$location','Upload', 'c
     // restro get all data
     privilegeFact.getAllRestro(function(response){
     	$scope.restroList = response.data.result;
-      console.log($scope.restroList);
+      //console.log($scope.restroList);
     })
     // end
 

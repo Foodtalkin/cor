@@ -8,6 +8,7 @@ app.controller('privilegeExperienceCtrl', ['$scope','$rootScope', 'privilegeExpe
 	$scope.allData = {};
 	privilegeExperienceFact.GetList(function(response){
 		$scope.allData = response.data.result;
+    //console.log($scope.allData);
 	});
 
 	// csv download
