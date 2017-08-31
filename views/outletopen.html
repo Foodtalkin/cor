@@ -212,6 +212,7 @@
                           ngf-drop="uploadFiles($files)"
                           ngf-drag-over-class="dragOverClass($event)"
                           ng-model="files"
+                          ngf-max-size="1MB"
                           ng-multiple="true">
                           <div class="col-md-12">
                             <form>  
@@ -219,7 +220,7 @@
                                   <!-- <label>Image:</label> -->
                                   <div class="form_controls">
                                       <div class="upload_button_holder" style="text-align: center; border: 1px dotted #9e9e9e;padding: 20px;">
-                                          <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" multiple>Upload</div>
+                                          <div href="#" class="upload_button btn btn-fw btn-primary" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" ngf-max-size="1MB" multiple>Upload (size < 1MB )</div>
                                       </div>
                                   </div>
                               </div>
