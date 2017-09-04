@@ -137,10 +137,15 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
         $scope.updateBtnOutlet = false;
     		return;
     	}
+      if(!$scope.outletdata.email){
+         alert('email values are invalid or empty please check and try again');
+        $scope.updateBtnOutlet = false;
+        return;
+      }
     	outletFact.updateOutlet($scope.outletid, $scope.outletdata.name, $scope.outletdata.phone, $scope.outletdata.address, 
 		$scope.outletdata.city_id, $scope.outletdata.city_zone_id, $scope.outletdata.area, 
 		$scope.outletdata.postcode, $scope.outletdata.suggested_dishes ,$scope.restroid,
-		$scope.outletdata.work_hours , $scope.outletdata.latitude, $scope.outletdata.longitude,function(response){
+		$scope.outletdata.work_hours , $scope.outletdata.latitude, $scope.outletdata.longitude,$scope.outletdata.email, function(response){
 			if(response){
     				window.location.reload();
     			}else{
@@ -452,7 +457,7 @@ app.factory('outletFact', ['$http', function($http){
   }
 	prvlg.updateOutlet = function(id, name, phone, address, 
 		city_id, city_zone_id, area, postcode, suggested_dishes,resturant_id,
-		work_hours,latitude,longitude, callback){
+		work_hours,latitude,longitude,email, callback){
 		$http({
 	      method: 'PUT',
 	      url: 'http://api.foodtalk.in/privilege/outlet/'+id,
@@ -468,7 +473,8 @@ app.factory('outletFact', ['$http', function($http){
 	        'resturant_id' : resturant_id,
 	        'work_hours' : work_hours,
           'latitude': latitude,
-          'longitude':longitude
+          'longitude':longitude,
+          'email': email
 	      }
 	    }).then(function (response) {
 	        console.log(response);
