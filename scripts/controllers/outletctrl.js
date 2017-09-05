@@ -10,7 +10,8 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 	$scope.outletid= $routeParams.outletid;
 	outletFact.getoutletdata($scope.outletid, function(response){
 		$scope.outletdata = response.data.result;
-    console.log($scope.outletdata)
+    console.log($scope.outletdata);
+    $scope.selectCityChange();
 	});
 
 
@@ -59,10 +60,38 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
       })
     }
 
-  $http.get('scripts/controllers/delhiarea.js').success(function(data) {
-   $scope.arealist = data;
-   //console.log($scope.arealist);
-  });
+  $scope.zonelist = [];
+  $scope.delzone = [
+      {"name": "Gurgaon", "id": "1"},
+      {"name": "Noida", "id": "2"},
+      {"name": "South Delhi", "id": "3"},
+      {"name": "North Delhi", "id": "4"},
+      {"name": "East Delhi", "id": "5"},
+      {"name": "West Delhi", "id": "6"},
+      {"name": "Central Delhi", "id": "7"}
+    ];
+
+  $scope.mumbzone = [
+      {"name": "Western Suburbs", "id": "8"},
+      {"name": "Eastern Suburbs", "id": "9"},
+      {"name": "Harbour Suburbs", "id": "10"},
+      {"name": "South Mumbai", "id": "11"}
+    ];
+
+  $scope.selectCityChange = function(){
+    if($scope.outletdata.city_id == "1"){
+      $scope.zonelist = $scope.delzone;
+      $http.get('scripts/controllers/delhiarea.js').success(function(data) {
+       $scope.arealist = data;
+      });
+    }else if($scope.outletdata.city_id == "2"){
+      $scope.zonelist = $scope.mumbzone;
+      $http.get('scripts/controllers/mumbaiarea.js').success(function(data) {
+       $scope.arealist = data;
+      });
+    }
+  }
+
 
 
     // upload image to cloudinary

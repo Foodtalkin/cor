@@ -37,11 +37,40 @@ app.controller('privilegeRestroDetailsctrl', ['$scope', '$rootScope','$location'
       }
     })
   }
+  $scope.zonelist = [];
+  $scope.delzone = [
+      {"name": "Gurgaon", "id": "1"},
+      {"name": "Noida", "id": "2"},
+      {"name": "South Delhi", "id": "3"},
+      {"name": "North Delhi", "id": "4"},
+      {"name": "East Delhi", "id": "5"},
+      {"name": "West Delhi", "id": "6"},
+      {"name": "Central Delhi", "id": "7"}
+    ];
 
-  $http.get('scripts/controllers/delhiarea.js').success(function(data) {
-   $scope.arealist = data;
-   //console.log($scope.arealist);
-  });
+  $scope.mumbzone = [
+      {"name": "Western Suburbs", "id": "8"},
+      {"name": "Eastern Suburbs", "id": "9"},
+      {"name": "Harbour Suburbs", "id": "10"},
+      {"name": "South Mumbai", "id": "11"}
+    ];
+
+  $scope.selectCityChange = function(){
+    if($scope.outlet.cityid == "1"){
+      $scope.zonelist = $scope.delzone;
+      $http.get('scripts/controllers/delhiarea.js').success(function(data) {
+       $scope.arealist = data;
+      });
+    }else if($scope.outlet.cityid == "2"){
+      $scope.zonelist = $scope.mumbzone;
+      console.log($scope.zonelist);
+      $http.get('scripts/controllers/mumbaiarea.js').success(function(data) {
+       $scope.arealist = data;
+      });
+    }
+  }
+
+      
 	// create Restro
     $scope.updateRestro = function(){
     	//console.log($scope.restroData);
