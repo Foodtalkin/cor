@@ -17,7 +17,7 @@ app.factory('urlFactory', [ function(){
   url.mediacat = baseurl+"api/media/category";
   url.searchuser = baseurl+"api/search/user";
   url.searchuserTag = baseurl+"api/search/user/tags";
-  url.contactform = baseurl+"api/contact";
+  url.contactform = baseurl+"contact";
   url.contactformput = baseurl+"contact";
   url.cityusers = baseurl+"user/city";
   url.onappusers = baseurl+"user/onapp";

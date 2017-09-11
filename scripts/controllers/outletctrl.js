@@ -10,7 +10,6 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
 	$scope.outletid= $routeParams.outletid;
 	outletFact.getoutletdata($scope.outletid, function(response){
 		$scope.outletdata = response.data.result;
-    console.log($scope.outletdata);
     $scope.selectCityChange();
 	});
 
@@ -22,7 +21,6 @@ app.controller('outletCtrl', ['$scope', '$rootScope','$location','Upload', 'clou
   
   $scope.getOutletImages = function(){
     outletFact.getOutletImages($scope.outletid, function(response){
-      console.log(response);
       $scope.imageList = response.data.result;
     });
   }
