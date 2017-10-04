@@ -117,7 +117,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="item in filtered = (allData  | filter:searchkey ) " >
+                    <tr ng-repeat="item in filtered = (allData  | filter:searchkey | orderBy: 'created_at':true ) " >
                       <td> <input type="checkbox" class="checkb" ng-change="sync(bool,{a:item.event_name,b:item.name,c:item.email,d:item.phone,e:item.gender,f:item.preference})" ng-model="bool" ng-checked="checkall"></td> 
                       <td>{{ item.event_name }}</td>
                       <td>{{ item.name }}</td>
